@@ -1,0 +1,17 @@
+# For downloading
+accession="root_svr-or-knz_b73"
+
+# For DADA2
+trunc_len_f=220
+trunc_len_r=170
+max_ee_f="8.0"
+max_ee_r="9.0"
+
+# SLURM
+qos_download="medium"
+time_download="16:00:00"
+
+qos_dada2="medium"
+time_dada2="36:00:00"
+n_threads_dada2=32
+mem_dada2="32GB"
