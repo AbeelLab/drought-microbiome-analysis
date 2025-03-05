@@ -9,7 +9,6 @@
 # Global arguments
 data_path=$1
 
-# Study-specific input arguments
 study_id=$2
 trunc_len_f=$3
 trunc_len_r=$4

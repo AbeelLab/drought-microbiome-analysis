@@ -1,42 +1,51 @@
 #!/bin/sh
 
 # Global config variables
-global_path="/tudelft.net/staff-umbrella/abeellab/bmcosma/resilience-characterization"
-data_path="${global_path}/data"
-classifier_path="${global_path}/silva-138-99-nb-classifier.qza"
+data_path="../data"
+classifier_path="../silva-138-99-nb-classifier.qza"
 
-# DADA2 defaults
-trim_left_f=0
-trim_left_r=0
+# DADA2 conservative parameters
+trunc_len_f=220
+trunc_len_r=170
+trim_left_f=25
+trim_left_r=26
 max_ee_f="2.0"
-max_ee_r="2.0"
+max_ee_r="4.0"
 trunc_q=2
-overlap=12
+overlap=100
 
 # Run for one study
 study_id=$1
 
 # Load study config
-# DADA2 defaults should be overwritten if specified in study config
-source "${study_id}_config"
+# Will overwirte DADA2 parameters where specified in the config
+source "configs/${study_id}_config"
 
 # Define which steps in the pipeline to run
-# By default: yes
+# By default: all true
+
+# Downloading sequencing data and metadata
 run_step1=${2:-true}
+
+# DADA2 denoising and ASV assignment
 run_step2=${3:-true}
+
+# Taxonomic classification
+run_step3=${4:-true}
 
 # Dependency chain if running multiple steps
 dependencies=""
 
 update_dependencies() {
-    sleep 15s
-    #https://stackoverflow.com/questions/73773769/slurm-get-job-id-of-last-run-jobs
+    sleep 3s
     latest_job="$(squeue --me --sort=+i --format="%i" | tail -n 1)"
     if [ -z "$dependencies" ]; then
         dependencies="afterok:${latest_job}"
     else
         dependencies="${dependencies},${latest_job}"
     fi
+
+    echo "Dependencies: ${dependencies}"
 }
 
 # Download data
@@ -49,8 +58,6 @@ if [ $run_step1 = true ] ; then
 
     update_dependencies
 fi
-
-echo "Dependencies: ${dependencies}"
 
 # Run DADA2
 if [ $run_step2 = true ] ; then
@@ -74,5 +81,12 @@ if [ $run_step2 = true ] ; then
     update_dependencies
 fi
 
-echo "Dependencies: ${dependencies}"
+# Run taxonomic profiling
+if [ $run_step3 = true ] ; then
+    sbatch --dependency=${dependencies} \
+        classify_taxonomy.sbatch $data_path \
+                                 $classifier_path \
+                                 $study_id
 
+    update_dependencies
+fi

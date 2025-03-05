@@ -1,0 +1,19 @@
+# For downloading
+accession="sras_no_fungi"
+
+# For DADA2
+# Not specified in the study
+# These are 2 x 300 bp,
+# and we cut of 30 and 80 bp
+# as we do with 2 x 250 bp amplicons in other studies
+trunc_len_f=270
+trunc_len_r=220
+
+# SLURM
+qos_download="medium"
+time_download="16:00:00"
+
+qos_dada2="short"
+time_dada2="04:00:00"
+n_threads_dada2=32
+mem_dada2="32GB"

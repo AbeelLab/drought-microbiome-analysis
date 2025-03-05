@@ -1,1 +1,5 @@
 data/
+*slurm_outputs/*
+*.out
+*.qza
+*~

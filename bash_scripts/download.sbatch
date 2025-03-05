@@ -29,6 +29,9 @@ qiime tools import \
       --input-path "${working_dir}/${accession}.tsv" \
       --output-path "${working_dir}/${accession}.qza"
 
+# Remove qiime-dir if it already exists (otherwise q2-fondue doesn't work)
+rm -rf "${working_dir}/qiime-dir/"
+
 # Download data from NCBI
 qiime fondue get-all \
       --i-accession-ids "${working_dir}/${accession}.qza" \
@@ -36,6 +39,11 @@ qiime fondue get-all \
       --p-retries 5 \
       --verbose \
       --output-dir "${working_dir}/qiime-dir"
+
+# Extract metadata for later processing
+qiime tools extract \
+      --input-path "${working_dir}/qiime-dir/metadata.qza" \
+      --output-path "${working_dir}/qiime-dir/metadata"
 
 # Visualize metadata
 qiime metadata tabulate \
@@ -46,3 +54,4 @@ qiime metadata tabulate \
 qiime demux summarize \
       --i-data "${working_dir}/qiime-dir/paired_reads.qza" \
       --o-visualization "${working_dir}/qiime-dir/paired_reads.qzv"
+
