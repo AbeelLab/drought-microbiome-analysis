@@ -1,0 +1,97 @@
+data_path: "../data"
+plotting_dir: "../data/plots"
+processed_files: "processed_files.yml"
+
+batch_size: 75
+
+levels:
+  2: "phylum"
+  3: "class"
+  4: "order"
+  5: "family"
+  6: "genus"
+
+inoculum_studies:
+  - "yue2024host"
+  - "moore2023microbial"
+  - "munoz-ucros2021drought"
+  - "zhang2022cross"
+  - "swift2024drought"
+
+drought_studies:
+  - "xu2018drought"
+  - "santos-medellin2021prolonged"
+  - "simmons2020drought"
+  - "kristy2022chronic"
+  - "fitspatrick2017assembly"
+  - "hoefle2024oak"
+  - "bandopadhyay2024disentangling"
+  - "santos-medellin2017drought"
+  - "faist2022potato"
+  - "azarbad2020four"
+
+# All studies and attributes
+yue2024host:
+  inoculum_col_name: "Geo Loc Name [sample]"
+  normal_inoculum: "China:Suqian City, Jiangsu Province"
+  dry_inoculum: "China:Yangli City, Shaanxi Province"
+    
+moore2023microbial:
+  inoculum_col_name: "Env Medium [sample]"
+  normal_inoculum: "Inoculum: Agricultural_field"
+  dry_inoculum: "Inoculum: Forest_soil"
+    
+munoz-ucros2021drought:
+  inoculum_col_name: "Microbiome [sample]"
+  normal_inoculum: "WET"
+  dry_inoculum: "DRY"
+    
+zhang2022cross: "No data"
+
+xu2018drought:
+  amplicon_length: 300
+  filters:
+    # Remove bulk soil samples
+    # For large experiment
+    - "lambda row: 'Soil' not in str(row['Env Material [sample]'])"
+    # For smaller experiment (reproduction)
+    - "lambda row: 'bulk soil' not in str(row['Env Medium [sample]'])"
+
+    # Keep only Post-flowering, Pre-flowering, Control, Drought, Water
+    # I am not sure what positive means
+    # For large experiment
+    - "lambda row: 'Positive' not in str(row['Env Material [sample]'])"
+
+santos-medellin2021prolonged:
+  amplicon_length: 250
+  filters: {}
+  
+kristy2022chronic:
+  amplicon_length: 250
+  filters:
+    # Remove fungal samples
+    - "lambda row: str(row['']) == '16s'"
+  
+fitspatrick2017assembly:
+  amplicon_length: 150
+  filters: {}
+  
+hoefle2024oak:
+  amplicon_length: 300
+  filters: {}
+  
+bandopadhyay2024disentangling:
+  amplicon_length: 300
+  filters: {}
+  
+santos-medellin2017drought:
+  amplicon_length: 250
+  filters: {}
+  
+faist2022potato:
+  amplicon_length: 300
+  filters: {}
+  
+azarbad2020four:
+  amplicon_length: 250
+  filters: {}

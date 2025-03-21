@@ -6,7 +6,7 @@
 #SBATCH --qos=short
 #SBATCH --time=00:05:00
 #SBATCH --mem=4GB
-#SBATCH --mail-type=ALL
+#SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
 

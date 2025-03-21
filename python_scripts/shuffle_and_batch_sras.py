@@ -1,0 +1,73 @@
+import yaml
+import os
+import argparse
+import random
+
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--study")
+    args = parser.parse_args()
+
+    study = args.study
+
+    # Set random seed for shuffling
+    random.seed(42)
+    
+    with open('config.yml') as f:
+        config = yaml.safe_load(f)
+
+    batch_size = int(config["batch_size"])
+
+    study_path = os.path.join(config["data_path"],
+                              study)
+    accession_file = os.path.join(study_path,
+                                  "filtered_sras.tsv")
+
+    with open(accession_file, "r") as f:
+        lines = f.read().splitlines()
+
+    if not lines:
+        print(f"No data found in {accession_file}")
+        return
+        
+    # accession.tsv:
+    # id
+    # SRA...
+    # SRA...
+    # ...
+    # SRA...
+    header = lines[0]
+    sra_ids = lines[1:]
+
+    # Shuffle SRA IDs
+    # If we process data in batches they should be randomly distributed
+    random.shuffle(sra_ids)
+
+    shuffled_file = os.path.join(study_path, "sras_shuffled.tsv")
+    with open(shuffled_file, "w") as f:
+        f.write(header + "\n")
+        for sra in sra_ids:
+            f.write(sra + "\n")
+    print(f"Shuffled accession file saved as: {shuffled_file}")
+
+    batches_dir = os.path.join(study_path, "data_batches")
+    os.makedirs(batches_dir, exist_ok=True)
+
+    # keep id as first row followed by SRAs
+    num_batches = 0
+    for i in range(0, len(sra_ids), batch_size):
+        num_batches += 1
+        batch = sra_ids[i:i+batch_size]
+        batch_file = os.path.join(batches_dir,
+                                  f"sras_batch{num_batches}.tsv")
+        with open(batch_file, "w") as f:
+            f.write(header + "\n")
+            for sra in batch:
+                f.write(sra + "\n")
+        print(f"Batch file created: {batch_file}")
+        
+
+if __name__ == "__main__":
+    main()
