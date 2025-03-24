@@ -22,7 +22,9 @@ def main():
     
     pattern = os.path.join(study_dir, "data_batches", "qiime-dir-batch*")
     for batch_dir in glob.glob(pattern):
-        json_file = os.path.join(batch_dir, "trimParameters.json")
+        json_file = os.path.join(batch_dir,
+                                 "figaro-output",
+                                 "trimParameters.json")
 
         with open(json_file) as jf:
             data = json.load(jf)

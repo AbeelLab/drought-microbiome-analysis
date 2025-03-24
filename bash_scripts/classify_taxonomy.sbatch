@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --qos=short
-#SBATCH --time=00:20:00
+#SBATCH --time=00:15:00
 #SBATCH --mem=8GB
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out
@@ -31,10 +31,25 @@ for batch in "${study_dir}/data_batches/qiime-dir-batch"*; do
 done
 
 # Set up QIIME2 cache
-cache_dir="../tmp/job_${SLURM_JOB_ID}"
+cache_dir="/tmp/job_${SLURM_JOB_ID}"
+export TMPDIR=$cache_dir
+
 qiime tools cache-create --cache $cache_dir
+
 # Clean up cache after job execution
-trap 'rm -rf "$cache_dir"' EXIT
+function clean_up {
+    echo "Before cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    echo "---"
+    
+    rm -rf $cache_dir
+
+    echo "After cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    exit
+}
+
+trap 'clean_up' EXIT
 
 qiime feature-table merge \
   --i-tables "${dada2_rep_files[@]}" \
@@ -68,5 +83,5 @@ do
     # Extract taxonomy data
     qiime tools extract \
           --input-path "${study_dir}/composition_table_l${level}.qza" \
-          --output-path "${study_dir}/composition_table_l${level}" 
+          --output-path "${study_dir}/composition_table_l${level}"
 done

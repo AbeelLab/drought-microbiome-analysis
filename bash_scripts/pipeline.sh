@@ -12,16 +12,16 @@ study_id=$1
 run_step1=${2:-true}
 
 # Cutadapt to remove primers
-run_step2=${3:-true}
+run_step2=${3:-false}
 
 # Extract trimming parameters with FIGARO
-run_step3=${5:-true}
+run_step3=${5:-false}
 
 # DADA2 denoising and ASV assignment
-run_step4=${5:-true}
+run_step4=${5:-false}
 
 # Taxonomic classification
-run_step5=${6:-true}
+run_step5=${6:-false}
 
 # Dependency chain if running multiple steps
 dependencies=""
@@ -37,7 +37,7 @@ update_dependencies() {
     fi
 
     if [ -z "$dependencies" ]; then
-        dependencies="afterok:${job_id}"
+        dependencies="afterany:${job_id}"
     else
         dependencies="${dependencies},${job_id}"
     fi
@@ -46,14 +46,13 @@ update_dependencies() {
 }
 
 # Run an initial filtering step based on sample metadata
-#sbatch initial_filter.sbatch $data_path $study_id
-#update_dependencies
+sbatch initial_filter.sbatch $data_path $study_id
+update_dependencies
 
 last_batch=1
 #$(find "${data_path}/${study_id}/data_batches/" -type f -name "sras_batch*.tsv" -printf "%f\n" | grep -o '[0-9]\+' | sort -n | tail -1)
 
 # Download sequencing data + metadata in batches
-# Run at most 3 jobs at once
 if [ $run_step1 = true ] ; then
     sbatch --array="1-${last_batch}" \
 	   --dependency=${dependencies} \

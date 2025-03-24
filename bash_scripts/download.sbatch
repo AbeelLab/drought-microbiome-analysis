@@ -9,6 +9,8 @@
 #SBATCH --error=slurm_outputs/%x_%j.out
 #SBATCH --qos=medium
 #SBATCH --time=08:00:00
+#SBATCH --gres=jobspernode:one:1
+#SBATCH --tmp=150G
 
 data_path=$1
 study_id=$2
@@ -26,10 +28,25 @@ source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/con
 conda activate qiime2-amplicon-2024.10
 
 # Set up QIIME2 cache
-cache_dir="../tmp/job_${SLURM_JOB_ID}"
+cache_dir="/tmp/job_${SLURM_JOB_ID}"
+export TMPDIR=$cache_dir
+
 qiime tools cache-create --cache $cache_dir
+
 # Clean up cache after job execution
-trap 'rm -rf "$cache_dir"' EXIT
+function clean_up {
+    echo "Before cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    echo "---"
+    
+    rm -rf $cache_dir
+
+    echo "After cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    exit
+}
+
+trap 'clean_up' EXIT
 
 # Import accession(s) as qza
 qiime tools import \

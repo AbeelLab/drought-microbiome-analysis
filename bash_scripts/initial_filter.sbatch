@@ -25,10 +25,25 @@ source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/con
 conda activate qiime2-amplicon-2024.10
 
 # Set up QIIME2 cache
-cache_dir="/tudelft.net/staff-umbrella/abeellab/bmcosma/resilience-characterization/tmp/job_${SLURM_JOB_ID}"
+cache_dir="/tmp/job_${SLURM_JOB_ID}"
+export TMPDIR=$cache_dir
+
 qiime tools cache-create --cache $cache_dir
+
 # Clean up cache after job execution
-trap 'rm -rf "$cache_dir"' EXIT
+function clean_up {
+    echo "Before cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    echo "---"
+    
+    rm -rf $cache_dir
+
+    echo "After cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    exit
+}
+
+trap 'clean_up' EXIT
 
 # Download all metadata, extract and filter
 # Import accession(s) as qza
@@ -66,3 +81,5 @@ python3 initial_filter.py --study $study_id
 
 # Shuffle accessions and split into batches
 python3 shuffle_and_batch_sras.py --study $study_id
+
+cd ../bash_scripts/

@@ -9,6 +9,8 @@
 #SBATCH --time=04:00:00
 #SBATCH --mem=32GB
 #SBATCH --cpus-per-task=32
+#SBATCH --gres=jobspernode:one:1
+#SBATCH --tmp=150G
 
 data_path=$1
 study_id=$2
@@ -33,20 +35,33 @@ conda deactivate
 
 # Load trimming parameters
 trim_param_file="${study_dir}/figaro_trim_params.txt"
-read -r forward_trunc < "$trim_param_file"
-read -r reverse_trunc < <(sed -n '2p' "$trim_param_file")
-forward_trunc=$((forward_trunc))
-reverse_trunc=$((reverse_trunc))
+forward_trunc=$(sed -n '1p' "$trim_param_file")
+reverse_trunc=$(sed -n '2p' "$trim_param_file")
 
 /usr/bin/scontrol show job -d "$SLURM_JOB_ID"
 
 conda activate qiime2-amplicon-2024.10
 
 # Set up QIIME2 cache
-cache_dir="../tmp/job_${SLURM_JOB_ID}"
+cache_dir="/tmp/job_${SLURM_JOB_ID}"
+export TMPDIR=$cache_dir
+
 qiime tools cache-create --cache $cache_dir
+
 # Clean up cache after job execution
-trap 'rm -rf "$cache_dir"' EXIT
+function clean_up {
+    echo "Before cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    echo "---"
+    
+    rm -rf $cache_dir
+
+    echo "After cleanup:"
+    find /tmp -user bmcosma -print0 | du -chs --files0-from=-
+    exit
+}
+
+trap 'clean_up' EXIT
 
 # Do not hash feature IDs to ensure the same ASVs from different batches
 # will be merged correctly.
@@ -61,4 +76,4 @@ qiime dada2 denoise-paired \
       --o-representative-sequences "${qiime_dir}/dada2_rep_set.qza" \
       --o-denoising-stats "${qiime_dir}/dada2_stats.qza" \
       --o-table "${qiime_dir}/dada2_table.qza" \
-      --use-cache $cache_dir 
+      --use-cache $cache_dir

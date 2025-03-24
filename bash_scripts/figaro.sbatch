@@ -6,7 +6,7 @@
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
 #SBATCH --qos=short
-#SBATCH --time=00:30:00
+#SBATCH --time=00:15:00
 #SBATCH --mem=8GB
 #SBATCH --cpus-per-task=8
 

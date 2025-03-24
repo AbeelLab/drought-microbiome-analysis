@@ -39,8 +39,8 @@ def main():
           len(df))
 
     filtered_df = apply_filters(df,
-                                config['drought_studies'][study].get("filters",
-                                                                     []))
+                                config[study].get("filters",
+                                                  []))
         
     filtered_df.to_csv(os.path.join(study_dir, "filtered_df.tsv"),
                        sep='\t')
