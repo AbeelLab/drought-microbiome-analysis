@@ -44,9 +44,8 @@ conda activate qiime2-amplicon-2024.10
 
 # Set up QIIME2 cache
 cache_dir="/tmp/job_${SLURM_JOB_ID}"
+srun qiime tools cache-create --cache $cache_dir
 export TMPDIR=$cache_dir
-
-qiime tools cache-create --cache $cache_dir
 
 # Clean up cache after job execution
 function clean_up {
@@ -66,14 +65,14 @@ trap 'clean_up' EXIT
 # Do not hash feature IDs to ensure the same ASVs from different batches
 # will be merged correctly.
 # https://forum.qiime2.org/t/merging-dada2-feature-tables-what-about-likely-duplicate-features-in-different-tables/12419/2
-qiime dada2 denoise-paired \
-      --p-trunc-len-f $forward_trunc \
-      --p-trunc-len-r $reverse_trunc \
-      --p-n-threads 32 \
-      --verbose \
-      --p-no-hashed-feature-ids \
-      --i-demultiplexed-seqs "${qiime_dir}/paired_reads_no_primers.qza" \
-      --o-representative-sequences "${qiime_dir}/dada2_rep_set.qza" \
-      --o-denoising-stats "${qiime_dir}/dada2_stats.qza" \
-      --o-table "${qiime_dir}/dada2_table.qza" \
-      --use-cache $cache_dir
+srun qiime dada2 denoise-paired \
+     --p-trunc-len-f $forward_trunc \
+     --p-trunc-len-r $reverse_trunc \
+     --p-n-threads 32 \
+     --verbose \
+     --p-no-hashed-feature-ids \
+     --i-demultiplexed-seqs "${qiime_dir}/paired_reads_no_primers.qza" \
+     --o-representative-sequences "${qiime_dir}/dada2_rep_set.qza" \
+     --o-denoising-stats "${qiime_dir}/dada2_stats.qza" \
+     --o-table "${qiime_dir}/dada2_table.qza" \
+     --use-cache $cache_dir

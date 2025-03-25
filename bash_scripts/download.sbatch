@@ -3,14 +3,14 @@
 #SBATCH --partition=general
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=4GB
+#SBATCH --mem=8GB
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
-#SBATCH --qos=medium
-#SBATCH --time=08:00:00
+#SBATCH --qos=short
+#SBATCH --time=00:15:00
 #SBATCH --gres=jobspernode:one:1
-#SBATCH --tmp=150G
+#SBATCH --tmp=16G
 
 data_path=$1
 study_id=$2
@@ -29,9 +29,7 @@ conda activate qiime2-amplicon-2024.10
 
 # Set up QIIME2 cache
 cache_dir="/tmp/job_${SLURM_JOB_ID}"
-export TMPDIR=$cache_dir
-
-qiime tools cache-create --cache $cache_dir
+srun qiime tools cache-create --cache $cache_dir
 
 # Clean up cache after job execution
 function clean_up {

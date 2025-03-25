@@ -25,9 +25,8 @@ conda activate qiime2-amplicon-2024.10
 
 # Set up QIIME2 cache
 cache_dir="/tmp/job_${SLURM_JOB_ID}"
+srun qiime tools cache-create --cache $cache_dir
 export TMPDIR=$cache_dir
-
-qiime tools cache-create --cache $cache_dir
 
 # Clean up cache after job execution
 function clean_up {
@@ -44,9 +43,9 @@ function clean_up {
 
 trap 'clean_up' EXIT
 
-qiime cutadapt trim-paired \
-      --p-cores 8 \
-      --use-cache $cache_dir \
-      --i-demultiplexed-sequences "${qiime_dir}/paired_reads.qza" \
-      --o-trimmed-sequences "${qiime_dir}/paired_reads_no_primers.qza" \
-      --verbose
+srun qiime cutadapt trim-paired \
+     --p-cores 8 \
+     --use-cache $cache_dir \
+     --i-demultiplexed-sequences "${qiime_dir}/paired_reads.qza" \
+     --o-trimmed-sequences "${qiime_dir}/paired_reads_no_primers.qza" \
+     --verbose

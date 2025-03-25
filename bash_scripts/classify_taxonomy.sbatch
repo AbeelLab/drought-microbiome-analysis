@@ -32,9 +32,8 @@ done
 
 # Set up QIIME2 cache
 cache_dir="/tmp/job_${SLURM_JOB_ID}"
+srun qiime tools cache-create --cache $cache_dir
 export TMPDIR=$cache_dir
-
-qiime tools cache-create --cache $cache_dir
 
 # Clean up cache after job execution
 function clean_up {
@@ -51,37 +50,37 @@ function clean_up {
 
 trap 'clean_up' EXIT
 
-qiime feature-table merge \
-  --i-tables "${dada2_rep_files[@]}" \
-  --p-overlap-method sum \
-  --o-merged-table "${study_dir}/dada2_rep_set.qza" \
-  --use-cache $cache_dir
+srun qiime feature-table merge \
+     --i-tables "${dada2_rep_files[@]}" \
+     --p-overlap-method sum \
+     --o-merged-table "${study_dir}/dada2_rep_set.qza" \
+     --use-cache $cache_dir
 
 # Assign taxonomy to ASVs
-qiime feature-classifier classify-sklearn \
-      --i-classifier $classifier_path \
-      --i-reads "${study_dir}/dada2_rep_set.qza" \
-      --o-classification "${study_dir}/taxonomy.qza" \
-      --use-cache $cache_dir
+srun qiime feature-classifier classify-sklearn \
+     --i-classifier $classifier_path \
+     --i-reads "${study_dir}/dada2_rep_set.qza" \
+     --o-classification "${study_dir}/taxonomy.qza" \
+     --use-cache $cache_dir
 
 # Visualize taxonomy per sample
-qiime taxa barplot --i-table "${study_dir}/dada2_table.qza" \
-      --i-taxonomy "${study_dir}/taxonomy.qza" \
-      --o-visualization "${study_dir}/taxa-bar-plots.qzv" \
-      --use-cache $cache_dir
+srun qiime taxa barplot --i-table "${study_dir}/dada2_table.qza" \
+     --i-taxonomy "${study_dir}/taxonomy.qza" \
+     --o-visualization "${study_dir}/taxa-bar-plots.qzv" \
+     --use-cache $cache_dir
 
 # Collapse taxonomy per level
 # Levels: phylum (2), class (3), order (4), family (5), genus (6)
 # Outputs FeatureTable[Frequency], required for ancombc input
 for level in $(seq 2 6);
 do
-    qiime taxa collapse --i-table "${study_dir}/dada2_table.qza" \
-          --i-taxonomy "${study_dir}/taxonomy.qza" \
-          --p-level $level \
-          --o-collapsed-table "${study_dir}/composition_table_l${level}.qza" \
-	  --use-cache $cache_dir
+    srun qiime taxa collapse --i-table "${study_dir}/dada2_table.qza" \
+         --i-taxonomy "${study_dir}/taxonomy.qza" \
+         --p-level $level \
+         --o-collapsed-table "${study_dir}/composition_table_l${level}.qza" \
+	 --use-cache $cache_dir
     # Extract taxonomy data
-    qiime tools extract \
-          --input-path "${study_dir}/composition_table_l${level}.qza" \
-          --output-path "${study_dir}/composition_table_l${level}"
+    srun qiime tools extract \
+         --input-path "${study_dir}/composition_table_l${level}.qza" \
+         --output-path "${study_dir}/composition_table_l${level}"
 done

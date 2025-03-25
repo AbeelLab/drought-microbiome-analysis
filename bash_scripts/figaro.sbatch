@@ -40,12 +40,16 @@ conda activate figaro
 
 input_dir=$(echo "${qiime_dir}/paired_reads_no_primers/"*/data)
 
-python3 ../figaro/figaro/figaro.py -i $input_dir \
-	-o "${qiime_dir}/figaro-output" \
-	-a $amplicon_length \
-	-f 0 \
-	-r 0 \
-	-F illumina
+function clean_up {
+    rm -rf $input_dir
+    exit
+}
 
-# Clean up afterwards to avoid using too much disk space
-rm -r $input_dir
+trap 'clean_up' EXIT
+
+srun python3 ../figaro/figaro/figaro.py -i $input_dir \
+     -o "${qiime_dir}/figaro-output" \
+     -a $amplicon_length \
+     -f 0 \
+     -r 0 \
+     -F illumina
