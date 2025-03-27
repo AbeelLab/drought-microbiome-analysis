@@ -2,23 +2,22 @@ import yaml
 import os
 import argparse
 import random
-
-
+import shutil
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--study")
+    parser.add_argument("--batch_size")
     args = parser.parse_args()
 
     study = args.study
+    batch_size = int(args.batch_size)
 
     # Set random seed for shuffling
     random.seed(42)
     
     with open('config.yml') as f:
         config = yaml.safe_load(f)
-
-    batch_size = int(config["batch_size"])
 
     study_path = os.path.join(config["data_path"],
                               study)
@@ -52,7 +51,11 @@ def main():
             f.write(sra + "\n")
     print(f"Shuffled accession file saved as: {shuffled_file}")
 
+    
     batches_dir = os.path.join(study_path, "data_batches")
+    # remove batches from previous runs
+    if os.path.exists(batches_dir):
+        shutil.rmtree(batches_dir)
     os.makedirs(batches_dir, exist_ok=True)
 
     # keep id as first row followed by SRAs

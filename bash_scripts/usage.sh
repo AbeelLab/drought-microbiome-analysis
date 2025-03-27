@@ -25,23 +25,27 @@ Optional arguments:
   	      The pre-trained SILVA QIIME2 classifier for full-length sequences is available via:
 	      https://resources.qiime2.org/
 
+  --batch_size INT
+  	      Batch size to download and process the data.
+	      All steps are ran per batch.
+
 You can run the following pipeline steps. If no steps are specified, the entire pipeline is run.
 Otherwise, only the specified steps are run.
   --run_download true|false
   	      Download data from NCBI in batches with QIIME q2-fondue plugin.
-	      Batch size: 75. (TO DO: make this tweakable)
 
-  --run_cutadapt true|false
+  --run_cutadapt
   	      Remove primers with QIIME Cutadapt plugin.
 	      We use default Cutadapt parameters.
 
-  --run_figaro true|false
+  --run_figaro
 	      Extract trimming parameters using FIGARO.
 	      We use default FIGARO parameters.
 
-  --run_dada2 true|false
+  --run_dada2
   	      Perform denoising and ASV detection with QIIME DADA2 plugin.
-	      We use DADA2 defaults, with truncation lengths determine dby FIGARO.
+	      We use DADA2 defaults, with truncation lengths determined by FIGARO.
+	      We take the median truncation lengths across batches.
 	      These are stored in a file: ${data_path}/study_id/figaro_trim_params.txt with contents of the form:
 	      forward_length
 	      reverse_length

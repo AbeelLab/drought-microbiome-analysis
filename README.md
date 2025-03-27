@@ -1,0 +1,1 @@
+bash pipeline.sh --help

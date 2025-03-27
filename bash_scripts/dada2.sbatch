@@ -24,7 +24,7 @@ qiime_dir="${working_dir}/qiime-dir-batch${SLURM_ARRAY_TASK_ID}"
 source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/conda.sh
 
 # Determine trimming parameters as medians of batches
-conda activate general
+#conda activate general
 
 cd ../python_scripts/
 python3 extract_figaro_parameters.py --study $study_id

@@ -2,10 +2,10 @@
 
 . ./parser.sh "$@"
 
-# If accession is provided, process it first.
+# If accession is provided, create study directory and .tsv file within this directory required by q2-fondue
 if [ -n "$accession" ]; then
     echo "Formatting accession $accession for study $study_id..."
-    # TO DO
+    bash create_study_dir.sh $data_path $study_id $accession
 fi
 
 # Keep track of dependency chain
@@ -29,19 +29,15 @@ update_dependencies() {
     echo "Dependencies: ${dependencies}"
 }
 
-# Filter based on metadata and batch SRAs 
-sbatch initial_filter.sbatch \
-    "$data_path" \
-    "$study_id"
-update_dependencies
 
-last_batch=1
-#$(find "${data_path}/${study_id}/data_batches/" -type f -name "sras_batch*.tsv" -printf "%f\n" | grep -o '[0-9]\+' | sort -n | tail -1)
+#bash initial_filter.sh "$data_path" "$study_id" "$batch_size"
 
+last_batch=$(find "${data_path}/${study_id}/data_batches/" -type f -name "sras_batch*.tsv" -printf "%f\n" | grep -o '[0-9]\+' | sort -n | tail -1)
+
+echo "Number of batches: ${last_batch}"
 
 if [ "$run_download" = true ] ; then
     sbatch --array="1-${last_batch}" \
-           --dependency=${dependencies} \
            download.sbatch \
            "$data_path" \
            "$study_id"

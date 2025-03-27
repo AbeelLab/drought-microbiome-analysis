@@ -2,6 +2,7 @@
 
 data_path="../data"
 classifier_path="../silva-138-99-nb-classifier.qza"
+batch_size=50
 
 study_id=""
 accession=""
@@ -33,30 +34,34 @@ while [ "$#" -gt 0 ]; do
             classifier_path="$2"
             shift 2
             ;;
-        --run_download)
-            run_download="$2"
-            pipeline_flags_specified=1
+        --batch_size)
+            batch_size="$2"
             shift 2
+            ;;
+        --run_download)
+            run_download=true
+            pipeline_flags_specified=1
+            shift 1
             ;;
         --run_cutadapt)
-            run_cutadapt="$2"
+            run_cutadapt=true
             pipeline_flags_specified=1
-            shift 2
+            shift 1
             ;;
         --run_figaro)
-            run_figaro="$2"
+            run_figaro=true
             pipeline_flags_specified=1
-            shift 2
+            shift 1
             ;;
         --run_dada2)
-            run_dada2="$2"
+            run_dada2=true
             pipeline_flags_specified=1
-            shift 2
+            shift 1
             ;;
         --run_taxonomic_profiling)
-            run_taxonomic_profiling="$2"
+            run_taxonomic_profiling=true
             pipeline_flags_specified=1
-            shift 2
+            shift 1
             ;;
         --help)
             ./usage.sh
@@ -86,6 +91,7 @@ fi
 
 export data_path
 export classifier_path
+export batch_size
 export study_id
 export accession
 export run_download
