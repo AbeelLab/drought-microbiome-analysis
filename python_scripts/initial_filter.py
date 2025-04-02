@@ -4,6 +4,7 @@ import utils
 import yaml
 import utils
 import pandas as pd
+import shutil
 
 def apply_filters(df, filters):
     for filter_expr in filters:
@@ -30,8 +31,28 @@ def main():
     metadata_file = os.path.join(inner_dir,
                                  "sra-metadata.tsv")
 
+    # Copy file to main directory as well
+    copy_to = os.path.join(study_dir,
+                           "metadata.tsv")
+    shutil.copyfile(metadata_file, copy_to)
+
+    # If needed, merge with supplemental metadata
+    # Overwrites metadata.tsv
+    supplemental_metadata = os.path.join(study_dir,
+                                         "supplemental_metadata.tsv")
+    if os.path.exists(supplemental_metadata):
+        link_NCBI_metadata = config[study]["link_NCBI_metadata"]
+        link_supplemental_metadata = config[study]["link_supplemental_metadata"]
+        utils.merge_metadata(study,
+                             metadata_file,
+                             supplemental_metadata,
+                             link_NCBI_metadata,
+                             link_supplemental_metadata,
+                             copy_to)
+    
+
     # Apply individual study filters
-    df = pd.read_csv(metadata_file,
+    df = pd.read_csv(copy_to,
                      sep="\t",
                      index_col="ID")
 

@@ -32,8 +32,8 @@ def main():
             trim_positions_forward.append(tp[0])
             trim_positions_reverse.append(tp[1])
             
-    median_forward = statistics.median(trim_positions_forward)
-    median_reverse = statistics.median(trim_positions_reverse)
+    median_forward = int(statistics.median(trim_positions_forward))
+    median_reverse = int(statistics.median(trim_positions_reverse))
 
     print("Standard deviation forward:", statistics.stdev(trim_positions_forward))
     print("Standard deviation reverse:", statistics.stdev(trim_positions_reverse))

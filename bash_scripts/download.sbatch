@@ -16,14 +16,14 @@
 data_path=$1
 study_id=$2
 
+/usr/bin/scontrol show job -d "$SLURM_JOB_ID"
+
 # Main output and input directory
 working_dir="${data_path}/${study_id}/data_batches"
 # Batch-specific directories and files
 tsv_sra_list="${working_dir}/sras_batch${SLURM_ARRAY_TASK_ID}.tsv"
 qza_sra_list="${working_dir}/sras_batch${SLURM_ARRAY_TASK_ID}.qza"
 qiime_dir="${working_dir}/qiime-dir-batch${SLURM_ARRAY_TASK_ID}"
-
-/usr/bin/scontrol show job -d "$SLURM_JOB_ID"
 
 source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/conda.sh
 conda activate qiime2-amplicon-2024.10

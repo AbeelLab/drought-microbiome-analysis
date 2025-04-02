@@ -5,7 +5,7 @@
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
 #SBATCH --qos=short
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00
 #SBATCH --mem=8GB
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=jobspernode:one:1

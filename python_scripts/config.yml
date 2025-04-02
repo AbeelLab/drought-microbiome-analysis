@@ -2,8 +2,6 @@ data_path: "../data"
 plotting_dir: "../data/plots"
 processed_files: "processed_files.yml"
 
-batch_size: 75
-
 levels:
   2: "phylum"
   3: "class"
@@ -59,7 +57,7 @@ xu2018drought:
 
     # Keep only Post-flowering, Pre-flowering, Control, Drought, Water
     # I am not sure what positive means
-    # For large experiment
+    # (for the large experiment)
     - "lambda row: 'Positive' not in str(row['Env Material [sample]'])"
 
 santos-medellin2021prolonged:
@@ -70,28 +68,92 @@ kristy2022chronic:
   amplicon_length: 250
   filters:
     # Remove fungal samples
-    - "lambda row: str(row['']) == '16s'"
-  
-fitspatrick2017assembly:
-  amplicon_length: 150
-  filters: {}
+    - "lambda row: str(row['Marker Gene [sample]']) == '16s'"
+    # Remove bulk soil samples
+    - "lambda row: 'bulksoil' not in str(row['Name'])"
+  treatment_col: "Watering Regm [sample]"
+  drought: "reduced"
+  watered: "full"
   
 hoefle2024oak:
   amplicon_length: 300
-  filters: {}
+  filters:
+    # Keep heat samples as well
+    # Remove phyllosphere samples
+    - "lambda row: str(row['Env Local Scale [sample]']) == 'rhizosphere'"
+    # Remove fungal samples
+    - "lambda row: 'fungi' not in str(row['Name'])"
+  treatment_col: "Climate Environment [sample]"
+  drought: "soil moisture 15%"
+  watered: "soil moisture 60%"
   
 bandopadhyay2024disentangling:
   amplicon_length: 300
-  filters: {}
+  filters:
+    # Remove unplanted (no host)
+    - "lambda row: 'unplanted' not in str(row['Env Local Scale [sample]'])"
+    # Remove pre-drought
+    - "lambda row: 'pre-drought' not in str(row['Treatment [sample]'])"
+  treatment_col: "Treatment [sample]"
+  drought: "drought"
+  watered: "well-watered"
   
 santos-medellin2017drought:
   amplicon_length: 250
-  filters: {}
-  
+  filters:
+    # Remove bulk soil samples
+    - "lambda row: str(row['Root Compartment [sample]']) != 'BulkSoil'"
+  treatment_col: "Watering Regm [sample]"
+  drought: "Drought"
+  watered: "Watered"
+
 faist2022potato:
   amplicon_length: 300
-  filters: {}
+  filters:
+    # Remove fungal samples
+    - "lambda row: 'fungi' not in str(row['Library Name'])"
+    # Remove mock community samples
+    - "lambda row: 'mock community' not in str(row['Name'])"
+  treatment_col: "Watering Regm [sample]"
+  drought: "drought"
+  watered: "irrigated"
   
 azarbad2020four:
   amplicon_length: 250
-  filters: {}
+  filters:
+    # Remove fungal samples
+    - "lambda row: 'ITS' not in str(row['Name'])"
+    # Remove leaf samples
+    - "lambda row: 'LEAF' not in str(row['Library Name'])"
+    - "lambda row: 'Leaf' not in str(row['Library Name'])"
+  treatment_col: "Title"
+  drought: "int(str(row['Title']).split(\"_\")[3]) < 20"
+  watered: "int(str(row['Title']).split(\"_\")[3]) >= 20"
+    
+simmons2020drought:
+  amplicon_length: 300
+  filters:
+    # Remove bulk soil samples
+    - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
+  treatment_col: "Treatment_all"
+  drought: "Drought"
+  watered: "Watered"
+  link_NCBI_metadata: "Name"
+  link_supplemental_metadata: "SampleID"
+
+fitspatrick2017assembly:
+  amplicon_length: 150
+  filters:
+    # Remove bulk soil samples
+    - "lambda row: str(row['Isolation Source [sample]']) != 'live bare soil'"
+    # Remove samples without plant roots
+    - "lambda row: 'analogue' not in str(row['Isolation Source [sample]'])"
+    # Remove samples without treatment recorded (NA in supplemental file)
+    # These should probably alreayd be removed by the previous filters
+    - "lambda row: str(row['treatment']) != 'NA'"
+  treatment_col: "treatment"
+  drought: "d"
+  watered: "w"
+  link_NCBI_metadata: "Name"
+  # This was actually a column with no name which I renamed ID
+  link_supplemental_metadata: "Sample_ID"

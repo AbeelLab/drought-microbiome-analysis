@@ -23,11 +23,11 @@ source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/con
 conda activate qiime2-amplicon-2024.10
 
 # Merge dada2 files across batches
+dada2_tables=()
 dada2_rep_files=()
 for batch in "${study_dir}/data_batches/qiime-dir-batch"*; do
-    if [ -f "${batch}/dada2_rep_set.qza" ]; then
-        dada2_rep_files+=( "${batch}/dada2_rep_set.qza" )
-    fi
+    dada2_tables+=( "${batch}/dada2_table.qza" )
+    dada2_rep_files+=( "${batch}/dada2_rep_set.qza" )
 done
 
 # Set up QIIME2 cache
@@ -51,9 +51,14 @@ function clean_up {
 trap 'clean_up' EXIT
 
 srun qiime feature-table merge \
-     --i-tables "${dada2_rep_files[@]}" \
+     --i-tables "${dada2_tables[@]}" \
      --p-overlap-method sum \
-     --o-merged-table "${study_dir}/dada2_rep_set.qza" \
+     --o-merged-table "${study_dir}/dada2_table.qza" \
+     --use-cache $cache_dir
+
+qiime feature-table merge-seqs \
+    --i-data "${dada2_rep_files[@]}" \
+    --o-merged-data "${study_dir}/dada2_rep_set.qza" \
      --use-cache $cache_dir
 
 # Assign taxonomy to ASVs

@@ -29,15 +29,33 @@ update_dependencies() {
     echo "Dependencies: ${dependencies}"
 }
 
-
-#bash initial_filter.sh "$data_path" "$study_id" "$batch_size"
+# TO DO: separate filtering and batching
+# And make them tweakable
+if [ "$run_initial_filter_and_batching" = true ] ; then
+    bash initial_filter.sh "$data_path" "$study_id" "$batch_size"
+fi
 
 last_batch=$(find "${data_path}/${study_id}/data_batches/" -type f -name "sras_batch*.tsv" -printf "%f\n" | grep -o '[0-9]\+' | sort -n | tail -1)
 
-echo "Number of batches: ${last_batch}"
-
 if [ "$run_download" = true ] ; then
-    sbatch --array="1-${last_batch}" \
+    echo "Number of batches: ${last_batch}"
+
+    # Create list of batches that have not yet been downloaded
+    array_job_list=""
+    for i in $(seq 1 $last_batch);
+    do
+	working_dir="${data_path}/${study_id}/data_batches"
+	qiime_dir="${working_dir}/qiime-dir-batch${i}"
+
+	if [ ! -d $qiime_dir ]; then
+	    array_job_list="${array_job_list},${i}"
+	fi
+    done
+
+    # Remove first comma
+    array_job_list="${array_job_list:1}"
+
+    sbatch --array=$array_job_list \
            download.sbatch \
            "$data_path" \
            "$study_id"
@@ -66,6 +84,9 @@ fi
 
 
 if [ "$run_dada2" = true ] ; then
+    bash load_figaro_trim_params.sh $data_path $study_id $last_batch
+
+    conda deactivate
     sbatch --array="1-${last_batch}" \
            --dependency=${dependencies} \
            dada2.sbatch \

@@ -12,6 +12,8 @@
 #SBATCH --gres=jobspernode:one:1
 #SBATCH --tmp=150G
 
+/usr/bin/scontrol show job -d "$SLURM_JOB_ID"
+
 data_path=$1
 study_id=$2
 
@@ -23,22 +25,24 @@ qiime_dir="${working_dir}/qiime-dir-batch${SLURM_ARRAY_TASK_ID}"
 
 source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/conda.sh
 
-# Determine trimming parameters as medians of batches
-#conda activate general
-
-cd ../python_scripts/
-python3 extract_figaro_parameters.py --study $study_id
-
-cd ../bash_scripts/
-
-conda deactivate
-
 # Load trimming parameters
 trim_param_file="${study_dir}/figaro_trim_params.txt"
-forward_trunc=$(sed -n '1p' "$trim_param_file")
-reverse_trunc=$(sed -n '2p' "$trim_param_file")
+if [ -f "$trim_param_file.txt" ]; then
+    # If FIGARO ran successfully, load optimal parameters
+    forward_trunc=$(sed -n '1p' "$trim_param_file")
+    reverse_trunc=$(sed -n '2p' "$trim_param_file")
+else
+    # Otherwise don't trim
+    config_file="../python_scripts/config.yml"
+    conda activate general
+    amplicon_length=$(python -c "import yaml; print(yaml.safe_load(open('$config_file'))['$study_id']['amplicon_length'])")
+    conda deactivate
+    forward_trunc="$amplicon_length"
+    reverse_trunc="$amplicon_length"
+fi
 
-/usr/bin/scontrol show job -d "$SLURM_JOB_ID"
+echo $forward_trunc
+echo $reverse_trunc
 
 conda activate qiime2-amplicon-2024.10
 

@@ -31,7 +31,11 @@ Optional arguments:
 
 You can run the following pipeline steps. If no steps are specified, the entire pipeline is run.
 Otherwise, only the specified steps are run.
-  --run_download true|false
+  --run_initial_filter_and_batching
+	      Filter based on metadata, with user-defined rules.
+	      Rules can be empty or otherwise lambda expressions in ../python_scripts/config.yml 
+	      Then batch the data as sets of SRAs.
+  --run_download 
   	      Download data from NCBI in batches with QIIME q2-fondue plugin.
 
   --run_cutadapt
@@ -67,5 +71,5 @@ Example usage:
   ./pipeline.sh --study_id xu2018drought --accession PRJNA435634,PRJNA435643
 
   To run only some steps of the pipeline:
-  ./pipeline.sh --study_id xu2018drought --accession PRJNA435634,PRJNA435643 --run_download true --run_cutadapt true
+  ./pipeline.sh --study_id xu2018drought --accession PRJNA435634,PRJNA435643 --run_download --run_cutadapt
 EOF

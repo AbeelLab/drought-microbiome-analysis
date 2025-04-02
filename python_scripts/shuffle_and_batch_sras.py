@@ -19,10 +19,8 @@ def main():
     with open('config.yml') as f:
         config = yaml.safe_load(f)
 
-    study_path = os.path.join(config["data_path"],
-                              study)
-    accession_file = os.path.join(study_path,
-                                  "filtered_sras.tsv")
+    study_path = os.path.join(config["data_path"], study)
+    accession_file = os.path.join(study_path, "filtered_sras.tsv")
 
     with open(accession_file, "r") as f:
         lines = f.read().splitlines()
@@ -51,26 +49,29 @@ def main():
             f.write(sra + "\n")
     print(f"Shuffled accession file saved as: {shuffled_file}")
 
-    
     batches_dir = os.path.join(study_path, "data_batches")
     # remove batches from previous runs
     if os.path.exists(batches_dir):
         shutil.rmtree(batches_dir)
     os.makedirs(batches_dir, exist_ok=True)
 
-    # keep id as first row followed by SRAs
-    num_batches = 0
+    batches = []
     for i in range(0, len(sra_ids), batch_size):
-        num_batches += 1
         batch = sra_ids[i:i+batch_size]
-        batch_file = os.path.join(batches_dir,
-                                  f"sras_batch{num_batches}.tsv")
+        batches.append(batch)
+
+    # If last batch is less than 15 samples, merge with second-to-last
+    if len(batches) > 1 and len(batches[-1]) < 15:
+        batches[-2].extend(batches[-1])
+        batches.pop()
+    
+    for idx, batch in enumerate(batches, start=1):
+        batch_file = os.path.join(batches_dir, f"sras_batch{idx}.tsv")
         with open(batch_file, "w") as f:
             f.write(header + "\n")
             for sra in batch:
                 f.write(sra + "\n")
         print(f"Batch file created: {batch_file}")
-        
 
 if __name__ == "__main__":
     main()

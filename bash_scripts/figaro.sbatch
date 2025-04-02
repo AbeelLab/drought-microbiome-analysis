@@ -6,7 +6,7 @@
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
 #SBATCH --qos=short
-#SBATCH --time=00:15:00
+#SBATCH --time=00:10:00
 #SBATCH --mem=8GB
 #SBATCH --cpus-per-task=8
 
@@ -24,6 +24,7 @@ qiime_dir="${working_dir}/qiime-dir-batch${SLURM_ARRAY_TASK_ID}"
 source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/conda.sh
 conda activate qiime2-amplicon-2024.10
 
+rm -rf "${qiime_dir}/paired_reads_no_primers"
 # Extract QIIME2 reads artifact
 qiime tools extract \
       --input-path "${qiime_dir}/paired_reads_no_primers.qza" \
@@ -41,7 +42,7 @@ conda activate figaro
 input_dir=$(echo "${qiime_dir}/paired_reads_no_primers/"*/data)
 
 function clean_up {
-    rm -rf $input_dir
+    rm -rf "${qiime_dir}/paired_reads_no_primers/"
     exit
 }
 

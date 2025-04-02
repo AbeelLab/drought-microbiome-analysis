@@ -12,8 +12,8 @@ run_cutadapt=""
 run_figaro=""
 run_dada2=""
 run_taxonomic_profiling=""
+run_initial_filter_and_batching=""
 
-# Keep track of whether pipeline steps are specifically mentioned
 pipeline_flags_specified=0
 
 while [ "$#" -gt 0 ]; do
@@ -37,6 +37,11 @@ while [ "$#" -gt 0 ]; do
         --batch_size)
             batch_size="$2"
             shift 2
+            ;;
+        --run_initial_filter_and_batching)
+            run_initial_filter_and_batching=true
+            pipeline_flags_specified=1
+            shift 1
             ;;
         --run_download)
             run_download=true
@@ -82,6 +87,7 @@ if [ -z "$study_id" ]; then
 fi
 
 if [ "$pipeline_flags_specified" -eq 0 ]; then
+    run_initial_filter_and_batching=true
     run_download=true
     run_cutadapt=true
     run_figaro=true
@@ -94,6 +100,7 @@ export classifier_path
 export batch_size
 export study_id
 export accession
+export run_initial_filter_and_batching
 export run_download
 export run_cutadapt
 export run_figaro
