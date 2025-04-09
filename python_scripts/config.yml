@@ -17,16 +17,15 @@ inoculum_studies:
   - "swift2024drought"
 
 drought_studies:
-  - "xu2018drought"
   - "santos-medellin2021prolonged"
   - "simmons2020drought"
-  - "kristy2022chronic"
   - "fitspatrick2017assembly"
   - "hoefle2024oak"
-  - "bandopadhyay2024disentangling"
-  - "santos-medellin2017drought"
   - "faist2022potato"
+  - "santos-medellin2017drought"
   - "azarbad2020four"
+  - "naylor2017drought"
+  - "xu2018drought"
 
 # All studies and attributes
 yue2024host:
@@ -49,111 +48,222 @@ zhang2022cross: "No data"
 xu2018drought:
   amplicon_length: 300
   filters:
-    # Remove bulk soil samples
-    # For large experiment
     - "lambda row: 'Soil' not in str(row['Env Material [sample]'])"
-    # For smaller experiment (reproduction)
     - "lambda row: 'bulk soil' not in str(row['Env Medium [sample]'])"
-
-    # Keep only Post-flowering, Pre-flowering, Control, Drought, Water
-    # I am not sure what positive means
-    # (for the large experiment)
     - "lambda row: 'Positive' not in str(row['Env Material [sample]'])"
+  treatment_col: "Treatment [sample]"
+  treatments:
+    "Pre_flowering": "Drought"
+    "Post_flowering": "Drought"
+    "Control": "Control"
+    "Water": "Control"
+    "Drought": "Drought"
+  host_col: "Host [sample]"
+  hosts:
+    "Sorghum bicolor": "Poaceae: Panicoideae"
+  hosts_ungrouped:
+    "Sorghum bicolor": "Sorghum bicolor"
 
 santos-medellin2021prolonged:
   amplicon_length: 250
   filters: {}
-  
+  treatment_col: "Water Regime [sample]"
+  treatments:
+    "Drought 10 days": "Drought"
+    "Drought 20 days": "Drought"
+    "Drought 30 days": "Drought"
+    "Drought 30 days": "Drought"
+    "Watered Control": "Control"
+    "Watered Control Training": "Control"
+    "Control Training": "Control"
+    "Drought 21 days": "Drought"
+  host_col: "Host [sample]"
+  hosts:
+    "Oryza sativa": "Poaceae: Oryzoideae"
+  hosts_ungrouped:
+    "Oryza sativa": "Oryza sativa"
+
 kristy2022chronic:
   amplicon_length: 250
   filters:
-    # Remove fungal samples
     - "lambda row: str(row['Marker Gene [sample]']) == '16s'"
-    # Remove bulk soil samples
     - "lambda row: 'bulksoil' not in str(row['Name'])"
   treatment_col: "Watering Regm [sample]"
-  drought: "reduced"
-  watered: "full"
-  
+  treatments:
+    "reduced": "Drought"
+    "full": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "Populus trichocarpa": "Salicaceae"
+
 hoefle2024oak:
   amplicon_length: 300
   filters:
-    # Keep heat samples as well
-    # Remove phyllosphere samples
     - "lambda row: str(row['Env Local Scale [sample]']) == 'rhizosphere'"
-    # Remove fungal samples
     - "lambda row: 'fungi' not in str(row['Name'])"
   treatment_col: "Climate Environment [sample]"
-  drought: "soil moisture 15%"
-  watered: "soil moisture 60%"
-  
+  treatments:
+    "soil moisture 15 %": "Drought"
+    "soil moisture 60 %": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "Quercus robur": "Fagaceae"
+  hosts_ungrouped:
+    "Quercus robur": "Quercus robur"
+
 bandopadhyay2024disentangling:
   amplicon_length: 300
   filters:
-    # Remove unplanted (no host)
     - "lambda row: 'unplanted' not in str(row['Env Local Scale [sample]'])"
-    # Remove pre-drought
     - "lambda row: 'pre-drought' not in str(row['Treatment [sample]'])"
+    # Remove negative control
+    - "lambda row: 'not applicable' not in str(row['Treatment [sample]'])"
   treatment_col: "Treatment [sample]"
-  drought: "drought"
-  watered: "well-watered"
-  
+  treatments:
+    "drought": "Drought"
+    "well-watered": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "bean": "Fabaceae"
+    "switchgrass": "Poaceae: Panicoideae" 
+  hosts_ungrouped:
+    "bean": "Phaseolus vulgaris"
+    "switchgrass": "Panicum virgatum" 
+
 santos-medellin2017drought:
   amplicon_length: 250
   filters:
-    # Remove bulk soil samples
     - "lambda row: str(row['Root Compartment [sample]']) != 'BulkSoil'"
   treatment_col: "Watering Regm [sample]"
-  drought: "Drought"
-  watered: "Watered"
+  treatments:
+    "Drought": "Drought"
+    "Watered": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "Oryza glaberrima": "Poaceae: Oryzoideae"
+    "Oryza sativa": "Poaceae: Oryzoideae"
+  hosts_ungrouped:
+    "Oryza glaberrima": "Oryza glaberrima"
+    "Oryza sativa": "Oryza sativa"
 
 faist2022potato:
   amplicon_length: 300
   filters:
-    # Remove fungal samples
     - "lambda row: 'fungi' not in str(row['Library Name'])"
-    # Remove mock community samples
     - "lambda row: 'mock community' not in str(row['Name'])"
+    - "lambda row: 'no host' not in str(row['Host [sample]'])"
+    # Download only amplicon data (no shotgun metagenomics)
+    - "lambda row: str(row['Instrument']) == 'Illumina MiSeq'"
   treatment_col: "Watering Regm [sample]"
-  drought: "drought"
-  watered: "irrigated"
-  
+  treatments:
+    "drought": "Drought"
+    "irrigated": "Control"  
+  host_col: "Host [sample]"
+  hosts:
+    "Solanum tuberosum.*": "Solanaceae"
+  hosts_ungrouped:
+    "Solanum tuberosum.*": "Solanum tuberosum"
+
 azarbad2020four:
   amplicon_length: 250
   filters:
-    # Remove fungal samples
     - "lambda row: 'ITS' not in str(row['Name'])"
-    # Remove leaf samples
     - "lambda row: 'LEAF' not in str(row['Library Name'])"
     - "lambda row: 'Leaf' not in str(row['Library Name'])"
   treatment_col: "Title"
-  drought: "int(str(row['Title']).split(\"_\")[3]) < 20"
-  watered: "int(str(row['Title']).split(\"_\")[3]) >= 20"
-    
+  treatments:
+    ".*_5_.*_(?:ITS|16S)$": "Drought"
+    ".*_20_.*_(?:ITS|16S)$": "Drought"
+    ".*_30_.*_(?:ITS|16S)$": "Control"
+    ".*_50_.*_(?:ITS|16S)$": "Control"
+  host_col: "Isolation Source [sample]"
+  hosts:
+    "soil": "Poaceae: Pooideae"
+  hosts_ungrouped:
+    "soil": "Triticum aestivum"
+
 simmons2020drought:
   amplicon_length: 300
   filters:
-    # Remove bulk soil samples
     - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
   treatment_col: "Treatment_all"
-  drought: "Drought"
-  watered: "Watered"
-  link_NCBI_metadata: "Name"
-  link_supplemental_metadata: "SampleID"
+  treatments:
+    "Drought": "Drought"
+    "Watered": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "Echinochloa esculenta": "Poaceae: Panicoideae"
+    "Panicum miliaceum": "Poaceae: Panicoideae"
+    "Penisetum glaucum": "Poaceae: Panicoideae"
+    "Setaria italica": "Poaceae: Panicoideae"
+    "Sorghum bicolor": "Poaceae: Panicoideae"
+  hosts_ungrouped:
+    "Echinochloa esculenta": "Echinochloa esculenta"
+    "Panicum miliaceum": "Panicum miliaceum"
+    "Penisetum glaucum": "Pennisetum glaucum"
+    "Setaria italica": "Setaria italica"
+    "Sorghum bicolor": "Sorghum bicolor"
 
 fitspatrick2017assembly:
   amplicon_length: 150
   filters:
-    # Remove bulk soil samples
     - "lambda row: str(row['Isolation Source [sample]']) != 'live bare soil'"
-    # Remove samples without plant roots
     - "lambda row: 'analogue' not in str(row['Isolation Source [sample]'])"
-    # Remove samples without treatment recorded (NA in supplemental file)
-    # These should probably alreayd be removed by the previous filters
     - "lambda row: str(row['treatment']) != 'NA'"
   treatment_col: "treatment"
-  drought: "d"
-  watered: "w"
-  link_NCBI_metadata: "Name"
-  # This was actually a column with no name which I renamed ID
-  link_supplemental_metadata: "Sample_ID"
+  treatments:
+    "d": "Drought"
+    "w": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "^.*$": "Angiosperm"
+  hosts_ungrouped:
+    "^.*$": "Angiosperm" 
+
+naylor2017drought:
+  amplicon_length: 300
+  filters:
+    - "lambda row: 'Kearney' not in str(row['Library Name'])"
+    - "lambda row: 'ITS2' not in str(row['Library Name'])"
+    - "lambda row: str(row['Plant Body Site [sample]']) != 'Soil'"
+  treatment_col: "Watering Regm [sample]"
+  treatments:
+    "Drought": "Drought"
+    "Control": "Control"
+  host_col: "Isolation Source [sample]"
+  hosts:
+    "Zea mays": "Poaceae: Panicoideae"
+    "Triticum turgidum": "Poaceae: Pooideae"
+    "Triticum monococcum": "Poaceae: Pooideae"
+    "Triticum aestivum": "Poaceae: Pooideae"
+    "Sorghum laxiflorum": "Poaceae: Panicoideae"
+    "Sorghum bicolor": "Poaceae: Panicoideae"
+    "Sorghastrum nutans": "Poaceae: Panicoideae"
+    "Solanum lycopersicum": "Solanaceae"
+    "Secale cereale": "Poaceae: Pooideae"
+    "Pennisetum glaucum": "Poaceae: Panicoideae"
+    "Miscanthus sinensis": "Poaceae: Panicoideae"
+    "Hordeum vulgare": "Poaceae: Pooideae"
+    "Festuca arundinacea": "Poaceae: Pooideae"
+    "Eragrostis tef": "Poaceae: Chloridoideae"
+    "Brachypodium distachyon": "Poaceae: Pooideae"
+    "Bothriochloa bladhii": "Poaceae: Panicoideae"
+    "Avena sativa": "Poaceae: Pooideae"
+  hosts_ungrouped:
+    "Zea mays": "Zea mays"
+    "Triticum turgidum": "Triticum turgidum"
+    "Triticum monococcum": "Triticum monococcum"
+    "Triticum aestivum": "Triticum aestivum"
+    "Sorghum laxiflorum": "Sorghum laxiflorum"
+    "Sorghum bicolor": "Sorghum bicolor"
+    "Sorghastrum nutans": "Sorghastrum nutans"
+    "Solanum lycopersicum": "Solanum lycopersicum"
+    "Secale cereale": "Secale cereale"
+    "Pennisetum glaucum": "Pennisetum glaucum"
+    "Miscanthus sinensis": "Miscanthus sinensis"
+    "Hordeum vulgare": "Hordeum vulgare"
+    "Festuca arundinacea": "Festuca arundinacea"
+    "Eragrostis tef": "Eragrostis tef"
+    "Brachypodium distachyon": "Brachypodium distachyon"
+    "Bothriochloa bladhii": "Bothriochloa bladhii"
+    "Avena sativa": "Avena sativa"

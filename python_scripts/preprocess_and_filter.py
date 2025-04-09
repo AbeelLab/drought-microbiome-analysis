@@ -2,6 +2,7 @@ import pandas as pd
 import subprocess
 import os
 import utils
+import numpy as np
 
 # Total sum scaling of features per row (sample)
 def normalize_row(row,
@@ -13,9 +14,14 @@ def normalize_row(row,
         row[taxonomic_features] *= total_sum
     return row
 
-def filter_features(df,
+def filter_features(study_name,
+                    study_path,
+                    df,
+                    level,
                     min_abundance=0.005,
-                    min_prevalence=0.1):
+                    min_prevalence=0.05):
+    initial_count=len(df.columns)
+    
     # Remove unassigned and uncultured taxa
     to_keep = [col for col in df.columns
                if "Unassigned" not in col and "uncultured" not in col]
@@ -29,51 +35,69 @@ def filter_features(df,
     to_keep = [col for col in taxonomic_features
                if (df[col] >= min_abundance).sum() >= min_sample_count]
 
-    initial_count = len(taxonomic_features)
-    removed_count = initial_count - len(to_keep)
-    print(f"[INFO] Removed {removed_count} features out of {initial_count}")
-    print(f"[INFO] Features left: {len(to_keep)}")
+    initial_count_no_unassigned = len(taxonomic_features)
 
     # Re-normalize
     df = df[["Study"] + to_keep]
     df = df.apply(lambda row: normalize_row(row, to_keep), axis=1)
+
+    # save feature counts as .tsv
+    save_stats_as = os.path.join(study_path,
+                                 f"feature_filtering_stats_l{level}.tsv")
+    f = open(save_stats_as,'w')
+    f.write('study\tinitial\tafter_unassigned\tafter_prevalence_abundance\n')
+    f.write(f'{study_name}\t{initial_count}\t{initial_count_no_unassigned}\t{len(to_keep)}')
+    f.close()
     
     return df
 
-def filter_samples(df,
-                   taxonomic_features, 
-                   max_unassigned = 50):
+# max_unassigned is from 0 to 100
+# we pass a dataframe with samples normalized between 0 and 100
+def filter_samples(study_name,
+                   study_path,
+                   df,
+                   taxonomic_features,
+                   level,
+                   max_unassigned = 50,
+                   max_eukaryotes=10):
     # Number of samples at the beginning
     initial_count = len(df)
     
     # Remove samples with too many Unassigned taxa
     unassigned_col = [col for col in taxonomic_features
                       if "Unassigned" in col]
-    if len(unassigned_col) > 0:
-        unassigned_col = unassigned_col[0]
-        df = df[~(df[unassigned_col] > max_unassigned)]
+    for col in unassigned_col:
+        df = df[~(df[col] > max_unassigned)]
     after_unassigned_count = len(df)
+
+    # Remove samples with high percentages of Eukaryotes
+    # These should be removed since before downloading,
+    # But for some studies such samples are not labelled
+    # So it is not possible
+    eukaryotic_col = [col for col in taxonomic_features
+                      if "Eukaryota" in col]
+    for col in eukaryotic_col:
+        df = df[~(df[col] > max_eukaryotes)]
+    after_eukaryotic_count = len(df)    
     
     # Remove samples with only zeros
     df = df[(df[taxonomic_features] != 0).any(axis=1)]
     final_count = len(df)
 
-    # Logging
-    removed_unassigned = initial_count - after_unassigned_count
-    removed_zeros = after_unassigned_count - final_count
-    total_removed = removed_unassigned + removed_zeros
-    
-    print(f"[INFO] Initial #samples: {initial_count}")
-    print(f"[INFO] Removed due to Unassigned > {max_unassigned}: {removed_unassigned}")
-    print(f"[INFO] Removed empty samples: {removed_zeros}")
-    print(f"[INFO] Final samples: {final_count} (Total removed: {total_removed})")
+    # save counts as .csv
+    save_stats_as = os.path.join(study_path,
+                                 f"sample_filtering_stats_l{level}.tsv")
+    f = open(save_stats_as,'w')
+    f.write('study\tinitial\tafter_unassigned\tafter_eukaryotes\tafter_zeros\n')
+    f.write(f'{study_name}\t{initial_count}\t{after_unassigned_count}\t{after_eukaryotic_count}\t{final_count}')
+    f.close()
     
     return df
 
 # comp_dir = directory where the extracted taxonomic composition table is stored
 def biom_to_tsv(study_name,
                 comp_dir):
-    data_dir = get_qiime_extract_dir(comp_dir)
+    data_dir = utils.get_qiime_extract_dir(comp_dir)
     biom_file = os.path.join(data_dir, "feature-table.biom")
 
     tsv_file_unfiltered = os.path.join(comp_dir, "feature-table-unfiltered.tsv")
@@ -105,8 +129,7 @@ def biom_to_tsv(study_name,
 def preprocess_and_filter(study_path,
                           study_name,
                           level):
-    qiime_dir = os.path.join(study_path, "qiime-dir")
-    comp_dir = os.path.join(qiime_dir, f"composition_table_l{level}")
+    comp_dir = os.path.join(study_path, f"composition_table_l{level}")
 
     df = biom_to_tsv(study_name, comp_dir)
 
@@ -127,10 +150,23 @@ def preprocess_and_filter(study_path,
                   axis=1)
 
     # Filter samples 
-    df = filter_samples(df, taxonomic_features)
+    df = filter_samples(study_name,
+                        study_path,
+                        df,
+                        taxonomic_features,
+                        level)
+
+    # Save df before feature filtering
+    tsv_file_unfiltered = os.path.join(comp_dir,
+                                       "feature-table-before-feature-filtering.tsv")
+    df.to_csv(tsv_file_unfiltered, sep='\t')
+    print(f"[INFO] Saved unfiltered feature table to: {tsv_file_unfiltered}")
 
     # Filter features
-    df = filter_features(df)
+    df = filter_features(study_name,
+                         study_path,
+                         df,
+                         level)
 
     # Save filtered df
     tsv_file_filtered = os.path.join(comp_dir, "feature-table-filtered.tsv")
@@ -142,30 +178,56 @@ def preprocess_and_filter(study_path,
 def process_metadata(study_path,
                      study_name,
                      study_info):
-    metadata_dir = os.path.join(study_path, "qiime-dir", "metadata")
-    metadata_dir = get_qiime_extract_dir(metadata_dir)
-
-    metadata_file = os.path.join(metadata_dir, "sra-metadata.tsv")
+    # This already exists and should have been merged with the
+    # supplemental data (if it exists) during the initial filtering
+    metadata_file = os.path.join(study_path,
+                                 "metadata.tsv")
 
     # Load metadata
     # Index column (ID) represents the sample IDs
-    df = pd.read_csv(metadata_file, sep='\t', index_col=0)
+    df = pd.read_csv(metadata_file,
+                     sep='\t',
+                     index_col=0)
 
-    # rename column study_info["inoculum_col_name"] to "Inoculum"
-    df.rename(columns={study_info["inoculum_col_name"]: "Inoculum"}, inplace=True)
+    # rename treatment columns consistently across studies
+    if "treatment_col" in study_info:
+        # TO DO: this can probably be done better
+        # but for some studies (simmons2020drought), we already have a treatment column
+        # which gets duplicated
+        if "Treatment" in df.columns:
+            df.drop(columns=["Treatment"], inplace=True)
+            
+        df.rename(columns={study_info["treatment_col"]: "Treatment"}, inplace=True)
+        df["Treatment"] = df["Treatment"].replace(study_info["treatments"],
+                                                  regex=True)
+    else:
+        df["Treatment"] = np.nan
 
-    # for values in this column,
-    # rename study_info["normal_inoculum"] to normal
-    # rename study_info["dry_inoculum"] to drought-legacy
-    df["Inoculum"] = df["Inoculum"].replace({study_info["normal_inoculum"]: "normal",
-                                             study_info["dry_inoculum"]: "drought-legacy"})
+    # rename host columns consistently across studies
+    if "host_col" in study_info:
+        df["Host (original NCBI)"] = df[study_info["host_col"]]
+        df["Host (specific)"] = df[study_info["host_col"]].replace(study_info["hosts_ungrouped"],
+                                                                  regex=True)
+        df.rename(columns={study_info["host_col"]: "Host"}, inplace=True)
+        df["Host"] = df["Host"].replace(study_info["hosts"],
+                                        regex=True)
+    else:
+        df["Host"] = np.nan
+        df["Host (specific)"] = np.nan
 
-    # filter such that only the inoculum column is included in the dataframe
-    # and the sample IDs (the index)
-    df = df[["Inoculum"]]
+    # rename inoculum columns consistenly across studies
+    if "inoculum_col_name" in study_info:
+        df.rename(columns={study_info["inoculum_col_name"]: "Inoculum"}, inplace=True)
+        df["Inoculum"] = df["Inoculum"].replace({study_info["normal_inoculum"]: "Normal",
+                                                 study_info["dry_inoculum"]: "Drought-legacy"},
+                                                regex=True)
+    else:
+        df["Inoculum"] = np.nan
+
+    df = df[["Treatment", "Host", "Host (specific)", "Inoculum"]]
 
     metadata_file_processed = os.path.join(study_path, "processed_metadata.tsv")
     df.to_csv(metadata_file_processed, sep='\t')
     print(f"[INFO] Saved processed metadata to: {metadata_file_processed}")
     
-    return df
+    return metadata_file_processed

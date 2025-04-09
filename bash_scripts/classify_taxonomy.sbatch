@@ -4,8 +4,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --qos=short
-#SBATCH --time=00:15:00
-#SBATCH --mem=8GB
+#SBATCH --time=00:30:00
+#SBATCH --mem=16GB
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out

@@ -45,9 +45,9 @@ if [ "$run_download" = true ] ; then
     for i in $(seq 1 $last_batch);
     do
 	working_dir="${data_path}/${study_id}/data_batches"
-	qiime_dir="${working_dir}/qiime-dir-batch${i}"
+	reads_file="${working_dir}/qiime-dir-batch${i}/paired_reads.qza"
 
-	if [ ! -d $qiime_dir ]; then
+	if [ ! -f $reads_file ]; then
 	    array_job_list="${array_job_list},${i}"
 	fi
     done
@@ -84,9 +84,11 @@ fi
 
 
 if [ "$run_dada2" = true ] ; then
-    bash load_figaro_trim_params.sh $data_path $study_id $last_batch
+    sbatch --dependency=${dependencies} \
+           load_figaro_trim_params.sbatch $data_path $study_id $last_batch
 
-    conda deactivate
+    update_dependencies
+
     sbatch --array="1-${last_batch}" \
            --dependency=${dependencies} \
            dada2.sbatch \

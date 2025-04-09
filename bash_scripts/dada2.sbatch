@@ -5,12 +5,12 @@
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
-#SBATCH --qos=short
-#SBATCH --time=04:00:00
-#SBATCH --mem=32GB
+#SBATCH --qos=medium
+#SBATCH --time=06:00:00
+#SBATCH --mem=64GB
 #SBATCH --cpus-per-task=32
 #SBATCH --gres=jobspernode:one:1
-#SBATCH --tmp=150G
+#SBATCH --tmp=200G
 
 /usr/bin/scontrol show job -d "$SLURM_JOB_ID"
 
@@ -26,19 +26,22 @@ qiime_dir="${working_dir}/qiime-dir-batch${SLURM_ARRAY_TASK_ID}"
 source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/conda.sh
 
 # Load trimming parameters
+# TO DO: these if-statements need to be changed and replaced with more consistent rules
+# Final trimming parameters should be logged
 trim_param_file="${study_dir}/figaro_trim_params.txt"
-if [ -f "$trim_param_file.txt" ]; then
+# For these two studies FIGARO does terminate, but the resulting taxonomic profiling is not good
+if [[ -f "$trim_param_file.txt" && "$study_id" != "simmons2020drought" && "$study_id" != "azarbad2020four" ]]; then
     # If FIGARO ran successfully, load optimal parameters
     forward_trunc=$(sed -n '1p' "$trim_param_file")
     reverse_trunc=$(sed -n '2p' "$trim_param_file")
 else
-    # Otherwise don't trim
+    # Otherwise trim 10%
     config_file="../python_scripts/config.yml"
     conda activate general
     amplicon_length=$(python -c "import yaml; print(yaml.safe_load(open('$config_file'))['$study_id']['amplicon_length'])")
     conda deactivate
-    forward_trunc="$amplicon_length"
-    reverse_trunc="$amplicon_length"
+    forward_trunc=$((amplicon_length - amplicon_length / 10))
+    reverse_trunc=$((amplicon_length - amplicon_length / 10))
 fi
 
 echo $forward_trunc
