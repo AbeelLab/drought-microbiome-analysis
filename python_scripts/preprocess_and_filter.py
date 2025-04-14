@@ -224,7 +224,7 @@ def process_metadata(study_path,
     else:
         df["Inoculum"] = np.nan
 
-    df = df[["Treatment", "Host", "Host (specific)", "Inoculum"]]
+    df = df[["Treatment", "Host", "Host (specific)", "Host (original NCBI)", "Inoculum"]]
 
     metadata_file_processed = os.path.join(study_path, "processed_metadata.tsv")
     df.to_csv(metadata_file_processed, sep='\t')

@@ -30,7 +30,9 @@ source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/con
 # Final trimming parameters should be logged
 trim_param_file="${study_dir}/figaro_trim_params.txt"
 # For these two studies FIGARO does terminate, but the resulting taxonomic profiling is not good
-if [[ -f "$trim_param_file.txt" && "$study_id" != "simmons2020drought" && "$study_id" != "azarbad2020four" ]]; then
+if [[ -f $trim_param_file &&
+	  "$study_id" != "simmons2020drought" &&
+	  "$study_id" != "azarbad2020four" ]]; then
     # If FIGARO ran successfully, load optimal parameters
     forward_trunc=$(sed -n '1p' "$trim_param_file")
     reverse_trunc=$(sed -n '2p' "$trim_param_file")

@@ -56,6 +56,11 @@ srun qiime feature-table merge \
      --o-merged-table "${study_dir}/dada2_table.qza" \
      --use-cache $cache_dir
 
+# Extract dada2_table
+srun qiime tools extract \
+     --input-path "${study_dir}/dada2_table.qza" \
+     --output-path "${study_dir}/daa2_table"
+
 qiime feature-table merge-seqs \
     --i-data "${dada2_rep_files[@]}" \
     --o-merged-data "${study_dir}/dada2_rep_set.qza" \

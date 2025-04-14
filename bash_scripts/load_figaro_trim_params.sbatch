@@ -21,12 +21,13 @@ source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/con
 study_dir="${data_path}/${study_id}"
 working_dir="${study_dir}/data_batches"
 
-figaro_ran_succesfully=true
+figaro_ran_successfully=true
 i=1
 while [ $i -le $num_batches ]
 do
-    qiime_dir="${working_dir}/qiime-dir-batch${i}/figaro-output"
-    if [ ! -f "${qiime_dir}/trimParameters.json" ]; then
+    qiime_dir="${working_dir}/qiime-dir-batch${i}"
+    echo $qiime_dir
+    if [ ! -f "${qiime_dir}/figaro-output/trimParameters.json" ]; then
         figaro_ran_successfully=false
         break
     fi
