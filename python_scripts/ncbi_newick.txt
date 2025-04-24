@@ -1,0 +1,158 @@
+Newick generated with NCBI CommonTree (09.04.2025)
+
+(
+(
+'Asparagus officinalis':4,
+(
+(
+(
+(
+'Sporobolus neglectus':4,
+'Sporobolus cryptandrus':4
+)Sporobolus:4,
+'Eragrostis tef':4
+)Chloridoideae:4,
+(
+(
+'Sorghastrum nutans':4,
+'Bothriochloa bladhii':4,
+'Miscanthus sinensis':4,
+'Zea mays':4,
+(
+'Sorghum laxiflorum':4,
+'Sorghum bicolor':4
+)Sorghum:4
+)Andropogoneae:4,
+(
+'Digitaria ischaemum':4,
+'Echinochloa esculenta':4,
+(
+'Setaria italica':4,
+(
+'Cenchrus americanus':4)
+Cenchrus:4
+)Cenchrinae:4,
+'Panicum miliaceum':4
+)Paniceae:4
+)Panicoideae:4
+)'PACMAD clade':4,
+(
+(
+'Oryza glaberrima':4,
+'Oryza sativa':4
+)Oryza:4,
+(
+'Brachypodium distachyon':4,
+(
+'Bromus inermis':4,
+(
+(
+'Triticum turgidum':4,
+'Triticum monococcum':4,
+'Triticum aestivum':4
+)Triticum:4,
+(
+'Secale cereale':4,
+'Hordeum vulgare':4
+)Hordeinae:4
+)Triticeae:4
+)Triticodae:4,
+(
+(
+'Phleum pratense':4,
+(
+(
+(
+'Lolium arundinaceum':4)
+Lolium:4)
+Loliinae:4)
+Loliodinae:4
+)'Poeae Chloroplast Group 2 (Poeae type)':4,
+(
+'Phalaris arundinacea':4,
+'Avena sativa':4
+)'Poeae Chloroplast Group 1 (Aveneae type)':4
+)Poeae:4
+)Pooideae:4
+)'BOP clade':4
+)Poaceae:4
+)Petrosaviidae:4,
+(
+(
+'Persicaria maculosa':4,
+'Amaranthus albus':4,
+'Silene latifolia':4
+)Caryophyllales:4,
+(
+(
+(
+'Symphyotrichum ericoides':4,
+'Solidago gigantea':4
+)'North American clade':4,
+'Arctium minus':4,
+(
+'Pilosella piloselloides':4,
+(
+'Sonchus oleraceus':4,
+'Sonchus arvensis':4
+)Sonchus:4,
+'Cichorium intybus':4
+)Cichorieae:4
+)Asteraceae:4,
+(
+'Asclepias incarnata':4,
+(
+'Plantago rugelii':4,
+'Plantago major':4
+)Plantago:4,
+(
+'Convolvulus arvensis':4,
+(
+'Solanum dulcamara':4,
+'Solanum tuberosum':4,
+'Solanum lycopersicum':4
+)Solanum:4
+)Solanales:4
+)lamiids:4
+)asterids:4,
+(
+(
+(
+'Potentilla recta':4,
+(
+'Geum aleppicum':4,
+'Geum canadense':4
+)Geum:4
+)Rosoideae:4,
+'Quercus robur':4,
+(
+'Desmodium canadense':4,
+(
+'Lotus corniculatus':4,
+(
+(
+'Vicia tetrasperma':4,
+'Vicia sativa':4
+)Vicia:4,
+'Medicago sativa':4
+)'IRL clade':4
+)Hologalegina:4
+)'NPAAA clade':4
+)fabids:4,
+(
+'Malva neglecta':4,
+(
+'Oenothera perennis':4,
+'Oenothera biennis':4
+)Oenothera:4,
+(
+'Erysimum cheiranthoides':4,
+'Sisymbrium officinale':4,
+'Lepidium densiflorum':4,
+'Thlaspi arvense':4,
+'Capsella bursa-pastoris':4
+)Brassicaceae:4
+)malvids:4
+)rosids:4
+)Pentapetalae:4
+)Mesangiospermae:4;

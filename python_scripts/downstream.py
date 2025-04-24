@@ -4,7 +4,8 @@ import argparse
 
 from preprocess_and_filter import preprocess_and_filter, process_metadata
 from merge_datasets import merge_datasets
-from plotting import plot_pca, sparsity_heatmap, plot_num_samples, plot_taxonomy
+from plotting import plot_pcoa, sparsity_heatmap, plot_num_samples, plot_taxonomy, plot_bubbles
+from analysis import run_permanova, apply_batch_correction
 
 with open('config.yml') as f:
     config = yaml.safe_load(f)
@@ -19,8 +20,10 @@ def merge_stats():
         header_written_sample = False
         for study in config["drought_studies"]:
             study_path = os.path.join(config["data_path"], study)
-            feature_file = os.path.join(study_path, f"feature_filtering_stats_l{level}.tsv")
-            sample_file = os.path.join(study_path, f"sample_filtering_stats_l{level}.tsv")
+            feature_file = os.path.join(study_path,
+                                        f"feature_filtering_stats_l{level}.tsv")
+            sample_file = os.path.join(study_path,
+                                       f"sample_filtering_stats_l{level}.tsv")
             if os.path.exists(feature_file):
                 with open(feature_file, 'r') as f:
                     lines = f.readlines()
@@ -42,15 +45,19 @@ def merge_stats():
 
 def run_preprocessing():
     processed_files = dict()
-    
+
     for level in config["levels"]:
         print(f"[INFO] Level: {level}")
         processed_files[level] = dict()
         
         for study in config["drought_studies"]:
             print(f"[INFO] Study: {study}")
-            study_path = os.path.join(config["data_path"], study)
-            processed_tsv = preprocess_and_filter(study_path, study, level)
+            study_path = os.path.join(config["data_path"],
+                                      study)
+            processed_tsv = preprocess_and_filter(study_path,
+                                                  study,
+                                                  level,
+                                                  config["levels"][level][0] + "__")
             processed_files[level][study] = processed_tsv
         
         print()
@@ -61,8 +68,10 @@ def run_preprocessing():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--preprocess", action=argparse.BooleanOptionalAction)
+    parser.add_argument("--remove_batch_effects", action=argparse.BooleanOptionalAction)
     args = parser.parse_args()
     preprocess = args.preprocess
+    remove_batch_effects = args.remove_batch_effects
 
     if (not os.path.exists(config["processed_files"])) or preprocess:
         run_preprocessing()
@@ -76,7 +85,9 @@ def main():
     for study in studies:
         print(study)
         study_path = os.path.join(config["data_path"], study)
-        metadata_file = process_metadata(study_path, study, config[study])
+        metadata_file = process_metadata(study_path,
+                                         study,
+                                         config[study])
         metadata_files[study] = metadata_file
 
     for level, level_name in config["levels"].items():
@@ -84,34 +95,53 @@ def main():
 
     
     for level, level_name in config["levels"].items():
-        merged_file = merge_datasets(config["data_path"], level, processed_files[level], metadata_files)
+        merged_file = merge_datasets(config["data_path"],
+                                     level,
+                                     processed_files[level],
+                                     metadata_files)
 
-        plot_num_samples(merged_file,
-                         config["plotting_dir"])
-
-        plot_taxonomy(level,
-                      merged_file,
-                      config["plotting_dir"])
+        if remove_batch_effects:
+            merged_file = apply_batch_correction(level,
+                                                 level_name,
+                                                 merged_file)
         
-        sparsity_heatmap(level,
-                         level_name,
-                         merged_file,
-                         config["plotting_dir"])
-        sparsity_heatmap(level,
-                         level_name,
-                         merged_file,
-                         config["plotting_dir"],
-                         log_scale=True)
-        sparsity_heatmap(level,
-                         level_name,
-                         merged_file,
-                         config["plotting_dir"],
-                         log_scale=True,
-                         shuffle=True)
-        plot_pca(level,
-                 level_name,
-                 merged_file,
-                 config["plotting_dir"])
+    #     if level == 2:
+    #         plot_bubbles(merged_file,
+    #                      config["plotting_dir"])
+
+    #     plot_num_samples(merged_file,
+    #                      config["plotting_dir"])
+
+    #     plot_taxonomy(level,
+    #                   merged_file,
+    #                   config["plotting_dir"])
+        
+    #     sparsity_heatmap(level,
+    #                      level_name,
+    #                      merged_file,
+    #                      config["plotting_dir"])
+    #     sparsity_heatmap(level,
+    #                      level_name,
+    #                      merged_file,
+    #                      config["plotting_dir"],
+    #                      log_scale=True)
+    #     sparsity_heatmap(level,
+    #                      level_name,
+    #                      merged_file,
+    #                      config["plotting_dir"],
+    #                      log_scale=True,
+    #                      shuffle=True)
+    #     plot_pcoa(level,
+    #               level_name,
+    #               merged_file,
+    #               config["plotting_dir"])
+
+    
+    # for level, level_name in config["levels"].items():
+    #     run_permanova(level,
+    #                   level_name,
+    #                   merged_file,
+    #                   config["plotting_dir"])
 
 if __name__ == "__main__":
     main()

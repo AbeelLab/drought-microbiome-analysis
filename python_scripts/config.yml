@@ -1,3 +1,9 @@
+# SOME DOCUMENTATION
+# Hosts mapped to "None" were grouped into small clades and were deleted.
+
+# "location" indicates where the soil was sampled from.
+# This means that greenhouse-grown communities still get mapped to a location as long as the soil wasourced from a field.
+
 data_path: "../data"
 plotting_dir: "../data/plots"
 processed_files: "processed_files.yml"
@@ -26,6 +32,7 @@ drought_studies:
   - "azarbad2020four"
   - "naylor2017drought"
   - "xu2018drought"
+  - "bandopadhyay2024disentangling"
 
 # All studies and attributes
 yue2024host:
@@ -46,6 +53,7 @@ munoz-ucros2021drought:
 zhang2022cross: "No data"
 
 xu2018drought:
+  full_name: "Xu et al. (2018)"
   amplicon_length: 300
   filters:
     - "lambda row: 'Soil' not in str(row['Env Material [sample]'])"
@@ -53,18 +61,31 @@ xu2018drought:
     - "lambda row: 'Positive' not in str(row['Env Material [sample]'])"
   treatment_col: "Treatment [sample]"
   treatments:
-    "Pre_flowering": "Drought"
-    "Post_flowering": "Drought"
+    "Pre_flowering": "Pre_flowering"
+    "Post_flowering": "Post_flowering"
     "Control": "Control"
     "Water": "Control"
     "Drought": "Drought"
   host_col: "Host [sample]"
   hosts:
-    "Sorghum bicolor": "Poaceae: Panicoideae"
+    "Sorghum bicolor": "PACMAD clade"
   hosts_ungrouped:
     "Sorghum bicolor": "Sorghum bicolor"
+  # Required since drought is only applied pre_flowering or post_flowering
+  timepoint_col: "Title"
+  tp_regex: "TP(?P<tp>\\d+)"
+  drought_timepoints:
+    Pre_flowering:
+      max_tp: 8
+    Post_flowering:
+      min_tp: 10
+  location: "California"
+  soil_type: "Field"
+  primers: "341F,785R"
+  regions: "V3-V4"
 
 santos-medellin2021prolonged:
+  full_name: "Santos-Medellín et al. (2021)"
   amplicon_length: 250
   filters: {}
   treatment_col: "Water Regime [sample]"
@@ -79,24 +100,16 @@ santos-medellin2021prolonged:
     "Drought 21 days": "Drought"
   host_col: "Host [sample]"
   hosts:
-    "Oryza sativa": "Poaceae: Oryzoideae"
+    "Oryza sativa": "BOP clade"
   hosts_ungrouped:
     "Oryza sativa": "Oryza sativa"
-
-kristy2022chronic:
-  amplicon_length: 250
-  filters:
-    - "lambda row: str(row['Marker Gene [sample]']) == '16s'"
-    - "lambda row: 'bulksoil' not in str(row['Name'])"
-  treatment_col: "Watering Regm [sample]"
-  treatments:
-    "reduced": "Drought"
-    "full": "Control"
-  host_col: "Host [sample]"
-  hosts:
-    "Populus trichocarpa": "Salicaceae"
+  location: "California"
+  soil_type: "Field"
+  primers: "515F,806R"
+  regions: "V4"
 
 hoefle2024oak:
+  full_name: "Hoefle et al. (2024)"
   amplicon_length: 300
   filters:
     - "lambda row: str(row['Env Local Scale [sample]']) == 'rhizosphere'"
@@ -107,11 +120,16 @@ hoefle2024oak:
     "soil moisture 60 %": "Control"
   host_col: "Host [sample]"
   hosts:
-    "Quercus robur": "Fagaceae"
+    "Quercus robur": "Fabids"
   hosts_ungrouped:
     "Quercus robur": "Quercus robur"
+  location: "Greenhouse"
+  soil_type: "Sand"
+  primers: "515F,806R"
+  regions: "V4"
 
 bandopadhyay2024disentangling:
+  full_name: "Bandopadhyay et al. (2024)"
   amplicon_length: 300
   filters:
     - "lambda row: 'unplanted' not in str(row['Env Local Scale [sample]'])"
@@ -124,13 +142,18 @@ bandopadhyay2024disentangling:
     "well-watered": "Control"
   host_col: "Host [sample]"
   hosts:
-    "bean": "Fabaceae"
-    "switchgrass": "Poaceae: Panicoideae" 
+    "bean": "Fabids"
+    "switchgrass": "PACMAD clade" 
   hosts_ungrouped:
     "bean": "Phaseolus vulgaris"
-    "switchgrass": "Panicum virgatum" 
+    "switchgrass": "Panicum virgatum"
+  location: "Michigan"
+  soil_type: "Field"
+  primers: "515F,806R"
+  regions: "V4"
 
 santos-medellin2017drought:
+  full_name: "Santos-Medellín et al. (2017)"
   amplicon_length: 250
   filters:
     - "lambda row: str(row['Root Compartment [sample]']) != 'BulkSoil'"
@@ -140,13 +163,18 @@ santos-medellin2017drought:
     "Watered": "Control"
   host_col: "Host [sample]"
   hosts:
-    "Oryza glaberrima": "Poaceae: Oryzoideae"
-    "Oryza sativa": "Poaceae: Oryzoideae"
+    "Oryza glaberrima": "BOP clade"
+    "Oryza sativa": "BOP clade"
   hosts_ungrouped:
     "Oryza glaberrima": "Oryza glaberrima"
     "Oryza sativa": "Oryza sativa"
+  location: "California"
+  soil_type: "Field"
+  primers: "515F,806R"
+  regions: "V4"
 
 faist2022potato:
+  full_name: "Faist et al. (2023)"
   amplicon_length: 300
   filters:
     - "lambda row: 'fungi' not in str(row['Library Name'])"
@@ -160,11 +188,16 @@ faist2022potato:
     "irrigated": "Control"  
   host_col: "Host [sample]"
   hosts:
-    "Solanum tuberosum.*": "Solanaceae"
+    "Solanum tuberosum.*": "Asterids"
   hosts_ungrouped:
     "Solanum tuberosum.*": "Solanum tuberosum"
+  location: "Greenhouse"
+  soil_type: "Clay"
+  primers: "799F,1175R"
+  regions: "V5-V7"  
 
 azarbad2020four:
+  full_name: "Azarbad et al. (2020)"
   amplicon_length: 250
   filters:
     - "lambda row: 'ITS' not in str(row['Name'])"
@@ -178,11 +211,18 @@ azarbad2020four:
     ".*_50_.*_(?:ITS|16S)$": "Control"
   host_col: "Isolation Source [sample]"
   hosts:
-    "soil": "Poaceae: Pooideae"
+    # Placeholder mapping since the host is not mentioned in
+    # the metadata, but only in the publication
+    "soil": "BOP clade"
   hosts_ungrouped:
     "soil": "Triticum aestivum"
+  location: "Saskatchewan"
+  soil_type: "Field"
+  primers: "520F,799R2"
+  regions: "V3-V4"
 
 simmons2020drought:
+  full_name: "Simmons et al. (2020)"
   amplicon_length: 300
   filters:
     - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
@@ -192,19 +232,25 @@ simmons2020drought:
     "Watered": "Control"
   host_col: "Host [sample]"
   hosts:
-    "Echinochloa esculenta": "Poaceae: Panicoideae"
-    "Panicum miliaceum": "Poaceae: Panicoideae"
-    "Penisetum glaucum": "Poaceae: Panicoideae"
-    "Setaria italica": "Poaceae: Panicoideae"
-    "Sorghum bicolor": "Poaceae: Panicoideae"
+    "Echinochloa esculenta": "PACMAD clade"
+    "Panicum miliaceum": "PACMAD clade"
+    # Misspelled in the metadata
+    "Penisetum glaucum": "PACMAD clade"
+    "Setaria italica": "PACMAD clade"
+    "Sorghum bicolor": "PACMAD clade"
   hosts_ungrouped:
     "Echinochloa esculenta": "Echinochloa esculenta"
     "Panicum miliaceum": "Panicum miliaceum"
-    "Penisetum glaucum": "Pennisetum glaucum"
+    "Penisetum glaucum": "Cenchrus americanus"
     "Setaria italica": "Setaria italica"
     "Sorghum bicolor": "Sorghum bicolor"
+  location: "California"
+  soil_type: "Field"
+  primers: "341F,785R"
+  regions: "V3-V4"
 
 fitspatrick2017assembly:
+  full_name: "Fitzpatrick et al. (2018)"
   amplicon_length: 150
   filters:
     - "lambda row: str(row['Isolation Source [sample]']) != 'live bare soil'"
@@ -216,11 +262,92 @@ fitspatrick2017assembly:
     "w": "Control"
   host_col: "Host [sample]"
   hosts:
-    "^.*$": "Angiosperm"
+    "Amaranthus albus": "None"
+    "Arctium minus": "Asterids"
+    "Asclepias incarnata": "Asterids"
+    "Asparagus officinalis": "None"
+    "Bromus inermis": "BOP clade"
+    "Capsella bursa-pastoris": "Malvids"
+    "Cichorium intybus": "Asterids"
+    "Convolvulus arvensis": "Asterids"
+    "Desmodium canadense": "Fabids"
+    "Digitaria ischaemum": "PACMAD clade"
+    "Erysimum cheiranthoides": "Malvids"
+    "Geum aleppicum": "Fabids"
+    "Geum canadense": "Fabids"
+    "Lepidium densiflorum": "Malvids"
+    "Lolium arundinaceum": "BOP clade"
+    "Lotus corniculatus": "Fabids"
+    "Malva neglecta": "Malvids"
+    "Medicago sativa": "Fabids"
+    "Oenothera biennis": "Malvids"
+    "Oenothera perennis": "Malvids"
+    "Persicaria maculosa": "None"
+    "Phalaris arundinacea": "BOP clade"
+    "Phleum pratense": "BOP clade"
+    "Pilosella piloselloides": "Asterids"
+    "Plantago major": "Asterids"
+    "Plantago rugelii": "Asterids"
+    "Potentilla recta": "Fabids"
+    "Silene latifolia": "None"
+    "Sisymbrium officinale": "Malvids"
+    "Solanum dulcamara": "Asterids"
+    "Solidago gigantea": "Asterids"
+    "Sonchus arvensis": "Asterids"
+    "Sonchus oleraceus": "Asterids"
+    "Sporobolus cryptandrus": "PACMAD clade"
+    "Sporobolus neglectus": "PACMAD clade"
+    "Symphyotrichum ericoides": "Asterids"
+    "Thlaspi arvense": "Malvids"
+    "Vicia sativa": "Fabids"
+    "Vicia tetrasperma": "Fabids"
   hosts_ungrouped:
-    "^.*$": "Angiosperm" 
+    "Amaranthus albus": "None"
+    "Arctium minus": "Arctium minus"
+    "Asclepias incarnata": "Asclepias incarnata"
+    "Asparagus officinalis": "None"
+    "Bromus inermis": "Bromus inermis"
+    "Capsella bursa-pastoris": "Capsella bursa-pastoris"
+    "Cichorium intybus": "Cichorium intybus"
+    "Convolvulus arvensis": "Convolvulus arvensis"
+    "Desmodium canadense": "Desmodium canadense"
+    "Digitaria ischaemum": "Digitaria ischaemum"
+    "Erysimum cheiranthoides": "Erysimum cheiranthoides"
+    "Geum aleppicum": "Geum aleppicum"
+    "Geum canadense": "Geum canadense"
+    "Lepidium densiflorum": "Lepidium densiflorum"
+    "Lolium arundinaceum": "Lolium arundinaceum"
+    "Lotus corniculatus": "Lotus corniculatus"
+    "Malva neglecta": "Malva neglecta"
+    "Medicago sativa": "Medicago sativa"
+    "Oenothera biennis": "Oenothera biennis"
+    "Oenothera perennis": "Oenothera perennis"
+    "Persicaria maculosa": "None"
+    "Phalaris arundinacea": "Phalaris arundinacea"
+    "Phleum pratense": "Phleum pratense"
+    "Pilosella piloselloides": "Pilosella piloselloides"
+    "Plantago major": "Plantago major"
+    "Plantago rugelii": "Plantago rugelii"
+    "Potentilla recta": "Potentilla recta"
+    "Silene latifolia": "None"
+    "Sisymbrium officinale": "Sisymbrium officinale"
+    "Solanum dulcamara": "Solanum dulcamara"
+    "Solidago gigantea": "Solidago gigantea"
+    "Sonchus arvensis": "Sonchus arvensis"
+    "Sonchus oleraceus": "Sonchus oleraceus"
+    "Sporobolus cryptandrus": "Sporobolus cryptandrus"
+    "Sporobolus neglectus": "Sporobolus neglectus"
+    "Symphyotrichum ericoides": "Symphyotrichum ericoides"
+    "Thlaspi arvense": "Thlaspi arvense"
+    "Vicia sativa": "Vicia sativa"
+    "Vicia tetrasperma": "Vicia tetrasperma"
+  location: "Ontario"
+  soil_type: "Field"
+  primers: "515F,808R"
+  regions: "V4"
 
 naylor2017drought:
+  full_name: "Naylor et al. (2017)"
   amplicon_length: 300
   filters:
     - "lambda row: 'Kearney' not in str(row['Library Name'])"
@@ -232,23 +359,23 @@ naylor2017drought:
     "Control": "Control"
   host_col: "Isolation Source [sample]"
   hosts:
-    "Zea mays": "Poaceae: Panicoideae"
-    "Triticum turgidum": "Poaceae: Pooideae"
-    "Triticum monococcum": "Poaceae: Pooideae"
-    "Triticum aestivum": "Poaceae: Pooideae"
-    "Sorghum laxiflorum": "Poaceae: Panicoideae"
-    "Sorghum bicolor": "Poaceae: Panicoideae"
-    "Sorghastrum nutans": "Poaceae: Panicoideae"
-    "Solanum lycopersicum": "Solanaceae"
-    "Secale cereale": "Poaceae: Pooideae"
-    "Pennisetum glaucum": "Poaceae: Panicoideae"
-    "Miscanthus sinensis": "Poaceae: Panicoideae"
-    "Hordeum vulgare": "Poaceae: Pooideae"
-    "Festuca arundinacea": "Poaceae: Pooideae"
-    "Eragrostis tef": "Poaceae: Chloridoideae"
-    "Brachypodium distachyon": "Poaceae: Pooideae"
-    "Bothriochloa bladhii": "Poaceae: Panicoideae"
-    "Avena sativa": "Poaceae: Pooideae"
+    "Zea mays": "PACMAD clade"
+    "Triticum turgidum": "BOP clade"
+    "Triticum monococcum": "BOP clade"
+    "Triticum aestivum": "BOP clade"
+    "Sorghum laxiflorum": "PACMAD clade"
+    "Sorghum bicolor": "PACMAD clade"
+    "Sorghastrum nutans": "PACMAD clade"
+    "Solanum lycopersicum": "Asterids"
+    "Secale cereale": "BOP clade"
+    "Pennisetum glaucum": "PACMAD clade"
+    "Miscanthus sinensis": "PACMAD clade"
+    "Hordeum vulgare": "BOP clade"
+    "Festuca arundinacea": "BOP clade"
+    "Eragrostis tef": "PACMAD clade"
+    "Brachypodium distachyon": "BOP clade"
+    "Bothriochloa bladhii": "PACMAD clade"
+    "Avena sativa": "BOP clade"
   hosts_ungrouped:
     "Zea mays": "Zea mays"
     "Triticum turgidum": "Triticum turgidum"
@@ -259,11 +386,38 @@ naylor2017drought:
     "Sorghastrum nutans": "Sorghastrum nutans"
     "Solanum lycopersicum": "Solanum lycopersicum"
     "Secale cereale": "Secale cereale"
-    "Pennisetum glaucum": "Pennisetum glaucum"
+    "Pennisetum glaucum": "Cenchrus americanus"
     "Miscanthus sinensis": "Miscanthus sinensis"
     "Hordeum vulgare": "Hordeum vulgare"
-    "Festuca arundinacea": "Festuca arundinacea"
+    "Festuca arundinacea": "Lolium arundinaceum" # synonyms
     "Eragrostis tef": "Eragrostis tef"
     "Brachypodium distachyon": "Brachypodium distachyon"
     "Bothriochloa bladhii": "Bothriochloa bladhii"
     "Avena sativa": "Avena sativa"
+  location: "California"
+  soil_type: "Field"
+  primers: "341F,785R"
+  regions: "V3-V4"
+
+kost2024microbial:
+  amplicon_length: 300
+  filters:
+    - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
+  treatment_col: "Treatment_all"
+  treatments:
+    "Drought": "Drought"
+    "Watered": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "Echinochloa esculenta": "PACMAD clade"
+    "Panicum miliaceum": "PACMAD clade"
+    # Misspelled in the metadata
+    "Penisetum glaucum": "PACMAD clade"
+    "Setaria italica": "PACMAD clade"
+    "Sorghum bicolor": "PACMAD clade"
+  hosts_ungrouped:
+    "Echinochloa esculenta": "Echinochloa esculenta"
+    "Panicum miliaceum": "Panicum miliaceum"
+    "Penisetum glaucum": "Cenchrus americanus"
+    "Setaria italica": "Setaria italica"
+    "Sorghum bicolor": "Sorghum bicolor"

@@ -3,10 +3,14 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.colors import LogNorm
 import seaborn as sns
-from sklearn.decomposition import PCA
 import os
 import numpy as np
 import textwrap
+from skbio import DistanceMatrix
+from skbio.stats.ordination import pcoa
+from scipy.spatial.distance import pdist, squareform
+import math
+from matplotlib.patches import Patch
 
 def trim_taxonomy(tax_str):
     parts = tax_str.split(";")
@@ -16,40 +20,49 @@ def trim_taxonomy(tax_str):
             return part
     return ""
 
-def plot_pca(level,
-             level_name,
-             merged_file,
-             plotting_dir):
+def plot_pcoa(level,
+              level_name,
+              merged_file,
+              plotting_dir):
     df = pd.read_csv(merged_file, sep='\t', index_col=0)
 
-    metadata = ["Study", "Treatment", "Host", "Host (specific)", "Inoculum"]
-    taxonomic_features = df.columns.drop(metadata)
+    taxonomic_features = [col for col in df.columns
+                          if "p__" in col]
     X = df[taxonomic_features]
-    other_features = df[metadata]
+    other_features = df[[col for col in df.columns
+                         if "p__" not in col]]
 
-    pca = PCA(n_components=2)
-    pca_result = pca.fit_transform(X)
-    pca_df = pd.DataFrame(pca_result, columns=["PC1", "PC2"], index=df.index)
-    pca_df = pd.concat([pca_df, other_features], axis=1)
+    bc_distances = pdist(X.values, metric='braycurtis')
+    distance_matrix = DistanceMatrix(squareform(bc_distances), ids=df.index)
 
-    def save_pca_plot(color_by):
+    pcoa_object = pcoa(distance_matrix)
+    pcoa_result = pcoa_object.samples[["PC1", "PC2"]]
+    pcoa_df = pd.DataFrame(pcoa_result,
+                           columns=["PC1", "PC2"],
+                           index=df.index)
+    pcoa_df = pd.concat([pcoa_df, other_features], axis=1)
+
+    def save_pcoa_plot(color_by):
         plt.figure(figsize=(8, 6))
         
-        sns.scatterplot(data=pca_df,
+        sns.scatterplot(data=pcoa_df,
                         x="PC1", y="PC2",
                         hue=color_by,
                         palette="Paired",
                         alpha=0.75)
-        plt.title(f"PCA: PC1 vs PC2\nLevel: {level_name} (Colored by {color_by})")
+        plt.title(f"PCoA: PC1 vs PC2\nLevel: {level_name} (legend: {color_by})\nBray-Curtis dissimilarity")
         
         plt.legend(title=color_by, bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
-        save_to = os.path.join(plotting_dir, f"pca_plot_PC1_PC2_l{level}_by_{color_by.lower()}.png")
+        save_to = os.path.join(plotting_dir, f"pcoa_plot_PC1_PC2_l{level}_by_{color_by.lower()}.png")
         plt.savefig(save_to, dpi=600, bbox_inches="tight")
-        print(f"[INFO] PCA plot saved to {save_to}")
+        print(f"[INFO] PCoA plot saved to {save_to}")
         plt.close()
 
-    for category in ["Study", "Treatment", "Host", "Host (specific)"]:
-        save_pca_plot(category)
+    categories = ["Study", "Treatment", "Host", "Host (specific)",
+                  "Location", "Soil type", "Primers", "16S Regions"]
+
+    for category in categories:
+        save_pcoa_plot(category)
     
 
 def sparsity_heatmap(level,
@@ -59,11 +72,9 @@ def sparsity_heatmap(level,
                      log_scale=False,
                      shuffle=False):
     df = pd.read_csv(merged_file, sep='\t', index_col=0)
-    taxonomic_features_df = df.drop(columns=["Study",
-                                             "Treatment",
-                                             "Host",
-                                             "Inoculum",
-                                             "Host (specific)"])
+    taxonomic_features = [col for col in df.columns
+                          if "p__" in col]
+    taxonomic_features_df = df[taxonomic_features]
 
     if shuffle:
         taxonomic_features_df = taxonomic_features_df.sample(frac=1, axis=1)
@@ -133,46 +144,56 @@ def sparsity_heatmap(level,
 
 def plot_num_samples(merged_file, plotting_dir):
     df = pd.read_csv(merged_file, sep='\t', index_col=0)
-    
-    # Create a grouping column: "Study | Host"
-    df['Group'] = df['Study'] + " | " + df['Host']
-    
-    # Count samples per group and treatment
+    df['Group'] = df['Study (full name)'] + " | " + df['Host']
     count_df = df.groupby(['Group', 'Treatment']).size().unstack(fill_value=0)
     count_df = count_df.reset_index()
-    count_df[['Study', 'Host']] = count_df['Group'].str.split(r' \| ', expand=True)
-    count_df = count_df.sort_values(by=['Host', 'Study'])
+    count_df[['Study (full name)', 'Host']] = count_df['Group'].str.split(r' \| ', expand=True)
+    count_df = count_df.sort_values(by=['Host', 'Study (full name)'])
     
-    # Determine group order and positions
     groups = count_df['Group']
-    y_positions = range(len(groups))
-    
-    # Get unique hosts and assign colors from the Paired palette
     unique_hosts = count_df['Host'].unique()
     host_palette = dict(zip(unique_hosts, sns.color_palette("Set2", len(unique_hosts))))
     
-    # Get counts for treatments, ensuring both columns exist
     control_counts = count_df.get('Control', pd.Series([0] * len(count_df)))
     drought_counts = count_df.get('Drought', pd.Series([0] * len(count_df)))
-    
-    # Create list of base colors based on host for each group
     base_colors = [host_palette[host] for host in count_df['Host']]
-    
+
+    y_positions = []
+    y_labels = []
+    spacing = 0.5
+    current_y = 0
+    previous_host = None
+
+    for i, (group, host) in enumerate(zip(groups, count_df['Host'])):
+        if host != previous_host and previous_host is not None:
+            current_y += spacing  # Extra gap between host groups
+        y_positions.append(current_y)
+        y_labels.append(group.split(" | ")[0])
+        current_y += 1
+        previous_host = host
+
     fig, ax = plt.subplots(figsize=(10, 0.5 * len(groups)))
-    
-    # Plot stacked bars: lower segment for Control (lower alpha), upper for Drought (full alpha)
-    ax.barh(y_positions, control_counts, color=[(r, g, b, 0.5) for r, g, b in base_colors],
+
+    ax.barh(y_positions, control_counts, color=[(*rgb, 0.5) for rgb in base_colors],
             edgecolor='black', label='Control')
     ax.barh(y_positions, drought_counts, left=control_counts,
-            color=[(r, g, b, 1.0) for r, g, b in base_colors],
+            color=[(*rgb, 1.0) for rgb in base_colors],
             edgecolor='black', label='Drought')
-    
+
     ax.set_yticks(y_positions)
-    ax.set_yticklabels(groups)
+    ax.set_yticklabels(y_labels)
     ax.set_xlabel("Number of Samples")
     ax.set_title("Number of Samples per Study | Host")
     
-    # Compute overall sample statistics
+    host_patches = [Patch(facecolor=host_palette[host], label=host) for host in unique_hosts]
+    treatment_patches = [
+        Patch(facecolor='grey', edgecolor='black', alpha=0.5, label='Control'),
+        Patch(facecolor='grey', edgecolor='black', alpha=1.0, label='Drought')
+    ]
+    
+    all_patches = treatment_patches + host_patches
+    ax.legend(handles=all_patches, bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+    
     total_samples = len(df)
     total_drought = (df['Treatment'] == 'Drought').sum()
     total_control = (df['Treatment'] == 'Control').sum()
@@ -183,17 +204,48 @@ def plot_num_samples(merged_file, plotting_dir):
     filename = "samples_stats.png"
     save_to = os.path.join(plotting_dir, filename)
     plt.tight_layout(rect=[0, 0.03, 1, 1])
-    plt.savefig(save_to, dpi=600)
-    print(f"[INFO] Sample stats plot saved to {save_to}")
+    plt.savefig(save_to, dpi=600, bbox_inches='tight')
+    plt.savefig(save_to.replace("png", "svg"))
     plt.close()
+
+    # Pie chart: Host
+    host_counts = df['Host'].value_counts()
+    fig, ax = plt.subplots()
+    ax.pie(host_counts, labels=host_counts.index, 
+           colors=[host_palette[h] for h in host_counts.index],
+           startangle=90, counterclock=False, autopct='%1.1f%%',
+           wedgeprops={'edgecolor': 'white', 'linewidth': 1})
+    ax.set_title("Samples per Host")
+    save_host_pie = os.path.join(plotting_dir, "samples_per_host.png")
+    plt.savefig(save_host_pie, dpi=600)
+    plt.savefig(save_host_pie.replace("png", "svg"))
+    plt.close()
+
+    # Pie chart: Treatment
+    treatment_counts = df['Treatment'].value_counts()
+    treatment_colors = {'Control': '#d3d3d3', 'Drought': '#000000'}
+    fig, ax = plt.subplots()
+    ax.pie(treatment_counts, labels=treatment_counts.index,
+           colors=[treatment_colors[t] for t in treatment_counts.index],
+           startangle=90, counterclock=False, autopct='%1.1f%%',
+           wedgeprops={'edgecolor': 'white', 'linewidth': 1})
+    ax.set_title("Samples per Treatment")
+    save_treatment_pie = os.path.join(plotting_dir, "samples_per_treatment.png")
+    plt.savefig(save_treatment_pie, dpi=600)
+    plt.savefig(save_treatment_pie.replace("png", "svg"))
+    plt.close()
+
+    print(f"[INFO] Sample stats plot saved to {save_to}")
+    print(f"[INFO] Host pie chart saved to {save_host_pie}")
+    print(f"[INFO] Treatment pie chart saved to {save_treatment_pie}")
 
 
 def plot_taxonomy(level, merged_file, plotting_dir):
     df = pd.read_csv(merged_file, sep='\t', index_col=0)
     df['Group'] = df['Study'] + " | " + df['Host']
     
-    metadata = ["Study", "Treatment", "Host", "Host (specific)", "Inoculum"]
-    taxonomic_features = df.columns.difference(metadata + ['Group'])
+    taxonomic_features = [col for col in df.columns
+                          if "p__" in col]
     
     max_features = {2: 6, 3: 10, 4: 14, 5: 16, 6: 18}
     overall_means = df[taxonomic_features].mean(axis=0)
@@ -259,3 +311,64 @@ def plot_taxonomy(level, merged_file, plotting_dir):
     plt.savefig(save_to, dpi=600)
     print(f"[INFO] Sample stats plot saved to {save_to}")
     plt.close()
+
+# Level doesn't matter actually and the plot should be the same for all levels
+# Because it is a sample plot
+# Set phylum level as default
+def plot_bubbles(merged_file, plotting_dir, level=2):
+    region_colors = {
+        'California':   '#01665e',
+        'Michigan':     '#35978f',
+        'Saskatchewan': '#80cdc1',
+        'Ontario':      '#c7eae5',
+    }
+    soil_colors = {
+        'Clay':  '#dfc27d',
+        'Sand':  '#bf812d',
+    }
+
+    df = pd.read_csv(merged_file, sep='\t', index_col=0)
+    loc_counts  = df[df['Location'] != 'Greenhouse'].groupby('Location').size()
+    soil_counts = df[df['Location'] == 'Greenhouse'].groupby('Soil type').size()
+
+    all_items = []
+    max_count = max(loc_counts.max(), soil_counts.max())
+
+    for i, (loc, count) in enumerate(loc_counts.items()):
+        all_items.append({
+            'label': loc,
+            'count': count,
+            'color': region_colors.get(loc, '#000000'),
+            'group': 'Region'
+        })
+
+    for i, (soil, count) in enumerate(soil_counts.items()):
+        all_items.append({
+            'label': soil,
+            'count': count,
+            'color': soil_colors.get(soil, '#000000'),
+            'group': 'Soil'
+        })
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(len(all_items)*1.5, 4), dpi=150)
+
+    x = range(len(all_items))
+    y = [0] * len(all_items)
+    sizes = [(item['count'] * 10) for item in all_items]  # scale bubble area
+
+    for i, item in enumerate(all_items):
+        ax.scatter(x[i], y[i], s=sizes[i], color=item['color'], edgecolors='black', alpha=0.8)
+        ax.text(x[i], 0.1, f"{item['label']} ({item['count']})",
+                ha='center', va='bottom', fontsize=10)
+
+    ax.axis('off')
+    ax.set_xlim(-1, len(all_items))
+    ax.set_ylim(-1, 1)
+
+    # Save
+    os.makedirs(plotting_dir, exist_ok=True)
+    out_file = os.path.join(plotting_dir, "sample_bubbles_scaled.svg")
+    plt.savefig(out_file, dpi=600, transparent=True, bbox_inches='tight')
+    plt.close()
+    print(f"[INFO] Bubble PNG saved to {out_file}")

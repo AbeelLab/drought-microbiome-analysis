@@ -30,11 +30,33 @@ def merge_datasets(data_path,
                                    axis=0)
 
     merged_df = merged_df.join(merged_metadata_df)
+    # Remove incomplete records, or otherwise records not mapped
+    # to a group of Hosts
+    merged_df = merged_df.dropna(subset=['Host'])
 
     # sort columns (for easier viewing)
-    metadata = ["Study", "Treatment", "Host", "Host (specific)", "Inoculum"]
-    taxonomic_features = merged_df.columns.drop(metadata)
-    ordered_columns = metadata + taxonomic_features.tolist()
+    metadata = [col for col in merged_df.columns
+                if "p__" not in col]
+    taxonomic_features = [col for col in merged_df.columns
+                          if "p__" in col]
+
+    # Save separately as well
+    # technically these are already both saved separately, but
+    # as a sanity check should be saved after the join (in case some
+    # samples without metadata should get dropped)
+    merged_metadata_file = os.path.join(data_path, f"merged_metadata_l{level}.tsv")
+    merged_df[metadata].to_csv(merged_metadata_file, sep='\t', index_label="ID")
+    
+    merged_taxonomy_file = os.path.join(data_path, f"merged_only_taxa_l{level}.tsv")
+    # Divide by 100 because QIIME2 RelativeFrequency artifact requires values to sum up to 1
+    # Then we should transpose and rename the index #OTU ID for biom convert to work?
+    taxa = merged_df[taxonomic_features].div(100).T
+    taxa.index.name = '#OTU ID'
+    with open(merged_taxonomy_file, 'w') as f:
+        f.write('# Constructed from biom file\n')
+        taxa.to_csv(f, sep='\t')
+    
+    ordered_columns = metadata + taxonomic_features
     merged_df = merged_df[ordered_columns]
 
     merged_out_file = os.path.join(data_path, f"merged_taxonomy_normalized_l{level}.tsv")
