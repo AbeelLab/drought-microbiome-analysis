@@ -2,9 +2,9 @@
 
 #SBATCH --partition=general
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
-#SBATCH --qos=short
-#SBATCH --time=04:00:00
+#SBATCH --cpus-per-task=64
+#SBATCH --qos=medium
+#SBATCH --time=16:00:00
 #SBATCH --mem=64GB
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out
@@ -37,7 +37,7 @@ for level in $(seq 6 -1 2);
 do
     echo "Level: ${level}"
     metadata_tsv="../data/merged_metadata_l${level}.tsv"
-    taxonomy_tsv="../data/merged_only_taxa_l${level}.tsv"
+    taxonomy_tsv="../data/merged_only_taxa_normalized_l${level}.tsv"
 
     # Convert taxonomy to biom
     taxonomy_biom="../data/merged_only_taxa_l${level}.biom"
@@ -58,38 +58,45 @@ do
     # Create distance matrix
     srun qiime diversity beta --i-table $taxonomy_qza \
     	 --p-metric 'braycurtis' \
-	 --p-n-jobs 32 \
+	 --p-n-jobs 64 \
 	 --use-cache $cache_dir \
 	 --o-distance-matrix $bc_distances
 
     # Run PERMANOVA
     # First run separately per variable
-    # variables=("Study" "Primers" "Regions" "Treatment" "Host" "Location")
-    # for variable in "${variables[@]}"; do
-    # 	echo "Running PERMANOVA for ${variable}…"
-    # 	srun qiime diversity adonis \
-    #          --i-distance-matrix $bc_distances \
-    #          --m-metadata-file $metadata_tsv \
-    #          --p-formula $variable \
-    #          --p-n-jobs 32 \
-    # 	     --use-cache $cache_dir \
-    #          --o-visualization "../data/permanova/${variable}_l${level}.qzv"
-    # done
+    variables=("Study" "Primers" "Regions" "Treatment" "Host" "Location" "HostSpecific" "SoilType")
+    for variable in "${variables[@]}"; do
+	echo "Running PERMANOVA for ${variable}…"
+	srun qiime diversity adonis \
+             --i-distance-matrix $bc_distances \
+             --m-metadata-file $metadata_tsv \
+             --p-formula $variable \
+             --p-n-jobs 64 \
+	     --use-cache $cache_dir \
+             --o-visualization "../data/permanova/${variable}_l${level}.qzv"
+	rm -rf "../data/permanova/${variable}_l${level}"
+	srun qiime tools extract \
+             --input-path "../data/permanova/${variable}_l${level}.qzv" \
+             --output-path "../data/permanova/${variable}_l${level}"
+    done
 
     # Then run sequential PERMANOVA for variables of interest
     # https://forum.qiime2.org/t/how-to-properly-design-formulas-in-adonis/17996/2
     # adonis performs a sequential test of terms which means the order in which you include your variables are actually important. Essentially, whatever variance is not explained by the first term is passed on to the second term, and then the remainder from that to the 3rd and so on
-    combined=("Primers+Study" "Study+Primers")
-    #("Host+Study" "Host+Primers" "Host+Regions" "Location+Study" "Location+Primers" "Location+Regions" "Host+Location+Study" "Host+Location+Regions" "Host+Location+Primers")
+    combined=("HostSpecific+Study" "Host+Study" "Host+HostSpecific+Treatment+Location+Study" "HostSpecific+Treatment+Location+Study" "Host+Treatment+Location+Study" "HostSpecific+Treatment+Location+Primers+Study")
     for formula in "${combined[@]}"; do
     	echo "Running PERMANOVA for ${formula}…"
     	srun qiime diversity adonis \
              --i-distance-matrix "$bc_distances" \
              --m-metadata-file "$metadata_tsv" \
              --p-formula $formula \
-             --p-n-jobs 32 \
+             --p-n-jobs 64 \
 	     --use-cache $cache_dir \
              --o-visualization "../data/permanova/${formula}_l${level}.qzv"
+	rm -rf "../data/permanova/${formula}_l${level}"
+	srun qiime tools extract \
+             --input-path "../data/permanova/${formula}_l${level}.qzv" \
+             --output-path "../data/permanova/${formula}_l${level}"
     done
 
     # Run differential abundance analysis

@@ -41,13 +41,10 @@ def main():
     supplemental_metadata = os.path.join(study_dir,
                                          "supplemental_metadata.tsv")
     if os.path.exists(supplemental_metadata):
-        link_NCBI_metadata = config[study]["link_NCBI_metadata"]
-        link_supplemental_metadata = config[study]["link_supplemental_metadata"]
         utils.merge_metadata(study,
+                             config,
                              metadata_file,
                              supplemental_metadata,
-                             link_NCBI_metadata,
-                             link_supplemental_metadata,
                              copy_to)
     
 

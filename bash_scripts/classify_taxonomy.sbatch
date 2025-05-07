@@ -51,29 +51,29 @@ function clean_up {
 trap 'clean_up' EXIT
 
 # # ---> ASV table merging
-# srun qiime feature-table merge \
-#      --i-tables "${dada2_tables[@]}" \
-#      --p-overlap-method sum \
-#      --o-merged-table "${study_dir}/dada2_table.qza" \
-#      --use-cache $cache_dir
+srun qiime feature-table merge \
+     --i-tables "${dada2_tables[@]}" \
+     --p-overlap-method sum \
+     --o-merged-table "${study_dir}/dada2_table.qza" \
+     --use-cache $cache_dir
 
-# # Extract dada2_table
-# srun qiime tools extract \
-#      --input-path "${study_dir}/dada2_table.qza" \
-#      --output-path "${study_dir}/dada2_table"
+# Extract dada2_table
+srun qiime tools extract \
+     --input-path "${study_dir}/dada2_table.qza" \
+     --output-path "${study_dir}/dada2_table"
 
-# qiime feature-table merge-seqs \
-#     --i-data "${dada2_rep_files[@]}" \
-#     --o-merged-data "${study_dir}/dada2_rep_set.qza" \
-#     --use-cache $cache_dir
+qiime feature-table merge-seqs \
+      --i-data "${dada2_rep_files[@]}" \
+      --o-merged-data "${study_dir}/dada2_rep_set.qza" \
+      --use-cache $cache_dir
 
 
-# # ---> Taxonomic classification
-# srun qiime feature-classifier classify-sklearn \
-#      --i-classifier $classifier_path \
-#      --i-reads "${study_dir}/dada2_rep_set.qza" \
-#      --o-classification "${study_dir}/taxonomy.qza" \
-#      --use-cache $cache_dir
+# ---> Taxonomic classification
+srun qiime feature-classifier classify-sklearn \
+     --i-classifier $classifier_path \
+     --i-reads "${study_dir}/dada2_rep_set.qza" \
+     --o-classification "${study_dir}/taxonomy.qza" \
+     --use-cache $cache_dir
 
 
 # ---> Fitering

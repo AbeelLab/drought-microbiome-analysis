@@ -9,7 +9,8 @@ import subprocess
 def merge_datasets(data_path,
                    level,
                    processed_files,
-                   metadata_files):
+                   metadata_files,
+                   value_type):
     # load dataframes
     # and merge with metadata
     # indices are sample IDs
@@ -44,13 +45,13 @@ def merge_datasets(data_path,
     # technically these are already both saved separately, but
     # as a sanity check should be saved after the join (in case some
     # samples without metadata should get dropped)
+    # No need for value type for metadata since it is the same 
     merged_metadata_file = os.path.join(data_path, f"merged_metadata_l{level}.tsv")
     merged_df[metadata].to_csv(merged_metadata_file, sep='\t', index_label="ID")
     
-    merged_taxonomy_file = os.path.join(data_path, f"merged_only_taxa_l{level}.tsv")
-    # Divide by 100 because QIIME2 RelativeFrequency artifact requires values to sum up to 1
+    merged_taxonomy_file = os.path.join(data_path, f"merged_only_taxa_{value_type}_l{level}.tsv")
     # Then we should transpose and rename the index #OTU ID for biom convert to work?
-    taxa = merged_df[taxonomic_features].div(100).T
+    taxa = merged_df[taxonomic_features].T
     taxa.index.name = '#OTU ID'
     with open(merged_taxonomy_file, 'w') as f:
         f.write('# Constructed from biom file\n')
@@ -59,8 +60,9 @@ def merge_datasets(data_path,
     ordered_columns = metadata + taxonomic_features
     merged_df = merged_df[ordered_columns]
 
-    merged_out_file = os.path.join(data_path, f"merged_taxonomy_normalized_l{level}.tsv")
-    merged_df.to_csv(merged_out_file, sep='\t')
-    print(f"[INFO] Merged normalized table saved to {merged_out_file}")
+    save_as =os.path.join(data_path,
+                          f"merged_taxonomy_{value_type}_l{level}.tsv")
+    merged_df.to_csv(save_as, sep='\t')
+    print(f"[INFO] Merged {value_type} table saved to {save_as}")
 
-    return merged_out_file
+    return save_as

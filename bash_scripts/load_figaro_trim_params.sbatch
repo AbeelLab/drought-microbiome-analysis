@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --qos=short
-#SBATCH --time=00:05:00
+#SBATCH --time=00:01:00
 #SBATCH --mem=4GB
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out

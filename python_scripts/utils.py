@@ -14,24 +14,34 @@ def get_qiime_extract_dir(parent_dir):
     return data_dir
 
 def merge_metadata(study,
+                   config,
                    NCBI_metadata,
                    supplemental_metadata,
-                   link_NCBI_metadata,
-                   link_supplemental_metadata,
                    save_as):
+    link_NCBI_metadata = config[study]["link_NCBI_metadata"]
+    link_supplemental_metadata = config[study]["link_supplemental_metadata"]
+
     NCBI_df = pd.read_csv(NCBI_metadata,
                           sep='\t',
                           index_col="ID")
     supplemental_df = pd.read_csv(supplemental_metadata,
                                   sep='\t')
 
+    # When there isn't exact matching
+    if "match_regex" in config[study]:
+        match_regex = config[study]["match_regex"]
+        NCBI_df["match_key"] = NCBI_df[link_NCBI_metadata].str.extract(match_regex, expand=False)
+        link_NCBI_metadata = "match_key"
+
+    # Merging won't work if the columns are not the same type
+    NCBI_df[link_NCBI_metadata] = NCBI_df[link_NCBI_metadata].astype(str)
+    supplemental_df[link_supplemental_metadata] = supplemental_df[link_supplemental_metadata].astype(str)
+
     merged_df = NCBI_df.reset_index().merge(supplemental_df,
+                                            how="left",
                                             left_on=link_NCBI_metadata,
                                             right_on=link_supplemental_metadata).set_index('ID')
 
-    print(merged_df)
-
-    print(merged_df.columns)
     merged_df.to_csv(save_as,
                      sep="\t",
                      index_label="ID")

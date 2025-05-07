@@ -7,7 +7,7 @@ import numpy as np
 # Total sum scaling of features per row (sample)
 def normalize_row(row,
                   taxonomic_features,
-                  total_sum=100):
+                  total_sum=1):
     total = row[taxonomic_features].sum()
     if total != 0:
         row[taxonomic_features] = row[taxonomic_features] / total
@@ -19,7 +19,7 @@ def filter_features(study_name,
                     df,
                     level,
                     level_shortcut,
-                    min_abundance=0.005,
+                    min_abundance=0.00005,
                     min_prevalence=0.05):
     initial_count=len(df.columns)
     
@@ -93,6 +93,9 @@ def preprocess_and_filter(study_path,
 
     df = biom_to_tsv(study_name, comp_dir)
 
+    # Save original df to go back to counts after filtering
+    original_df = df.copy()
+
     # Normalize taxonomic features (total sum scaling)
     # We filter out ASVs without phylum-level annotations
     # So taxonomic features should contain substring p__
@@ -123,7 +126,16 @@ def preprocess_and_filter(study_path,
     df.to_csv(tsv_file_filtered, sep='\t')
     print(f"[INFO] Saved filtered feature table to: {tsv_file_filtered}")
 
-    return tsv_file_filtered
+    # Save as counts with integers
+    tsv_file_filtered_counts = os.path.join(comp_dir, "feature-table-filtered-counts.tsv")
+    taxonomic_features = [col for col in df.columns
+                          if "p__" in col]
+    original_df = original_df[df.columns]
+    original_df[taxonomic_features] = original_df[taxonomic_features].astype(int)
+    original_df.to_csv(tsv_file_filtered_counts, sep='\t')
+    print(f"[INFO] Saved counts filtered feature table to: {tsv_file_filtered_counts}")
+
+    return tsv_file_filtered, tsv_file_filtered_counts
 
 def process_metadata(study_path,
                      study_name,
@@ -137,8 +149,7 @@ def process_metadata(study_path,
             df.drop(columns=["Treatment"], inplace=True)
         df.rename(columns={study_info["treatment_col"]: "Treatment"}, inplace=True)
         df["Treatment"] = df["Treatment"].replace(
-            study_info.get("treatments", {}), regex=True
-        )
+            study_info.get("treatments", {}), regex=True)
     else:
         df["Treatment"] = np.nan
 
@@ -175,7 +186,7 @@ def process_metadata(study_path,
     # Map host columns
     if "host_col" in study_info:
         df["Host (original NCBI)"] = df[study_info["host_col"]]
-        df["Host (specific)"] = (
+        df["HostSpecific"] = (
             df[study_info["host_col"]]
               .replace(study_info.get("hosts_ungrouped", {}), regex=True)
         )
@@ -185,29 +196,42 @@ def process_metadata(study_path,
         )
     else:
         df["Host"] = np.nan
-        df["Host (specific)"] = np.nan
+        df["HostSpecific"] = np.nan
 
     # Map inoculum columns
-    if "inoculum_col_name" in study_info:
-        df.rename(columns={study_info["inoculum_col_name"]: "Inoculum"}, inplace=True)
-        df["Inoculum"] = df["Inoculum"].replace({
-            study_info.get("normal_inoculum"): "Normal",
-            study_info.get("dry_inoculum"): "Drought-legacy"
-        }, regex=True)
+    if "inoculum_col" in study_info:
+        df["Inoculum"] = df[study_info["inoculum_col"]]
+        df["Inoculum"] = df["Inoculum"].replace(
+            study_info.get("inocula", {}))
     else:
         df["Inoculum"] = np.nan
+
+    # Sample types
+    if "sample_type_col" in study_info:
+        df.rename(columns={study_info["sample_type_col"]: "Sample type"}, inplace=True)
+        df["Sample type"] = df["Sample type"].replace(
+            study_info.get("sample_types", {}), regex=True
+        )
+    else:
+        df["Sample type"] = np.nan
+
+    # Sample types
+    if "height_col" in study_info:
+        df.rename(columns={study_info["height_col"]: "Height"}, inplace=True)
+    else:
+        df["Height"] = np.nan
 
     # Add study-specific metadata columns
     df["Study (full name)"] = study_info.get("full_name", np.nan)
     df["Location"] = study_info.get("location", np.nan)
-    df["Soil type"] = study_info.get("soil_type", np.nan)
+    df["SoilType"] = study_info.get("soil_type", np.nan)
     df["Primers"] = study_info.get("primers", np.nan)
     df["Regions"] = study_info.get("regions", np.nan)
 
     # Select and order final columns
     final_cols = [
-        "Study (full name)", "Treatment", "Host", "Host (specific)", "Host (original NCBI)",
-        "Inoculum", "Location", "Soil type", "Primers", "Regions"
+        "Study (full name)", "Treatment", "Host", "HostSpecific", "Host (original NCBI)",
+        "Inoculum", "Location", "SoilType", "Primers", "Regions", "Sample type", "Height"
     ]
     df = df[final_cols]
 

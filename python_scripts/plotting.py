@@ -5,6 +5,7 @@ from matplotlib.colors import LogNorm
 import seaborn as sns
 import os
 import numpy as np
+import re
 import textwrap
 from skbio import DistanceMatrix
 from skbio.stats.ordination import pcoa
@@ -23,7 +24,7 @@ def trim_taxonomy(tax_str):
 def plot_pcoa(level,
               level_name,
               merged_file,
-              plotting_dir):
+              config):
     df = pd.read_csv(merged_file, sep='\t', index_col=0)
 
     taxonomic_features = [col for col in df.columns
@@ -42,24 +43,27 @@ def plot_pcoa(level,
                            index=df.index)
     pcoa_df = pd.concat([pcoa_df, other_features], axis=1)
 
+    plotting_dir = config["plotting_dir"]
     def save_pcoa_plot(color_by):
         plt.figure(figsize=(8, 6))
         
         sns.scatterplot(data=pcoa_df,
                         x="PC1", y="PC2",
                         hue=color_by,
-                        palette="Paired",
+                        palette=config["colors"],
                         alpha=0.75)
         plt.title(f"PCoA: PC1 vs PC2\nLevel: {level_name} (legend: {color_by})\nBray-Curtis dissimilarity")
         
-        plt.legend(title=color_by, bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
+        plt.legend(title=color_by,
+                   bbox_to_anchor=(1.05, 1),
+                   loc='upper left',
+                   borderaxespad=0)
         save_to = os.path.join(plotting_dir, f"pcoa_plot_PC1_PC2_l{level}_by_{color_by.lower()}.png")
         plt.savefig(save_to, dpi=600, bbox_inches="tight")
         print(f"[INFO] PCoA plot saved to {save_to}")
         plt.close()
 
-    categories = ["Study", "Treatment", "Host", "Host (specific)",
-                  "Location", "Soil type", "Primers", "16S Regions"]
+    categories = ["Study (full name)", "Host"]
 
     for category in categories:
         save_pcoa_plot(category)
@@ -329,7 +333,7 @@ def plot_bubbles(merged_file, plotting_dir, level=2):
 
     df = pd.read_csv(merged_file, sep='\t', index_col=0)
     loc_counts  = df[df['Location'] != 'Greenhouse'].groupby('Location').size()
-    soil_counts = df[df['Location'] == 'Greenhouse'].groupby('Soil type').size()
+    soil_counts = df[df['Location'] == 'Greenhouse'].groupby('SoilType').size()
 
     all_items = []
     max_count = max(loc_counts.max(), soil_counts.max())
@@ -367,8 +371,86 @@ def plot_bubbles(merged_file, plotting_dir, level=2):
     ax.set_ylim(-1, 1)
 
     # Save
-    os.makedirs(plotting_dir, exist_ok=True)
     out_file = os.path.join(plotting_dir, "sample_bubbles_scaled.svg")
     plt.savefig(out_file, dpi=600, transparent=True, bbox_inches='tight')
     plt.close()
     print(f"[INFO] Bubble PNG saved to {out_file}")
+
+def plot_lfc_diff_abundance(diff_abundance_results,
+                            level,
+                            config):
+    plotting_dir = config["plotting_dir"]
+    print("Microbial signature size:", len(diff_abundance_results))
+
+    # Prepare results with phylum and only cultured taxa
+    records = []
+    for full_tax, metrics in diff_abundance_results.items():
+        # Extract phylum (string after 'p__' and before next ';')
+        match = re.search(r'p__([^;]+)', full_tax)
+        phylum = match.group(1) if match else 'Unknown'
+        name = full_tax.split(';')[-1]  # last taxonomic rank
+        name = name.replace('s__', '').replace('g__', '').replace('f__', '') \
+                   .replace('o__', '').replace('c__', '').replace('p__', '')
+        if name.isalpha():  # cultured taxa filter
+            records.append({
+                'taxon': name,
+                'logFC': metrics['logFC'],
+                'phylum': phylum
+            })
+
+    df = pd.DataFrame(records)
+
+    # Sort and select top/bottom 10 by logFC
+    df_sorted = df.sort_values('logFC', ascending=False)
+    top10 = df_sorted.head(10)
+    bottom10 = df_sorted.tail(10)
+    plot_df = pd.concat([top10, bottom10])
+
+    # Group by phylum: sort within each phylum by logFC descending
+    plot_df['phylum'] = plot_df['phylum'].astype(str)
+    plot_df = plot_df.sort_values(['phylum', 'logFC'], ascending=[True, False])
+
+    # Compute bar positions with extra gap between positive and negative groups
+    # Identify index split between positive and negative values after grouping
+    positive_df = plot_df[plot_df['logFC'] >= 0]
+    negative_df = plot_df[plot_df['logFC'] < 0]
+
+    n_pos = len(positive_df)
+    n_neg = len(negative_df)
+    gap = 3.5  # multiplier for extra spacing between the two sign groups
+    pos_positions = np.arange(n_pos)
+    neg_positions = np.arange(n_pos + gap, n_pos + gap + n_neg)
+
+    # Combine positions preserving order: positives first, then negatives
+    positions = np.concatenate([pos_positions, neg_positions])
+    combined_df = pd.concat([positive_df, negative_df])
+
+    # Create color map for phyla
+    phyla = combined_df['phylum'].unique()
+    cmap = plt.get_cmap('tab20')
+    color_map = {ph: cmap(i % cmap.N) for i, ph in enumerate(phyla)}
+    bar_colors = [color_map[ph] for ph in combined_df['phylum']]
+
+    # Plot
+    plt.figure(figsize=(14, 8))
+    bars = plt.bar(positions, combined_df['logFC'], color=bar_colors)
+    plt.axhline(0, color='gray', linewidth=1)
+
+    # Legend: one handle per phylum
+    handles = [plt.Line2D([0], [0], color=color_map[ph], lw=6) for ph in phyla]
+    plt.legend(handles, phyla, title='Phylum', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+    # Adjust ticks and labels
+    plt.xticks(positions, combined_df['taxon'], rotation=45, ha='right', fontsize=16)
+    plt.yticks(fontsize=16)
+
+    plt.title(f"Top/Bottom Log Fold Changes (Level {level})", fontsize=16)
+    plt.xlabel('Taxon', fontsize=14)
+    plt.ylabel('Log2 Fold Change', fontsize=14)
+    plt.tight_layout()
+
+    # Save
+    out_file = os.path.join(plotting_dir, f"lfc_l{level}.svg")
+    plt.savefig(out_file, dpi=600, transparent=True, bbox_inches='tight')
+    plt.close()
+    print(f"[INFO] Log fold change plot saved to {out_file}")

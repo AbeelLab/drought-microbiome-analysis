@@ -6,7 +6,7 @@
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
 #SBATCH --qos=medium
-#SBATCH --time=06:00:00
+#SBATCH --time=24:00:00
 #SBATCH --mem=64GB
 #SBATCH --cpus-per-task=32
 #SBATCH --gres=jobspernode:one:1
@@ -30,9 +30,10 @@ source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/con
 # Final trimming parameters should be logged
 trim_param_file="${study_dir}/figaro_trim_params.txt"
 # For these two studies FIGARO does terminate, but the resulting taxonomic profiling is not good
-if [[ -f $trim_param_file &&
-	  "$study_id" != "simmons2020drought" &&
-	  "$study_id" != "azarbad2020four" ]]; then
+if [[ -f $trim_param_file && \
+      "$study_id" != "simmons2020drought" && \
+      "$study_id" != "azarbad2020four" && \
+      "$study_id" != "swift2024drought" ]]; then
     # If FIGARO ran successfully, load optimal parameters
     forward_trunc=$(sed -n '1p' "$trim_param_file")
     reverse_trunc=$(sed -n '2p' "$trim_param_file")
@@ -44,6 +45,26 @@ else
     conda deactivate
     forward_trunc=$((amplicon_length - amplicon_length / 10))
     reverse_trunc=$((amplicon_length - amplicon_length / 10))
+fi
+
+# Defaults
+forward_trim=0
+reverse_trim=0
+trunc_q=2
+forward_max_ee=2
+reverse_max_ee=2
+overlap=12
+
+# For this particular study neither figaro parameters nor the 90% amplicon length work
+if [[ "$study_id" == "moore2023microbial" ]]; then
+    forward_trunc=240
+    reverse_trunc=200
+    forward_trim=25
+    reverse_trim=26
+    trunc_q=2
+    forward_max_ee=2
+    reverse_max_ee=4
+    overlap=100
 fi
 
 echo $forward_trunc
@@ -77,6 +98,12 @@ trap 'clean_up' EXIT
 srun qiime dada2 denoise-paired \
      --p-trunc-len-f $forward_trunc \
      --p-trunc-len-r $reverse_trunc \
+     --p-trim-left-f $forward_trim \
+     --p-trim-left-r $reverse_trim \
+     --p-max-ee-f $forward_max_ee \
+     --p-max-ee-r $reverse_max_ee \
+     --p-trunc-q $trunc_q \
+     --p-min-overlap $overlap \
      --p-n-threads 32 \
      --verbose \
      --p-no-hashed-feature-ids \

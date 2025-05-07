@@ -35,8 +35,9 @@ def main():
     median_forward = int(statistics.median(trim_positions_forward))
     median_reverse = int(statistics.median(trim_positions_reverse))
 
-    print("Standard deviation forward:", statistics.stdev(trim_positions_forward))
-    print("Standard deviation reverse:", statistics.stdev(trim_positions_reverse))
+    if len(trim_positions_forward) > 1:
+        print("Standard deviation forward:", statistics.stdev(trim_positions_forward))
+        print("Standard deviation reverse:", statistics.stdev(trim_positions_reverse))
     
     output_file = os.path.join(study_dir, "figaro_trim_params.txt")
     with open(output_file, "w") as outf:

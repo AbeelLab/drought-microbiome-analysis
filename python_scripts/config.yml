@@ -16,11 +16,9 @@ levels:
   6: "genus"
 
 inoculum_studies:
-  - "yue2024host"
+  - "swift2024drought"
   - "moore2023microbial"
   - "munoz-ucros2021drought"
-  - "zhang2022cross"
-  - "swift2024drought"
 
 drought_studies:
   - "santos-medellin2021prolonged"
@@ -34,23 +32,8 @@ drought_studies:
   - "xu2018drought"
   - "bandopadhyay2024disentangling"
 
-# All studies and attributes
-yue2024host:
-  inoculum_col_name: "Geo Loc Name [sample]"
-  normal_inoculum: "China:Suqian City, Jiangsu Province"
-  dry_inoculum: "China:Yangli City, Shaanxi Province"
-    
-moore2023microbial:
-  inoculum_col_name: "Env Medium [sample]"
-  normal_inoculum: "Inoculum: Agricultural_field"
-  dry_inoculum: "Inoculum: Forest_soil"
-    
-munoz-ucros2021drought:
-  inoculum_col_name: "Microbiome [sample]"
-  normal_inoculum: "WET"
-  dry_inoculum: "DRY"
-    
-zhang2022cross: "No data"
+# DROUGHT STUDIES
+# ---
 
 xu2018drought:
   full_name: "Xu et al. (2018)"
@@ -248,6 +231,8 @@ simmons2020drought:
   soil_type: "Field"
   primers: "341F,785R"
   regions: "V3-V4"
+  link_NCBI_metadata: "Name"
+  link_supplemental_metadata: "SampleID"
 
 fitspatrick2017assembly:
   full_name: "Fitzpatrick et al. (2018)"
@@ -345,6 +330,8 @@ fitspatrick2017assembly:
   soil_type: "Field"
   primers: "515F,808R"
   regions: "V4"
+  link_NCBI_metadata: "Name"
+  link_supplemental_metadata: "Sample_ID"
 
 naylor2017drought:
   full_name: "Naylor et al. (2017)"
@@ -421,3 +408,124 @@ kost2024microbial:
     "Penisetum glaucum": "Cenchrus americanus"
     "Setaria italica": "Setaria italica"
     "Sorghum bicolor": "Sorghum bicolor"
+
+# INOCULUM STUDIES
+# ---
+
+# This is a NovaSeq study unlike all others which are MiSeq
+swift2024drought:
+  amplicon_length: 250
+  filters:
+    # discard slurry samples (they are very similar to the soil samples)
+    - "lambda row: 'slurry' not in str(row['Env Medium [sample]'])"
+    # keep only late harvest as done in the paper
+    - "lambda row: str(row['Harvest Time Point [sample]']) == 'late' or pd.isna(row['Harvest Time Point [sample]'])"
+    # Remove ITS samples (these are only labelled for the inoculum samples)
+    # For the pthers we have to remove post-processing
+    - "lambda row: 'ITS' not in str(row['Title'])"
+  inoculum_col: "Soil Inoculum [sample]"
+  # Separate based on precipitation gradient in the paper
+  inocula:
+    "SVR": "Drought legacy"
+    "HAY": "Drought legacy"
+    "TLI": "Wet"
+    "KNZ": "Wet"
+    "Control": "Control"
+  treatment_col: "Drought or Watered"
+  treatments:
+    "D": "Drought"
+    "W": "Control"
+  host_col: "Host [sample]"
+  hosts:
+    "Zea mays": "PACMAD clade"
+  hosts_ungrouped:
+    "Zea mays": "Zea mays"
+  # whether the sample represent an inoculum sample or is plant-associated
+  sample_type_col: "Env Medium [sample]"
+  sample_types:
+    "plant matter": "Plant-associated"
+    "soil*": "Inoculum soil"
+  link_NCBI_metadata: "Title"
+  link_supplemental_metadata: "RepID"
+  height_col: "Height_Feb19"
+
+moore2023microbial:
+  amplicon_length: 300
+  treatment_col: "Water Content Soil [sample]"
+  treatments:
+    "Well-watered": "Control"
+    "Water-limited": "Drought"
+  # Dummy column since host s not included so we take it from the paper
+  host_col: "Env Local Scale [sample]"
+  hosts:
+    "Pot": "PACMAD clade"
+  hosts_ungrouped:
+    "Pot": "Zea mays"
+  inoculum_col: "Env Medium [sample]"
+  inocula:
+    "Inoculum: Agricultural_field": "Wet"
+    "Inoculum: Forest_soil": "Drought legacy"
+  # Only one type
+  sample_type_col: "Env Broad Scale [sample]"
+  sample_types:
+    "Greenhouse": "Plant-associated"
+  link_NCBI_metadata: "Title"
+  link_supplemental_metadata: "Sample_ID"
+  match_regex: "(N\\d+)"
+  height_col: "Height_cm"
+
+munoz-ucros2021drought:
+  amplicon_length: 250
+  filters:
+    # Not sure what GENEVA stands for
+    - "lambda row: str(row['Microbiome [sample]']) != 'GENEVA'"
+    # Remove fungal samples
+    - "lambda row: 'ITS' not in str(row['Library Name'])"
+  treatment_col: "Treatment [sample]"
+  treatments:
+    "Control": "Control" 
+    "Drought": "Drought"
+  # Dummy column since host s not included so we take it from the paper
+  host_col: "Organism"
+  hosts:
+    "rhizosphere metagenome": "Fabids"
+  hosts_ungrouped:
+    "rhizosphere metagenome": "Salix purpurea"
+  inoculum_col: "Microbiome [sample]"
+  inocula:
+    "WET": "Wet"
+    "DRY": "Drought legacy"
+    "STERILE": "Control"
+    "PREDRY": "None"
+    "PREWET": "None"
+  sample_type_col: "Microbiome [sample]"
+  sample_types:
+    "WET": "Plant-associated"
+    "DRY": "Plant-associated"
+    "STERILE": "Plant-associated"
+    "PREDRY": "Inoculum soil"
+    "PREWET": "Inoculum soil"
+  # I did this manually by adding length increase and length
+  # This should be modified to be done in the code
+  height_col: "Length"
+  
+    
+zhang2022cross: "No data"
+
+colors:
+  "Xu et al. (2018)": "#FAC72F"
+  "Simmons et al. (2020)": "#504D44"
+  "Azarbad et al. (2020)": "#547A5B" 
+  "Fitzpatrick et al. (2018)": "#5664A5" 
+  "Santos-Medellín et al. (2021)": "#A55664"
+  "Santos-Medellín et al. (2017)": "#FA2F53"
+  "Hoefle et al. (2024)": "#2FFA55" 
+  "Bandopadhyay et al. (2024)": "#2F54FA" 
+  "Naylor et al. (2017)": "#52BA65" 
+  "Faist et al. (2023)": "#A79357"
+
+  "Asterids": "#66c1a6"
+  "Fabids": "#8f9fca"
+  "Malvids": "#e68cc1"
+  "BOP clade": "#f89267"
+  "PACMAD clade": "#a2d85d"
