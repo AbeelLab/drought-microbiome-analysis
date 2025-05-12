@@ -454,3 +454,72 @@ def plot_lfc_diff_abundance(diff_abundance_results,
     plt.savefig(out_file, dpi=600, transparent=True, bbox_inches='tight')
     plt.close()
     print(f"[INFO] Log fold change plot saved to {out_file}")
+
+    return combined_df['taxon']
+
+
+def plot_diff_abundance_comparison(plotted_labels,
+                                   diff_abundance_results,
+                                   diff_abundance_results_inoculum):
+    # Collect all taxa short names from main and studies
+    def short_name(full_tax):
+        name = full_tax.split(';')[-1]
+        return re.sub(r'^[a-z]__', '', name)
+
+    main_taxa = {short_name(ft): ft for ft in diff_abundance_results}
+    inoc_taxa = set()
+    for study_res in diff_abundance_results_inoculum.values():
+        for ft in study_res:
+            inoc_taxa.add(short_name(ft))
+
+    # Intersection: taxa present in main and at least one study
+    common = [tax for tax in main_taxa if tax in inoc_taxa]
+
+    # Order by main logFC descending
+    main_logfc = np.array([diff_abundance_results[main_taxa[t]]['logFC'] for t in common])
+    order = np.argsort(-main_logfc)
+    ordered_taxa = [common[i] for i in order]
+    ordered_logfc = main_logfc[order]
+
+    # Determine positions with gap logic
+    signs = ordered_logfc >= 0
+    n_pos = signs.sum()
+    n_total = len(ordered_taxa)
+    gap = 3.5
+    pos_positions = np.arange(n_pos)
+    neg_positions = np.arange(n_pos + gap, n_pos + gap + (n_total - n_pos))
+    positions = np.empty(n_total)
+    positions[signs] = pos_positions
+    positions[~signs] = neg_positions
+
+    # Plot bars
+    plt.figure(figsize=(14, 8))
+    plt.bar(positions, ordered_logfc, color='lightgray')
+    plt.axhline(0, color='gray', linewidth=1)
+
+    # Overlay inoculum points
+    markers = ['o', 's', '^', 'D', 'v', 'P', 'X', '*']
+    for i, (study, results) in enumerate(diff_abundance_results_inoculum.items()):
+        xs, ys = [], []
+        for idx, tax in enumerate(ordered_taxa):
+            full = main_taxa[tax]
+            if full in results:
+                xs.append(positions[idx])
+                ys.append(results[full]['logFC'])
+        if xs:
+            plt.scatter(xs, ys, marker=markers[i % len(markers)], s=100, label=study)
+
+    plt.legend(title='Inoculum Study', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.xticks(positions, ordered_taxa, rotation=45, ha='right', fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.title('Comparison of Log2 Fold Changes Across Studies', fontsize=16)
+    plt.xlabel('Taxon', fontsize=14)
+    plt.ylabel('Log2 Fold Change', fontsize=14)
+    plt.tight_layout()
+
+    out_file = 'diff_abundance_comparison.svg'
+    plt.savefig(out_file, dpi=600, transparent=True, bbox_inches='tight')
+    plt.close()
+    print(f"[INFO] Comparison plot saved to {out_file}")
+
+    return ordered_taxa, positions

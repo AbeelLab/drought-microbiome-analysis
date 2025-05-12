@@ -33,7 +33,8 @@ trim_param_file="${study_dir}/figaro_trim_params.txt"
 if [[ -f $trim_param_file && \
       "$study_id" != "simmons2020drought" && \
       "$study_id" != "azarbad2020four" && \
-      "$study_id" != "swift2024drought" ]]; then
+      "$study_id" != "swift2024drought" && \
+      "$study_id" != "yue2024host" ]]; then
     # If FIGARO ran successfully, load optimal parameters
     forward_trunc=$(sed -n '1p' "$trim_param_file")
     reverse_trunc=$(sed -n '2p' "$trim_param_file")
@@ -84,7 +85,6 @@ function clean_up {
     echo "---"
     
     rm -rf $cache_dir
-
     echo "After cleanup:"
     find /tmp -user bmcosma -print0 | du -chs --files0-from=-
     exit

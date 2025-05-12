@@ -7,7 +7,7 @@ import numpy as np
 # Total sum scaling of features per row (sample)
 def normalize_row(row,
                   taxonomic_features,
-                  total_sum=1):
+                  total_sum=100):
     total = row[taxonomic_features].sum()
     if total != 0:
         row[taxonomic_features] = row[taxonomic_features] / total
@@ -87,8 +87,7 @@ def biom_to_tsv(study_name,
 def preprocess_and_filter(study_path,
                           study_name,
                           level,
-                          level_shortcut,
-                          samples_to_keep=None):
+                          level_shortcut):
     comp_dir = os.path.join(study_path, f"composition_table_l{level}")
 
     df = biom_to_tsv(study_name, comp_dir)
@@ -103,10 +102,6 @@ def preprocess_and_filter(study_path,
                           if "p__" in col]
     df = df.apply(lambda row: normalize_row(row, taxonomic_features),
                   axis=1)
-
-    # Discard samples based on annotation quality
-    if samples_to_keep is not None:
-        pass
     
     # Save df before feature filtering
     tsv_file_unfiltered = os.path.join(comp_dir,
@@ -120,6 +115,8 @@ def preprocess_and_filter(study_path,
                          df,
                          level,
                          level_shortcut)
+    df = df[[col for col in df.columns
+             if "uncultured" not in col]]
 
     # Save filtered df
     tsv_file_filtered = os.path.join(comp_dir, "feature-table-filtered.tsv")
@@ -147,96 +144,107 @@ def process_metadata(study_path,
     if "treatment_col" in study_info:
         if "Treatment" in df.columns:
             df.drop(columns=["Treatment"], inplace=True)
-        df.rename(columns={study_info["treatment_col"]: "Treatment"}, inplace=True)
-        df["Treatment"] = df["Treatment"].replace(
-            study_info.get("treatments", {}), regex=True)
+        # preserve original column
+        df['Treatment'] = df[study_info['treatment_col']]
+        df['Treatment'] = df['Treatment'].replace(
+            study_info.get('treatments', {}), regex=True)
     else:
-        df["Treatment"] = np.nan
+        df['Treatment'] = np.nan
 
     # Handle drought timepoints: extract TP only for relevant stages
     if "drought_timepoints" in study_info \
        and "timepoint_col" in study_info \
        and "tp_regex" in study_info:
-        df["TP"] = np.nan
-        for stage, bounds in study_info["drought_timepoints"].items():
-            mask_stage = df["Treatment"] == stage
+        df['TP'] = np.nan
+        for stage, bounds in study_info['drought_timepoints'].items():
+            mask_stage = df['Treatment'] == stage
             if not mask_stage.any():
                 continue
-            col = study_info["timepoint_col"]
+            col = study_info['timepoint_col']
             series = df.loc[mask_stage, col]
             
             # extract timepoints with regex
-            tp_extracted = series.str.extract(study_info["tp_regex"])
-            tp_values = tp_extracted["tp"]
-            df.loc[mask_stage, "TP"] = pd.to_numeric(tp_values, errors="coerce")
+            tp_extracted = series.str.extract(study_info['tp_regex'])
+            tp_values = tp_extracted['tp']
+            df.loc[mask_stage, 'TP'] = pd.to_numeric(tp_values, errors='coerce')
 
             # Determine drought vs control based on TP bounds
-            if "max_tp" in bounds:
-                drought_mask = mask_stage & (df["TP"] <= bounds["max_tp"])
-            elif "min_tp" in bounds:
-                drought_mask = mask_stage & (df["TP"] >= bounds["min_tp"])
+            if 'max_tp' in bounds:
+                drought_mask = mask_stage & (df['TP'] <= bounds['max_tp'])
+            elif 'min_tp' in bounds:
+                drought_mask = mask_stage & (df['TP'] >= bounds['min_tp'])
             else:
                 continue
             control_mask = mask_stage & ~drought_mask
-            df.loc[drought_mask, "Treatment"] = "Drought"
-            df.loc[control_mask, "Treatment"] = "Control"
+            df.loc[drought_mask, 'Treatment'] = 'Drought'
+            df.loc[control_mask, 'Treatment'] = 'Control'
         # Clean up TP column
-        df.drop(columns=["TP"], inplace=True)
+        df.drop(columns=['TP'], inplace=True)
 
     # Map host columns
     if "host_col" in study_info:
-        df["Host (original NCBI)"] = df[study_info["host_col"]]
-        df["HostSpecific"] = (
-            df[study_info["host_col"]]
-              .replace(study_info.get("hosts_ungrouped", {}), regex=True)
+        df['HostSpecific'] = df[study_info['host_col']]
+        df['HostSpecific'] = (
+            df[study_info['HostSpecific']]
+              .replace(study_info.get('hosts_ungrouped', {}), regex=True)
         )
-        df.rename(columns={study_info["host_col"]: "Host"}, inplace=True)
-        df["Host"] = df["Host"].replace(
-            study_info.get("hosts", {}), regex=True
+        df['Host'] = df[study_info['host_col']]
+        df['Host'] = df['Host'].replace(
+            study_info.get('hosts', {}), regex=True
         )
     else:
-        df["Host"] = np.nan
-        df["HostSpecific"] = np.nan
+        df['Host'] = np.nan
+        df['HostSpecific'] = np.nan
 
     # Map inoculum columns
     if "inoculum_col" in study_info:
-        df["Inoculum"] = df[study_info["inoculum_col"]]
-        df["Inoculum"] = df["Inoculum"].replace(
-            study_info.get("inocula", {}))
+        df['Inoculum'] = df[study_info['inoculum_col']]
+        df['Inoculum'] = df['Inoculum'].replace(
+            study_info.get('inocula', {}))
     else:
-        df["Inoculum"] = np.nan
+        df['Inoculum'] = np.nan
 
     # Sample types
     if "sample_type_col" in study_info:
-        df.rename(columns={study_info["sample_type_col"]: "Sample type"}, inplace=True)
-        df["Sample type"] = df["Sample type"].replace(
-            study_info.get("sample_types", {}), regex=True
+        df['Sample type'] = df[study_info['sample_type_col']]
+        df['Sample type'] = df['Sample type'].replace(
+            study_info.get('sample_types', {}), regex=True
         )
     else:
-        df["Sample type"] = np.nan
+        df['Sample type'] = np.nan
 
     # Sample types
     if "height_col" in study_info:
-        df.rename(columns={study_info["height_col"]: "Height"}, inplace=True)
+        df['Height'] = df[study_info['height_col']]
     else:
-        df["Height"] = np.nan
+        df['Height'] = np.nan
 
     # Add study-specific metadata columns
-    df["Study (full name)"] = study_info.get("full_name", np.nan)
-    df["Location"] = study_info.get("location", np.nan)
-    df["SoilType"] = study_info.get("soil_type", np.nan)
-    df["Primers"] = study_info.get("primers", np.nan)
-    df["Regions"] = study_info.get("regions", np.nan)
+    df['Study (full name)'] = study_info.get('full_name', np.nan)
+    df['Location'] = study_info.get('location', np.nan)
+    df['SoilType'] = study_info.get('soil_type', np.nan)
+    df['Primers'] = study_info.get('primers', np.nan)
+    df['Regions'] = study_info.get('regions', np.nan)
 
     # Select and order final columns
     final_cols = [
-        "Study (full name)", "Treatment", "Host", "HostSpecific", "Host (original NCBI)",
-        "Inoculum", "Location", "SoilType", "Primers", "Regions", "Sample type", "Height"
+        'Study (full name)',
+        'Treatment',
+        'Host',
+        'HostSpecific',
+        'Inoculum',
+        'Location',
+        'SoilType',
+        'Primers',
+        'Regions',
+        'Sample type',
+        'Height'
     ]
     df = df[final_cols]
 
     # Save processed metadata
-    processed_file = os.path.join(study_path, "processed_metadata.tsv")
+    processed_file = os.path.join(study_path, 'processed_metadata.tsv')
     df.to_csv(processed_file, sep='\t')
     print(f"[INFO] Saved processed metadata to: {processed_file}")
     return processed_file
+

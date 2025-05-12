@@ -428,9 +428,9 @@ swift2024drought:
   inocula:
     "SVR": "Drought legacy"
     "HAY": "Drought legacy"
-    "TLI": "Wet"
-    "KNZ": "Wet"
-    "Control": "Control"
+    "TLI": "Other"
+    "KNZ": "Other"
+    "Control": "Other"
   treatment_col: "Drought or Watered"
   treatments:
     "D": "Drought"
@@ -463,7 +463,7 @@ moore2023microbial:
     "Pot": "Zea mays"
   inoculum_col: "Env Medium [sample]"
   inocula:
-    "Inoculum: Agricultural_field": "Wet"
+    "Inoculum: Agricultural_field": "Other"
     "Inoculum: Forest_soil": "Drought legacy"
   # Only one type
   sample_type_col: "Env Broad Scale [sample]"
@@ -493,9 +493,9 @@ munoz-ucros2021drought:
     "rhizosphere metagenome": "Salix purpurea"
   inoculum_col: "Microbiome [sample]"
   inocula:
-    "WET": "Wet"
+    "WET": "Other"
     "DRY": "Drought legacy"
-    "STERILE": "Control"
+    "STERILE": "Other"
     "PREDRY": "None"
     "PREWET": "None"
   sample_type_col: "Microbiome [sample]"
@@ -508,9 +508,34 @@ munoz-ucros2021drought:
   # I did this manually by adding length increase and length
   # This should be modified to be done in the code
   height_col: "Length"
-  
-    
-zhang2022cross: "No data"
+
+zhang2022cross:
+  amplicon_length: 250
+  filters:
+    # Remove fungal samples
+    - "lambda row: 'F' not in str(row['Name'])"
+    - "lambda row: 'Neg' not in str(row['Name'])"
+  treatment_col: "Name"
+  treatments:
+    ".*W.*": "Control"
+    ".*D.*": "Drought"
+    ".*I.*": "None"
+  # Dummy column
+  host_col: "Tax ID"
+  hosts:
+    "410658": "PACMAD clade"
+  hosts_ungrouped:
+    "410658": "Zea mays"
+  inoculum_col: "Name"
+  inocula:
+    "^A.*": "Drought legacy"
+    "^O.*": "Other"  
+  sample_type_col: "Name"
+  sample_types:
+    # Contains I
+    ".*I.*": "Inoculum soil"
+    # Does not contain I
+    "^[^I]*$": "Plant-associated" 
 
 colors:
   "Xu et al. (2018)": "#FAC72F"

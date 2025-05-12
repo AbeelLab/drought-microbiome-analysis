@@ -10,7 +10,8 @@ def merge_datasets(data_path,
                    level,
                    processed_files,
                    metadata_files,
-                   value_type):
+                   value_type,
+                   dataset_type=""):
     # load dataframes
     # and merge with metadata
     # indices are sample IDs
@@ -46,10 +47,10 @@ def merge_datasets(data_path,
     # as a sanity check should be saved after the join (in case some
     # samples without metadata should get dropped)
     # No need for value type for metadata since it is the same 
-    merged_metadata_file = os.path.join(data_path, f"merged_metadata_l{level}.tsv")
+    merged_metadata_file = os.path.join(data_path, f"merged_metadata_l{level}{dataset_type}.tsv")
     merged_df[metadata].to_csv(merged_metadata_file, sep='\t', index_label="ID")
     
-    merged_taxonomy_file = os.path.join(data_path, f"merged_only_taxa_{value_type}_l{level}.tsv")
+    merged_taxonomy_file = os.path.join(data_path, f"merged_only_taxa_{value_type}_l{level}{dataset_type}.tsv")
     # Then we should transpose and rename the index #OTU ID for biom convert to work?
     taxa = merged_df[taxonomic_features].T
     taxa.index.name = '#OTU ID'
@@ -61,7 +62,7 @@ def merge_datasets(data_path,
     merged_df = merged_df[ordered_columns]
 
     save_as =os.path.join(data_path,
-                          f"merged_taxonomy_{value_type}_l{level}.tsv")
+                          f"merged_taxonomy_{value_type}_l{level}{dataset_type}.tsv")
     merged_df.to_csv(save_as, sep='\t')
     print(f"[INFO] Merged {value_type} table saved to {save_as}")
 
