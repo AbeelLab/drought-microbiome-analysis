@@ -11,7 +11,8 @@ def merge_datasets(data_path,
                    processed_files,
                    metadata_files,
                    value_type,
-                   dataset_type=""):
+                   dataset_type="",
+                   inoculum_studies=False):
     # load dataframes
     # and merge with metadata
     # indices are sample IDs
@@ -24,6 +25,7 @@ def merge_datasets(data_path,
                                        sep='\t',
                                        index_col=0)
                     for study in metadata_files}
+    
     
     # resulting columns are the union of columns from individual datasets
     merged_df = pd.concat(dfs.values(),
@@ -60,6 +62,10 @@ def merge_datasets(data_path,
     
     ordered_columns = metadata + taxonomic_features
     merged_df = merged_df[ordered_columns]
+
+    if inoculum_studies:
+        merged_df = merged_df[merged_df['Sample type']   == 'Plant-associated']
+        merged_df = merged_df[merged_df['Treatment']   == 'Drought']
 
     save_as =os.path.join(data_path,
                           f"merged_taxonomy_{value_type}_l{level}{dataset_type}.tsv")

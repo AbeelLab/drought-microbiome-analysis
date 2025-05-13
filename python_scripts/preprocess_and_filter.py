@@ -184,10 +184,8 @@ def process_metadata(study_path,
     # Map host columns
     if "host_col" in study_info:
         df['HostSpecific'] = df[study_info['host_col']]
-        df['HostSpecific'] = (
-            df[study_info['HostSpecific']]
-              .replace(study_info.get('hosts_ungrouped', {}), regex=True)
-        )
+        df['HostSpecific'] = df['HostSpecific'].replace(
+            study_info.get('hosts_ungrouped', {}), regex=True)
         df['Host'] = df[study_info['host_col']]
         df['Host'] = df['Host'].replace(
             study_info.get('hosts', {}), regex=True
@@ -200,7 +198,7 @@ def process_metadata(study_path,
     if "inoculum_col" in study_info:
         df['Inoculum'] = df[study_info['inoculum_col']]
         df['Inoculum'] = df['Inoculum'].replace(
-            study_info.get('inocula', {}))
+            study_info.get('inocula', {}), regex=True)
     else:
         df['Inoculum'] = np.nan
 

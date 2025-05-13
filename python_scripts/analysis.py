@@ -101,7 +101,7 @@ def process_permanova(level,
 def run_limma_diff_abundance_treatment(level,
                                        merged_file,
                                        p_val=0.001,
-                                       formula="Treatment + Study + HostSpecific + Study * HostSpecific",
+                                       formula="Treatment + Study + HostSpecific",
                                        variable="Treatment",
                                        base="Control",
                                        condition="Drought"):
@@ -123,14 +123,11 @@ def run_limma_diff_abundance_treatment(level,
     be_vars = ["Study"]
 
     # Variables that lead to biological variation (should be kept)
-    bio_vars = ["HostSpecific", "Location", "SoilType"]
-
-    target_var = "Treatment"
+    bio_vars = ["HostSpecific", "Location", "SoilType", "Treatment", "Inoculum"]
 
     # limma input requires separate metadata and transposed abundance matrix
     abundance_df = df[taxonomic_features]
-    metadata_df = df[[target_var] +
-                     bio_vars + be_vars].astype("category")
+    metadata_df = df[bio_vars + be_vars].astype("category")
     metadata_df = metadata_df.dropna(subset=['Treatment'])
     abundance_df = abundance_df.loc[metadata_df.index, :]
     abundance_r = pandas2ri.py2rpy(abundance_df.T)
@@ -147,7 +144,7 @@ def run_limma_diff_abundance_treatment(level,
     dge <- calcNormFactors(dge)
 
     # Control is the baseline
-    metadata$Treatment <- relevel(metadata${variable}, ref="{base}")
+    metadata${variable} <- relevel(metadata${variable}, ref="{base}")
     design <- model.matrix(~ {formula}, data=metadata)
 
     # voom transformation

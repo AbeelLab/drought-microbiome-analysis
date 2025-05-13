@@ -523,3 +523,94 @@ def plot_diff_abundance_comparison(plotted_labels,
     print(f"[INFO] Comparison plot saved to {out_file}")
 
     return ordered_taxa, positions
+
+# inputs are two dictionaries with taxonomy names as keys
+# and values as dictionries with logFC and p-value
+# taxa: {'logFC': ..., 'adj.P.Val': ...}
+def make_volcano_plot(diff_abundance_results_inoculum,
+                      diff_abundance_results,
+                      save_as):
+    # Convert input dictionary to DataFrame
+    df_inoculum = pd.DataFrame.from_dict(diff_abundance_results_inoculum, orient='index')
+    df_inoculum = df_inoculum.dropna(subset=['logFC', 'adj.P.Val'])
+    df_inoculum['-log10(padj)'] = -np.log10(df_inoculum['adj.P.Val'])
+
+    # Assign default color and size
+    df_inoculum['color'] = 'gray'
+    df_inoculum['size'] = 20  # default size for gray points
+
+    # Update color and size based on presence in second dict
+    for taxon in df_inoculum.index:
+        if taxon in diff_abundance_results:
+            logfc_other = diff_abundance_results[taxon].get('logFC')
+            if logfc_other is not None:
+                if logfc_other > 0:
+                    df_inoculum.at[taxon, 'color'] = '#ff863d'
+                else:
+                    df_inoculum.at[taxon, 'color'] = 'black'
+                df_inoculum.at[taxon, 'size'] = 40
+
+    # Plot gray dots first
+    plt.figure(figsize=(10, 6))
+    df_gray = df_inoculum[df_inoculum['color'] == 'gray']
+    sns.scatterplot(
+        data=df_gray,
+        x='logFC',
+        y='-log10(padj)',
+        color='gray',
+        alpha=0.8,
+        s=20,
+        edgecolor=None,
+        legend=False
+    )
+
+    # Plot colored dots on top
+    df_colored = df_inoculum[df_inoculum['color'] != 'gray']
+    sns.scatterplot(
+        data=df_colored,
+        x='logFC',
+        y='-log10(padj)',
+        hue='color',
+        palette={
+            'black': 'black',
+            '#ff863d': '#ff863d'
+        },
+        size='size',
+        sizes=(40, 40),
+        legend=False,
+        edgecolor=None
+    )
+
+    # Annotate top 5 points above threshold
+    df_label = df_colored[df_colored['-log10(padj)'] > 2]
+    df_label = df_label.sort_values('-log10(padj)', ascending=False).head(5)
+    for taxon, row in df_label.iterrows():
+        plt.text(row['logFC'], row['-log10(padj)'], trim_taxonomy(taxon),
+                 fontsize=8, ha='right', va='bottom')
+
+    # Add dashed lines
+    plt.axhline(-np.log10(0.05), color='gray', linestyle='--', linewidth=1)
+    plt.axvline(0, color='gray', linestyle='--', linewidth=1)
+
+    # Set axis limits
+    plt.xlim(-7, 7)
+    plt.ylim(0, 4)
+
+    # Labels and layout
+    plt.title("Volcano Plot")
+    plt.xlabel("logFC")
+    plt.ylabel("-log10(adjusted p-value)")
+    plt.tight_layout()
+
+    # Save
+    plt.savefig(save_as)
+    plt.close()
+
+    top_taxa = [
+        taxon for taxon, _ in sorted(
+            ((tax, row['adj.P.Val']) for tax, row in df_inoculum.iterrows()
+             if row['color'] != 'gray' and row['-log10(padj)'] > 2),
+            key=lambda x: x[1]
+        )[:5]]
+
+    return top_taxa

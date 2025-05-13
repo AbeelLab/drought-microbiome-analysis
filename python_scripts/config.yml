@@ -426,8 +426,8 @@ swift2024drought:
   inoculum_col: "Soil Inoculum [sample]"
   # Separate based on precipitation gradient in the paper
   inocula:
-    "SVR": "Drought legacy"
-    "HAY": "Drought legacy"
+    "SVR": "DroughtLegacy"
+    "HAY": "DroughtLegacy"
     "TLI": "Other"
     "KNZ": "Other"
     "Control": "Other"
@@ -464,7 +464,7 @@ moore2023microbial:
   inoculum_col: "Env Medium [sample]"
   inocula:
     "Inoculum: Agricultural_field": "Other"
-    "Inoculum: Forest_soil": "Drought legacy"
+    "Inoculum: Forest_soil": "DroughtLegacy"
   # Only one type
   sample_type_col: "Env Broad Scale [sample]"
   sample_types:
@@ -494,7 +494,7 @@ munoz-ucros2021drought:
   inoculum_col: "Microbiome [sample]"
   inocula:
     "WET": "Other"
-    "DRY": "Drought legacy"
+    "DRY": "DroughtLegacy"
     "STERILE": "Other"
     "PREDRY": "None"
     "PREWET": "None"
@@ -528,7 +528,7 @@ zhang2022cross:
     "410658": "Zea mays"
   inoculum_col: "Name"
   inocula:
-    "^A.*": "Drought legacy"
+    "^A.*": "DroughtLegacy"
     "^O.*": "Other"  
   sample_type_col: "Name"
   sample_types:
