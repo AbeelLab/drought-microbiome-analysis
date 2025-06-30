@@ -73,14 +73,14 @@ if [ "$run_cutadapt" = true ] ; then
 fi
 
 
-if [ "$run_figaro" = true ] ; then
-    sbatch --array="1-${last_batch}" \
-           --dependency=${dependencies} \
-           figaro.sbatch \
-           "$data_path" \
-           "$study_id"
-    update_dependencies
-fi
+# if [ "$run_figaro" = true ] ; then
+#     sbatch --array="1-${last_batch}" \
+#            --dependency=${dependencies} \
+#            figaro.sbatch \
+#            "$data_path" \
+#            "$study_id"
+#     update_dependencies
+# fi
 
 
 if [ "$run_dada2" = true ] ; then

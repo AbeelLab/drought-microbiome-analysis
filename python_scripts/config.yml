@@ -3,10 +3,12 @@
 
 # "location" indicates where the soil was sampled from.
 # This means that greenhouse-grown communities still get mapped to a location as long as the soil wasourced from a field.
+# link_NCBI_metadata and link_supplemental_metadata provide a way to connect the NCBI metadata table with the supplement provided by the authors (for some studies)
 
 data_path: "../data"
 plotting_dir: "../data/plots"
-processed_files: "processed_files.yml"
+processed_drought_datasets: "processed_drought_datasets.pkl"
+processed_inoculum_datasets: "processed_inoculum_datasets.pkl"
 
 levels:
   2: "phylum"
@@ -19,6 +21,15 @@ inoculum_studies:
   - "swift2024drought"
   - "moore2023microbial"
   - "munoz-ucros2021drought"
+  - "zhang2022cross"
+
+positive_inoculum_studies:
+  - "moore2023microbial"
+  - "zhang2022cross"
+
+negative_inoculum_studies:
+  - "munoz-ucros2021drought"
+  - "swift2024drought"
 
 drought_studies:
   - "santos-medellin2021prolonged"
@@ -40,13 +51,16 @@ xu2018drought:
   amplicon_length: 300
   filters:
     - "lambda row: 'Soil' not in str(row['Env Material [sample]'])"
-    - "lambda row: 'bulk soil' not in str(row['Env Medium [sample]'])"
     - "lambda row: 'Positive' not in str(row['Env Material [sample]'])"
+    - "lambda row: 'NovaSeq' not in str(row['Instrument'])"
+    # Cannot discern what the other experiments are
+    - "lambda row: str(row['Host [sample]']) != 'Sorghum bicolor'"
   treatment_col: "Treatment [sample]"
   treatments:
     "Pre_flowering": "Pre_flowering"
     "Post_flowering": "Post_flowering"
     "Control": "Control"
+    # These correspond to the second field experiment (accession PRJNA435643)
     "Water": "Control"
     "Drought": "Drought"
   host_col: "Host [sample]"
@@ -54,14 +68,10 @@ xu2018drought:
     "Sorghum bicolor": "PACMAD clade"
   hosts_ungrouped:
     "Sorghum bicolor": "Sorghum bicolor"
-  # Required since drought is only applied pre_flowering or post_flowering
-  timepoint_col: "Title"
-  tp_regex: "TP(?P<tp>\\d+)"
-  drought_timepoints:
-    Pre_flowering:
-      max_tp: 8
-    Post_flowering:
-      min_tp: 10
+  root_compartment_col: "Env Material [sample]"
+  root_compartments:
+    "Rhizosphere": "Rhizophere"
+    "Root": "Endosphere"
   location: "California"
   soil_type: "Field"
   primers: "341F,785R"
@@ -86,6 +96,10 @@ santos-medellin2021prolonged:
     "Oryza sativa": "BOP clade"
   hosts_ungrouped:
     "Oryza sativa": "Oryza sativa"
+  root_compartment_col: "Root Compartment [sample]"
+  root_compartments:
+    "Rhizosphere": "Rhizophere"
+    "Endosphere": "Endosphere"
   location: "California"
   soil_type: "Field"
   primers: "515F,806R"
@@ -204,11 +218,13 @@ azarbad2020four:
   primers: "520F,799R2"
   regions: "V3-V4"
 
+
 simmons2020drought:
   full_name: "Simmons et al. (2020)"
   amplicon_length: 300
   filters:
     - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
+    - "lambda row: str(row['RootType']) != 'Dead'"
   treatment_col: "Treatment_all"
   treatments:
     "Drought": "Drought"
@@ -227,8 +243,10 @@ simmons2020drought:
     "Penisetum glaucum": "Cenchrus americanus"
     "Setaria italica": "Setaria italica"
     "Sorghum bicolor": "Sorghum bicolor"
-  location: "California"
-  soil_type: "Field"
+  root_compartment_col: "Isolation Source [sample]"
+  root_compartments:
+    "Plant rhizosphere": "Rhizophere"
+    "Plant root endosphere": "Endosphere"
   primers: "341F,785R"
   regions: "V3-V4"
   link_NCBI_metadata: "Name"
@@ -428,9 +446,15 @@ swift2024drought:
   inocula:
     "SVR": "DroughtLegacy"
     "HAY": "DroughtLegacy"
-    "TLI": "Other"
-    "KNZ": "Other"
-    "Control": "Other"
+    "TLI": "Control"
+    "KNZ": "Control"
+    "Control": "Control"
+  inocula_subtypes:
+    "SVR": "DroughtLegacy"
+    "HAY": "DroughtLegacy"
+    "TLI": "Wet"
+    "KNZ": "Wet"
+    "Control": "Control"
   treatment_col: "Drought or Watered"
   treatments:
     "D": "Drought"
@@ -441,10 +465,10 @@ swift2024drought:
   hosts_ungrouped:
     "Zea mays": "Zea mays"
   # whether the sample represent an inoculum sample or is plant-associated
-  sample_type_col: "Env Medium [sample]"
-  sample_types:
-    "plant matter": "Plant-associated"
-    "soil*": "Inoculum soil"
+  is_plant_associated_col: "Env Medium [sample]"
+  is_plant_associated:
+    "plant matter": "Yes"
+    "soil*": "No"
   link_NCBI_metadata: "Title"
   link_supplemental_metadata: "RepID"
   height_col: "Height_Feb19"
@@ -463,12 +487,15 @@ moore2023microbial:
     "Pot": "Zea mays"
   inoculum_col: "Env Medium [sample]"
   inocula:
-    "Inoculum: Agricultural_field": "Other"
+    "Inoculum: Agricultural_field": "Control"
+    "Inoculum: Forest_soil": "DroughtLegacy"
+  inocula_subtypes:
+    "Inoculum: Agricultural_field": "Wet"
     "Inoculum: Forest_soil": "DroughtLegacy"
   # Only one type
-  sample_type_col: "Env Broad Scale [sample]"
-  sample_types:
-    "Greenhouse": "Plant-associated"
+  is_plant_associated_col: "Env Broad Scale [sample]"
+  is_plant_associated:
+    "Greenhouse": "Yes"
   link_NCBI_metadata: "Title"
   link_supplemental_metadata: "Sample_ID"
   match_regex: "(N\\d+)"
@@ -493,18 +520,24 @@ munoz-ucros2021drought:
     "rhizosphere metagenome": "Salix purpurea"
   inoculum_col: "Microbiome [sample]"
   inocula:
-    "WET": "Other"
-    "DRY": "DroughtLegacy"
-    "STERILE": "Other"
-    "PREDRY": "None"
-    "PREWET": "None"
-  sample_type_col: "Microbiome [sample]"
-  sample_types:
-    "WET": "Plant-associated"
-    "DRY": "Plant-associated"
-    "STERILE": "Plant-associated"
-    "PREDRY": "Inoculum soil"
-    "PREWET": "Inoculum soil"
+    "^WET$": "Control"
+    "^DRY$": "DroughtLegacy"
+    "^STERILE$": "Control"
+    "^PREDRY$": "None"
+    "^PREWET$": "None"
+  inocula_subtypes:
+    "^WET$": "Wet"
+    "^DRY$": "DroughtLegacy"
+    "^STERILE$": "Control"
+    "^PREDRY$": "None"
+    "^PREWET$": "None"
+  is_plant_associated_col: "Microbiome [sample]"
+  is_plant_associated:
+    "^WET$": "Yes"
+    "^DRY$": "Yes"
+    "^STERILE$": "Yes"
+    "^PREDRY$": "No"
+    "^PREWET$": "No"
   # I did this manually by adding length increase and length
   # This should be modified to be done in the code
   height_col: "Length"
@@ -521,21 +554,23 @@ zhang2022cross:
     ".*D.*": "Drought"
     ".*I.*": "None"
   # Dummy column
-  host_col: "Tax ID"
+  host_col: "Organism"
   hosts:
-    "410658": "PACMAD clade"
+    "soil metagenome": "PACMAD clade"
   hosts_ungrouped:
-    "410658": "Zea mays"
+    "soil metagenome": "Zea mays"
   inoculum_col: "Name"
   inocula:
     "^A.*": "DroughtLegacy"
-    "^O.*": "Other"  
-  sample_type_col: "Name"
-  sample_types:
-    # Contains I
-    ".*I.*": "Inoculum soil"
+    "^O.*": "Control"
+  inocula_subtypes:
+    "^A.*": "DroughtLegacy"
+    "^O.*": "Wet"  
+  is_plant_associated_col: "Name"
+  is_plant_associated:
+    ".*I.*": "No"
     # Does not contain I
-    "^[^I]*$": "Plant-associated" 
+    "^[^I]*$": "Yes"
 
 colors:
   "Xu et al. (2018)": "#FAC72F"

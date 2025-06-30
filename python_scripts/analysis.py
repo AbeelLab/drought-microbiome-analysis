@@ -98,41 +98,29 @@ def process_permanova(level,
 
     return r_squared
 
-def run_limma_diff_abundance_treatment(level,
-                                       merged_file,
-                                       p_val=0.001,
-                                       formula="Treatment + Study + HostSpecific",
-                                       variable="Treatment",
-                                       base="Control",
-                                       condition="Drought"):
-    df = pd.read_csv(merged_file, sep='\t', index_col=0)
-    print(df)
-
+def run_limma_diff_abundance(dataset,
+                             p_val=0.05,
+                             formula="Treatment + Study + HostSpecific + Study * HostSpecific",
+                             variable="Treatment",
+                             base="Control",
+                             condition="Drought",
+                             correction="BH"):
     pandas2ri.activate()
 
     # Load required R packages
     limma = importr('limma')
     edgeR = importr('edgeR')
 
-    # Dependent variables
-    taxonomic_features = [col for col in df.columns if "p__" in col]
-
-    # Variables (columns) that may lead to undesired batch effects
-    # Because Primers and regions are so dependent on Study, they should be removed
-    # if batch effects for Study are removed
-    be_vars = ["Study"]
-
-    # Variables that lead to biological variation (should be kept)
-    bio_vars = ["HostSpecific", "Location", "SoilType", "Treatment", "Inoculum"]
-
     # limma input requires separate metadata and transposed abundance matrix
-    abundance_df = df[taxonomic_features]
-    metadata_df = df[bio_vars + be_vars].astype("category")
-    metadata_df = metadata_df.dropna(subset=['Treatment'])
-    abundance_df = abundance_df.loc[metadata_df.index, :]
-    abundance_r = pandas2ri.py2rpy(abundance_df.T)
+    counts_df = dataset.get_counts_features()
+    metadata_df = dataset.get_metadata()
+
+    assert not counts_df.isna().values.any(), "Count table includes NaNs"
+    assert not metadata_df[variable].isna().values.any(), f"NaN {variable} values"
+    
+    counts_r = pandas2ri.py2rpy(counts_df.T)
     metadata_r = pandas2ri.py2rpy(metadata_df)
-    robjects.globalenv['v'] = abundance_r
+    robjects.globalenv['v'] = counts_r
     robjects.globalenv['metadata'] = metadata_r
 
     # Fit limma
@@ -144,6 +132,7 @@ def run_limma_diff_abundance_treatment(level,
     dge <- calcNormFactors(dge)
 
     # Control is the baseline
+    metadata${variable} <- as.factor(metadata${variable})
     metadata${variable} <- relevel(metadata${variable}, ref="{base}")
     design <- model.matrix(~ {formula}, data=metadata)
 
@@ -154,7 +143,7 @@ def run_limma_diff_abundance_treatment(level,
     fit <- lmFit(v_voom, design)
     fit <- eBayes(fit)
 
-    tt <- topTable(fit, coef="{variable}{condition}", p.value={p_val}, number=Inf, adjust.method="BH")
+    tt <- topTable(fit, coef="{variable}{condition}", p.value={p_val}, number=Inf, adjust.method="{correction}")
     ''')
 
     tt_df = pandas2ri.rpy2py(robjects.globalenv['tt'])
@@ -166,96 +155,6 @@ def run_limma_diff_abundance_treatment(level,
             'adj.P.Val': row['adj.P.Val']
         }
 
+    print(f"[INFO] Found {len(results)} DA features for {dataset.dataset_name} with p={p_val}")
+
     return results
-
-
-def run_external_signature_validation(diff_abundance_results,
-                                      config,
-                                      level=6,
-                                      level_shortcut="g__"):
-    unfiltered_dfs = dict()
-    filtered_dfs = dict()
-    metadata_dfs = dict()
-    for study in config["inoculum_studies"]:
-        study_path = os.path.join(config["data_path"],
-                                  study)
-        # filter features based on abundance/prevalence
-        # this will also generate a file with all features (unfiltered)
-        filtered_tsv, _ = preprocess_and_filter(study_path,
-                                                study,
-                                                level,
-                                                level_shortcut)
-        # I shouldn't do this
-        unfiltered_tsv = filtered_tsv.replace("filtered",
-                                              "before-feature-filtering")
-
-        filtered_dfs[study] = pd.read_csv(filtered_tsv, sep='\t', index_col=0).drop('Study', axis=1)
-        unfiltered_dfs[study] = pd.read_csv(unfiltered_tsv, sep='\t', index_col=0).drop("Study", axis=1)
-
-        # process metadata
-        metadata_file = process_metadata(study_path,
-                                         study,
-                                         config[study])
-        metadata_dfs[study] = pd.read_csv(metadata_file, sep='\t', index_col=0)
-
-    # intersect features from all studies
-    all_features_intersection = set.intersection(*[set(df.columns.tolist())
-                                                   for df in unfiltered_dfs.values()])
-    filtered_features_intersection = list(set.intersection(*[set(df.columns.tolist())
-                                                             for df in filtered_dfs.values()]))
-
-    # intersect features with signature
-    signature_taxa = diff_abundance_results.keys()
-    signature_intersection = list(all_features_intersection.intersection(signature_taxa))
-    all_features_intersection = list(all_features_intersection)
-
-    # reduce dataset sizes to intersection
-    unfiltered_dfs = {study: df[all_features_intersection]
-                      for study, df in unfiltered_dfs.items()}
-    filtered_dfs = {study: df[filtered_features_intersection]
-                    for study, df in filtered_dfs.items()}
-    signature_dfs = {study: df[signature_intersection]
-                    for study, df in unfiltered_dfs.items()}
-    # normalize signature features
-    signature_dfs = {study: df.div(df.sum(axis=1), axis=0) * 100
-                    for study, df in signature_dfs.items()}
-
-    experiments = {"Unfiltered feature set": unfiltered_dfs,
-                   "Filtered feature set": filtered_dfs,
-                   "Signature feature set": signature_dfs}
-
-    print(unfiltered_dfs['swift2024drought'])
-    print(filtered_dfs['swift2024drought'])
-    print(signature_dfs['swift2024drought'])
-
-    performance = dict()
-    for exp_name, dfs in experiments.items():
-        performance[exp_name] = {}
-        studies = list(dfs.keys())
-
-        for test_study in studies:
-            train_studies = [s for s in studies if s != test_study]
-            X_train = pd.concat([dfs[s] for s in train_studies], axis=0)
-            # predict Treatment (Drought=1 vs Control=0)
-            y_train = pd.concat([metadata_dfs[s].loc[dfs[s].index,
-                                                     'Treatment'].apply(lambda x: 1 if x == 'Drought' else 0)
-                                 for s in train_studies])
-            # test study is the one left over
-            X_test = dfs[test_study]
-            y_test = metadata_dfs[test_study].loc[X_test.index,
-                                                  'Treatment'].apply(lambda x: 1 if x == 'Drought' else 0)
-
-            # fit RF
-            clf = RandomForestClassifier(n_estimators=100, random_state=0)
-            clf.fit(X_train.values, y_train.values)
-            preds = clf.predict(X_test.values)
-            performance[exp_name][test_study] = accuracy_score(y_test.values, preds)
-
-    print(performance)
-    performance_df = pd.DataFrame(performance).T
-    print(performance_df)
-
-    # x axis: test study name
-    # y axis: feature set (number of features)
-    
-    return performance_df

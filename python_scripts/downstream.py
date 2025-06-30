@@ -1,359 +1,318 @@
-import yaml
-import os
 import argparse
-
-from preprocess_and_filter import preprocess_and_filter, process_metadata
-from merge_datasets import merge_datasets
-from plotting import *
-from analysis import process_permanova, run_limma_diff_abundance_treatment, run_external_signature_validation
-
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.dummy import DummyClassifier
-from sklearn.model_selection import StratifiedKFold, cross_val_score
-from sklearn.preprocessing import LabelEncoder
-
-from sklearn.linear_model import ElasticNetCV
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import cross_val_predict
-from scipy.stats import spearmanr, pearsonr
-import numpy as np
-from sklearn.pipeline import Pipeline
-
-import seaborn as sns
+from copy import deepcopy
 import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
-import networkx as nx
+import numpy as np
+import os
+import pandas as pd
+import pickle
+from scipy.stats import spearmanr
+import yaml
 
-from skbio.diversity import alpha_diversity, beta_diversity
-from skbio.stats.distance import permanova
-from scipy.spatial.distance import pdist, squareform
+from analysis import run_limma_diff_abundance
+from dataset import Dataset
+from plotting import make_volcano_plot, plot_correlations, draw_network, plot_lfc_diff_abundance
+from taxonomy_utils import get_last_taxonomic_level
+from utils import biom_to_tsv, process_metadata
 
 with open('config.yml') as f:
     config = yaml.safe_load(f)
 
-def merge_stats():
-    for level, level_name in config["levels"].items():
-        feature_stats_outfile = os.path.join(config["data_path"], f"feature_stats_l{level}.tsv")
-        sample_stats_outfile = os.path.join(config["data_path"], f"sample_stats_l{level}.tsv")
-        feature_lines = []
-        sample_lines = []
-        header_written_feature = False
-        header_written_sample = False
-        for study in config["drought_studies"]:
-            study_path = os.path.join(config["data_path"], study)
-            feature_file = os.path.join(study_path,
-                                        f"feature_filtering_stats_l{level}.tsv")
-            sample_file = os.path.join(study_path,
-                                       f"sample_filtering_stats_l{level}.tsv")
-            if os.path.exists(feature_file):
-                with open(feature_file, 'r') as f:
-                    lines = f.readlines()
-                if not header_written_feature:
-                    feature_lines.append(lines[0].strip())
-                    header_written_feature = True
-                feature_lines.append(lines[1].strip())
-            if os.path.exists(sample_file):
-                with open(sample_file, 'r') as f:
-                    lines = f.readlines()
-                if not header_written_sample:
-                    sample_lines.append(lines[0].strip())
-                    header_written_sample = True
-                sample_lines.append(lines[1].strip())
-        with open(feature_stats_outfile, 'w') as f:
-            f.write("\n".join(feature_lines) + "\n")
-        with open(sample_stats_outfile, 'w') as f:
-            f.write("\n".join(sample_lines) + "\n")
+def create_and_filter_study_dataset(study, level):
+    print(f"[INFO] Study: {study}")
+    study_path = os.path.join(config["data_path"],
+                              study)
 
-def compute_pairwise_lfc(counts_df, meta_df, group_col, group1, group2, taxon, max_pairs=500):
-    # Ensure taxon is a column
-    if taxon not in counts_df.columns:
-        return np.array([])
-
-    # Compute CPM per sample, log2-transform
-    cpm = counts_df.div(counts_df.sum(axis=1), axis=0) * 1e6
-    logcpm = np.log2(cpm + 1)
-
-    # Samples in each group
-    g1 = meta_df.index[meta_df[group_col] == group1]
-    g2 = meta_df.index[meta_df[group_col] == group2]
-    g1 = [s for s in g1 if s in logcpm.index]
-    g2 = [s for s in g2 if s in logcpm.index]
-    if not g1 or not g2:
-        return np.array([])
-
-    # Sample pairs
-    pairs = min(max_pairs, len(g1) * len(g2))
-    idx1 = np.random.choice(g1, size=pairs, replace=True)
-    idx2 = np.random.choice(g2, size=pairs, replace=True)
-
-    # Compute LFC for taxon by pairing samples
-    return logcpm.loc[idx1, taxon].values - logcpm.loc[idx2, taxon].values
-
-def compute_alpha_beta_bars(df, label):
-    # Separate metadata and count data
-    meta = df[['Inoculum']].copy()
-    counts = df.drop(columns=[col for col in df.columns if col not in meta.columns])
-
-    # Keep only numeric (taxa) columns
-    counts = counts.select_dtypes(include=[np.number])
-
-    # Compute alpha diversity (Shannon)
-    alpha = alpha_diversity('shannon', counts.values, ids=counts.index)
-
-    # Compute beta diversity (Bray-Curtis)
-    beta_dm = beta_diversity('braycurtis', counts.values, ids=counts.index)
-
-    # Compute within-group average distances
-    results = []
-    for group in ['DroughtLegacy', 'Other']:
-        sample_ids = meta[meta['Inoculum'] == group].index
-        sample_ids = [s for s in sample_ids if s in counts.index]
-
-        if len(sample_ids) < 2:
-            continue
-
-        # Alpha: average per sample
-        alpha_vals = alpha.loc[sample_ids]
-        alpha_mean = alpha_vals.mean()
-
-        # Beta: average pairwise distance within group
-        sub_dm = beta_dm.filter(sample_ids)
-        dists = sub_dm.condensed_form()
-        beta_mean = dists.mean()
-
-        results.append({
-            'Inoculum': group,
-            'Dataset': label,
-            'Alpha Diversity': alpha_mean,
-            'Beta Diversity': beta_mean
-        })
-
-    return pd.DataFrame(results)
-
-def run_preprocessing():
-    processed_files = dict()
-
-    processed_files[0] = dict()
-    processed_files[1] = dict()
-    for level in config["levels"]:
-        print(f"[INFO] Level: {level}")
-        processed_files[0][level] = dict()
-        processed_files[1][level] = dict()
-        
-        for study in config["drought_studies"]:
-            print(f"[INFO] Study: {study}")
-            study_path = os.path.join(config["data_path"],
-                                      study)
-            processed_tsv, processed_tsv_counts = preprocess_and_filter(study_path,
-                                                                        study,
-                                                                        level,
-                                                                        config["levels"][level][0] + "__")
-            processed_files[0][level][study] = processed_tsv
-            processed_files[1][level][study] = processed_tsv_counts
+    # Convert .biom files produced by QIIME
+    comp_dir = os.path.join(study_path,
+                            f"composition_table_l{level}")
+    taxonomy_counts_df = biom_to_tsv(comp_dir)
+    # Process metadata
+    metadata_df = process_metadata(study_path,
+                                   study,
+                                   config[study])
+            
+    # Initialize Dataset
+    dataset_name = f"{study}_l{level}"
+    ds = Dataset(taxonomy_counts_df=taxonomy_counts_df,
+                 metadata_df=metadata_df,
+                 dataset_name=dataset_name,
+                 data_path=config["data_path"],
+                 is_filtered=False)
+    ds.filter_features()
+    print("Samples: ", len(taxonomy_counts_df))
+    # Save filtered Dataset as .tsv
+    ds.save_dataset()
     
-    with open(config["processed_files"], 'w') as f:
-        yaml.dump(processed_files, f, default_flow_style=False)
+    return ds
+
+def run_preprocessing(studies, levels, save_as):
+    processed_datasets = dict()
+
+    for level in levels:
+        print(f"[INFO] Processing level: {level}")
+        processed_datasets[level] = dict()
+        
+        for study in studies:
+            ds = create_and_filter_study_dataset(study, level)
+            processed_datasets[level][study] = ds
+    
+    # Pickle Dataset dictionary
+    with open(save_as, 'wb') as handle:
+        pickle.dump(processed_datasets,
+                    handle,
+                    protocol=pickle.HIGHEST_PROTOCOL)
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--preprocess", action=argparse.BooleanOptionalAction)
+    parser.add_argument("--preprocess",
+                        action=argparse.BooleanOptionalAction)
     args = parser.parse_args()
     preprocess = args.preprocess
 
-    if (not os.path.exists(config["processed_files"])) or preprocess:
-        run_preprocessing()
+    if preprocess:
+        run_preprocessing(config["drought_studies"], [6], config["processed_drought_datasets"])
+        run_preprocessing(config["inoculum_studies"], [6], config["processed_inoculum_datasets"])
 
-    with open(config["processed_files"]) as f:
-        processed_files = yaml.safe_load(f)
-
-    metadata_files = dict()
-    studies = config["drought_studies"]
-
-    for study in studies:
-        print(study)
-        study_path = os.path.join(config["data_path"], study)
-        metadata_file = process_metadata(study_path,
-                                         study,
-                                         config[study])
-        metadata_files[study] = metadata_file
-
-    for level, level_name in config["levels"].items():
-        merge_stats()
-
+    with open(config["processed_drought_datasets"], 'rb') as handle:
+        processed_drought_datasets = pickle.load(handle)
+    with open(config["processed_inoculum_datasets"], 'rb') as handle:
+        processed_inoculum_datasets = pickle.load(handle)        
     
-    for level, level_name in [[6, "genus"]]:#config["levels"].items():
-        merged_file_normalized = merge_datasets(config["data_path"],
-                                                level,
-                                                processed_files[0][level],
-                                                metadata_files,
-                                                "normalized")
-        merged_file_counts = merge_datasets(config["data_path"],
-                                            level,
-                                            processed_files[1][level],
-                                            metadata_files,
-                                            "counts")
+    for level, level_name in [[6, "genus"]]:
+        # Merge drought datasets
+        dataset_name = f"merged_l{level}"
+        list_of_datasets = [processed_drought_datasets[level][study]
+                            for study in config["drought_studies"]]
+        merged_dataset = Dataset.merge_datasets(list_of_datasets,
+                                                config["data_path"],
+                                                merged_dataset_name=dataset_name)
+        # Save merged dataset
+        merged_dataset.save_dataset()
 
-        process_permanova(level,
-                          config)
+        # ---> Downstream analysis
+        # Find drought signature
+        correction = "holm"
+        if not os.path.exists(f"drought_signature_{correction}.pkl"):
+            drought_signature = run_limma_diff_abundance(merged_dataset,
+                                                         p_val=0.001,
+                                                         correction=correction)
+            with open(f"drought_signature_{correction}.pkl", 'wb') as handle:
+                pickle.dump(drought_signature,
+                            handle,
+                            protocol=pickle.HIGHEST_PROTOCOL)
+        else:
+            with open(f"drought_signature_{correction}.pkl", 'rb') as handle:
+                drought_signature = pickle.load(handle)
 
-        # Differential abundance analysis
-        diff_abundance_results = run_limma_diff_abundance_treatment(level,
-                                                                    merged_file_counts)
-        # Filter out "uncultured" bacteria
-        # (this should have been done at the beginning so I need to fix this)
-        filtered_results = {key: diff_abundance_results[key]
-                            for key in diff_abundance_results
-                            if "uncultured" not in key}
-        diff_abundance_results = filtered_results
+        # Filter drought signature
+        drought_signature = {taxon: {'logFC': drought_signature[taxon]['logFC'],
+                                     'adj.P.Val': drought_signature[taxon]['adj.P.Val']}
+                             for taxon in drought_signature
+                             if abs(drought_signature[taxon]['logFC']) >= 0.25}
+        print("Drought signature size:", len(drought_signature))
 
-        diff_abundance_results_inoculum = dict()
-        success = ["moore2023microbial", "zhang2022cross"]
-        fail = ["swift2024drought", "munoz-ucros2021drought"]
-        outlier_taxa = dict()
-        all_outlier_taxa = dict()
-        for studies, outcome in [[success, "_success"], [fail, "_fail"]]:
-            processed_inoculum_files_counts = dict()
-            metadata_inoculum_files = dict()
-            
-            for study in studies:
-                study_path = os.path.join(config["data_path"],
-                                          study)
-                _, filtered_tsv_counts = preprocess_and_filter(study_path,
-                                                               study,
-                                                               level,
-                                                               config["levels"][level][0] + "__")
-                processed_inoculum_files_counts[study] = filtered_tsv_counts
-
-                # process metadata
-                metadata_file = process_metadata(study_path,
-                                                 study,
-                                                 config[study])
-                metadata_inoculum_files[study] = metadata_file
-
-            merged_file_counts_inoculum = merge_datasets(config["data_path"],
-                                                         level,
-                                                         processed_inoculum_files_counts,
-                                                         metadata_inoculum_files,
-                                                         "counts" + outcome,
-                                                         inoculum_studies=True)
-            model = "Inoculum + Study"
-            diff_abundance_results_inoculum[outcome] = run_limma_diff_abundance_treatment(level,
-                                                                                          merged_file_counts_inoculum,
-                                                                                          p_val=1,
-                                                                                          formula=model,
-                                                                                          variable="Inoculum",
-                                                                                          base="Other",
-                                                                                          condition="DroughtLegacy")
-            save_as = os.path.join(config["plotting_dir"],
-                                   f"volcano_plot{outcome}.svg")
-            all_outlier_taxa[outcome] = make_volcano_plot(diff_abundance_results_inoculum[outcome],
-                                                          diff_abundance_results,
-                                                          save_as)
-            outlier_taxa[outcome] = all_outlier_taxa[outcome][:5]
-
-        print(outlier_taxa)
-        plot_lfc_diff_abundance(diff_abundance_results,
+        plot_lfc_diff_abundance(drought_signature,
                                 level,
                                 config)
-        
 
+        # Further process inoculum studies
+        for treatment in ["Control", "Drought"]:
+            per_treatment_datasets = dict()
+            for study, inoculum_dataset in processed_inoculum_datasets[level].items():
+                ds = deepcopy(inoculum_dataset)
+                # Remove rows that are not Plant-associated (i.e. inoculum soil samples)
+                ds.filter_rows(lambda df: df['Sample type'] == 'Plant-associated')
+                # Keep only Drought samples
+                ds.filter_rows(lambda df: df['Treatment'] == treatment)
+                # Remove sterilized controls
+                # (only compare wet and drought-legacy inocula)
+                ds.filter_rows(lambda df: df['InoculumSubtypes'] != "Control")
 
-    # Load dataframes that already contain metadata in columns
-    original_df = pd.read_csv(
-        os.path.join(config['data_path'], 'merged_taxonomy_counts_l6.tsv'), sep='\t', index_col=0
-    )
-    success_df = pd.read_csv(
-        os.path.join(config['data_path'], 'merged_taxonomy_counts_success_l6.tsv'), sep='\t', index_col=0
-    )
-    fail_df = pd.read_csv(
-        os.path.join(config['data_path'], 'merged_taxonomy_counts_fail_l6.tsv'), sep='\t', index_col=0
-    )
+                print(f"[INFO] Re-filtering features after removing samples")
+                # After removing samples, re-do feature filtering (less strict)
+                ds.filter_features()
 
-    dfs = {'Success': success_df, 'Fail': fail_df, 'Original': original_df}
-    grouping = {
-        'Original': ('Treatment', 'Drought', 'Control'),
-        'Success': ('Inoculum', 'DroughtLegacy', 'Other'),
-        'Fail': ('Inoculum', 'DroughtLegacy', 'Other')
-    }
+                if level not in per_treatment_datasets:
+                    per_treatment_datasets[level] = {study: ds}
+                else:
+                    per_treatment_datasets[level][study] = ds
+               
+            inoculum_studies = {"positive": config["positive_inoculum_studies"],
+                                "negative": config["negative_inoculum_studies"]}
+            merged_inoculum_datasets_by_outcome = dict()
+            for outcome, outcome_study_list in inoculum_studies.items():
+                # Merge per outcome type
+                dataset_name = f"merged_inoculum_{outcome}_l{level}"
+                list_of_datasets = [per_treatment_datasets[level][study]
+                                    for study in outcome_study_list]
+                merged_dataset = Dataset.merge_datasets(list_of_datasets,
+                                                        config["data_path"],
+                                                        merged_dataset_name=dataset_name)
+                merged_dataset.save_dataset()
+                merged_inoculum_datasets_by_outcome[outcome] = merged_dataset
 
-    # Combine all outlier taxa
-    taxa_all = list({
-        *outlier_taxa.get('_success', []),
-        *outlier_taxa.get('_fail', []),
-        *outlier_taxa.get('original', [])
-    })
+            # Perform differential abundance by inoculum type
+            da_inoculum_by_outcome = dict()
+            for outcome, dataset in merged_inoculum_datasets_by_outcome.items():
+                # p_val set to 1 so we return all for plotting
+                da_results = run_limma_diff_abundance(dataset,
+                                                      p_val=1,
+                                                      formula="Inoculum + Study",
+                                                      variable="Inoculum",
+                                                      base="Control",
+                                                      condition="DroughtLegacy")
+                da_inoculum_by_outcome[outcome] = da_results
 
-    # Prepare long-form DataFrame for violin plot
-    plot_rows = []
-    for label, df_full in dfs.items():
-        group_col, g1, g2 = grouping[label]
-        meta_df = df_full[[group_col]]
-        counts_df = df_full.drop(columns=[col for col in df_full if "p__" not in col])
-        for taxon in taxa_all:
-            lfc_vals = compute_pairwise_lfc(counts_df, meta_df, group_col, g1, g2, taxon)
-            for val in lfc_vals:
-                plot_rows.append({'Taxon': taxon, 'Dataset': label, 'LFC': val})
+            # Make volcano plot per outcome, highlight drought signature
+            for outcome, da_results in da_inoculum_by_outcome.items():
+                save_as = os.path.join(config["plotting_dir"],
+                                       f"volcano_{outcome}_l{level}_{treatment.lower()}.svg")
+                n = len(merged_inoculum_datasets_by_outcome[outcome].get_counts_features_columns())
+                make_volcano_plot(da_inoculum_by_outcome[outcome],
+                                  drought_signature,
+                                  save_as,
+                                  total_num_features=n)
 
-    plot_df = pd.DataFrame(plot_rows)
+            # Case study: outliers for Drought, positive outcome
+            if treatment == "Drought":
+                # Per study analysis
+                x = da_inoculum_by_outcome["positive"]
+                outlier_taxa = [taxa for taxa in x
+                                if (abs(x[taxa]["logFC"]) >= 2 and x[taxa]["adj.P.Val"] <= 0.05)]
+                outlier_taxa_signature = [taxa for taxa in outlier_taxa
+                                          if taxa in drought_signature]
+                print("Outlier drought signature taxa:", len(outlier_taxa_signature))
 
-    # Plot violin: for each Taxon, Datasets side-by-side
-    plt.figure(figsize=(max(6, len(taxa_all) * 1.5), 6))
-    sns.violinplot(
-        data=plot_df,
-        x='Taxon',
-        y='LFC',
-        hue='Dataset',
-        order=taxa_all,
-        hue_order=['Success', 'Fail', 'Original'],
-        dodge=True,
-        cut=0
-    )
-    plt.axhline(0, color='gray', linestyle='--')
-    plt.xlabel('Taxon')
-    plt.ylabel('log2 fold change')
-    plt.title('Pairwise log2-Fold Change Distributions')
-    plt.xticks(rotation=45, ha='right')
-    plt.legend(title='Dataset', loc='upper right')
-    plt.tight_layout()
+                # --- Check if these are confirmed by the two studies individually
+                for study in inoculum_studies["positive"]:
+                    print("Study: ", study)
+                    ds = per_treatment_datasets[level][study]
+                    da_per_study = run_limma_diff_abundance(ds,
+                                                            p_val=0.05,
+                                                            formula="Inoculum",
+                                                            variable="Inoculum",
+                                                            base="Control",
+                                                            condition="DroughtLegacy")
 
-    out_png = os.path.join(config['plotting_dir'], 'violin_lfc_all_taxa.png')
-    plt.savefig(out_png)
-    plt.close()
+                    common = set(da_per_study).intersection(set(outlier_taxa_signature))
+                    print("Common: ", len(common))
+                    print(common)
 
-    # Run for both datasets
-    alpha_beta_df = pd.concat([
-        compute_alpha_beta_bars(success_df, 'Success'),
-        compute_alpha_beta_bars(fail_df, 'Fail')
-    ])
+                # --- Correlation analysis for successful inoculation
+                save_as = os.path.join(config["plotting_dir"],
+                                       f"correlations_with_signature_positive_l{level}.svg")
+                merged_inoculum_datasets_by_outcome["positive"].apply_clr()
+                assert merged_inoculum_datasets_by_outcome["positive"].is_clr_transformed
+                plot_correlations(da_inoculum_by_outcome["positive"],
+                                  drought_signature,
+                                  merged_inoculum_datasets_by_outcome["positive"],
+                                  save_as)
 
-    # Convert to long-form for plotting
-    alpha_long = alpha_beta_df.melt(
-        id_vars=['Inoculum', 'Dataset'],
-        value_vars=['Alpha Diversity', 'Beta Diversity'],
-        var_name='Metric',
-        value_name='Diversity'
-    )
+                # --- Heatmap
+                matrix = [[0, 0], [0, 0]]
+                for taxon in da_inoculum_by_outcome["positive"]:
+                    if taxon in drought_signature:
+                        if drought_signature[taxon]['logFC'] > 0 and da_inoculum_by_outcome["positive"][taxon]['logFC'] > 0:
+                            matrix[1][1] += 1
+                        if drought_signature[taxon]['logFC'] > 0 and da_inoculum_by_outcome["positive"][taxon]['logFC'] < 0:
+                            matrix[1][0] += 1
+                        if drought_signature[taxon]['logFC'] < 0 and da_inoculum_by_outcome["positive"][taxon]['logFC'] > 0:
+                            matrix[0][1] += 1
+                        if drought_signature[taxon]['logFC'] < 0 and da_inoculum_by_outcome["positive"][taxon]['logFC'] < 0:
+                            matrix[0][0] += 1
+                print(matrix)
+                
+                depleted = 0
+                enriched = 0
+                for taxon in da_inoculum_by_outcome["positive"]:
+                    if da_inoculum_by_outcome["positive"][taxon]['logFC'] > 0:
+                        enriched +=1
+                    else:
+                        depleted += 1
+                print("Enriched: ", enriched)
+                print("Depleted: ", depleted)
+                
+                print(drought_signature)
 
-    # Plot
-    plt.figure(figsize=(8, 6))
-    sns.barplot(
-        data=alpha_long,
-        x='Inoculum',
-        y='Diversity',
-        hue='Metric',
-        palette='muted',
-        ci='sd',
-        dodge=True
-    )
-    plt.title("Alpha and Beta Diversity by Inoculum Type")
-    plt.xlabel("Inoculum")
-    plt.ylabel("Diversity Index")
-    plt.legend(title='Diversity Metric')
-    plt.tight_layout()
+                # --- Bar plot
+                data = dict()
+                for taxon in outlier_taxa_signature:
+                    data[get_last_taxonomic_level(taxon)] = {'inoculum': da_inoculum_by_outcome["positive"][taxon]['logFC'],
+                                                             'drought signature': drought_signature[taxon]['logFC']}
 
-    plt.savefig(os.path.join(config["plotting_dir"], 'alpha_beta_diversity_by_inoculum.png'))
-    plt.close()
+                # horizontal bar plot
+                # per taxon: two bars
+                # one for inoculum, one for drought signature
+                taxa = list(data.keys())
+                inoculum_vals = [data[t]['inoculum'] for t in taxa]
+                drought_vals = [data[t]['drought signature'] for t in taxa]
 
+                # Bar positions
+                ind = np.arange(len(taxa))
+                width = 0.35
+
+                fig, ax = plt.subplots(figsize=(3, len(taxa)))
+                ax.barh(ind - width/2, inoculum_vals, height=width, label='Inoculum', color='steelblue')
+                ax.barh(ind + width/2, drought_vals, height=width, label='Drought signature', color='salmon')
+                    
+                ax.set_yticks(ind)
+                ax.set_yticklabels(taxa)
+                ax.axvline(0, color='grey', linewidth=0.8)
+                ax.set_xlabel('log2 Fold Change')
+                ax.set_title('Outlier Taxa – Positive Outcome')
+                ax.legend()
+                    
+                plt.tight_layout()
+
+                save_as = os.path.join(config["plotting_dir"],
+                                           f"bar_outlier_positive.svg")
+                plt.savefig(save_as)
+                plt.close()
+                    
+
+                # --- Network analysis
+                for inoculation_status in ["DroughtLegacy", "Control"]:                    
+                    # Make edge list
+                    edge_list = []
+                    ds = deepcopy(merged_inoculum_datasets_by_outcome["positive"])
+                    ds.filter_rows(lambda df: df['Inoculum'] == inoculation_status)
+                    for taxa1 in outlier_taxa_signature:
+                        for taxa2 in outlier_taxa_signature:
+                            if taxa1 != taxa2:
+                                res = spearmanr(ds.get_counts_feature(taxa1),
+                                                ds.get_counts_feature(taxa2))
+                                if abs(res.statistic) > 0.5:
+                                    edge_list.append((get_last_taxonomic_level(taxa1),
+                                                      get_last_taxonomic_level(taxa2),
+                                                      res.statistic))
+                                else:
+                                    edge_list.append((get_last_taxonomic_level(taxa1),
+                                                      get_last_taxonomic_level(taxa2),
+                                                      0))
+                                        
+                    edge_df = pd.DataFrame(edge_list,
+                                           columns=['source', 'target', 'weight'])
+                
+                    node_colors = dict()
+                    for node in outlier_taxa:
+                        if node in drought_signature and drought_signature[node]["logFC"] < 0:
+                            node_colors[get_last_taxonomic_level(node)] = "black"
+                        elif node in drought_signature and drought_signature[node]["logFC"] >= 0:
+                            node_colors[get_last_taxonomic_level(node)] = "#fc8135ff"
+                        else:
+                            node_colors[get_last_taxonomic_level(node)] = "gray"
+
+                    save_as = os.path.join(config["plotting_dir"],
+                                       f"network_positive_l{level}_{inoculation_status.lower()}.svg")
+                    draw_network(edge_df,
+                                 node_colors,
+                                 save_as)
+
+                for taxa in outlier_taxa_signature:
+                    print(treatment)
+                    print(taxa)
+                    print(x[taxa])
+                    print(drought_signature[taxa])
 
 if __name__ == "__main__":
     main()

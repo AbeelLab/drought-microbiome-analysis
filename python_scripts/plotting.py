@@ -12,6 +12,8 @@ from skbio.stats.ordination import pcoa
 from scipy.spatial.distance import pdist, squareform
 import math
 from matplotlib.patches import Patch
+from scipy.stats import spearmanr
+import networkx as nx
 
 def trim_taxonomy(tax_str):
     parts = tax_str.split(";")
@@ -529,88 +531,131 @@ def plot_diff_abundance_comparison(plotted_labels,
 # taxa: {'logFC': ..., 'adj.P.Val': ...}
 def make_volcano_plot(diff_abundance_results_inoculum,
                       diff_abundance_results,
-                      save_as):
-    # Convert input dictionary to DataFrame
-    df_inoculum = pd.DataFrame.from_dict(diff_abundance_results_inoculum, orient='index')
-    df_inoculum = df_inoculum.dropna(subset=['logFC', 'adj.P.Val'])
-    df_inoculum['-log10(padj)'] = -np.log10(df_inoculum['adj.P.Val'])
+                      save_as,
+                      total_num_features=None):
+    df = pd.DataFrame.from_dict(diff_abundance_results_inoculum, orient='index')
+    df.dropna(subset=['logFC', 'adj.P.Val'], inplace=True)
+    df['-log10(padj)'] = -np.log10(df['adj.P.Val'])
 
-    # Assign default color and size
-    df_inoculum['color'] = 'gray'
-    df_inoculum['size'] = 20  # default size for gray points
+    df['color'] = 'gray'
+    df['size'] = 40
+    for taxon, vals in diff_abundance_results.items():
+        if taxon in df.index and (lf := vals.get('logFC')) is not None:
+            df.at[taxon, 'color'] = '#ff863d' if lf > 0 else 'black'
+            df.at[taxon, 'size'] = 60
 
-    # Update color and size based on presence in second dict
-    for taxon in df_inoculum.index:
-        if taxon in diff_abundance_results:
-            logfc_other = diff_abundance_results[taxon].get('logFC')
-            if logfc_other is not None:
-                if logfc_other > 0:
-                    df_inoculum.at[taxon, 'color'] = '#ff863d'
-                else:
-                    df_inoculum.at[taxon, 'color'] = 'black'
-                df_inoculum.at[taxon, 'size'] = 40
+    # Main plot with colored points
+    plt.figure(figsize=(6, 8))
+    sns.scatterplot(data=df[df.color=='gray'], x='logFC', y='-log10(padj)',
+                    color='gray', alpha=0.5, s=40, edgecolor=None, legend=False)
+    sns.scatterplot(data=df[df.color!='gray'], x='logFC', y='-log10(padj)',
+                    hue='color', palette={'black':'black','#ff863d':'#ff863d'},
+                    size='size', sizes=(60,60), legend=False, edgecolor=None)
 
-    # Plot gray dots first
-    plt.figure(figsize=(10, 6))
-    df_gray = df_inoculum[df_inoculum['color'] == 'gray']
-    sns.scatterplot(
-        data=df_gray,
-        x='logFC',
-        y='-log10(padj)',
-        color='gray',
-        alpha=0.8,
-        s=20,
-        edgecolor=None,
-        legend=False
-    )
+    # Stats in title if requested
+    if total_num_features is not None:
+        sig = df[(df['adj.P.Val'] < 0.05) & (df['logFC'].abs() > 2)]
+        n_sig = len(sig)
+        n_col = sig['color'].ne('gray').sum()
+        pct_sig = n_sig / total_num_features if total_num_features else 0
+        pct_col_sig = n_col / n_sig if n_sig else 0
+        title = (
+            f"Volcano Plot | Total: {total_num_features} | "
+            f"Sig: {n_sig} ({pct_sig:.1%}) | "
+            f"Colored (significant): {n_col} ({pct_col_sig:.1%})"
+        )
+    else:
+        title = "Volcano Plot"
 
-    # Plot colored dots on top
-    df_colored = df_inoculum[df_inoculum['color'] != 'gray']
-    sns.scatterplot(
-        data=df_colored,
-        x='logFC',
-        y='-log10(padj)',
-        hue='color',
-        palette={
-            'black': 'black',
-            '#ff863d': '#ff863d'
-        },
-        size='size',
-        sizes=(40, 40),
-        legend=False,
-        edgecolor=None
-    )
+    # Add thresholds
+    plt.axhline(-np.log10(0.05), color='gray', linestyle='--', lw=1)
+    plt.axvline(2, color='gray', linestyle='--', lw=1)
+    plt.axvline(-2, color='gray', linestyle='--', lw=1)
 
-    # Annotate top 5 points above threshold
-    df_label = df_colored[df_colored['-log10(padj)'] > 2]
-    df_label = df_label.sort_values('-log10(padj)', ascending=False).head(5)
-    for taxon, row in df_label.iterrows():
-        plt.text(row['logFC'], row['-log10(padj)'], trim_taxonomy(taxon),
-                 fontsize=8, ha='right', va='bottom')
-
-    # Add dashed lines
-    plt.axhline(-np.log10(0.05), color='gray', linestyle='--', linewidth=1)
-    plt.axvline(0, color='gray', linestyle='--', linewidth=1)
-
-    # Set axis limits
-    plt.xlim(-7, 7)
-    plt.ylim(0, 4)
-
-    # Labels and layout
-    plt.title("Volcano Plot")
-    plt.xlabel("logFC")
-    plt.ylabel("-log10(adjusted p-value)")
+    plt.xlim(-6, 4.5)
+    plt.ylim(0, 4.5)
+    plt.title(title)
+    plt.xlabel('logFC')
+    plt.ylabel('-log10(adjusted p-value)')
     plt.tight_layout()
-
-    # Save
     plt.savefig(save_as)
     plt.close()
 
-    top_taxa = [
-        taxon for taxon, _ in sorted(
-            ((tax, row['adj.P.Val']) for tax, row in df_inoculum.iterrows()
-             if row['color'] != 'gray' and row['-log10(padj)'] > 2),
-            key=lambda x: x[1]
-        )[:5]]
+    # Gray-only version
+    gray_save = save_as.replace('.svg', '_gray.svg')
+    plt.figure(figsize=(6, 8))
+    sns.scatterplot(data=df, x='logFC', y='-log10(padj)',
+                    color='gray', alpha=0.9, s=40, edgecolor=None, legend=False)
+    plt.axhline(-np.log10(0.05), color='gray', linestyle='--', lw=1)
+    plt.axvline(1, color='gray', linestyle='--', lw=1)
+    plt.axvline(-1, color='gray', linestyle='--', lw=1)
+    plt.xlim(-6, 4.5)
+    plt.ylim(0, 4.5)
+    plt.title(title + " (gray only)")
+    plt.xlabel('logFC')
+    plt.ylabel('-log10(adjusted p-value)')
+    plt.tight_layout()
+    plt.savefig(gray_save)
+    plt.close()
 
-    return top_taxa
+    # Return top 5 colored significant taxa
+    top = [t for t, _ in sorted(
+        ((tax, r['adj.P.Val']) for tax, r in df.iterrows() if r.color!='gray' and r['-log10(padj)']>2),
+        key=lambda x: x[1]
+    )[:5]]
+    return top
+
+def plot_correlations(inoculum_da_taxa,
+                      drought_signature,
+                      ds,
+                      save_as):
+    all_correlations = []
+    for inoculum_da in inoculum_da_taxa:
+        for signature_taxa in drought_signature:
+            if (signature_taxa in ds.get_counts_features() and inoculum_da not in signature_taxa):
+                res = spearmanr(ds.get_counts_feature(signature_taxa),
+                                ds.get_counts_feature(inoculum_da))
+                if res.pvalue <= 0.05:
+                    all_correlations.append(res.statistic)
+
+    if all_correlations:
+        plt.figure(figsize=(8, 6))
+        sns.kdeplot(all_correlations, color="dimgray", fill=True, alpha=0.7)
+        plt.xlabel("Spearman")
+        plt.ylabel("Density")
+        plt.title(f"Distribution of significant Spearman correlations\n({len(all_correlations)}")
+        plt.grid(True, linestyle='--', alpha=0.5)
+        plt.savefig(save_as)
+        plt.close()
+    else:
+        print("[WARNING] No significant correlations found.")
+
+# node_colors maps each node name to a color
+def draw_network(edge_df,
+                 node_colors,
+                 save_as):
+    G = nx.from_pandas_edgelist(edge_df,
+                                source='source',
+                                target='target',
+                                edge_attr='weight')
+
+    colors = [node_colors.get(node, 'gray') for node in G.nodes()]
+
+    edge_weights = nx.get_edge_attributes(G, 'weight')
+    edge_colors = ['green' if w > 0 else 'red' for w in edge_weights.values()]
+    edge_widths = [abs(w) for w in edge_weights.values()]
+
+    pos = nx.random_layout(G, seed=42)
+
+    nx.draw_networkx_nodes(G, pos, node_color=colors, node_size=300)
+
+    nx.draw_networkx_edges(G, pos,
+                           edge_color=edge_colors,
+                           width=edge_widths)
+
+    nx.draw_networkx_labels(G, pos, font_size=10)
+
+    plt.axis('off')
+    plt.tight_layout()
+    plt.savefig(save_as)
+    plt.close()
