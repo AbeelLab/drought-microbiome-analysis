@@ -1,7 +1,29 @@
 import numpy as np
 import os
 import pandas as pd
+import pickle as pkl
 import subprocess
+
+from Bio import Phylo
+from collections import defaultdict
+
+def log_statistics(study,
+                   filtering_step,
+                   to_log,
+                   log_file="../data/samples_log.pkl"):
+    log = None
+    if os.path.exists(log_file):
+        log = pkl.load(open(log_file,
+                            "rb"))
+        if study not in log:
+            log[study] = dict()
+        log[study][filtering_step] = to_log
+    else:
+        log = dict()
+        log[study] = dict()
+        log[study][filtering_step] = to_log
+    pkl.dump(log,
+             open(log_file, "wb"))
 
 def get_qiime_extract_dir(parent_dir):
     # extracted file is stored in a nested directory created by qiime extract
@@ -66,7 +88,7 @@ def merge_metadata(study, config, NCBI_metadata, supplemental_metadata, save_as)
     supplemental_df[link_supplemental_metadata] = supplemental_df[link_supplemental_metadata].astype(str)
 
     merged_df = NCBI_df.reset_index().merge(supplemental_df,
-                                            how="left",
+                                            how="inner",
                                             left_on=link_NCBI_metadata,
                                             right_on=link_supplemental_metadata).set_index('ID')
 
@@ -193,3 +215,90 @@ def process_metadata(study_path,
     df = df[final_cols]
 
     return df
+
+def log_features_per_batch(ds,
+                           compartment,
+                           batch_column="StudyID"):
+    all_features = ds.get_counts_features_columns()
+    sample_to_batch = ds.metadata_df[batch_column]
+    for batch_id, sample_ids in sample_to_batch.groupby(sample_to_batch).groups.items():
+        batch_df = ds.taxonomy_counts_df.loc[sample_ids, all_features]
+        present_features = batch_df.columns[(batch_df > 0).any(axis=0)]
+        log_statistics(f"{batch_id}",
+                       f"After BE correction: {compartment}",
+                       int(len(present_features)),
+                       "../data/features_log.pkl")
+
+
+def get_core_microbiome(ds,
+                        batch_column="StudyID"):
+    all_features = ds.get_counts_features_columns()
+    core = set()
+    sample_to_batch = ds.metadata_df[batch_column]
+    for batch_id, sample_ids in sample_to_batch.groupby(sample_to_batch).groups.items():
+        batch_df = ds.taxonomy_counts_df.loc[sample_ids, all_features]
+        present_features = batch_df.columns[(batch_df > 0).any(axis=0)]
+        core.update(set(present_features))
+
+    return core
+
+
+def compute_host_phylogenetic_distances(tree_file="../data/plant_genes/plants.nwk"):
+    tree = Phylo.read(tree_file, "newick")
+    terminals = tree.get_terminals()
+    distance_dict = defaultdict(dict)
+    for t1 in terminals:
+        for t2 in terminals:
+            if t1 != t2:
+                dist = tree.distance(t1, t2)
+                distance_dict[t1.name.replace("_", " ")][t2.name.replace("_", " ")] = dist / 4
+    
+    return distance_dict
+
+def compute_host_microbiome_similarities(ds,
+                                         config,
+                                         treatment,
+                                         within_studies=False):
+    all_hosts = list(ds.metadata_df["HostSpecific"].unique())
+    tax_df = ds.taxonomy_counts_df
+    similarity_dict = defaultdict(dict)
+
+    for host1 in all_hosts:
+        for host2 in all_hosts:
+            if host1 == host2:
+                continue
+
+            mdf = ds.metadata_df
+
+            mask1 = (mdf["HostSpecific"] == host1) & (mdf["Treatment"] == treatment)
+            mask2 = (mdf["HostSpecific"] == host2) & (mdf["Treatment"] == treatment)
+
+            if not within_studies:
+                common_studies = []
+                for study in config["drought_studies"]:
+                    hosts_map = config[study]['hosts_ungrouped']
+                    if host1 in hosts_map.values() and host2 in hosts_map.values():
+                        common_studies.append(study)
+
+                if common_studies:
+                    excl_mask = mdf["StudyID"].isin(common_studies) & (
+                        mdf["HostSpecific"].isin([host1, host2]) &
+                        (mdf["Treatment"] == treatment)
+                    )
+                    mask1 = mask1 & ~excl_mask
+                    mask2 = mask2 & ~excl_mask
+
+            if not mask1.any() or not mask2.any():
+                similarity_dict[host1][host2] = np.nan
+                continue
+
+            counts1 = tax_df.loc[mask1, :]
+            counts2 = tax_df.loc[mask2, :]
+
+            pres1 = (counts1 > 0).any(axis=0)
+            pres2 = (counts2 > 0).any(axis=0)
+
+            intersection = np.logical_and(pres1, pres2).sum()
+            similarity_dict[host1][host2] = intersection
+
+    return similarity_dict

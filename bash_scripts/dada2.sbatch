@@ -26,7 +26,6 @@ qiime_dir="${working_dir}/qiime-dir-batch${SLURM_ARRAY_TASK_ID}"
 source /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/etc/profile.d/conda.sh
 
 # Load trimming parameters
-# TO DO: these if-statements need to be changed and replaced with more consistent rules
 # Final trimming parameters should be logged
 trim_param_file="${study_dir}/figaro_trim_params.txt"
 # For these two studies FIGARO does terminate, but the resulting taxonomic profiling is not good
@@ -34,7 +33,8 @@ if [[ -f $trim_param_file && \
       "$study_id" != "simmons2020drought" && \
       "$study_id" != "azarbad2020four" && \
       "$study_id" != "swift2024drought" && \
-      "$study_id" != "yue2024host" ]]; then
+      "$study_id" != "faist2022potato" && \
+      "$study_id" != "azarbad2022response" ]]; then
     # If FIGARO ran successfully, load optimal parameters
     forward_trunc=$(sed -n '1p' "$trim_param_file")
     reverse_trunc=$(sed -n '2p' "$trim_param_file")
@@ -47,6 +47,7 @@ else
     forward_trunc=$((amplicon_length - amplicon_length / 10))
     reverse_trunc=$((amplicon_length - amplicon_length / 10))
 fi
+
 
 # Defaults
 forward_trim=0

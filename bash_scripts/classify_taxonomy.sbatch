@@ -91,7 +91,7 @@ qiime taxa filter-table \
 # Based on number of ASVs
 qiime feature-table filter-samples \
       --i-table "${study_dir}/dada2_asv_filtered_table.qza" \
-      --p-min-frequency 2500 \
+      --p-min-frequency 1000 \
       --o-filtered-table "${study_dir}/dada2_sample_filtered_table.qza"
 # Based on number of taxonomic features
 qiime feature-table filter-samples \

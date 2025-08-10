@@ -31,6 +31,11 @@ def main():
     metadata_file = os.path.join(inner_dir,
                                  "sra-metadata.tsv")
 
+    # Count number of lines, minus heading
+    num_samples = sum(1 for _ in open(metadata_file)) - 1
+    # Save #samples to .pkl file
+    utils.log_statistics(study, "Total NCBI runs", num_samples)
+
     # Copy file to main directory as well
     copy_to = os.path.join(study_dir,
                            "metadata.tsv")
@@ -46,26 +51,48 @@ def main():
                              metadata_file,
                              supplemental_metadata,
                              copy_to)
-    
 
-    # Apply individual study filters
     df = pd.read_csv(copy_to,
                      sep="\t",
                      index_col="ID")
 
-    print("Available samples: ",
-          len(df))
+    utils.log_statistics(study,
+                         "NCBI runs after merging with study supplemental data",
+                         len(df))
 
-    filtered_df = apply_filters(df,
-                                config[study].get("filters",
-                                                  []))
+    print("Available samples: ", len(df))
+
+    # Apply individual study filters
+    if study in config and "filters" in config[study]:
+        filtered_df = apply_filters(df,
+                                    config[study].get("filters",
+                                                      []))
+    else:
+        print(f"No filters for study {study}")
+        filtered_df = df
+
+    # Log #samples after initial filtering
+    utils.log_statistics(study,
+                         "NCBI runs after initial filtering",
+                         len(filtered_df))
+    utils.log_statistics(study,
+                         "NCBI BioSamples after initial filtering",
+                         filtered_df["Biosample ID"].nunique())    
         
     filtered_df.to_csv(os.path.join(study_dir, "filtered_df.tsv"),
                        sep='\t')
 
-    print("Available samples after filtering: ",
+    print("Available runs after filtering: ",
           len(filtered_df))
+    print("Available samples after filtering: ",
+          filtered_df["Biosample ID"].nunique())
 
+    # Merge runs belonging to one sample by taking one (the one with max number of bases)
+    filtered_df.sort_values('Bases', ascending=False, inplace=True)
+    filtered_df.drop_duplicates(subset='Biosample ID', keep="first", inplace=True)
+
+    assert len(filtered_df) == filtered_df["Biosample ID"].nunique()
+    
     # Save only IDs (one column) to filtered_sras.tsv
     # Rename ID to id
     ids_df = filtered_df.reset_index()[["ID"]].rename(columns={"ID": "id"})

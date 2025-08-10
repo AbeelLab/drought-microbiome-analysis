@@ -9,7 +9,6 @@ accession=""
 
 run_download=""
 run_cutadapt=""
-run_figaro=""
 run_dada2=""
 run_taxonomic_profiling=""
 run_initial_filter_and_batching=""
@@ -90,7 +89,6 @@ if [ "$pipeline_flags_specified" -eq 0 ]; then
     run_initial_filter_and_batching=true
     run_download=true
     run_cutadapt=true
-    run_figaro=true
     run_dada2=true
     run_taxonomic_profiling=true
 fi
@@ -103,6 +101,5 @@ export accession
 export run_initial_filter_and_batching
 export run_download
 export run_cutadapt
-export run_figaro
 export run_dada2
 export run_taxonomic_profiling

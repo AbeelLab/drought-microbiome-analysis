@@ -14,6 +14,14 @@ import math
 from matplotlib.patches import Patch
 from scipy.stats import spearmanr
 import networkx as nx
+import yaml
+from scipy.stats import spearmanr
+from matplotlib.patches import Rectangle
+from copy import deepcopy
+
+with open('config.yml') as f:
+    config = yaml.safe_load(f)
+color_map = config["colors"]
 
 def trim_taxonomy(tax_str):
     parts = tax_str.split(";")
@@ -23,300 +31,295 @@ def trim_taxonomy(tax_str):
             return part
     return ""
 
-def plot_pcoa(level,
-              level_name,
-              merged_file,
-              config):
-    df = pd.read_csv(merged_file, sep='\t', index_col=0)
 
-    taxonomic_features = [col for col in df.columns
-                          if "p__" in col]
-    X = df[taxonomic_features]
-    other_features = df[[col for col in df.columns
-                         if "p__" not in col]]
+def plot_corr(phy_distances, similarities, dot_color, alpha, save_as):
+    x, y, seen = [], [], set()
+    for a, inner in similarities.items():
+        for b, sim in inner.items():
+            if np.isnan(sim):
+                continue
+            pair = tuple(sorted((a, b)))
+            if pair in seen:
+                continue
+            seen.add(pair)
+            phy = phy_distances.get(a, {}).get(b) or phy_distances.get(b, {}).get(a)
+            if phy is None:
+                continue
+            x.append(sim)
+            y.append(phy)
+
+    rho, pval = spearmanr(x, y)
+    n_points = len(x)
+
+    fig, ax = plt.subplots()
+    ax.scatter(x, y,
+               facecolors=dot_color,
+               edgecolors='black',
+               linewidths=0.5,
+               alpha=alpha)
+    
+    ax.set_xlabel("# common genera")
+    ax.set_ylabel("Phylogenetic distance")
+    ax.set_title(f"{n_points} pairs — Spearman ρ={rho:.2f}, p={pval:.2g}")
+    ax.set_xlim(0, 500)
+    ax.set_ylim(0, 0.15)
+    plt.tight_layout()
+
+    for ext in ('svg', 'png'):
+        fig.savefig(f"{save_as}.{ext}", dpi=600)
+    plt.close(fig)
+
+def plot_pcoa(dataset,
+              save_as):
+    X = dataset.get_counts_features()
+    metadata = dataset.get_metadata()
 
     bc_distances = pdist(X.values, metric='braycurtis')
-    distance_matrix = DistanceMatrix(squareform(bc_distances), ids=df.index)
+    distance_matrix = DistanceMatrix(squareform(bc_distances), ids=X.index)
 
     pcoa_object = pcoa(distance_matrix)
     pcoa_result = pcoa_object.samples[["PC1", "PC2"]]
-    pcoa_df = pd.DataFrame(pcoa_result,
-                           columns=["PC1", "PC2"],
-                           index=df.index)
-    pcoa_df = pd.concat([pcoa_df, other_features], axis=1)
+    pcoa_df = pd.DataFrame(pcoa_result, columns=["PC1", "PC2"], index=X.index)
 
-    plotting_dir = config["plotting_dir"]
+    # Join metadata (other features)
+    pcoa_df = pd.concat([pcoa_df, metadata], axis=1)
+
     def save_pcoa_plot(color_by):
         plt.figure(figsize=(8, 6))
-        
+
         sns.scatterplot(data=pcoa_df,
                         x="PC1", y="PC2",
                         hue=color_by,
-                        palette=config["colors"],
+                        palette=color_map[color_by],
                         alpha=0.75)
-        plt.title(f"PCoA: PC1 vs PC2\nLevel: {level_name} (legend: {color_by})\nBray-Curtis dissimilarity")
-        
-        plt.legend(title=color_by,
-                   bbox_to_anchor=(1.05, 1),
-                   loc='upper left',
-                   borderaxespad=0)
-        save_to = os.path.join(plotting_dir, f"pcoa_plot_PC1_PC2_l{level}_by_{color_by.lower()}.png")
-        plt.savefig(save_to, dpi=600, bbox_inches="tight")
-        print(f"[INFO] PCoA plot saved to {save_to}")
+
+        plt.title(f"PCoA: PC1 vs PC2 (Bray-Curtis)\nColored by: {color_by}")
+        plt.legend(title=color_by, bbox_to_anchor=(1.05, 1), loc='upper left')
+        plt.savefig(save_as + "_" + color_by + ".svg", bbox_inches="tight")
+        plt.savefig(save_as + "_" + color_by + ".png", dpi=600, bbox_inches="tight")
+        print(f"[INFO] PCoA plot saved to {save_as}_{color_by}")
         plt.close()
 
-    categories = ["Study (full name)", "Host"]
-
-    for category in categories:
+    for category in ["StudyName", "Host"]:
         save_pcoa_plot(category)
-    
 
-def sparsity_heatmap(level,
-                     level_name,
-                     merged_file,
-                     plotting_dir,
-                     log_scale=False,
-                     shuffle=False):
-    df = pd.read_csv(merged_file, sep='\t', index_col=0)
-    taxonomic_features = [col for col in df.columns
-                          if "p__" in col]
-    taxonomic_features_df = df[taxonomic_features]
-
-    if shuffle:
-        taxonomic_features_df = taxonomic_features_df.sample(frac=1, axis=1)
-        shuffle_add_on = "_shuffled"
-    else:
-        shuffle_add_on = ""
         
-    total_entries = taxonomic_features_df.size
-    zero_entries = ((taxonomic_features_df == 0)
-                    .astype(int)
-                    .sum(axis=1)
-                    .sum())
-    sparsity = zero_entries / total_entries * 100
+def plot_heatmap(ds,
+                 ordered_ticks):
+    to_compare = []
+    for host, study in ordered_ticks:
+        mask = (ds.metadata_df["Host"] == host) & (ds.metadata_df["StudyName"] == study)
+        sub_df = ds.taxonomy_counts_df.loc[mask]
+        nonzero_cols = sub_df.columns[(sub_df.sum(axis=0) > 0).values]
+        to_compare.append(set(nonzero_cols))
 
-    cmap = sns.color_palette("Greys", as_cmap=True)
-    if log_scale:
-        log_add_on = "_log"
-        smallest_nonzero = (taxonomic_features_df[taxonomic_features_df > 0]
-                            .min()
-                            .min())
-        epsilon = smallest_nonzero / 10
-        data = taxonomic_features_df.replace(0, epsilon)
-        norm = LogNorm(vmin=epsilon, vmax=100)
-    else:
-        log_add_on = ""
-        data = taxonomic_features_df
-        norm = None
+    n = len(to_compare)
+    overlap = np.zeros((n, n), dtype=float)
+    for i in range(n):
+        for j in range(n):
+            inter = len(to_compare[i].intersection(to_compare[j]))
+            denom = len(to_compare[i]) + len(to_compare[j])
+            overlap[i, j] = (2 * inter / denom) if denom > 0 else 0
 
-    ax = sns.heatmap(data,
-                     cmap=cmap,
-                     vmin=0 if not log_scale else epsilon,
-                     vmax=100,
-                     norm=norm,
-                     cbar_kws={'label': 'Abundance (0 to 100%)'})
+    print(overlap)
+    fig, ax = plt.subplots()
+    im = ax.imshow(overlap,
+                   cmap='Greys',
+                   vmin=0,
+                   vmax=1,
+                   aspect='auto')
 
-    rect = patches.Rectangle((0, 0), 1, 1,
-                             transform=ax.transAxes,
-                             fill=False,
-                             color="black",
-                             linewidth=2)
-    ax.add_patch(rect)
+    labels = [f"{host}+{study}" for host, study in ordered_ticks]
+    ax.set_xticks(np.arange(n))
+    ax.set_yticks(np.arange(n))
+    ax.set_xticklabels(labels, rotation=90)
+    ax.set_yticklabels(labels)
 
-    ax.set_title(f"Taxonomic features across samples and studies\n"
-                 f"Level: {level_name}\n"
-                 f"Sparsity: {sparsity:.2f}% zeros",
-                 fontsize=10)
-    ax.tick_params(left=False, bottom=False,
-                   labelleft=False, labelbottom=False)
-    ax.set_xlabel(f"Taxonomic features: {len(taxonomic_features_df.columns)}")
-    ax.set_ylabel(f"Samples: {len(taxonomic_features_df)}")
+    cbar = fig.colorbar(im, ax=ax)
+    cbar.set_label('Shared Features Count')
 
-    darkest_col = taxonomic_features_df.sum(axis=0).idxmax()
-    wrapped_darkest = "\n".join(part.strip() for part in darkest_col.split(";"))
-    ax.text(0.5, -0.12,
-            f"Darkest column:\n{wrapped_darkest}",
-            transform=ax.transAxes,
-            ha="center",
-            va="top",
-            fontsize=10)
+    fig.savefig("../data/plots/" + ds.dataset_name + "_heatmap.png", dpi=300, bbox_inches='tight')
+    fig.savefig("../data/plots/" + ds.dataset_name + "_heatmap.svg", bbox_inches='tight')
+    plt.close()
+
+def plot_taxonomy(ds,
+                  ordered_hosts,
+                  colors,
+                  save_as,
+                  level="p__"):
+    ds_copy = deepcopy(ds)
+    normalized = ds_copy.get_normalized_features()
+
+    def extract_level(tax_str):
+        for part in tax_str.split(';'):
+            if part.startswith(level):
+                return part.replace(level, '')
+        return 'Unassigned'
+
+    # Extract taxonomic levels
+    phylum_labels = [extract_level(c) for c in normalized.columns]
+    normalized.columns = phylum_labels
+    phylum_abund = normalized.groupby(normalized.columns, axis=1).sum()
+
+    # Top phyla + "Other"
+    mean_abund = phylum_abund.mean(axis=0)
+    top6 = mean_abund.nlargest(6).index.tolist()
+    phylum_top = phylum_abund[top6].copy()
+    phylum_top['Other'] = 100 - phylum_top.sum(axis=1)
+
+    # Grouping by Host | StudyName
+    md = ds_copy.metadata_df.copy()
+    md['Group'] = md['Host'].astype(str) + ' | ' + md['StudyName'].astype(str)
+    df = phylum_top.join(md['Group'])
+    group_means = df.groupby('Group')[top6 + ['Other']].mean()
+
+    # Reindex to ordered_hosts and fill missing
+    group_means = group_means.reindex(ordered_hosts).fillna(0)
+
+    # Prepare spacing and centered dashed lines
+    hosts = [label.split(' | ')[0] for label in group_means.index]
+    y_positions = []
+    y_tick_labels = []
+    current_y = 0
+    host_line_positions = []
+
+    for i, label in enumerate(group_means.index):
+        if i > 0 and hosts[i] != hosts[i - 1]:
+            current_y += 1  # Add space between hosts
+            host_line_positions.append(current_y - 0.5)  # Center of the added space
+        y_positions.append(current_y)
+        y_tick_labels.append(label)
+        current_y += 1
+
+    height = max(4, current_y * 0.3)
+    fig, ax = plt.subplots(figsize=(10, height))
+
+    # Draw stacked bars
+    cumulative = np.zeros(len(y_positions))
+    for phylum in group_means.columns:
+        vals = group_means[phylum].values
+        color = colors.get(phylum, 'gray')
+        ax.barh(y_positions, vals, left=cumulative, label=phylum, color=color)
+        cumulative += vals
+
+    # Draw centered dashed lines between hosts
+    for pos in host_line_positions:
+        ax.axhline(pos, color='black', linestyle='--', linewidth=1.5, alpha=0.8)
+
+    # Axes formatting
+    ax.set_yticks(y_positions)
+    ax.set_yticklabels(y_tick_labels)
+    ax.set_xlabel('Mean Relative Abundance (%)')
+    ax.set_ylabel('Host | StudyName')
+    ax.set_xlim(0, 100)
+    ax.set_ylim(-0.5, current_y - 0.5)
+
+    # Full legend
+    from matplotlib.patches import Patch
+    handles = [Patch(facecolor=colors[p], label=p) for p in colors]
+    ax.legend(handles=handles, title='Phylum', bbox_to_anchor=(1.05, 1), loc='upper left')
 
     plt.tight_layout()
-    filename = f"sparsity_plot_l{level}{log_add_on}{shuffle_add_on}.png"
-    save_to = os.path.join(plotting_dir, filename)
-    plt.savefig(save_to, dpi=600)
-    print(f"[INFO] Sparsity heatmap plot saved to {save_to}")
-    plt.close()
+    fig.savefig(f"{save_as}.svg", format='svg')
+    fig.savefig(f"{save_as}.png", format='png', dpi=600)
+    plt.close(fig)
 
-def plot_num_samples(merged_file, plotting_dir):
-    df = pd.read_csv(merged_file, sep='\t', index_col=0)
-    df['Group'] = df['Study (full name)'] + " | " + df['Host']
-    count_df = df.groupby(['Group', 'Treatment']).size().unstack(fill_value=0)
-    count_df = count_df.reset_index()
-    count_df[['Study (full name)', 'Host']] = count_df['Group'].str.split(r' \| ', expand=True)
-    count_df = count_df.sort_values(by=['Host', 'Study (full name)'])
-    
-    groups = count_df['Group']
-    unique_hosts = count_df['Host'].unique()
-    host_palette = dict(zip(unique_hosts, sns.color_palette("Set2", len(unique_hosts))))
-    
-    control_counts = count_df.get('Control', pd.Series([0] * len(count_df)))
-    drought_counts = count_df.get('Drought', pd.Series([0] * len(count_df)))
-    base_colors = [host_palette[host] for host in count_df['Host']]
 
+
+def plot_num_samples(ds,
+                     ordered_hosts,
+                     save_as):
+    metadata = ds.metadata_df.copy()
+    metadata['Host_Study'] = metadata['Host'] + ' | ' + metadata['StudyName']
+    metadata = metadata[metadata['Host_Study'].isin(ordered_hosts)]
+    metadata['Host_Study'] = pd.Categorical(metadata['Host_Study'], categories=ordered_hosts, ordered=True)
+
+    counts = metadata.groupby(['Host_Study', 'Treatment']).size().unstack(fill_value=0)
+    counts = counts.loc[ordered_hosts]
+
+    # Prepare bar data
+    drought = counts.get('Drought', pd.Series(0, index=counts.index))
+    control = counts.get('Control', pd.Series(0, index=counts.index))
+
+    # Build y-axis with extra space between host groups
+    hosts = [label.split(' | ')[0] for label in counts.index]
     y_positions = []
-    y_labels = []
-    spacing = 0.5
+    y_tick_labels = []
     current_y = 0
-    previous_host = None
+    host_boundaries = []
 
-    for i, (group, host) in enumerate(zip(groups, count_df['Host'])):
-        if host != previous_host and previous_host is not None:
-            current_y += spacing  # Extra gap between host groups
+    for i, label in enumerate(counts.index):
+        if i > 0 and hosts[i] != hosts[i - 1]:
+            current_y += 1  # Extra space between different hosts
+            host_boundaries.append(current_y - 0.5)
         y_positions.append(current_y)
-        y_labels.append(group.split(" | ")[0])
+        y_tick_labels.append(label)
         current_y += 1
-        previous_host = host
 
-    fig, ax = plt.subplots(figsize=(10, 0.5 * len(groups)))
+    height = max(4, current_y * 0.4)
+    fig, ax = plt.subplots(figsize=(10, height))
 
-    ax.barh(y_positions, control_counts, color=[(*rgb, 0.5) for rgb in base_colors],
-            edgecolor='black', label='Control')
-    ax.barh(y_positions, drought_counts, left=control_counts,
-            color=[(*rgb, 1.0) for rgb in base_colors],
-            edgecolor='black', label='Drought')
+    # Plot bars with spacing
+    ax.barh(y_positions, drought.values, edgecolor="white", color="#fd9a2e", label="Drought")
+    ax.barh(y_positions, control.values, edgecolor="white", left=drought.values, color="#3098fe", label="Control")
 
+    # Draw thick dashed lines between host groups
+    for pos in host_boundaries:
+        ax.axhline(pos, color='black', linestyle='--', linewidth=1.5, alpha=0.8)
+
+    # Format axes
     ax.set_yticks(y_positions)
-    ax.set_yticklabels(y_labels)
-    ax.set_xlabel("Number of Samples")
-    ax.set_title("Number of Samples per Study | Host")
-    
-    host_patches = [Patch(facecolor=host_palette[host], label=host) for host in unique_hosts]
-    treatment_patches = [
-        Patch(facecolor='grey', edgecolor='black', alpha=0.5, label='Control'),
-        Patch(facecolor='grey', edgecolor='black', alpha=1.0, label='Drought')
-    ]
-    
-    all_patches = treatment_patches + host_patches
-    ax.legend(handles=all_patches, bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
-    
-    total_samples = len(df)
-    total_drought = (df['Treatment'] == 'Drought').sum()
-    total_control = (df['Treatment'] == 'Control').sum()
-    annotation = f"Total Samples: {total_samples} | Drought: {total_drought} | Control: {total_control}"
-    
-    plt.figtext(0.5, 0.01, annotation, wrap=True, horizontalalignment='center', fontsize=10)
-    
-    filename = "samples_stats.png"
-    save_to = os.path.join(plotting_dir, filename)
-    plt.tight_layout(rect=[0, 0.03, 1, 1])
-    plt.savefig(save_to, dpi=600, bbox_inches='tight')
-    plt.savefig(save_to.replace("png", "svg"))
+    ax.set_yticklabels(y_tick_labels)
+    ax.set_xlabel('Number of Samples')
+    ax.set_ylabel('Host | StudyName')
+    ax.set_title('Number of Samples per Host and Study by Treatment')
+    ax.set_ylim(-0.5, current_y - 0.5)
+    ax.legend()
+
+    plt.tight_layout()
+    fig.savefig(f"{save_as}.svg", format='svg')
+    fig.savefig(f"{save_as}.png", format='png', dpi=600)
+    plt.close(fig)
+
+
+def plot_core_taxa(ds,
+                   ordered_hosts,
+                   core_taxa,
+                   save_as):
+    metadata = ds.metadata_df
+    taxonomy = ds.taxonomy_counts_df
+
+    metadata['Host_Study'] = metadata['Host'] + ' | ' + metadata['StudyName']
+
+    core_counts = []
+    non_core_counts = []
+
+    for host_study in ordered_hosts:
+        sample_ids = metadata[metadata['Host_Study'] == host_study].index
+        subset = taxonomy[sample_ids]
+        taxa_present = subset[(subset > 0).any(axis=1)].index
+        n_core = len(set(taxa_present) & set(core_taxa))
+        n_total = len(taxa_present)
+        n_non_core = n_total - n_core
+        core_counts.append(n_core)
+        non_core_counts.append(n_non_core)
+
+    y = range(len(ordered_hosts))
+    plt.figure(figsize=(10, len(ordered_hosts) * 0.4))
+
+    plt.barh(y, core_counts, edgecolor="white", color='black', label='Core taxa')
+    plt.barh(y, non_core_counts, left=core_counts, edgecolor="white", color='gray', label='Non-core taxa')
+
+    plt.yticks(y, ordered_hosts)
+    plt.xlabel('Number of Taxa')
+    plt.title('Core vs Non-Core Taxa per Host | StudyName')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f"{save_as}.svg", format='svg')
+    plt.savefig(f"{save_as}.png", format='png', dpi=600)
     plt.close()
+    
 
-    # Pie chart: Host
-    host_counts = df['Host'].value_counts()
-    fig, ax = plt.subplots()
-    ax.pie(host_counts, labels=host_counts.index, 
-           colors=[host_palette[h] for h in host_counts.index],
-           startangle=90, counterclock=False, autopct='%1.1f%%',
-           wedgeprops={'edgecolor': 'white', 'linewidth': 1})
-    ax.set_title("Samples per Host")
-    save_host_pie = os.path.join(plotting_dir, "samples_per_host.png")
-    plt.savefig(save_host_pie, dpi=600)
-    plt.savefig(save_host_pie.replace("png", "svg"))
-    plt.close()
-
-    # Pie chart: Treatment
-    treatment_counts = df['Treatment'].value_counts()
-    treatment_colors = {'Control': '#d3d3d3', 'Drought': '#000000'}
-    fig, ax = plt.subplots()
-    ax.pie(treatment_counts, labels=treatment_counts.index,
-           colors=[treatment_colors[t] for t in treatment_counts.index],
-           startangle=90, counterclock=False, autopct='%1.1f%%',
-           wedgeprops={'edgecolor': 'white', 'linewidth': 1})
-    ax.set_title("Samples per Treatment")
-    save_treatment_pie = os.path.join(plotting_dir, "samples_per_treatment.png")
-    plt.savefig(save_treatment_pie, dpi=600)
-    plt.savefig(save_treatment_pie.replace("png", "svg"))
-    plt.close()
-
-    print(f"[INFO] Sample stats plot saved to {save_to}")
-    print(f"[INFO] Host pie chart saved to {save_host_pie}")
-    print(f"[INFO] Treatment pie chart saved to {save_treatment_pie}")
-
-
-def plot_taxonomy(level, merged_file, plotting_dir):
-    df = pd.read_csv(merged_file, sep='\t', index_col=0)
-    df['Group'] = df['Study'] + " | " + df['Host']
-    
-    taxonomic_features = [col for col in df.columns
-                          if "p__" in col]
-    
-    max_features = {2: 6, 3: 10, 4: 14, 5: 16, 6: 18}
-    overall_means = df[taxonomic_features].mean(axis=0)
-    top_features = overall_means.sort_values(ascending=False).head(max_features[level]).index.tolist()
-    
-    group_all = df.groupby('Group')[taxonomic_features].mean()
-    total_all = group_all.sum(axis=1)
-    
-    group_top = df.groupby('Group')[top_features].mean()
-    top_pct = group_top.div(total_all, axis=0) * 100
-    top_pct = top_pct.fillna(0)
-    
-    other_pct = 100 - top_pct.sum(axis=1)
-    other_pct[other_pct < 0] = 0
-    
-    group_pct = top_pct.copy()
-    group_pct['Other'] = other_pct
-    
-    group_pct = group_pct.reset_index()
-    group_pct[['Study', 'Host']] = group_pct['Group'].str.split(r' \| ', expand=True)
-    group_pct = group_pct.sort_values(by=['Host', 'Study'])
-    group_pct = group_pct.set_index('Group')
-    
-    groups = group_pct.index.tolist()
-    y_positions = range(len(groups))
-    
-    fig, ax = plt.subplots(figsize=(10, 0.5 * len(groups)))
-    
-    feature_list = top_features + ['Other']
-    palette = sns.color_palette("Paired", len(top_features))
-    colors = dict(zip(top_features, palette))
-    colors['Other'] = (0.8, 0.8, 0.8)
-    
-    cumulative = [0] * len(groups)
-    for feature in feature_list:
-        values = group_pct[feature].values
-        ax.barh(y_positions, values, left=cumulative, color=colors[feature],
-                edgecolor='black', label=feature)
-        cumulative = [cum + val for cum, val in zip(cumulative, values)]
-
-    ax.set_yticks(y_positions)
-    ax.set_yticklabels(groups)
-    ax.set_xlabel("Percentage (%)")
-    ax.set_title("Taxonomic Composition (Top Features + Other)")
-    ax.set_xlim(0, 100)
-    
-    # Prepare legend labels with last taxonomy rank
-    def simplify_label(f):
-        if f == 'Other':
-            return 'Other'
-        parts = f.split(';')
-        non_empty = [p.split('__')[-1] for p in parts if p and p.split('__')[-1]]
-        label = non_empty[-1] if non_empty else 'Unclassified'
-        return "\n".join(label.split('-'))
-
-    simplified_labels = [simplify_label(f) for f in feature_list]
-    handles = [plt.Rectangle((0, 0), 1, 1, color=colors[f]) for f in feature_list]
-    ax.legend(handles, simplified_labels, bbox_to_anchor=(1.05, 1), loc='upper left')
-    
-    filename = f"taxonomy_l{level}.png"
-    save_to = os.path.join(plotting_dir, filename)
-    plt.tight_layout(rect=[0, 0.03, 1, 1])
-    plt.savefig(save_to, dpi=600)
-    print(f"[INFO] Sample stats plot saved to {save_to}")
-    plt.close()
 
 # Level doesn't matter actually and the plot should be the same for all levels
 # Because it is a sample plot

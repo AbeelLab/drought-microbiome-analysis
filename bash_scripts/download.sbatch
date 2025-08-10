@@ -1,14 +1,13 @@
 #!/bin/sh
 
 #SBATCH --partition=general
-#SBATCH --exclude=grs1,grs2,grs3,grs4
 #SBATCH --ntasks=1
 #SBATCH --mem=8GB
 #SBATCH --mail-type=END,FAIL
 #SBATCH --output=slurm_outputs/%x_%j.out
 #SBATCH --error=slurm_outputs/%x_%j.out
-#SBATCH --qos=medium
-#SBATCH --time=08:00:00
+#SBATCH --qos=short
+#SBATCH --time=03:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --gres=jobspernode:one:1
 #SBATCH --tmp=200G

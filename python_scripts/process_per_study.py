@@ -1,5 +1,8 @@
+import importlib
 import numpy as np
 import pandas as pd
+import os
+import math
 
 # Column names
 treatment_col = "Treatment"
@@ -7,18 +10,29 @@ host_col = "HostSpecific"
 grouped_host_col = "Host"
 root_compartment_col = "RootCompartment"
 inoculum_col = "Inoculum"
-inoculum_subtypes_col = "InoculumSubtype"
+inoculum_subtype_col = "InoculumSubtype"
 is_plant_associated_col = "IsPlantAssociated"
 study_col = "StudyID"
 full_study_col = "StudyName"
 primer_col = "Primers"
-regions_col = "Regions"
+
+def load_function(full_name):
+    module_name, func_name = full_name.rsplit('.', 1)
+    module = importlib.import_module(module_name)
+    return getattr(module, func_name)
 
 def common_processing(study_path,
                       study_name,
-                      study_info):
+                      study_info,
+                      custom_processing=None,
+                      kept_samples=None):        
     metadata_file = os.path.join(study_path, "metadata.tsv")
     df = pd.read_csv(metadata_file, sep='\t', index_col=0)
+
+    if kept_samples is not None:
+        df = df.loc[kept_samples]
+        if study_name == "azarbad2022response":
+            df.to_csv("godhelpme.tsv", sep="\t")
 
     # Map treatment columns
     if "treatment_col" in study_info:
@@ -43,10 +57,6 @@ def common_processing(study_path,
     else:
         df[grouped_host_col] = np.nan
         df[host_col] = np.nan
-        
-    # Remove NaN hosts (those not mapped)
-    # This is because some hosts appear in very small groups
-    df = df[df[host_col] != 'None']
 
     # Map root compartment columns
     if "root_compartment_col" in study_info:
@@ -82,11 +92,15 @@ def common_processing(study_path,
     df[study_col] = study_name
     df[full_study_col] = study_info.get('full_name', np.nan)
     df[primer_col] = study_info.get('primers', np.nan)
-    df[region_col] = study_info.get('regions', np.nan)
 
-    # CALL PER-DATASET PROCESSING FUNCTION HERE
-    if not None:
-        df = process_x(...)
+    # Call custom processing pe dataset
+    if custom_processing is not None:
+        fn = load_function(custom_processing)
+        df = fn(df, study_info)
+
+    # Replace all hosts where root_compartment_col is "Bulk soil" with Soil
+    df.loc[df[root_compartment_col] == "Bulk soil", host_col] = "Soil"
+    df.loc[df[root_compartment_col] == "Bulk soil", grouped_host_col] = "Soil"
 
     # Select and order final columns
     final_cols = [
@@ -99,14 +113,17 @@ def common_processing(study_path,
         inoculum_col,
         inoculum_subtype_col,
         primer_col,
-        region_col,
         is_plant_associated_col
     ]
     df = df[final_cols]
 
+    # Remove NaN hosts (those not mapped)
+    # This is because some hosts appear in very small groups
+    df = df[df[host_col] != 'None']
+
     return df
 
-def process_xu2018drought(df):
+def process_xu2018drought(df, study_info):
     # First field experiment
     def extract_tp(tp_string):
         tp_component = [x for x in tp_string.split("_")
@@ -114,25 +131,62 @@ def process_xu2018drought(df):
         return int(tp_component[2:]) * 7
 
     for i, row in df.iterrows():
-        if row["Treatment"] == "Pre_flowering":
+        if row[treatment_col] == "Pre_flowering":
             # Remove timepoints before 2nd week (seedling development)
             if extract_tp(row["Title"]) <= 2:
-                df.at[i, "Treatment"] = np.nan
+                df.at[i, treatment_col] = np.nan
             elif extract_tp(row["Title"]) <= 8:
-                df.at[i, "Treatment"] = "Drought"
+                df.at[i, treatment_col] = "Drought"
             else:
-                df.at[i, "Treatment"] = "Control"
-        if row["Treatment"] == "Post_flowering":
+                df.at[i, treatment_col] = "Control"
+        if row[treatment_col] == "Post_flowering":
             # Remove timepoints before 2nd week (seedling development)
             if extract_tp(row["Title"]) <= 2:
-                df.at[i, "Treatment"] = np.nan
+                df.at[i, treatment_col] = np.nan
             elif extract_tp(row["Title"]) >= 10:
-                #  Flowering happens at week 9, and post-flowering drought starts in week 10
-                df.at[i, "Treatment"] = "Drought"
+                #  Flowering happens at week 9,
+                # and post-flowering drought starts in week 10
+                df.at[i, treatment_col] = "Drought"
             else:
-                df.at[i, "Treatment"] = "Control"
+                df.at[i, treatment_col] = "Control"
 
     # Remove NaNs (seedling development)
-    df = df[df["Treatment"].notna()]
+    df = df[df[treatment_col].notna()]
 
+    return df
+
+def process_naylor2017drought(df, study_info):
+    # Separate processing for Kearney experiments
+    for i, row in df.iterrows():
+        if "Kearney" in row["Geo Loc Name [sample]"]:
+            if row["Name"].split("_")[2] == "D":
+                df.at[i, treatment_col] = "Drought"
+            elif row["Name"].split("_")[2] == "W":
+                df.at[i, treatment_col] = "Control"
+
+            if "RZ" in row["Name"]:
+                df.at[i, root_compartment_col] = "Rhizosphere"
+            elif "Root" in row["Name"]:
+                df.at[i, root_compartment_col] = "Endosphere"
+            elif "Soil" in row["Name"]:
+                df.at[i, root_compartment_col] = "Bulk soil"
+    for i, row in df.iterrows():
+        if pd.isnull(row["Host"]):
+            col = study_info["host_col_separate_experiment"]
+            host_mapping = study_info["hosts_ungrouped"]
+            grouped_host_mapping = study_info["hosts"]
+            df.at[i, host_col] = host_mapping[df.at[i, col]]
+            df.at[i, grouped_host_col] = grouped_host_mapping[df.at[i, col]]
+            
+    return df
+
+def process_simmons2020drought(df, study_info):
+    # Notes from supplemental metadata:
+    # Sample names swapped. Fasta file reads SO-Wk9C-R3-2-3, but should be SO-Wk9D-R3-3-3.
+    # Sample names swapped. Fasta file reads SO-Wk9D-R3-3-3, but should be SO-Wk9C-R3-2-3.
+    
+    # So we should swap the accessions for these two sample IDs
+    tmp = df.loc["SRR11143478"].copy()
+    df.loc["SRR11143478"] = df.loc["SRR11143463"]
+    df.loc["SRR11143463"] = tmp
     return df

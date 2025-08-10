@@ -32,6 +32,8 @@ negative_inoculum_studies:
   - "swift2024drought"
 
 drought_studies:
+  - "azarbad2022response"
+  - "wipf2021distinguishing"
   - "santos-medellin2021prolonged"
   - "simmons2020drought"
   - "fitspatrick2017assembly"
@@ -48,13 +50,13 @@ drought_studies:
 
 xu2018drought:
   full_name: "Xu et al. (2018)"
+  doi: "10.1073/pnas.1717308115"
   amplicon_length: 300
   filters:
-    - "lambda row: 'Soil' not in str(row['Env Material [sample]'])"
     - "lambda row: 'Positive' not in str(row['Env Material [sample]'])"
     - "lambda row: 'NovaSeq' not in str(row['Instrument'])"
     # Cannot discern what the other experiments are
-    - "lambda row: str(row['Host [sample]']) != 'Sorghum bicolor'"
+    - "lambda row: str(row['Host [sample]']) == 'Sorghum bicolor'"
   treatment_col: "Treatment [sample]"
   treatments:
     "Pre_flowering": "Pre_flowering"
@@ -70,15 +72,18 @@ xu2018drought:
     "Sorghum bicolor": "Sorghum bicolor"
   root_compartment_col: "Env Material [sample]"
   root_compartments:
-    "Rhizosphere": "Rhizophere"
+    "Rhizosphere": "Rhizosphere"
     "Root": "Endosphere"
+    "Soil": "Bulk soil"
   location: "California"
   soil_type: "Field"
   primers: "341F,785R"
   regions: "V3-V4"
+  custom_processing: "process_per_study.process_xu2018drought"
 
 santos-medellin2021prolonged:
   full_name: "Santos-Medellín et al. (2021)"
+  doi: "10.1038/s41477-021-00967-1"
   amplicon_length: 250
   filters: {}
   treatment_col: "Water Regime [sample]"
@@ -98,7 +103,7 @@ santos-medellin2021prolonged:
     "Oryza sativa": "Oryza sativa"
   root_compartment_col: "Root Compartment [sample]"
   root_compartments:
-    "Rhizosphere": "Rhizophere"
+    "Rhizosphere": "Rhizosphere"
     "Endosphere": "Endosphere"
   location: "California"
   soil_type: "Field"
@@ -107,6 +112,7 @@ santos-medellin2021prolonged:
 
 hoefle2024oak:
   full_name: "Hoefle et al. (2024)"
+  doi: "10.1186/s40793-024-00602-4"
   amplicon_length: 300
   filters:
     - "lambda row: str(row['Env Local Scale [sample]']) == 'rhizosphere'"
@@ -120,6 +126,9 @@ hoefle2024oak:
     "Quercus robur": "Fabids"
   hosts_ungrouped:
     "Quercus robur": "Quercus robur"
+  root_compartment_col: "Organism"
+  root_compartments:
+    "rhizosphere metagenome": "Rhizosphere"
   location: "Greenhouse"
   soil_type: "Sand"
   primers: "515F,806R"
@@ -127,9 +136,9 @@ hoefle2024oak:
 
 bandopadhyay2024disentangling:
   full_name: "Bandopadhyay et al. (2024)"
+  doi: "10.1038/s41467-024-50463-1"
   amplicon_length: 300
   filters:
-    - "lambda row: 'unplanted' not in str(row['Env Local Scale [sample]'])"
     - "lambda row: 'pre-drought' not in str(row['Treatment [sample]'])"
     # Remove negative control
     - "lambda row: 'not applicable' not in str(row['Treatment [sample]'])"
@@ -144,16 +153,18 @@ bandopadhyay2024disentangling:
   hosts_ungrouped:
     "bean": "Phaseolus vulgaris"
     "switchgrass": "Panicum virgatum"
-  location: "Michigan"
-  soil_type: "Field"
+  root_compartment_col: "Env Local Scale [sample]"
+  root_compartments:
+    "rhizosphere soil - planted": "Rhizosphere"
+    "rhizosphere soil - unplanted": "Bulk soil"
   primers: "515F,806R"
   regions: "V4"
 
 santos-medellin2017drought:
   full_name: "Santos-Medellín et al. (2017)"
+  doi: "10.1128/mbio.00764-17"
   amplicon_length: 250
-  filters:
-    - "lambda row: str(row['Root Compartment [sample]']) != 'BulkSoil'"
+  filters: {}
   treatment_col: "Watering Regm [sample]"
   treatments:
     "Drought": "Drought"
@@ -165,18 +176,21 @@ santos-medellin2017drought:
   hosts_ungrouped:
     "Oryza glaberrima": "Oryza glaberrima"
     "Oryza sativa": "Oryza sativa"
-  location: "California"
-  soil_type: "Field"
+  root_compartment_col: "Root Compartment [sample]"
+  root_compartments:
+    "Rhizoshere": "Rhizosphere"
+    "Endosphere": "Endosphere"
+    "BulkSoil": "Bulk soil"
   primers: "515F,806R"
   regions: "V4"
 
 faist2022potato:
   full_name: "Faist et al. (2023)"
+  doi: "10.1186/s40793-023-00469-x"
   amplicon_length: 300
   filters:
     - "lambda row: 'fungi' not in str(row['Library Name'])"
     - "lambda row: 'mock community' not in str(row['Name'])"
-    - "lambda row: 'no host' not in str(row['Host [sample]'])"
     # Download only amplicon data (no shotgun metagenomics)
     - "lambda row: str(row['Instrument']) == 'Illumina MiSeq'"
   treatment_col: "Watering Regm [sample]"
@@ -186,15 +200,21 @@ faist2022potato:
   host_col: "Host [sample]"
   hosts:
     "Solanum tuberosum.*": "Asterids"
+    "no host, location*": "Soil"
   hosts_ungrouped:
     "Solanum tuberosum.*": "Solanum tuberosum"
-  location: "Greenhouse"
-  soil_type: "Clay"
+    "no host, location*": "Soil"
+  root_compartment_col: "Organism"
+  root_compartments:
+    "rhizosphere metagenome": "Rhizosphere"
+    "root metagenome": "Endosphere"
+    "soil metagenome": "Bulk soil"
   primers: "799F,1175R"
   regions: "V5-V7"  
 
 azarbad2020four:
   full_name: "Azarbad et al. (2020)"
+  doi: "10.1093/femsec/fiaa098"
   amplicon_length: 250
   filters:
     - "lambda row: 'ITS' not in str(row['Name'])"
@@ -204,7 +224,7 @@ azarbad2020four:
   treatments:
     ".*_5_.*_(?:ITS|16S)$": "Drought"
     ".*_20_.*_(?:ITS|16S)$": "Drought"
-    ".*_30_.*_(?:ITS|16S)$": "Control"
+    ".*_30_.*_(?:ITS|16S)$": "Drought"
     ".*_50_.*_(?:ITS|16S)$": "Control"
   host_col: "Isolation Source [sample]"
   hosts:
@@ -213,17 +233,19 @@ azarbad2020four:
     "soil": "BOP clade"
   hosts_ungrouped:
     "soil": "Triticum aestivum"
-  location: "Saskatchewan"
-  soil_type: "Field"
+  root_compartment_col: "Library Name"
+  root_compartments:
+    "(?i)^soil.*": "Rhizosphere"
+    "(?i)^root.*": "Endosphere"
   primers: "520F,799R2"
   regions: "V3-V4"
 
 
 simmons2020drought:
   full_name: "Simmons et al. (2020)"
+  doi: "10.3389/fpls.2020.00599"
   amplicon_length: 300
   filters:
-    - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
     - "lambda row: str(row['RootType']) != 'Dead'"
   treatment_col: "Treatment_all"
   treatments:
@@ -245,19 +267,23 @@ simmons2020drought:
     "Sorghum bicolor": "Sorghum bicolor"
   root_compartment_col: "Isolation Source [sample]"
   root_compartments:
-    "Plant rhizosphere": "Rhizophere"
+    "Plant rhizosphere": "Rhizosphere"
     "Plant root endosphere": "Endosphere"
+    "soil": "Bulk soil"
   primers: "341F,785R"
   regions: "V3-V4"
   link_NCBI_metadata: "Name"
   link_supplemental_metadata: "SampleID"
+  custom_processing: "process_per_study.process_simmons2020drought"
+
 
 fitspatrick2017assembly:
   full_name: "Fitzpatrick et al. (2018)"
+  doi: "10.1073/pnas.1717617115"
   amplicon_length: 150
   filters:
-    - "lambda row: str(row['Isolation Source [sample]']) != 'live bare soil'"
     - "lambda row: 'analogue' not in str(row['Isolation Source [sample]'])"
+    - "lambda row: 'leaf' not in str(row['Isolation Source [sample]'])"
     - "lambda row: str(row['treatment']) != 'NA'"
   treatment_col: "treatment"
   treatments:
@@ -344,8 +370,11 @@ fitspatrick2017assembly:
     "Thlaspi arvense": "Thlaspi arvense"
     "Vicia sativa": "Vicia sativa"
     "Vicia tetrasperma": "Vicia tetrasperma"
-  location: "Ontario"
-  soil_type: "Field"
+  root_compartment_col: "Isolation Source [sample]"
+  root_compartments:
+    "root rhizosphere": "Rhizosphere"
+    "root endosphere": "Endosphere"
+    "live bare soil": "Bulk soil"
   primers: "515F,808R"
   regions: "V4"
   link_NCBI_metadata: "Name"
@@ -353,22 +382,22 @@ fitspatrick2017assembly:
 
 naylor2017drought:
   full_name: "Naylor et al. (2017)"
+  doi: "10.1038/ismej.2017.118"
   amplicon_length: 300
   filters:
-    - "lambda row: 'Kearney' not in str(row['Library Name'])"
     - "lambda row: 'ITS2' not in str(row['Library Name'])"
-    - "lambda row: str(row['Plant Body Site [sample]']) != 'Soil'"
   treatment_col: "Watering Regm [sample]"
   treatments:
     "Drought": "Drought"
     "Control": "Control"
   host_col: "Isolation Source [sample]"
+  host_col_separate_experiment: "Host [sample]"
   hosts:
     "Zea mays": "PACMAD clade"
     "Triticum turgidum": "BOP clade"
     "Triticum monococcum": "BOP clade"
     "Triticum aestivum": "BOP clade"
-    "Sorghum laxiflorum": "PACMAD clade"
+    "Sorghum laxiflorum": "None"
     "Sorghum bicolor": "PACMAD clade"
     "Sorghastrum nutans": "PACMAD clade"
     "Solanum lycopersicum": "Asterids"
@@ -381,12 +410,20 @@ naylor2017drought:
     "Brachypodium distachyon": "BOP clade"
     "Bothriochloa bladhii": "PACMAD clade"
     "Avena sativa": "BOP clade"
+    # Secondary experiment
+    "Sorghum_bicolor_H": "PACMAD clade"
+    "Sorghum_bicolor_A": "PACMAD clade"
+    "Triticum_aestivum_GH": "BOP clade"
+    "Zea_mays": "PACMAD clade"
+    "Triticum_turgidum": "BOP clade"
+    "Avena_sativa": "BOP clade"
+    "Pennisetum_americanum": "PACMAD clade"
   hosts_ungrouped:
     "Zea mays": "Zea mays"
     "Triticum turgidum": "Triticum turgidum"
     "Triticum monococcum": "Triticum monococcum"
     "Triticum aestivum": "Triticum aestivum"
-    "Sorghum laxiflorum": "Sorghum laxiflorum"
+    "Sorghum laxiflorum": "None"
     "Sorghum bicolor": "Sorghum bicolor"
     "Sorghastrum nutans": "Sorghastrum nutans"
     "Solanum lycopersicum": "Solanum lycopersicum"
@@ -399,60 +436,108 @@ naylor2017drought:
     "Brachypodium distachyon": "Brachypodium distachyon"
     "Bothriochloa bladhii": "Bothriochloa bladhii"
     "Avena sativa": "Avena sativa"
-  location: "California"
-  soil_type: "Field"
+    # Secondary experiment
+    "Sorghum_bicolor_H": "Sorghum bicolor"
+    "Sorghum_bicolor_A": "Sorghum bicolor"
+    "Triticum_aestivum_GH": "Triticum aestivum"
+    "Zea_mays": "Zea mays"
+    "Triticum_turgidum": "Triticum turgidum"
+    "Avena_sativa": "Avena sativa"
+    "Pennisetum_americanum": "Cenchrus americanus"
+  root_compartment_col: "Plant Body Site [sample]"
+  root_compartments:
+    "Rhizosphere": "Rhizosphere"
+    "Root": "Endosphere"
+    "Soil": "Bulk soil"
   primers: "341F,785R"
   regions: "V3-V4"
+  custom_processing: "process_per_study.process_naylor2017drought"
 
-kost2024microbial:
-  amplicon_length: 300
+azarbad2022response:
+  doi: "10.1038/s43705-022-00151-2"
+  full_name: "Azarbad et al. (2022)"
+  amplicon_length: 250
   filters:
-    - "lambda row: str(row['Isolation Source [sample]']) != 'soil'"
-  treatment_col: "Treatment_all"
+    - "lambda row: 'ITS' not in str(row['Title'])"
+    - "lambda row: str(row['Env Broad Scale [sample]']) != 'Leaf'"
+    - "lambda row: str(row['Env Broad Scale [sample]']) != 'Seed Endophytes'"
+    - "lambda row: str(row['Env Broad Scale [sample]']) != 'Seed Epiphytes'"
+  treatment_col: "Treatment [sample]"
   treatments:
-    "Drought": "Drought"
-    "Watered": "Control"
+    "non-irrigated": "Drought"
+    "irrigated": "Control"
   host_col: "Host [sample]"
   hosts:
-    "Echinochloa esculenta": "PACMAD clade"
-    "Panicum miliaceum": "PACMAD clade"
-    # Misspelled in the metadata
-    "Penisetum glaucum": "PACMAD clade"
-    "Setaria italica": "PACMAD clade"
+    "AC Walton": "PACMAD clade"
+    "AC Nass": "PACMAD clade"
+    "AC Barrie": "PACMAD clade"
+    "Strongfield": "PACMAD clade"
+  hosts_ungrouped:
+    "Strongfield": "Triticum turgidum"
+    "AC Walton": "Triticum aestivum"
+    "AC Nass": "Triticum aestivum"
+    "AC Barrie": "Triticum aestivum"    
+  root_compartment_col: "Env Broad Scale [sample]"
+  root_compartments:
+    "Rhizosphere": "Rhizosphere"
+    "Root": "Endosphere"
+    "Bulk soil": "Bulk soil"
+  primers: "520F,799R"
+  regions: "V4"
+
+wipf2021distinguishing:
+  doi: "10.1094/PBIOMES-07-20-0052-R"
+  full_name: "Wipf et al. (2021)"
+  amplicon_length: 300
+  filters:
+    - "lambda row: str(row['Env Medium [sample]']) == 'Root' or str(row['Env Medium [sample]']) == 'Soil_Mixture'"
+  treatment_col: "Title"
+  treatments:
+    ".*_D_.*": "Drought"
+    ".*_W_.*": "Control"
+  host_col: "Host [sample]"
+  hosts:
     "Sorghum bicolor": "PACMAD clade"
   hosts_ungrouped:
-    "Echinochloa esculenta": "Echinochloa esculenta"
-    "Panicum miliaceum": "Panicum miliaceum"
-    "Penisetum glaucum": "Cenchrus americanus"
-    "Setaria italica": "Setaria italica"
-    "Sorghum bicolor": "Sorghum bicolor"
+    "Sorghum bicolor": "Sorghum bicolor"  
+  root_compartment_col: "Env Medium [sample]"
+  root_compartments:
+    "Root": "Endosphere"
+    "Soil_Mixture": "Bulk soil"
+  primers: "341F,785R"
+  regions: "V3-V4"
 
 # INOCULUM STUDIES
 # ---
 
 # This is a NovaSeq study unlike all others which are MiSeq
 swift2024drought:
+  doi: "10.1007/s11104-024-06853-x"
+  full_name: "Swift et al. (2024)"
   amplicon_length: 250
   filters:
-    # discard slurry samples (they are very similar to the soil samples)
+    # discard slurry samples (analysis done in the study shows they are very similar to the soil samples)
     - "lambda row: 'slurry' not in str(row['Env Medium [sample]'])"
     # keep only late harvest as done in the paper
     - "lambda row: str(row['Harvest Time Point [sample]']) == 'late' or pd.isna(row['Harvest Time Point [sample]'])"
     # Remove ITS samples (these are only labelled for the inoculum samples)
-    # For the pthers we have to remove post-processing
+    # For the thers we have to remove post-processing
     - "lambda row: 'ITS' not in str(row['Title'])"
+    # Keep only driest and wettest inocula
+    - "lambda row: str(row['Soil Inoculum [sample]']) != 'HAY'"
+    - "lambda row: str(row['Soil Inoculum [sample]']) != 'TLI'"
   inoculum_col: "Soil Inoculum [sample]"
   # Separate based on precipitation gradient in the paper
   inocula:
     "SVR": "DroughtLegacy"
-    "HAY": "DroughtLegacy"
-    "TLI": "Control"
+    #"HAY": "DroughtLegacy"
+    #"TLI": "Control"
     "KNZ": "Control"
     "Control": "Control"
   inocula_subtypes:
     "SVR": "DroughtLegacy"
-    "HAY": "DroughtLegacy"
-    "TLI": "Wet"
+    #"HAY": "DroughtLegacy"
+    #"TLI": "Wet"
     "KNZ": "Wet"
     "Control": "Control"
   treatment_col: "Drought or Watered"
@@ -469,11 +554,16 @@ swift2024drought:
   is_plant_associated:
     "plant matter": "Yes"
     "soil*": "No"
+  root_compartment_col: "Env Medium [sample]"
+  root_compartments:
+    "plant matter": "Endosphere"
+    "soil*": "Bulk soil"
   link_NCBI_metadata: "Title"
   link_supplemental_metadata: "RepID"
-  height_col: "Height_Feb19"
 
 moore2023microbial:
+  doi: "10.1128/spectrum.01476-22"
+  full_name: "Moore et al. (2023)"
   amplicon_length: 300
   treatment_col: "Water Content Soil [sample]"
   treatments:
@@ -498,10 +588,13 @@ moore2023microbial:
     "Greenhouse": "Yes"
   link_NCBI_metadata: "Title"
   link_supplemental_metadata: "Sample_ID"
-  match_regex: "(N\\d+)"
-  height_col: "Height_cm"
+  root_compartment_col: "Env Local Scale [sample]"
+  root_compartments:
+    "Pot": "Bulk soil"
 
 munoz-ucros2021drought:
+  doi: "​10.​1007/​s11104-​021-​05227-x"
+  full_name: "Munoz-Ucros et al. (2021)"
   amplicon_length: 250
   filters:
     # Not sure what GENEVA stands for
@@ -538,11 +631,13 @@ munoz-ucros2021drought:
     "^STERILE$": "Yes"
     "^PREDRY$": "No"
     "^PREWET$": "No"
-  # I did this manually by adding length increase and length
-  # This should be modified to be done in the code
-  height_col: "Length"
+  root_compartment_col: "Organism"
+  root_compartments:
+    "rhizosphere metagenome": "Rhizosphere"
 
 zhang2022cross:
+  doi: "10.1111/tpj.15775"
+  full_name: "Zhang et al. (2022)"
   amplicon_length: 250
   filters:
     # Remove fungal samples
@@ -561,6 +656,7 @@ zhang2022cross:
     "soil metagenome": "Zea mays"
   inoculum_col: "Name"
   inocula:
+  # To do: include sterilized controls!
     "^A.*": "DroughtLegacy"
     "^O.*": "Control"
   inocula_subtypes:
@@ -571,21 +667,45 @@ zhang2022cross:
     ".*I.*": "No"
     # Does not contain I
     "^[^I]*$": "Yes"
+  root_compartment_col: "Organism"
+  root_compartments:
+    "soil metagenome": "Rhizosphere"
 
 colors:
-  "Xu et al. (2018)": "#FAC72F"
-  "Simmons et al. (2020)": "#504D44"
-  "Azarbad et al. (2020)": "#547A5B" 
-  "Fitzpatrick et al. (2018)": "#5664A5" 
-  "Santos-Medellín et al. (2021)": "#A55664"
-  "Santos-Medellín et al. (2017)": "#FA2F53"
-  "Hoefle et al. (2024)": "#2FFA55" 
-  "Bandopadhyay et al. (2024)": "#2F54FA" 
-  "Naylor et al. (2017)": "#52BA65" 
-  "Faist et al. (2023)": "#A79357"
+  StudyName:
+    "Xu et al. (2018)": "#a6cee3"
+    "Simmons et al. (2020)": "#1f78b4"
+    "Fitzpatrick et al. (2018)": "#b2df8a"
+    "Azarbad et al. (2020)": "#33a02c"
+    "Santos-Medellín et al. (2021)": "#fb9a99"
+    "Hoefle et al. (2024)": "#e31a1c"
+    "Bandopadhyay et al. (2024)": "#fdbf6f"
+    "Naylor et al. (2017)": "#ff7f00"
+    "Faist et al. (2023)": "#cab2d6"
+    "Santos-Medellín et al. (2017)": "#6a3d9a" 
+    "Azarbad et al. (2022)": "#ffff99"
+    "Wipf et al. (2021)": "#b15928"
 
-  "Asterids": "#66c1a6"
-  "Fabids": "#8f9fca"
-  "Malvids": "#e68cc1"
-  "BOP clade": "#f89267"
-  "PACMAD clade": "#a2d85d"
+  Host:
+    "Asterids": "#66c1a6"
+    "Fabids": "#8f9fca"
+    "Malvids": "#e68cc1"
+    "BOP clade": "#fa9167"
+    "PACMAD clade": "#a2d85d"
+    "Soil": "#6B4B1E"
+
+  # In order of most abundant
+  Phyla:
+    "Proteobacteria": "#8dd3c7"
+    "Actinobacteriota": "#ffffb3"
+    "Acidobacteriota": "#bebada"
+    "Bacteroidota": "#fb8072"
+    "Myxococcota": "#80b1d3"
+    "Verrucomicrobiota": "#fdb462"
+    "Chloroflexi": "#b3de69"
+    "Other": "#E8E9EB"
+
+  RootCompartment:
+    "Endosphere": "#b68048"
+    "Rhizosphere": "#926031"
+    "Bulk soil": "#6B4B1E"
