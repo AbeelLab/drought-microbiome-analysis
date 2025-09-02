@@ -29,6 +29,9 @@ def common_processing(study_path,
     metadata_file = os.path.join(study_path, "metadata.tsv")
     df = pd.read_csv(metadata_file, sep='\t', index_col=0)
 
+    if study_name == "zhang2022cross":
+        print(df[study_info["inoculum_col"]])
+
     if kept_samples is not None:
         df = df.loc[kept_samples]
         if study_name == "azarbad2022response":
@@ -80,10 +83,10 @@ def common_processing(study_path,
         df[inoculum_subtype_col] = np.nan
 
     # Sample types
-    if "sample_type_col" in study_info:
-        df[is_plant_associated_col] = df[study_info['sample_type_col']]
+    if "is_plant_associated_col" in study_info:
+        df[is_plant_associated_col] = df[study_info['is_plant_associated_col']]
         df[is_plant_associated_col] = df[is_plant_associated_col].replace(
-            study_info.get('sample_types', {}), regex=True
+            study_info.get('is_plant_associated', {}), regex=True
         )
     else:
         df[is_plant_associated_col] = np.nan
@@ -120,6 +123,9 @@ def common_processing(study_path,
     # Remove NaN hosts (those not mapped)
     # This is because some hosts appear in very small groups
     df = df[df[host_col] != 'None']
+
+    if study_name == "zhang2022cross":
+        print(df[inoculum_col])
 
     return df
 
@@ -180,13 +186,32 @@ def process_naylor2017drought(df, study_info):
             
     return df
 
+def process_zhang2022cross(df, study_info):
+    col = study_info["inoculum_col"]
+    df.loc[df[col].str.contains(r"_A_"), inoculum_col] = "Sterile"
+    df.loc[df[col].str.contains(r"-A-"), inoculum_col] = "Sterile"
+
+    return df
+
 def process_simmons2020drought(df, study_info):
     # Notes from supplemental metadata:
     # Sample names swapped. Fasta file reads SO-Wk9C-R3-2-3, but should be SO-Wk9D-R3-3-3.
     # Sample names swapped. Fasta file reads SO-Wk9D-R3-3-3, but should be SO-Wk9C-R3-2-3.
     
-    # So we should swap the accessions for these two sample IDs
-    tmp = df.loc["SRR11143478"].copy()
-    df.loc["SRR11143478"] = df.loc["SRR11143463"]
-    df.loc["SRR11143463"] = tmp
+    id1 = "SRR11143478"
+    id2 = "SRR11143463"
+    
+    has_id1 = id1 in df.index
+    has_id2 = id2 in df.index
+
+    if has_id1 and has_id2:
+        tmp = df.loc[id1].copy()
+        df.loc[id1] = df.loc[id2]
+        df.loc[id2] = tmp
+    elif has_id1 and not has_id2:
+        df = df.rename(index={id1: id2})
+    elif has_id2 and not has_id1:
+        # Rename id2 to id1
+        df = df.rename(index={id2: id1})
+    
     return df

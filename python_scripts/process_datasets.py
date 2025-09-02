@@ -2,9 +2,12 @@ import os
 import pickle
 import yaml
 
+from collections import OrderedDict
 from copy import deepcopy
 from dataset import Dataset
-from utils import biom_to_tsv, log_statistics
+from plotting import plot_pcoa
+from process_per_study import common_processing
+from utils import biom_to_tsv, log_statistics, log_features_per_batch
 
 with open('config.yml') as f:
     config = yaml.safe_load(f)
@@ -39,17 +42,23 @@ def create_and_filter_study_dataset(study,
                  data_path=config["data_path"],
                  is_filtered=False)
 
-    # Log #features and filter
+    ds.save_dataset()
+
+    # Log #features and filter unculured, archaea
     log_statistics(study,
                    "Initial #features that are not Chloroplast;Mitochondria;Eukaryota;Unassigned;Unclassified",
                    int(len(ds.taxonomy_counts_df.columns)),
                    "../data/features_log.pkl")
-    ds.filter_features()
+    ds.filter_features(min_prevalence=0)
     log_statistics(study,
                    "After abundance and prevalence filtering",
                    int(len(ds.taxonomy_counts_df.columns)),
                    "../data/features_log.pkl")
 
+    ds.filter_samples()
+    
+    ds.remove_zero_features()
+    
     log_statistics(study,
                    "Sparsity",
                    (ds.taxonomy_counts_df == 0).values.sum() / ds.taxonomy_counts_df.size * 100,
@@ -58,6 +67,10 @@ def create_and_filter_study_dataset(study,
                    "Average summed sample abundance",
                    ds.taxonomy_counts_df.sum(axis=1).mean(),
                    "../data/features_log.pkl")
+    log_statistics(study,
+                   "After filtering based on absolute abundance",
+                   len(ds.taxonomy_counts_df),
+                   "../data/samples_log.pkl")
     
     print("Samples: ", len(ds.taxonomy_counts_df))
     # Save filtered Dataset as .tsv
@@ -71,7 +84,8 @@ def create_and_filter_study_dataset(study,
     return ds
 
 def run_preprocessing(studies, levels, save_as):
-    processed_datasets = dict()
+    processed_datasets = {"filtered": dict(),
+                          "unfiltered": dict()}
 
     for level in levels:
         print(f"[INFO] Processing level: {level}")
@@ -88,19 +102,13 @@ def run_preprocessing(studies, levels, save_as):
                     protocol=pickle.HIGHEST_PROTOCOL)
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--preprocess",
-                        action=argparse.BooleanOptionalAction)
-    args = parser.parse_args()
-    preprocess = args.preprocess
-
     run_preprocessing(config["drought_studies"], [6], config["processed_drought_datasets"])
-    # run_preprocessing(config["inoculum_studies"], [6], config["processed_inoculum_datasets"])
+    run_preprocessing(config["inoculum_studies"], [6], config["processed_inoculum_datasets"])
 
     with open(config["processed_drought_datasets"], 'rb') as handle:
         processed_drought_datasets = pickle.load(handle)
-    # with open(config["processed_inoculum_datasets"], 'rb') as handle:
-    #     processed_inoculum_datasets = pickle.load(handle)  
+    with open(config["processed_inoculum_datasets"], 'rb') as handle:
+        processed_inoculum_datasets = pickle.load(handle)  
         
     
     for level, level_name in [[6, "genus"]]:
@@ -108,13 +116,12 @@ def main():
         list_of_datasets = [processed_drought_datasets[level][study]
                             for study in config["drought_studies"]]
         merged_dataset = Dataset.merge_datasets(list_of_datasets,
-                                                config["data_path"],
-                                                merged_dataset_name=dataset_name)
+                                                    config["data_path"],
+                                                    merged_dataset_name=dataset_name)
+        merged_dataset.save_dataset()
 
         # Merge drought datasets per compartment
         for compartment in ["Rhizosphere", "Endosphere", "Bulk soil"]:
-            print(compartment)
-
             dataset_name = f"merged_l{level}_{compartment.lower().replace(' ', '_')}"
 
             list_of_datasets = []
@@ -123,28 +130,36 @@ def main():
                 ds.filter_rows(lambda df: df["RootCompartment"] == compartment)
                 ds.dataset_name += "_" + compartment
 
-                if len(ds.taxonomy_counts_df): list_of_datasets.append(ds)
-                    
-            merged_dataset = Dataset.merge_datasets(list_of_datasets,
-                                                    config["data_path"],
-                                                    merged_dataset_name=dataset_name)
-            
-            # Save merged dataset
-            merged_dataset.save_dataset()
-            plot_pcoa(merged_dataset,
-                      os.path.join(config["plotting_dir"],
-                                   merged_dataset.dataset_name))
+                if len(ds.taxonomy_counts_df):
+                    # Filter low-prevalence features
+                    ds.filter_features(min_prevalence=0.05)
+                    list_of_datasets.append(ds)
 
-            # Batch-correct merged dataset
-            merged_dataset.apply_mmuphin_be_correction()
-            merged_dataset.save_dataset()
-            plot_pcoa(merged_dataset,
-                      os.path.join(config["plotting_dir"],
-                                   merged_dataset.dataset_name))
-            log_statistics(merged_dataset.dataset_name,
-                           "Union of features after BE correction filtering",
-                           len(merged_dataset.taxonomy_counts_df.columns),
-                           "../data/features_log.pkl")
+            for method in ["union", "intersection"]:
+                suffix = ""
+                if method == "intersection": suffix = "_intersection"
+                merged_dataset = Dataset.merge_datasets(list_of_datasets,
+                                                        config["data_path"],
+                                                        merged_dataset_name=f"{dataset_name}{suffix}",
+                                                        method=method)
+                merged_dataset.remove_zero_features()
+                    
+                # Save merged dataset
+                merged_dataset.save_dataset()
+                plot_pcoa(merged_dataset,
+                              os.path.join(config["plotting_dir"],
+                                           merged_dataset.dataset_name))
+
+                # Batch-correct merged dataset
+                merged_dataset.apply_mmuphin_be_correction()
+                merged_dataset.save_dataset()
+                plot_pcoa(merged_dataset,
+                          os.path.join(config["plotting_dir"],
+                                       merged_dataset.dataset_name))
+                log_statistics(merged_dataset.dataset_name,
+                               "Union of features after BE correction filtering",
+                               len(merged_dataset.taxonomy_counts_df.columns),
+                               "../data/features_log.pkl")
 
             # Per study, log #features after batch effect removal (mmuphin filtering)
             log_features_per_batch(merged_dataset,

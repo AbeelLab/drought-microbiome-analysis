@@ -33,12 +33,9 @@ negative_inoculum_studies:
 
 drought_studies:
   - "azarbad2022response"
-  - "wipf2021distinguishing"
   - "santos-medellin2021prolonged"
   - "simmons2020drought"
-  - "fitspatrick2017assembly"
-  - "hoefle2024oak"
-  - "faist2022potato"
+  - "fitspatrick2018assembly"
   - "santos-medellin2017drought"
   - "azarbad2020four"
   - "naylor2017drought"
@@ -277,7 +274,7 @@ simmons2020drought:
   custom_processing: "process_per_study.process_simmons2020drought"
 
 
-fitspatrick2017assembly:
+fitspatrick2018assembly:
   full_name: "Fitzpatrick et al. (2018)"
   doi: "10.1073/pnas.1717617115"
   amplicon_length: 150
@@ -533,13 +530,7 @@ swift2024drought:
     #"HAY": "DroughtLegacy"
     #"TLI": "Control"
     "KNZ": "Control"
-    "Control": "Control"
-  inocula_subtypes:
-    "SVR": "DroughtLegacy"
-    #"HAY": "DroughtLegacy"
-    #"TLI": "Wet"
-    "KNZ": "Wet"
-    "Control": "Control"
+    "Control": "Sterile"
   treatment_col: "Drought or Watered"
   treatments:
     "D": "Drought"
@@ -579,9 +570,6 @@ moore2023microbial:
   inocula:
     "Inoculum: Agricultural_field": "Control"
     "Inoculum: Forest_soil": "DroughtLegacy"
-  inocula_subtypes:
-    "Inoculum: Agricultural_field": "Wet"
-    "Inoculum: Forest_soil": "DroughtLegacy"
   # Only one type
   is_plant_associated_col: "Env Broad Scale [sample]"
   is_plant_associated:
@@ -605,7 +593,7 @@ munoz-ucros2021drought:
   treatments:
     "Control": "Control" 
     "Drought": "Drought"
-  # Dummy column since host s not included so we take it from the paper
+  # Dummy column since host is not included so we take it from the paper
   host_col: "Organism"
   hosts:
     "rhizosphere metagenome": "Fabids"
@@ -615,13 +603,7 @@ munoz-ucros2021drought:
   inocula:
     "^WET$": "Control"
     "^DRY$": "DroughtLegacy"
-    "^STERILE$": "Control"
-    "^PREDRY$": "None"
-    "^PREWET$": "None"
-  inocula_subtypes:
-    "^WET$": "Wet"
-    "^DRY$": "DroughtLegacy"
-    "^STERILE$": "Control"
+    "^STERILE$": "Sterile"
     "^PREDRY$": "None"
     "^PREWET$": "None"
   is_plant_associated_col: "Microbiome [sample]"
@@ -656,12 +638,8 @@ zhang2022cross:
     "soil metagenome": "Zea mays"
   inoculum_col: "Name"
   inocula:
-  # To do: include sterilized controls!
     "^A.*": "DroughtLegacy"
     "^O.*": "Control"
-  inocula_subtypes:
-    "^A.*": "DroughtLegacy"
-    "^O.*": "Wet"  
   is_plant_associated_col: "Name"
   is_plant_associated:
     ".*I.*": "No"
@@ -670,6 +648,7 @@ zhang2022cross:
   root_compartment_col: "Organism"
   root_compartments:
     "soil metagenome": "Rhizosphere"
+  custom_processing: "process_per_study.process_zhang2022cross"
 
 colors:
   StudyName:
@@ -694,18 +673,26 @@ colors:
     "PACMAD clade": "#a2d85d"
     "Soil": "#6B4B1E"
 
-  # In order of most abundant
+  # Compute top 6 most abundant phyla per host
+  # Take the union across hosts (incl. soil)
   Phyla:
-    "Proteobacteria": "#8dd3c7"
-    "Actinobacteriota": "#ffffb3"
-    "Acidobacteriota": "#bebada"
-    "Bacteroidota": "#fb8072"
-    "Myxococcota": "#80b1d3"
-    "Verrucomicrobiota": "#fdb462"
-    "Chloroflexi": "#b3de69"
+    "Proteobacteria": "#a6cee3"
+    "Actinobacteriota": "#1f78b4"
+    "Acidobacteriota": "#b2df8a"
+    "Bacteroidota": "#33a02c"
+    "Myxococcota": "#fb9a99"
+    "Verrucomicrobiota": "#e31a1c"
+    "Chloroflexi": "#fdbf6f"
+    "Firmicutes": "#ff7f00"
+    "Gemmatimonadota": "#cab2d6"
+    "Planctomycetota": "#6a3d9a"
     "Other": "#E8E9EB"
 
   RootCompartment:
     "Endosphere": "#b68048"
     "Rhizosphere": "#926031"
     "Bulk soil": "#6B4B1E"
+
+  Treatment:
+    "Drought": "#FF9933"
+    "Control": "#3399FF"

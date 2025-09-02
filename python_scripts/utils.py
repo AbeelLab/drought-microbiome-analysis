@@ -7,6 +7,14 @@ import subprocess
 from Bio import Phylo
 from collections import defaultdict
 
+def trim_taxonomy(tax_str):
+    parts = tax_str.split(";")
+    for part in reversed(parts):
+        part = part.strip()
+        if part not in ["", "__"]:
+            return part[3:]
+    return ""
+
 def log_statistics(study,
                    filtering_step,
                    to_log,

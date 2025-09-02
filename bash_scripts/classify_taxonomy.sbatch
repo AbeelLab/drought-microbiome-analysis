@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --qos=short
-#SBATCH --time=00:30:00
+#SBATCH --time=01:15:00
 #SBATCH --mem=16GB
 #SBATCH --mail-type=END
 #SBATCH --output=slurm_outputs/%x_%j.out
@@ -88,21 +88,15 @@ qiime taxa filter-table \
       --o-filtered-table "${study_dir}/dada2_asv_filtered_table.qza"
 
 # Filter samples
-# Based on number of ASVs
 qiime feature-table filter-samples \
       --i-table "${study_dir}/dada2_asv_filtered_table.qza" \
-      --p-min-frequency 1000 \
+      --p-min-frequency 10000 \
       --o-filtered-table "${study_dir}/dada2_sample_filtered_table.qza"
-# Based on number of taxonomic features
-qiime feature-table filter-samples \
-      --i-table "${study_dir}/dada2_sample_filtered_table.qza" \
-      --p-min-features 10 \
-      --o-filtered-table "${study_dir}/dada2_final_filtered_table.qza"
 
 # Filter representative sequences
 qiime feature-table filter-seqs \
       --i-data "${study_dir}/dada2_rep_set.qza" \
-      --i-table "${study_dir}/dada2_final_filtered_table.qza" \
+      --i-table "${study_dir}/dada2_sample_filtered_table.qza" \
       --o-filtered-data "${study_dir}/dada2_filtered_rep_set.qza"
 
 # Extract tables
@@ -111,12 +105,12 @@ srun qiime tools extract \
      --output-path "${study_dir}/dada2_asv_filtered_table"
 
 srun qiime tools extract \
-     --input-path "${study_dir}/dada2_final_filtered_table.qza" \
-     --output-path "${study_dir}/dada2_final_filtered_table"
+     --input-path "${study_dir}/dada2_sample_filtered_table.qza" \
+     --output-path "${study_dir}/dada2_sample_filtered_table"
 
 # ---> Visualization
 # Visualize taxonomy per sample
-srun qiime taxa barplot --i-table "${study_dir}/dada2_final_filtered_table.qza" \
+srun qiime taxa barplot --i-table "${study_dir}/dada2_sample_filtered_table.qza" \
      --i-taxonomy "${study_dir}/taxonomy.qza" \
      --o-visualization "${study_dir}/taxa-bar-plots.qzv" \
      --use-cache $cache_dir
@@ -126,7 +120,7 @@ srun qiime taxa barplot --i-table "${study_dir}/dada2_final_filtered_table.qza" 
 # Outputs FeatureTable[Frequency], required for ancombc input
 for level in $(seq 2 6);
 do
-    srun qiime taxa collapse --i-table "${study_dir}/dada2_final_filtered_table.qza" \
+    srun qiime taxa collapse --i-table "${study_dir}/dada2_sample_filtered_table.qza" \
          --i-taxonomy "${study_dir}/taxonomy.qza" \
          --p-level $level \
          --o-collapsed-table "${study_dir}/composition_table_l${level}.qza" \

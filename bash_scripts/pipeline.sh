@@ -4,7 +4,7 @@
 
 # If accession is provided, create study directory and .tsv file within this directory required by q2-fondue
 if [ -n "$accession" ]; then
-    echo "Formatting accession $accession for study $study_id..."
+    echo "Formatting accession(s) $accession for study $study_id..."
     bash create_study_dir.sh $data_path $study_id $accession
 fi
 
@@ -73,14 +73,14 @@ if [ "$run_cutadapt" = true ] ; then
 fi
 
 
-# if [ "$run_figaro" = true ] ; then
-#     sbatch --array="1-${last_batch}" \
-#            --dependency=${dependencies} \
-#            figaro.sbatch \
-#            "$data_path" \
-#            "$study_id"
-#     update_dependencies
-# fi
+if [ "$run_figaro" = true ] ; then
+    sbatch --array="1-${last_batch}" \
+           --dependency=${dependencies} \
+           figaro.sbatch \
+           "$data_path" \
+           "$study_id"
+    update_dependencies
+fi
 
 
 if [ "$run_dada2" = true ] ; then

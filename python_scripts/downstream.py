@@ -51,11 +51,11 @@ def create_and_filter_study_dataset(study, level):
                    "Initial #features that are not Chloroplast;Mitochondria;Eukaryota;Unassigned;Unclassified",
                    int(len(ds.taxonomy_counts_df.columns)),
                    "../data/features_log.pkl")
-    ds.filter_features()
-    log_statistics(study,
-                   "After abundance and prevalence filtering",
-                   int(len(ds.taxonomy_counts_df.columns)),
-                   "../data/features_log.pkl")
+    # ds.filter_features()
+    # log_statistics(study,
+    #                "After abundance and prevalence filtering",
+    #                int(len(ds.taxonomy_counts_df.columns)),
+    #                "../data/features_log.pkl")
 
     log_statistics(study,
                    "Sparsity",

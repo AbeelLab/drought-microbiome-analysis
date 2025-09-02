@@ -1,8 +1,10 @@
+import math
 import numpy as np
 import pandas as pd
 import pickle as pkl
 import os
 
+from collections import Counter
 from rpy2 import robjects
 from rpy2.robjects import pandas2ri
 from rpy2.robjects.packages import importr
@@ -101,45 +103,10 @@ class Dataset:
         counts_batch_corrected = pandas2ri.rpy2py(counts_batch_corrected).T
         self.taxonomy_counts_df = counts_batch_corrected
         self.dataset_name += "_batch_corrected"
+        self.is_batch_corrected = True
 
         self.update_based_on_sample_intersection()
-
-    def filter_features_based_on_batches(self,
-                                         batch_column="StudyID",
-                                         min_num_batches=2):
-        assert "merged" in self.dataset_name, "Need a merged dataset for this filtering step"
         
-        all_features = self.get_counts_features_columns()
-        sample_to_batch = self.metadata_df[batch_column]
-        feature_batches = {feature: set() for feature in all_features}
-
-        for batch_id, sample_ids in sample_to_batch.groupby(sample_to_batch).groups.items():
-            batch_df = self.taxonomy_counts_df.loc[sample_ids, all_features]
-            present_features = batch_df.columns[(batch_df > 0).any(axis=0)]
-            for feature in present_features:
-                feature_batches[feature].add(batch_id)
-
-
-            log_statistics(f"{batch_id}_{self.dataset_name}",
-                           "After abundance and prevalence filtering",
-                           int(len(present_features)),
-                           "../data/features_log.pkl")
-            
-
-        to_keep = [feature for feature, batches in feature_batches.items()
-                   if len(batches) >= min_num_batches]
-
-        self.taxonomy_counts_df = self.taxonomy_counts_df[to_keep]
-
-        is_filtered = True
-
-        print(f"[INFO] After filtering to keep featrues that occur in at least {min_num_batches} studies")
-        print(f"{len(to_keep)} features")
-
-        log_statistics(self.dataset_name,
-                       "Union of features after filtering",
-                       len(to_keep),
-                       "../data/features_log.pkl")
         
     # Normalize samples such that the features sum up to total_sum
     def get_normalized_features(self, total_sum=100):
@@ -148,10 +115,10 @@ class Dataset:
         return taxonomy_normalized_df
 
     
-    # Default: at least > 0.01% abundant in at least 5% of samples
+    # Default: appears in at least 5% of samples
     def filter_features(self,
                         min_prevalence=0.05,
-                        min_abundance=0.00001,
+                        min_abundance=0,
                         total_sum=100):        
         # Normalize features
         # Remove taxa not assigned at the deepest level
@@ -163,7 +130,8 @@ class Dataset:
         # Remove uncultured taxa
         to_keep = [feature for feature in to_keep
                    if "uncultured" not in feature
-                   and "Uncultured" not in feature]
+                   and "Uncultured" not in feature
+                   and "Archaea" not in feature]
         self.taxonomy_counts_df = self.taxonomy_counts_df[to_keep]
 
         # Normalize to enable abundance/prevalence filtering
@@ -174,7 +142,7 @@ class Dataset:
         
         min_sample_count = int(min_prevalence * len(taxonomy_normalized_df))
         to_keep = [col for col in to_keep
-                   if (taxonomy_normalized_df[col] >= min_abundance).sum() >= min_sample_count]
+                   if (taxonomy_normalized_df[col] > min_abundance).sum() >= min_sample_count]
 
         print(f"[INFO] #features after filtering: {len(to_keep)}")
 
@@ -183,28 +151,49 @@ class Dataset:
         
         # Update filtering status
         is_filtered = True
-        self.dataset_name += "_filtered"
+        if "filtered" not in self.dataset_name:
+            self.dataset_name += "_filtered"
+            
 
+    def filter_samples(self,
+                       min_absolute_abundance=7.5 * 10**3):
+       self.taxonomy_counts_df = self.taxonomy_counts_df[self.taxonomy_counts_df.sum(axis=1) >= min_absolute_abundance]
+
+       self.update_based_on_sample_intersection()
+        
+       # Update filtering status
+       is_filtered = True
+       if "filtered" not in self.dataset_name:
+           self.dataset_name += "_filtered"
         
     def save_dataset(self):
         metadata_file = "metadata_" + self.dataset_name + ".tsv"
         metadata_file = os.path.join(self.data_path, metadata_file)
-        self.metadata_df.to_csv(metadata_file,
-                                sep = '\t',
-                                index = True)
+        self.metadata_df.fillna("Not applicable").to_csv(metadata_file,
+                                                         sep='\t',
+                                                         index=True,
+                                                         index_label="#SampleID")
         print(f"[INFO] Saved: {metadata_file}")
 
         taxonomy_counts_file = "counts_" + self.dataset_name + ".tsv"
         taxonomy_counts_file = os.path.join(self.data_path, taxonomy_counts_file)
         self.taxonomy_counts_df.to_csv(taxonomy_counts_file,
                                        sep = '\t',
-                                       index = True)
+                                       index = True,
+                                       index_label = "#SampleID")
+        # Save transpose for .biom convesion
+        transposed_file = "counts_" + self.dataset_name + ".transposed.tsv"
+        transposed_file = os.path.join(self.data_path, transposed_file)
+        self.taxonomy_counts_df.T.to_csv(transposed_file,
+                                         sep = '\t',
+                                         index = True,
+                                         index_label = "#SampleID")
         print(f"[INFO] Saved: {taxonomy_counts_file}")
 
-        with open(self.dataset_name + ".pkl", 'wb') as handle:
-            pkl.dump(processed_datasets,
+        with open(os.path.join(self.data_path, self.dataset_name + ".pkl"), 'wb') as handle:
+            pkl.dump(self,
                      handle,
-                     protocol=pickle.HIGHEST_PROTOCOL)
+                     protocol=pkl.HIGHEST_PROTOCOL)
 
         return metadata_file, taxonomy_counts_file
 
@@ -221,7 +210,11 @@ class Dataset:
 
     @staticmethod
     # Return a dataset with the merged metadata and taxonomic features
-    def merge_datasets(list_of_datasets, data_path, merged_dataset_name="merged"):
+    def merge_datasets(list_of_datasets,
+                       data_path,
+                       method="union",
+                       merged_dataset_name="merged",
+                       intersection_threshold=0.5):
         filtering_stats = {ds.is_filtered for ds in list_of_datasets}
         assert len(filtering_stats) == 1, (f"Should not merge datasets with mixed filtering states")
 
@@ -231,11 +224,27 @@ class Dataset:
                                      for ds in list_of_datasets],
                                     axis=0,
                                     sort=False)
-        # For features that are not common, pad with 0's
-        merged_taxonomy_counts = pd.concat([ds.get_counts_features()
-                                            for ds in list_of_datasets],
-                                           axis=0,
-                                           sort=False).fillna(0)
+
+        if method == "union":
+            # For features that are not common, pad with 0's
+            merged_taxonomy_counts = pd.concat([ds.get_counts_features()
+                                                for ds in list_of_datasets],
+                                               axis=0,
+                                               sort=False).fillna(0)
+        elif method == "intersection":
+            n_datasets = len(list_of_datasets)
+            min_datasets = math.ceil(intersection_threshold * n_datasets)
+
+            counter = Counter()
+            for ds in list_of_datasets:
+                counter.update(ds.get_counts_features().columns)
+
+            features_kept = {feat for feat, cnt in counter.items() if cnt >= min_datasets}
+            ordered_cols = sorted(features_kept)
+
+            dfs = [ds.get_counts_features().reindex(columns=ordered_cols, fill_value=0)
+                   for ds in list_of_datasets]
+            merged_taxonomy_counts = pd.concat(dfs, axis=0, sort=False)
 
         merged = Dataset(taxonomy_counts_df=merged_taxonomy_counts,
                          metadata_df=merged_metadata,
@@ -256,11 +265,26 @@ class Dataset:
 
         return merged
 
-    def get_core(self,
-                 min_prevalence=0.95):
-        min_sample_count = int(min_prevalence * len(self.taxonomy_counts_df))
+    def get_core(self, min_prevalence):
         all_features = self.get_counts_features_columns()
+        n_samples = len(self.taxonomy_counts_df)
 
-        # Get columns (features) that appear in at least  min_sample_count
+        min_sample_count = int(min_prevalence * n_samples)
 
-        # Return features as set
+        prevalence = {col: (self.taxonomy_counts_df[col] > 0).sum() / n_samples
+                      for col in all_features}
+
+        core_features = {taxon for taxon, prev in prevalence.items()
+                         if prev >= min_prevalence}
+
+        return core_features, prevalence
+
+    def remove_zero_features(self):
+        all_features = self.get_counts_features_columns()
+        print(f"[INFO] Initial #features: {len(all_features)}")
+
+        nonzero_features = self.taxonomy_counts_df.columns[self.taxonomy_counts_df.sum(axis=0) > 0].tolist()
+        self.taxonomy_counts_df = self.taxonomy_counts_df[nonzero_features]
+
+        print(f"[INFO] #features after removing all-zero features: {len(nonzero_features)}")
+        
