@@ -20,6 +20,7 @@ with open('config.yml') as f:
 
 def make_volcano_plot(inoculum_signature,
                       drought_signature,
+                      num_samples,
                       save_as):
     data = []
     for taxon, vals in inoculum_signature.items():
@@ -44,10 +45,12 @@ def make_volcano_plot(inoculum_signature,
     plt.axvline(-1, color="gray", linestyle="--")
     plt.axvline(1, color="gray", linestyle="--")
 
+    plt.title(f"Samples: {num_samples}")
+
     plt.xlabel("log2 Fold Change (Inoculum)")
     plt.ylabel("-log10 Adjusted P-Value")
-    plt.xlim((-6.5, 6.5))
-    plt.ylim((0, 6.5))
+    plt.xlim((-7, 7))
+    plt.ylim((0, 15.5))
 
     # label taxa beyond thresholds
     sig_df = df[(df["logFC"].abs() > 1) & (df["-log10P"] > -np.log10(0.1))]
@@ -140,29 +143,24 @@ def main():
 
         # Filter low-abundance features
         ds.filter_features()
-        
 
-        for treatment in ["Drought", "Control"]:
-            # Filter for treatment
-            treatment_ds = deepcopy(ds)
-            treatment_ds.filter_rows(lambda df: df["Treatment"] == treatment)
+        # Run wilcoxon
+        inoculum_signature = run_maaslin_diff_abundance(ds,
+                                                        fixed_effects="Inoculum",
+                                                        random_effects="Treatment",
+                                                        base="Control",
+                                                        condition="DroughtLegacy")
 
-            # Run wilcoxon
-            inoculum_signature = run_maaslin_diff_abundance(treatment_ds,
-                                                            fixed_effects="Inoculum",
-                                                            base="Control",
-                                                            condition="DroughtLegacy")
-
-            inoculum_signature = {taxon.replace(".", ";"): inoculum_signature[taxon]
-                                  for taxon in inoculum_signature}
+        inoculum_signature = {taxon.replace(".", ";"): inoculum_signature[taxon]
+                              for taxon in inoculum_signature}
 
 
-            make_volcano_plot(inoculum_signature,
-                              merged_signature,
-                              save_as=f"../data/plots/volcano_{study}_{treatment}")
+        make_volcano_plot(inoculum_signature,
+                          merged_signature,
+                          num_samples=len(ds.taxonomy_counts_df),
+                          save_as=f"../data/plots/volcano_{study}")
 
-            if treatment == "Drought":
-                inverses[study] = permutation_test(merged_signature, inoculum_signature)
+        inverses[study] = permutation_test(merged_signature, inoculum_signature)
 
     print(inverses)
                 
