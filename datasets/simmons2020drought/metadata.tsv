@@ -1,0 +1,162 @@
+#SampleID	StudyID	StudyName	Treatment	Host	HostSpecific	RootCompartment	Inoculum	Primers
+SRR11143339	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143341	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143342	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143343	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143344	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143345	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143347	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143349	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143350	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143351	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143355	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143356	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143359	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143363	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143365	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143372	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143378	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143380	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143386	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143388	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143389	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143392	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143396	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143398	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143400	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143402	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143405	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143407	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143409	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143411	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143413	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143416	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143418	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143419	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143420	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143421	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143422	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143423	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143424	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143426	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143427	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143428	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143429	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143430	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143431	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143432	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143433	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143434	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143435	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143437	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Echinochloa esculenta	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143438	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Panicum miliaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143441	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143442	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143443	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143444	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143445	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143447	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143448	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143449	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143450	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143451	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143452	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143453	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143454	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143462	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143464	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143465	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143466	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143467	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143469	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143471	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143472	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143473	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143475	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143477	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143480	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143481	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143482	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143483	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143484	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143486	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143487	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143488	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143489	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143490	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143491	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143492	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143493	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143494	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143495	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143497	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143498	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143499	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143500	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143512	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143513	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143514	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143515	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143516	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143519	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143520	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143521	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143522	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143523	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143524	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143525	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143526	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143527	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143533	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143536	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143537	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143538	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143556	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143567	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143569	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143570	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143571	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143572	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143574	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143576	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143577	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143578	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143583	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143584	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143585	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143586	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143587	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143589	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143591	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143592	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143593	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143594	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143596	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143625	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143626	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143627	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143629	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143633	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143634	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143636	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143638	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143639	simmons2020drought	Simmons et al. (2020)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143642	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143647	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143648	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143649	simmons2020drought	Simmons et al. (2020)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR11143650	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143651	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143654	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143656	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143658	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143662	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143663	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143666	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143668	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143669	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143671	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143677	simmons2020drought	Simmons et al. (2020)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR11143678	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143679	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR11143680	simmons2020drought	Simmons et al. (2020)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R

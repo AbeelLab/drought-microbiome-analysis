@@ -1,0 +1,303 @@
+#SampleID	StudyID	StudyName	Treatment	Host	HostSpecific	RootCompartment	Inoculum	Primers
+SRR6439542	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Potentilla recta	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439550	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439551	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439552	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439553	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439554	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439555	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439556	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439558	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Lotus corniculatus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439570	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439571	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439573	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439575	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439582	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439583	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439594	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439606	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439610	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439612	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439613	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439615	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439622	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Solanum dulcamara	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439625	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439627	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439643	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439649	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439651	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439656	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6439670	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Symphyotrichum ericoides	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439674	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439675	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera perennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439676	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439677	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera biennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439680	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Lotus corniculatus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439681	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439683	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Lepidium densiflorum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439685	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Lepidium densiflorum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439686	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439698	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus cryptandrus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439708	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439709	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439710	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439715	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439717	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Phalaris arundinacea	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6439718	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439720	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6439721	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440285	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440286	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440287	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440288	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440293	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440294	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440295	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera perennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440296	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera perennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440298	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Symphyotrichum ericoides	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440299	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440300	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Symphyotrichum ericoides	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440301	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Symphyotrichum ericoides	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440302	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440304	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440305	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440306	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Cichorium intybus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440307	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Cichorium intybus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440309	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440313	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus oleraceus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440314	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus oleraceus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440315	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440317	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus oleraceus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440318	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440319	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Cichorium intybus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440320	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Cichorium intybus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440321	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440322	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Cichorium intybus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440323	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440324	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Convolvulus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440325	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440326	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440327	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440328	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440329	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440330	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440332	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440333	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440334	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Solanum dulcamara	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440335	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440336	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Solanum dulcamara	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440337	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Solanum dulcamara	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440339	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Sisymbrium officinale	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440340	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440341	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440342	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Malva neglecta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440344	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440345	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440347	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440348	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440351	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus oleraceus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440352	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus cryptandrus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440353	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus cryptandrus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440354	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440355	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440356	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Sonchus oleraceus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440357	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus oleraceus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440358	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440359	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440361	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus cryptandrus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440362	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus cryptandrus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440364	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440365	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440369	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440370	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440371	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Symphyotrichum ericoides	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440374	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440375	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440377	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440380	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Arctium minus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440381	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Arctium minus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440383	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Asclepias incarnata	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440384	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Asclepias incarnata	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440385	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Asclepias incarnata	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440389	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phleum pratense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440392	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440393	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440395	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440399	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440400	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440401	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440402	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago rugelii	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440403	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago rugelii	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440404	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440405	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago major	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440406	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440407	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440408	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440409	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago major	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440411	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440412	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Lepidium densiflorum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440413	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440414	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440415	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440416	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440417	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440418	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440419	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440420	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440422	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Geum aleppicum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440426	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440427	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440428	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440429	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440430	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440431	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Sisymbrium officinale	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440433	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440434	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Solanum dulcamara	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440436	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera perennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440437	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Sisymbrium officinale	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440438	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Sisymbrium officinale	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440439	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Solanum dulcamara	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440440	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Solanum dulcamara	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440443	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Potentilla recta	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440445	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera perennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440446	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440447	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera biennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440449	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440450	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440451	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440452	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440453	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440455	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440456	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440458	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440459	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440462	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440463	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440615	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440617	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Capsella bursa-pastoris	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440621	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440622	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Cichorium intybus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440624	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440625	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus neglectus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440626	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus neglectus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440631	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus arvensis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440633	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Sonchus oleraceus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440636	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440637	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia tetrasperma	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440638	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440641	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Asclepias incarnata	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440642	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Asclepias incarnata	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440653	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440654	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440655	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440656	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440657	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440658	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440659	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440660	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440667	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Solanum dulcamara	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440668	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Solanum dulcamara	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440669	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Sisymbrium officinale	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440670	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Solanum dulcamara	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440672	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Sisymbrium officinale	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440673	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440676	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Arctium minus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440677	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Arctium minus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440678	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440681	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Arctium minus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440683	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440684	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440707	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440708	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440709	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440710	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440717	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Medicago sativa	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440720	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440721	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera biennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440724	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440726	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera perennis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440731	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Potentilla recta	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440732	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440733	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440737	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440738	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440739	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440740	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440741	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Desmodium canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440743	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440744	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440746	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440759	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440762	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago rugelii	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440764	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago rugelii	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440767	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440768	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440769	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440770	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440771	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440772	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440774	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440775	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440776	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,808R
+SRR6440780	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Symphyotrichum ericoides	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440785	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440786	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440787	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Solanum dulcamara	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440789	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Sisymbrium officinale	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440791	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440792	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440794	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Sisymbrium officinale	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440795	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Sisymbrium officinale	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440810	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440811	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440816	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440817	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Potentilla recta	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440828	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440829	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440831	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440832	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440833	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440834	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera perennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440836	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440837	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Phalaris arundinacea	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440838	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440839	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Plantago major	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440840	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440842	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440843	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Plantago rugelii	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440857	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440858	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440859	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	BOP clade	Bromus inermis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440861	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440862	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440863	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440867	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Geum aleppicum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440869	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Geum aleppicum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440880	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera perennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440882	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440883	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Lotus corniculatus	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440886	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440887	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Lepidium densiflorum	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440889	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Geum canadense	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440892	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Medicago sativa	Rhizosphere	Not available for this type of experiment	515F,808R
+SRR6440893	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Capsella bursa-pastoris	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440896	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440897	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440901	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440917	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440918	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440919	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440920	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Solanum dulcamara	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440921	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Vicia tetrasperma	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440936	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Convolvulus arvensis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440937	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Fabids	Desmodium canadense	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440940	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Malvids	Oenothera biennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440941	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440946	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440949	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Malvids	Oenothera biennis	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440951	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440953	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440955	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440956	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	PACMAD clade	Sporobolus cryptandrus	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440969	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Control	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R
+SRR6440972	fitzpatrick2018assembly	Fitzpatrick et al. (2018)	Drought	Asterids	Asclepias incarnata	Endosphere	Not available for this type of experiment	515F,808R

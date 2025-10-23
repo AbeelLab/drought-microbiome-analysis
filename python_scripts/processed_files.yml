@@ -1,50 +1,112 @@
-2:
-  azarbad2020four: ../data/azarbad2020four/composition_table_l2/feature-table-filtered.tsv
-  faist2022potato: ../data/faist2022potato/composition_table_l2/feature-table-filtered.tsv
-  fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l2/feature-table-filtered.tsv
-  hoefle2024oak: ../data/hoefle2024oak/composition_table_l2/feature-table-filtered.tsv
-  naylor2017drought: ../data/naylor2017drought/composition_table_l2/feature-table-filtered.tsv
-  santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l2/feature-table-filtered.tsv
-  santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l2/feature-table-filtered.tsv
-  simmons2020drought: ../data/simmons2020drought/composition_table_l2/feature-table-filtered.tsv
-  xu2018drought: ../data/xu2018drought/composition_table_l2/feature-table-filtered.tsv
-3:
-  azarbad2020four: ../data/azarbad2020four/composition_table_l3/feature-table-filtered.tsv
-  faist2022potato: ../data/faist2022potato/composition_table_l3/feature-table-filtered.tsv
-  fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l3/feature-table-filtered.tsv
-  hoefle2024oak: ../data/hoefle2024oak/composition_table_l3/feature-table-filtered.tsv
-  naylor2017drought: ../data/naylor2017drought/composition_table_l3/feature-table-filtered.tsv
-  santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l3/feature-table-filtered.tsv
-  santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l3/feature-table-filtered.tsv
-  simmons2020drought: ../data/simmons2020drought/composition_table_l3/feature-table-filtered.tsv
-  xu2018drought: ../data/xu2018drought/composition_table_l3/feature-table-filtered.tsv
-4:
-  azarbad2020four: ../data/azarbad2020four/composition_table_l4/feature-table-filtered.tsv
-  faist2022potato: ../data/faist2022potato/composition_table_l4/feature-table-filtered.tsv
-  fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l4/feature-table-filtered.tsv
-  hoefle2024oak: ../data/hoefle2024oak/composition_table_l4/feature-table-filtered.tsv
-  naylor2017drought: ../data/naylor2017drought/composition_table_l4/feature-table-filtered.tsv
-  santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l4/feature-table-filtered.tsv
-  santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l4/feature-table-filtered.tsv
-  simmons2020drought: ../data/simmons2020drought/composition_table_l4/feature-table-filtered.tsv
-  xu2018drought: ../data/xu2018drought/composition_table_l4/feature-table-filtered.tsv
-5:
-  azarbad2020four: ../data/azarbad2020four/composition_table_l5/feature-table-filtered.tsv
-  faist2022potato: ../data/faist2022potato/composition_table_l5/feature-table-filtered.tsv
-  fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l5/feature-table-filtered.tsv
-  hoefle2024oak: ../data/hoefle2024oak/composition_table_l5/feature-table-filtered.tsv
-  naylor2017drought: ../data/naylor2017drought/composition_table_l5/feature-table-filtered.tsv
-  santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l5/feature-table-filtered.tsv
-  santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l5/feature-table-filtered.tsv
-  simmons2020drought: ../data/simmons2020drought/composition_table_l5/feature-table-filtered.tsv
-  xu2018drought: ../data/xu2018drought/composition_table_l5/feature-table-filtered.tsv
-6:
-  azarbad2020four: ../data/azarbad2020four/composition_table_l6/feature-table-filtered.tsv
-  faist2022potato: ../data/faist2022potato/composition_table_l6/feature-table-filtered.tsv
-  fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l6/feature-table-filtered.tsv
-  hoefle2024oak: ../data/hoefle2024oak/composition_table_l6/feature-table-filtered.tsv
-  naylor2017drought: ../data/naylor2017drought/composition_table_l6/feature-table-filtered.tsv
-  santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l6/feature-table-filtered.tsv
-  santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l6/feature-table-filtered.tsv
-  simmons2020drought: ../data/simmons2020drought/composition_table_l6/feature-table-filtered.tsv
-  xu2018drought: ../data/xu2018drought/composition_table_l6/feature-table-filtered.tsv
+0:
+  2:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l2/feature-table-filtered.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l2/feature-table-filtered.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l2/feature-table-filtered.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l2/feature-table-filtered.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l2/feature-table-filtered.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l2/feature-table-filtered.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l2/feature-table-filtered.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l2/feature-table-filtered.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l2/feature-table-filtered.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l2/feature-table-filtered.tsv
+  3:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l3/feature-table-filtered.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l3/feature-table-filtered.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l3/feature-table-filtered.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l3/feature-table-filtered.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l3/feature-table-filtered.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l3/feature-table-filtered.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l3/feature-table-filtered.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l3/feature-table-filtered.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l3/feature-table-filtered.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l3/feature-table-filtered.tsv
+  4:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l4/feature-table-filtered.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l4/feature-table-filtered.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l4/feature-table-filtered.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l4/feature-table-filtered.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l4/feature-table-filtered.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l4/feature-table-filtered.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l4/feature-table-filtered.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l4/feature-table-filtered.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l4/feature-table-filtered.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l4/feature-table-filtered.tsv
+  5:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l5/feature-table-filtered.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l5/feature-table-filtered.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l5/feature-table-filtered.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l5/feature-table-filtered.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l5/feature-table-filtered.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l5/feature-table-filtered.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l5/feature-table-filtered.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l5/feature-table-filtered.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l5/feature-table-filtered.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l5/feature-table-filtered.tsv
+  6:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l6/feature-table-filtered.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l6/feature-table-filtered.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l6/feature-table-filtered.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l6/feature-table-filtered.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l6/feature-table-filtered.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l6/feature-table-filtered.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l6/feature-table-filtered.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l6/feature-table-filtered.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l6/feature-table-filtered.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l6/feature-table-filtered.tsv
+1:
+  2:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l2/feature-table-filtered-counts.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l2/feature-table-filtered-counts.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l2/feature-table-filtered-counts.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l2/feature-table-filtered-counts.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l2/feature-table-filtered-counts.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l2/feature-table-filtered-counts.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l2/feature-table-filtered-counts.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l2/feature-table-filtered-counts.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l2/feature-table-filtered-counts.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l2/feature-table-filtered-counts.tsv
+  3:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l3/feature-table-filtered-counts.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l3/feature-table-filtered-counts.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l3/feature-table-filtered-counts.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l3/feature-table-filtered-counts.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l3/feature-table-filtered-counts.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l3/feature-table-filtered-counts.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l3/feature-table-filtered-counts.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l3/feature-table-filtered-counts.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l3/feature-table-filtered-counts.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l3/feature-table-filtered-counts.tsv
+  4:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l4/feature-table-filtered-counts.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l4/feature-table-filtered-counts.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l4/feature-table-filtered-counts.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l4/feature-table-filtered-counts.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l4/feature-table-filtered-counts.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l4/feature-table-filtered-counts.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l4/feature-table-filtered-counts.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l4/feature-table-filtered-counts.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l4/feature-table-filtered-counts.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l4/feature-table-filtered-counts.tsv
+  5:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l5/feature-table-filtered-counts.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l5/feature-table-filtered-counts.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l5/feature-table-filtered-counts.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l5/feature-table-filtered-counts.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l5/feature-table-filtered-counts.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l5/feature-table-filtered-counts.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l5/feature-table-filtered-counts.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l5/feature-table-filtered-counts.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l5/feature-table-filtered-counts.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l5/feature-table-filtered-counts.tsv
+  6:
+    azarbad2020four: ../data/azarbad2020four/composition_table_l6/feature-table-filtered-counts.tsv
+    bandopadhyay2024disentangling: ../data/bandopadhyay2024disentangling/composition_table_l6/feature-table-filtered-counts.tsv
+    faist2022potato: ../data/faist2022potato/composition_table_l6/feature-table-filtered-counts.tsv
+    fitspatrick2017assembly: ../data/fitspatrick2017assembly/composition_table_l6/feature-table-filtered-counts.tsv
+    hoefle2024oak: ../data/hoefle2024oak/composition_table_l6/feature-table-filtered-counts.tsv
+    naylor2017drought: ../data/naylor2017drought/composition_table_l6/feature-table-filtered-counts.tsv
+    santos-medellin2017drought: ../data/santos-medellin2017drought/composition_table_l6/feature-table-filtered-counts.tsv
+    santos-medellin2021prolonged: ../data/santos-medellin2021prolonged/composition_table_l6/feature-table-filtered-counts.tsv
+    simmons2020drought: ../data/simmons2020drought/composition_table_l6/feature-table-filtered-counts.tsv
+    xu2018drought: ../data/xu2018drought/composition_table_l6/feature-table-filtered-counts.tsv

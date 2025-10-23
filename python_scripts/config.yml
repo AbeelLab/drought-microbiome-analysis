@@ -5,10 +5,10 @@
 # This means that greenhouse-grown communities still get mapped to a location as long as the soil wasourced from a field.
 # link_NCBI_metadata and link_supplemental_metadata provide a way to connect the NCBI metadata table with the supplement provided by the authors (for some studies)
 
-data_path: "../data"
-plotting_dir: "../data/plots"
-processed_drought_datasets: "processed_drought_datasets.pkl"
-processed_inoculum_datasets: "processed_inoculum_datasets.pkl"
+data_path: "../raw_data"
+processed_data_path: "../datasets"
+plotting_dir: "../plots"
+processed_datasets: "../processed_datasets_dict.pkl"
 
 levels:
   2: "phylum"
@@ -18,9 +18,9 @@ levels:
   6: "genus"
 
 inoculum_studies:
-  - "swift2024drought"
+  - "swift2025drought"
   - "moore2023microbial"
-  - "munoz-ucros2021drought"
+  - "munoz-ucros2022drought"
   - "zhang2022cross"
 
 positive_inoculum_studies:
@@ -28,19 +28,34 @@ positive_inoculum_studies:
   - "zhang2022cross"
 
 negative_inoculum_studies:
-  - "munoz-ucros2021drought"
-  - "swift2024drought"
+  - "munoz-ucros2022drought"
+  - "swift2025drought"
 
 drought_studies:
   - "azarbad2022response"
   - "santos-medellin2021prolonged"
   - "simmons2020drought"
-  - "fitspatrick2018assembly"
+  - "fitzpatrick2018assembly"
   - "santos-medellin2017drought"
   - "azarbad2020four"
   - "naylor2017drought"
   - "xu2018drought"
   - "bandopadhyay2024disentangling"
+
+all_studies:
+  - "azarbad2022response"
+  - "santos-medellin2021prolonged"
+  - "simmons2020drought"
+  - "fitzpatrick2018assembly"
+  - "santos-medellin2017drought"
+  - "azarbad2020four"
+  - "naylor2017drought"
+  - "xu2018drought"
+  - "bandopadhyay2024disentangling"
+  - "swift2025drought"
+  - "moore2023microbial"
+  - "munoz-ucros2022drought"
+  - "zhang2022cross"  
 
 # DROUGHT STUDIES
 # ---
@@ -274,7 +289,7 @@ simmons2020drought:
   custom_processing: "process_per_study.process_simmons2020drought"
 
 
-fitspatrick2018assembly:
+fitzpatrick2018assembly:
   full_name: "Fitzpatrick et al. (2018)"
   doi: "10.1073/pnas.1717617115"
   amplicon_length: 150
@@ -508,17 +523,17 @@ wipf2021distinguishing:
 # ---
 
 # This is a NovaSeq study unlike all others which are MiSeq
-swift2024drought:
+swift2025drought:
   doi: "10.1007/s11104-024-06853-x"
-  full_name: "Swift et al. (2024)"
+  full_name: "Swift et al. (2025)"
   amplicon_length: 250
   filters:
-    # discard slurry samples (analysis done in the study shows they are very similar to the soil samples)
-    - "lambda row: 'slurry' not in str(row['Env Medium [sample]'])"
+    # Discard inoculum samples (not plant associated)
+    - "lambda row: str(row['Biosamplemodel 1 [sample]']) == 'MIGS/MIMS/MIMARKS.plant-associated'"
     # keep only late harvest as done in the paper
-    - "lambda row: str(row['Harvest Time Point [sample]']) == 'late' or pd.isna(row['Harvest Time Point [sample]'])"
+    - "lambda row: str(row['Harvest Time Point [sample]']) == 'late'"
     # Remove ITS samples (these are only labelled for the inoculum samples)
-    # For the thers we have to remove post-processing
+    # For the others we have to remove post-processing
     - "lambda row: 'ITS' not in str(row['Title'])"
     # Keep only driest and wettest inocula
     - "lambda row: str(row['Soil Inoculum [sample]']) != 'HAY'"
@@ -526,10 +541,8 @@ swift2024drought:
   inoculum_col: "Soil Inoculum [sample]"
   # Separate based on precipitation gradient in the paper
   inocula:
-    "SVR": "DroughtLegacy"
-    #"HAY": "DroughtLegacy"
-    #"TLI": "Control"
-    "KNZ": "Control"
+    "SVR": "Dry"
+    "KNZ": "Reference"
     "Control": "Sterile"
   treatment_col: "Drought or Watered"
   treatments:
@@ -540,11 +553,6 @@ swift2024drought:
     "Zea mays": "PACMAD clade"
   hosts_ungrouped:
     "Zea mays": "Zea mays"
-  # whether the sample represent an inoculum sample or is plant-associated
-  is_plant_associated_col: "Env Medium [sample]"
-  is_plant_associated:
-    "plant matter": "Yes"
-    "soil*": "No"
   root_compartment_col: "Env Medium [sample]"
   root_compartments:
     "plant matter": "Endosphere"
@@ -568,27 +576,26 @@ moore2023microbial:
     "Pot": "Zea mays"
   inoculum_col: "Env Medium [sample]"
   inocula:
-    "Inoculum: Agricultural_field": "Control"
-    "Inoculum: Forest_soil": "DroughtLegacy"
-  # Only one type
-  is_plant_associated_col: "Env Broad Scale [sample]"
-  is_plant_associated:
-    "Greenhouse": "Yes"
+    "Inoculum: Agricultural_field": "Reference"
+    "Inoculum: Forest_soil": "Dry"
   link_NCBI_metadata: "Title"
   link_supplemental_metadata: "Sample_ID"
   root_compartment_col: "Env Local Scale [sample]"
   root_compartments:
     "Pot": "Bulk soil"
 
-munoz-ucros2021drought:
+munoz-ucros2022drought:
   doi: "​10.​1007/​s11104-​021-​05227-x"
-  full_name: "Munoz-Ucros et al. (2021)"
+  full_name: "Munoz-Ucros et al. (2022)"
   amplicon_length: 250
   filters:
     # Not sure what GENEVA stands for
     - "lambda row: str(row['Microbiome [sample]']) != 'GENEVA'"
     # Remove fungal samples
     - "lambda row: 'ITS' not in str(row['Library Name'])"
+    # Discard inoculum samples
+    - "lambda row: 'PREDRY' not in str(row['Microbiome [sample]'])"
+    - "lambda row: 'PREWET' not in str(row['Microbiome [sample]'])"
   treatment_col: "Treatment [sample]"
   treatments:
     "Control": "Control" 
@@ -601,18 +608,11 @@ munoz-ucros2021drought:
     "rhizosphere metagenome": "Salix purpurea"
   inoculum_col: "Microbiome [sample]"
   inocula:
-    "^WET$": "Control"
-    "^DRY$": "DroughtLegacy"
+    "^WET$": "Reference"
+    "^DRY$": "Dry"
     "^STERILE$": "Sterile"
-    "^PREDRY$": "None"
-    "^PREWET$": "None"
-  is_plant_associated_col: "Microbiome [sample]"
-  is_plant_associated:
-    "^WET$": "Yes"
-    "^DRY$": "Yes"
-    "^STERILE$": "Yes"
-    "^PREDRY$": "No"
-    "^PREWET$": "No"
+    "^PREDRY$": "Dry"
+    "^PREWET$": "Reference"
   root_compartment_col: "Organism"
   root_compartments:
     "rhizosphere metagenome": "Rhizosphere"
@@ -625,6 +625,8 @@ zhang2022cross:
     # Remove fungal samples
     - "lambda row: 'F' not in str(row['Name'])"
     - "lambda row: 'Neg' not in str(row['Name'])"
+    # Remove inoculum samples
+    - "lambda row: 'I' not in str(row['Name'])"
   treatment_col: "Name"
   treatments:
     ".*W.*": "Control"
@@ -638,13 +640,8 @@ zhang2022cross:
     "soil metagenome": "Zea mays"
   inoculum_col: "Name"
   inocula:
-    "^A.*": "DroughtLegacy"
-    "^O.*": "Control"
-  is_plant_associated_col: "Name"
-  is_plant_associated:
-    ".*I.*": "No"
-    # Does not contain I
-    "^[^I]*$": "Yes"
+    "^A.*": "Dry"
+    "^O.*": "Reference"
   root_compartment_col: "Organism"
   root_compartments:
     "soil metagenome": "Rhizosphere"

@@ -1,0 +1,368 @@
+#SampleID	StudyID	StudyName	Treatment	Host	HostSpecific	RootCompartment	Inoculum	Primers
+SRR21722989	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21722990	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21722991	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21722992	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21722994	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21722995	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21722997	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723014	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723015	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723026	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723044	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723045	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723046	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723047	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723048	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723049	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723050	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723051	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723052	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723053	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723054	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723055	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723056	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723057	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723058	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723059	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723061	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723062	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723063	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723064	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723065	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723066	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723067	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723068	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723070	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723071	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723072	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723073	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723075	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723076	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723077	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723078	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723080	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723084	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723085	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723086	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723087	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723088	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723089	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723090	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723091	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723099	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723117	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723124	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723126	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723127	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723128	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723129	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723130	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723131	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723132	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723133	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723134	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723135	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723136	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723137	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723138	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723139	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723140	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723141	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723142	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723143	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723147	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723148	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723149	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723150	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723151	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723152	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723153	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723154	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723157	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723168	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723171	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723172	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723173	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723174	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723176	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723177	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723178	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723180	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723181	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723182	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723183	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723184	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723185	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723186	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723187	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723188	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723189	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723193	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723194	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723196	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723197	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723199	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723200	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723201	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723202	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723217	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723219	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723220	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723221	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723222	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723223	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723227	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723229	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723230	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723231	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723232	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723234	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723236	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723237	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723238	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723239	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723240	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723241	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723242	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723244	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723245	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723246	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723247	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723248	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723250	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723256	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723272	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723273	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723274	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723275	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723276	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723277	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723278	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723279	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723280	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723281	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723282	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723283	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723284	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723285	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723315	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723316	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723317	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723318	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723319	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723320	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723323	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723324	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723325	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723326	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723327	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723328	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723329	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723331	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723332	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723352	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723353	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723355	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723356	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723357	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723360	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723361	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723362	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723363	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723364	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723365	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723366	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723369	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723373	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723374	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723375	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723376	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723377	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723378	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723379	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723380	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723381	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723382	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723383	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723384	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723385	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723386	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723389	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723390	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723391	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723392	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723393	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723395	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723396	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723398	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723399	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723401	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723402	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723404	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723405	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723406	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723407	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723408	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723410	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723411	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723413	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723414	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723415	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723416	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723417	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723418	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723419	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723420	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723421	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723422	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723423	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723424	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723425	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723426	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723429	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723430	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723431	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723437	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723448	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723449	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723450	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723451	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723452	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723453	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723454	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723455	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723456	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723458	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723459	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723460	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723461	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723462	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723463	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723464	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723465	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723466	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723467	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723468	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723469	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723470	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723471	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723472	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723473	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723474	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723475	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723476	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723477	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723478	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723479	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723480	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723482	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723483	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723484	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723485	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723486	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723487	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723489	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723490	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723493	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723494	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723496	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723497	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723498	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723499	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723500	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723501	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723502	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723503	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723504	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723505	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723507	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723508	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723510	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723511	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723512	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723513	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723514	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723515	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723516	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723517	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723518	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723519	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723520	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723521	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723522	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723523	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723524	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723525	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723526	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723528	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723529	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723530	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723531	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723532	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723533	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723534	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Endosphere	Not available for this type of experiment	520F,799R
+SRR21723552	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723563	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723569	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723580	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723585	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723586	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723587	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723588	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723589	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723590	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723591	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723592	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723594	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723595	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723596	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723597	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723598	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723599	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723600	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723601	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723602	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723603	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723604	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723605	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723606	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723607	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723608	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723609	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723610	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723611	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723612	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723613	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723614	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723615	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723616	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723619	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723620	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723621	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723622	azarbad2022response	Azarbad et al. (2022)	Drought	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723623	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723624	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723625	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723626	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723627	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723628	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723629	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723630	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723631	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723632	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723633	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723634	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723635	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723636	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723637	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723638	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723639	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723640	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723641	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723643	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723644	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723645	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723646	azarbad2022response	Azarbad et al. (2022)	Control	PACMAD clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	520F,799R
+SRR21723647	azarbad2022response	Azarbad et al. (2022)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R
+SRR21723658	azarbad2022response	Azarbad et al. (2022)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	520F,799R

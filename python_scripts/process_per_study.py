@@ -10,8 +10,6 @@ host_col = "HostSpecific"
 grouped_host_col = "Host"
 root_compartment_col = "RootCompartment"
 inoculum_col = "Inoculum"
-inoculum_subtype_col = "InoculumSubtype"
-is_plant_associated_col = "IsPlantAssociated"
 study_col = "StudyID"
 full_study_col = "StudyName"
 primer_col = "Primers"
@@ -29,13 +27,8 @@ def common_processing(study_path,
     metadata_file = os.path.join(study_path, "metadata.tsv")
     df = pd.read_csv(metadata_file, sep='\t', index_col=0)
 
-    if study_name == "zhang2022cross":
-        print(df[study_info["inoculum_col"]])
-
     if kept_samples is not None:
         df = df.loc[kept_samples]
-        if study_name == "azarbad2022response":
-            df.to_csv("godhelpme.tsv", sep="\t")
 
     # Map treatment columns
     if "treatment_col" in study_info:
@@ -74,22 +67,8 @@ def common_processing(study_path,
         df[inoculum_col] = df[study_info['inoculum_col']]
         df[inoculum_col] = df[inoculum_col].replace(
             study_info.get('inocula', {}), regex=True)
-
-        df[inoculum_subtype_col] = df[study_info['inoculum_col']]
-        df[inoculum_subtype_col] = df[inoculum_subtype_col].replace(
-            study_info.get('inocula_subtypes', {}), regex=True)
     else:
         df[inoculum_col] = "Not available for this type of experiment"
-        df[inoculum_subtype_col] = np.nan
-
-    # Sample types
-    if "is_plant_associated_col" in study_info:
-        df[is_plant_associated_col] = df[study_info['is_plant_associated_col']]
-        df[is_plant_associated_col] = df[is_plant_associated_col].replace(
-            study_info.get('is_plant_associated', {}), regex=True
-        )
-    else:
-        df[is_plant_associated_col] = np.nan
 
     # Add constant study-specific metadata columns
     df[study_col] = study_name
@@ -114,18 +93,13 @@ def common_processing(study_path,
         host_col,
         root_compartment_col,
         inoculum_col,
-        inoculum_subtype_col,
         primer_col,
-        is_plant_associated_col
     ]
     df = df[final_cols]
 
     # Remove NaN hosts (those not mapped)
     # This is because some hosts appear in very small groups
     df = df[df[host_col] != 'None']
-
-    if study_name == "zhang2022cross":
-        print(df[inoculum_col])
 
     return df
 

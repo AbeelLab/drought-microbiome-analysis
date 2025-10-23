@@ -74,6 +74,7 @@ def run_maaslin_diff_abundance(dataset,
         (results_df['metadata'] == fixed_effects) &
         (results_df['value'] == condition)
     ]
+    print(results_df)
     results_df = results_df[results_df['qval'] <= p_val]
 
     results = {}
@@ -84,70 +85,10 @@ def run_maaslin_diff_abundance(dataset,
             'adj.P.Val': row['qval']
         }
 
-    print(f"[INFO] Found {len(results)} DA features for {dataset.dataset_name} with p={p_val} ({fixed_effects}: {condition} vs {base})")
+    print(f"[INFO] Found {len(results)} DA features with p={p_val} ({fixed_effects}: {condition} vs {base})")
 
     return results
 
-
-def run_limma_diff_abundance(dataset,
-                             p_val=1,
-                             formula="Treatment + StudyID + HostSpecific",
-                             variable="Treatment",
-                             base="Control",
-                             condition="Drought",
-                             correction="BH"):
-    pandas2ri.activate()
-
-    limma = importr('limma')
-    edgeR = importr('edgeR')
-
-    # limma input requires separate metadata and transposed abundance matrix
-    counts_df = dataset.get_counts_features()
-    metadata_df = dataset.get_metadata()
-
-    assert not counts_df.isna().values.any(), "Count table includes NaNs"
-    assert not metadata_df[variable].isna().values.any(), f"NaN {variable} values"
-    
-    counts_r = pandas2ri.py2rpy(counts_df.T)
-    metadata_r = pandas2ri.py2rpy(metadata_df)
-    robjects.globalenv['v'] = counts_r
-    robjects.globalenv['metadata'] = metadata_r
-
-    # Fit limma
-    robjects.r(f'''
-    library(edgeR)
-    library(limma)
-
-    dge <- DGEList(counts = v)
-    dge <- calcNormFactors(dge)
-
-    # Control is the baseline
-    metadata${variable} <- as.factor(metadata${variable})
-    metadata${variable} <- relevel(metadata${variable}, ref="{base}")
-    design <- model.matrix(~ {formula}, data=metadata)
-
-    # voom transformation
-    v_voom <- voom(dge, design, plot=FALSE)
-
-    # fit model
-    fit <- lmFit(v_voom, design)
-    fit <- eBayes(fit)
-
-    tt <- topTable(fit, coef="{variable}{condition}", p.value={p_val}, number=Inf, adjust.method="{correction}")
-    ''')
-
-    tt_df = pandas2ri.rpy2py(robjects.globalenv['tt'])
-
-    results = {}
-    for feature, row in tt_df.iterrows():
-        results[feature] = {
-            'logFC': row['logFC'],
-            'adj.P.Val': row['adj.P.Val']
-        }
-
-    print(f"[INFO] Found {len(results)} DA features for {dataset.dataset_name} with p={p_val}")
-
-    return results
 
 # Based on the MMuPHin user tutorial: https://bioconductor.org/packages/release/bioc/vignettes/MMUPHin/inst/doc/MMUPHin.html
 def run_mmuphin_diff_abundance(dataset):
@@ -241,19 +182,21 @@ def run_wilcoxon_diff_abundance(dataset,
     return out
 
 def process_permanova(level,
+                      compartment,
                       config,
                       batch_corrected=False):
     suffix = "_batch_corrected" if batch_corrected else ""
-    be_vars = ["Primers", "StudyID"]
-    bio_vars = ["HostSpecific", "Host", "Treatment", "RootCompartment"]
+    be_vars = ["StudyID"]
+    bio_vars = ["HostSpecific", "Treatment"]
 
     r_squared = {}
 
     for var in be_vars + bio_vars:
+        if compartment == "bulk_soil" and var == "HostSpecific": continue
         permanova_dir = os.path.join(
             config["data_path"],
             "permanova",
-            f"{var}_l{level}{suffix}"
+            f"{var}_l{level}_{compartment}{suffix}"
         )
         subdir = get_qiime_extract_dir(permanova_dir)
         tsv_file = os.path.join(subdir, "adonis.tsv")
@@ -270,6 +213,9 @@ def process_permanova(level,
     indiv_df = pd.DataFrame({'Variable': list(r_squared.keys()),
                              'R2': list(r_squared.values())})
 
+    print(compartment, suffix)
+    print(indiv_df["Variable"])
+    print(indiv_df["R2"])
     plt.figure(figsize=(8, 4))
     sns.barplot(data=indiv_df,
                 x='Variable',
@@ -282,51 +228,8 @@ def process_permanova(level,
     plt.tight_layout()
     plt.savefig(os.path.join(
         plotting_dir,
-        f"permanova_plot_l{level}{suffix}.svg"
+        f"permanova_plot_l{level}{suffix}_compartment.svg"
     ))
     plt.close()
-
-    combinations = [
-        "Primers+StudyID",
-        "HostSpecific+StudyID",
-        "Host+StudyID",
-        "HostSpecific+RootCompartment+Treatment+StudyID",
-        "HostSpecific+RootCompartment+Treatment+Primers+StudyID"
-    ]
-
-    for combo in combinations:
-        vars_in_combo = combo.split('+')
-        permanova_dir = os.path.join(
-            config["data_path"],
-            "permanova",
-            f"{combo}_l{level}{suffix}"
-        )
-        subdir = get_qiime_extract_dir(permanova_dir)
-        tsv_file = os.path.join(subdir, "adonis.tsv")
-
-        res = pd.read_csv(tsv_file, sep='\t', index_col=0)
-        values = {v: res.loc[v, 'R2'] for v in vars_in_combo}
-        values['Residuals'] = res.loc['Residuals', 'R2']
-
-        fig, ax = plt.subplots(figsize=(6, 1.5))
-        left = 0
-        for var, r2 in values.items():
-            ax.barh(0, r2, left=left, label=var)
-            left += r2
-        ax.set_xlim(0, 1)
-        ax.set_yticks([])
-        ax.set_xlabel('R2')
-        ax.set_title(
-            f'Stacked PERMANOVA R2 (Level {level}{suffix} - {combo})'
-        )
-        ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-        plt.tight_layout()
-        plt.savefig(os.path.join(
-            plotting_dir,
-            f"permanova_stacked_l{level}{suffix}_{combo.replace('+', '_')}.svg"
-        ))
-        plt.close(fig)
-
-    return r_squared
     
 

@@ -2,23 +2,21 @@ import numpy as np
 import os
 import pandas as pd
 import pickle as pkl
+import re
 import subprocess
 
 from Bio import Phylo
 from collections import defaultdict
 
 def trim_taxonomy(tax_str):
-    parts = tax_str.split(";")
-    for part in reversed(parts):
-        part = part.strip()
-        if part not in ["", "__"]:
-            return part[3:]
-    return ""
+    parts = re.split(r";[A-Za-z]__", tax_str)
+    parts = [p.strip() for p in parts if p.strip() not in ["", "__"]]
+    return parts[-1] if parts else ""
 
 def log_statistics(study,
                    filtering_step,
                    to_log,
-                   log_file="../data/samples_log.pkl"):
+                   log_file="../samples_log.pkl"):
     log = None
     if os.path.exists(log_file):
         log = pkl.load(open(log_file,
@@ -310,3 +308,14 @@ def compute_host_microbiome_similarities(ds,
             similarity_dict[host1][host2] = intersection
 
     return similarity_dict
+
+def get_last_taxonomic_level(tax_str):
+    all_levels = tax_str.split(";")
+    last_level = all_levels[-1]
+
+    if len(last_level) <= 3:
+        # This means we get something like g__
+        # or ;__ so the last level is not annotated.
+        return None
+
+    return last_level[3:]

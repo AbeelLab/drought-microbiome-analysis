@@ -3,3 +3,5 @@ data/
 *.out
 *.qza
 *~
+*.pkl
+*.transposed.tsv

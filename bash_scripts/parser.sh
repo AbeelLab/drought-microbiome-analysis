@@ -1,6 +1,6 @@
 #!/bin/sh
 
-data_path="../data"
+data_path="../raw_data"
 classifier_path="../silva-138-99-nb-classifier.qza"
 batch_size=50
 

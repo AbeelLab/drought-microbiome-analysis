@@ -1,0 +1,653 @@
+#SampleID	StudyID	StudyName	Treatment	Host	HostSpecific	RootCompartment	Inoculum	Primers
+SRR6764340	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764341	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764342	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764344	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764345	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764346	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764347	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764348	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764351	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764352	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764354	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764355	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764356	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764357	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764359	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764360	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764361	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764362	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764363	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764364	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764365	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764366	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764367	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764368	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764369	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764370	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764372	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764373	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764374	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764375	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764376	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764377	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764378	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764379	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764380	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764381	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764382	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764383	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764384	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764385	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764386	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764389	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764391	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764393	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764394	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764395	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764398	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764399	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764400	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764402	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764403	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764404	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764405	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764407	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764408	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764409	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764410	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764412	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764413	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764415	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764416	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764417	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764418	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764419	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764420	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764421	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764422	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764423	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764424	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764425	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764426	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764427	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764429	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764430	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764431	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764433	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764434	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764435	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764436	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764437	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764438	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764439	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764440	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764442	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764443	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764444	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764445	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764448	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764449	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764453	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764459	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764460	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764461	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764462	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764466	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764467	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764468	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764469	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764470	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764472	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764474	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764475	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764476	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764478	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764479	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764480	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764481	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764483	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764486	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764487	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764489	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764490	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764492	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764495	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764496	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764497	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764498	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764499	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764500	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764501	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764502	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764504	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764505	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764507	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764508	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764509	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764510	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764511	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764514	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764515	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764516	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764517	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764518	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764519	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764521	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764522	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764523	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764524	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764525	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764526	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764527	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764528	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764529	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764530	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764531	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764532	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764533	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764534	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764535	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764538	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764539	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764540	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764541	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764543	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764544	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764545	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764546	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764547	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764549	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764550	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764551	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764552	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764553	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764554	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764555	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764556	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764557	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764558	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764559	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764560	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764561	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764562	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764563	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764564	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764565	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764566	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764568	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764569	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764570	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764571	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764572	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764573	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764574	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764575	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764576	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764577	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764578	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764579	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764580	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764581	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764582	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764583	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764584	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764585	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764586	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764587	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764588	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764590	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764591	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764593	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764594	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764596	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764597	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764598	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764599	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764600	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764601	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764602	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764603	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764604	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764605	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764606	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764607	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764608	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764609	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764610	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764611	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764612	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764613	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764614	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764615	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764616	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764617	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764618	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764619	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764620	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764621	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764622	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764623	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764624	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764625	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764626	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764627	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764628	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764629	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764630	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764631	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764632	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764633	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764634	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764635	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764636	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764637	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764638	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764639	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764642	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764643	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764644	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764645	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764646	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764648	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764650	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764651	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764652	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764653	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764655	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764658	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764661	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764663	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764667	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764670	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764676	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764679	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764680	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764682	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764686	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764687	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764689	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764690	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764691	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764692	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764693	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764695	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764696	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764697	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764698	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764699	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764711	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764712	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764713	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764714	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764715	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764717	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764721	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764722	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764723	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764725	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764726	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764727	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764731	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764732	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764733	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764734	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764735	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764736	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764737	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764739	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764740	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764741	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764742	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764743	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764744	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764745	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764746	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764747	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764748	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764749	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764750	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764751	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764752	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764753	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764754	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764755	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764756	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764758	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764760	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764762	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764764	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764765	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764766	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764767	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764768	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764769	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764771	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764772	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764773	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764774	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764775	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764776	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764779	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764780	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764781	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764783	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764784	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764788	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764792	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764794	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764796	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764797	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764798	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764799	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764800	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764801	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764802	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764803	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764804	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764808	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764809	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764813	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764818	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764819	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764820	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764821	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764822	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764823	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764824	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764825	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764826	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764827	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764829	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764830	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764831	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764832	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764833	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764834	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764835	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764836	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764837	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764838	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764839	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764840	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764841	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764842	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764843	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764844	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764845	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764846	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764847	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764848	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764849	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764850	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764852	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764853	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764854	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764855	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764856	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764857	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764858	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764859	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764861	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764863	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764865	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764866	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764867	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764868	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764869	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764870	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764871	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764872	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764873	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764874	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764878	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764880	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764882	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764883	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764884	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764885	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764887	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764888	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764891	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764893	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764894	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764896	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764899	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764900	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764901	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764902	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764904	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764906	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764907	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764908	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764909	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764910	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764911	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764912	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764913	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764914	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764915	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764916	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764917	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764918	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764919	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764921	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764922	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764923	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764924	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764925	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764926	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764927	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764928	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764929	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764930	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764931	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764935	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764936	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764938	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764940	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764941	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764942	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764944	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764945	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764946	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764947	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764948	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764949	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764950	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764951	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764952	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764953	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764954	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764955	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6764956	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764957	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764958	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764959	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764960	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764961	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764963	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764964	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764965	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764966	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764967	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764968	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764969	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764970	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764972	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764973	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764974	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764975	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764978	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764979	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764980	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764981	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764982	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764983	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764984	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764985	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764986	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764988	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6764990	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764991	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764992	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764993	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764994	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764995	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764996	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764998	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6764999	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765000	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765001	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765002	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765003	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765004	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765005	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765006	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765007	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765008	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765009	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765012	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765013	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765014	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765015	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765016	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765017	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765018	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765019	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765020	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765021	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765022	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765023	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765024	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765026	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765027	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765028	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765029	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765030	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765031	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765032	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765033	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765034	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765035	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765036	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765037	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765038	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765039	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765040	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765041	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765043	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765044	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765045	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765046	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765047	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765048	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765049	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765050	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765051	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765052	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765054	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765055	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765056	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765057	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765058	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765059	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765060	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765061	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765062	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765063	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765064	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765067	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765072	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765074	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765075	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765076	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765078	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765079	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765080	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765081	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765083	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765084	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765085	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765089	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765092	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765094	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765095	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765096	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765098	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765102	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765103	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765105	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765106	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765107	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765108	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765109	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765111	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765112	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765113	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765114	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765116	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765118	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765119	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765120	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765121	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765122	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765124	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765126	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765128	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765129	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765130	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765131	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765134	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765137	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765138	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765139	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765140	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765141	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765142	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765143	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765144	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765145	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765146	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765147	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765148	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765149	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765150	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765151	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765152	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765153	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765154	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765156	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765158	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765160	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765161	xu2018drought	Xu et al. (2018)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765162	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765163	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765164	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765165	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765166	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765167	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765168	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765170	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765171	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765172	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765173	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765176	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765177	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765178	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765179	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765182	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765183	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765184	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765185	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765186	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765187	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765188	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765189	xu2018drought	Xu et al. (2018)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765190	xu2018drought	Xu et al. (2018)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR6765192	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765193	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765194	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765198	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR6765199	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR6765201	xu2018drought	Xu et al. (2018)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R

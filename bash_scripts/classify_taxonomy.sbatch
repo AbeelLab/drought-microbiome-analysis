@@ -84,7 +84,7 @@ qiime taxa filter-table \
       --i-taxonomy "${study_dir}/taxonomy.qza" \
       --p-mode contains \
       --p-include "p__" \
-      --p-exclude "Chloroplast,Mitochondria,Eukaryota,Unassigned,Unclassified" \
+      --p-exclude "Chloroplast,Mitochondria,Eukaryota,Unassigned,Unclassified,Archaea" \
       --o-filtered-table "${study_dir}/dada2_asv_filtered_table.qza"
 
 # Filter samples

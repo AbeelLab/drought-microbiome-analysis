@@ -1,0 +1,200 @@
+#SampleID	StudyID	StudyName	Treatment	Host	HostSpecific	RootCompartment	Inoculum	Primers
+SRR20680469	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680470	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680471	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680473	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680474	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680475	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680476	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680477	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680478	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680479	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680480	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680481	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680482	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680483	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680484	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680485	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680486	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680487	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680488	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680489	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680490	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680491	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680492	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680493	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680494	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680495	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680496	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680497	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680530	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680531	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680532	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680533	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680534	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680535	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680536	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680537	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680539	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680542	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680543	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680545	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680546	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680548	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680549	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680551	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680552	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680553	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680554	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680555	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680556	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680557	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680558	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680559	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680560	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680561	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680562	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680563	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680564	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680565	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680566	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680567	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680568	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680569	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680570	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680571	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680572	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680573	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680574	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680575	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680576	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680584	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680585	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680586	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680588	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680589	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680590	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680592	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680593	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680594	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680595	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680596	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680597	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680598	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680599	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680600	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680602	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680603	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680605	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680606	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680608	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680610	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680611	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680613	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680614	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680616	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680617	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680619	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680620	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680622	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680623	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680624	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680626	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680627	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680628	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680629	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680630	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680631	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680632	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680633	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680634	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680635	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680636	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680638	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680639	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680640	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680641	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680642	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680644	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680645	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680647	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680648	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680650	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680651	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680653	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680654	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680656	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680657	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680658	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680659	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680660	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680662	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680663	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680664	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680665	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680666	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680667	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680668	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680669	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680670	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680671	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680672	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680673	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680674	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680675	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680676	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680677	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680678	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680679	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680702	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680710	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680712	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680713	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680715	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680716	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680718	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680719	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680722	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680724	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680725	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680726	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680727	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680728	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680730	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680731	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680733	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680734	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680735	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680736	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680737	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680738	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680739	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680740	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680741	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680742	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680743	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680744	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680745	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680746	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680747	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680748	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680749	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680750	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680751	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680752	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680753	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680754	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680755	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680757	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680758	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680760	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680761	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680763	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680764	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680766	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Fabids	Phaseolus vulgaris	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680767	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680768	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Drought	PACMAD clade	Panicum virgatum	Rhizosphere	Not available for this type of experiment	515F,806R
+SRR20680769	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680770	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680771	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R
+SRR20680772	bandopadhyay2024disentangling	Bandopadhyay et al. (2024)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	515F,806R

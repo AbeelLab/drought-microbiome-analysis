@@ -1,0 +1,435 @@
+#SampleID	StudyID	StudyName	Treatment	Host	HostSpecific	RootCompartment	Inoculum	Primers
+SRR5224546	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224547	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224548	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224549	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224550	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Bothriochloa bladhii	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224551	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Bothriochloa bladhii	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224552	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224553	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224554	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224555	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224556	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224558	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224559	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224560	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224561	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224562	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224563	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224564	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224565	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224567	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224568	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224569	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224570	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224571	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224573	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224574	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224575	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224576	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224577	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224579	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224580	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224581	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Secale cereale	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224582	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224583	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224585	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224586	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224587	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224588	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224589	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224590	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224591	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224592	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224593	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224594	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224597	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224598	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224599	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224600	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224601	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224603	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224604	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224605	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224607	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Hordeum vulgare	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224608	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224609	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Hordeum vulgare	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224610	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Hordeum vulgare	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224611	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224614	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224617	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224618	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224619	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224620	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224622	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224623	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224624	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224625	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224628	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224629	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224630	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224631	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224632	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224633	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Eragrostis tef	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224634	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224635	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Miscanthus sinensis	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224636	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Miscanthus sinensis	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224637	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224638	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224639	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224640	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224641	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224642	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224643	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224644	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224645	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224646	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224648	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224660	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224672	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224682	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224694	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224697	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224699	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224710	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224718	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224721	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224730	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224742	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224753	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224772	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224789	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Miscanthus sinensis	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224790	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224796	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224801	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224804	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224805	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224808	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224814	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224816	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224822	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224834	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224846	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224858	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224863	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224864	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224866	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224867	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224868	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum monococcum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224869	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224870	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224873	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224875	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224876	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Hordeum vulgare	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224878	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224879	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Hordeum vulgare	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224881	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224882	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224883	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224884	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224885	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224887	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224888	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Bothriochloa bladhii	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224890	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224891	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224893	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224894	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224897	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224899	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224900	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224901	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Secale cereale	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224902	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224903	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224904	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224905	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224906	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224907	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224909	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224910	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224912	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224914	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224915	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224916	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224917	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224919	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224920	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224921	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224922	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224923	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224924	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224925	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224926	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224927	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224928	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224929	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224931	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224932	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224934	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224935	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224936	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224937	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224938	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224939	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224940	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224942	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224945	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224948	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224949	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224950	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224951	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224952	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghastrum nutans	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224953	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghastrum nutans	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224954	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224955	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224956	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224957	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224958	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224960	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224961	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224963	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224964	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224966	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224967	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224968	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224969	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224970	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224971	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Miscanthus sinensis	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224973	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224974	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Miscanthus sinensis	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224976	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224977	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224979	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224980	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224983	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224984	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224985	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224986	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224988	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224989	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Hordeum vulgare	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224990	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Hordeum vulgare	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224991	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224992	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Hordeum vulgare	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224995	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5224996	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Secale cereale	Endosphere	Not available for this type of experiment	341F,785R
+SRR5224997	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5224998	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225000	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225001	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225002	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225003	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225004	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225005	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225006	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225007	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225008	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225010	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225011	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225012	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225013	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225015	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225016	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225019	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225020	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225022	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225025	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225026	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225027	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225028	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225029	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225030	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225031	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225032	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225033	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225035	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225036	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225037	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Lolium arundinaceum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225042	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225049	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225051	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225052	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225053	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225064	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225067	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225074	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225079	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225080	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225081	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225083	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225096	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225107	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225110	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225112	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225113	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225125	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225126	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225127	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghastrum nutans	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225128	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225129	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghastrum nutans	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225140	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghastrum nutans	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225141	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225142	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Miscanthus sinensis	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225147	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Miscanthus sinensis	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225154	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225155	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225156	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Brachypodium distachyon	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225157	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225158	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Brachypodium distachyon	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225159	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Brachypodium distachyon	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225160	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225168	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225169	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225170	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225171	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225172	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225173	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225174	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225175	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Eragrostis tef	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225176	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225177	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Eragrostis tef	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225178	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Eragrostis tef	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225179	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225180	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225182	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225183	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225185	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225186	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225187	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225188	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225190	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225191	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225192	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225194	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225195	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Secale cereale	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225196	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Secale cereale	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225197	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225198	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225199	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225200	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225201	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225202	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225203	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225205	naylor2017drought	Naylor et al. (2017)	Control	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225206	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225207	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225208	naylor2017drought	Naylor et al. (2017)	Drought	Asterids	Solanum lycopersicum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225209	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225210	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225211	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Bothriochloa bladhii	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225212	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225215	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225216	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Hordeum vulgare	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225217	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Hordeum vulgare	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225218	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225219	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225220	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum monococcum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225221	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225222	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum monococcum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225223	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum monococcum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225224	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225225	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225226	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225227	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225228	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225229	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225230	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225231	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225232	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225233	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225234	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225235	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225236	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225237	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Lolium arundinaceum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225239	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225240	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225241	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225242	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225243	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225273	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225276	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225279	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225280	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5225281	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5225282	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5225283	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459436	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459438	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459439	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459441	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459442	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459444	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459445	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459448	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459449	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459450	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459451	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459453	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459455	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459456	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459457	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459459	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459460	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459462	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459463	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459465	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459466	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459468	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459469	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459471	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459472	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459474	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459475	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459476	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459478	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459481	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459485	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459486	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459487	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459488	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459490	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459492	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459493	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459494	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459495	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459497	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459498	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459499	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459502	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459505	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459506	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459508	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459509	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459512	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459513	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459514	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459516	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459521	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459522	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459523	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459524	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459525	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459526	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459529	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459530	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Avena sativa	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459532	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459533	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum turgidum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459534	naylor2017drought	Naylor et al. (2017)	Drought	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459537	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459538	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459540	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Cenchrus americanus	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459545	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459546	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459548	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459550	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459554	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459569	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Zea mays	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459571	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Zea mays	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459574	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459575	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459577	naylor2017drought	Naylor et al. (2017)	Control	BOP clade	Triticum aestivum	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459579	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Triticum aestivum	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459582	naylor2017drought	Naylor et al. (2017)	Drought	BOP clade	Avena sativa	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459585	naylor2017drought	Naylor et al. (2017)	Control	Soil	Soil	Bulk soil	Not available for this type of experiment	341F,785R
+SRR5459586	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459588	naylor2017drought	Naylor et al. (2017)	Control	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R
+SRR5459590	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Rhizosphere	Not available for this type of experiment	341F,785R
+SRR5459592	naylor2017drought	Naylor et al. (2017)	Drought	PACMAD clade	Sorghum bicolor	Endosphere	Not available for this type of experiment	341F,785R

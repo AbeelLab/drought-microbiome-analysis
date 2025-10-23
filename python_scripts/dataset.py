@@ -10,7 +10,7 @@ from rpy2.robjects import pandas2ri
 from rpy2.robjects.packages import importr
 from rpy2.robjects import Formula
 from taxonomy_utils import get_last_taxonomic_level
-from utils import log_statistics
+from utils import log_statistics, get_last_taxonomic_level
 
 class Dataset:
     def __init__(self,
@@ -18,7 +18,7 @@ class Dataset:
                  metadata_df,
                  dataset_name,
                  data_path,
-                 is_filtered):
+                 study=None):
         # Keep only common indices from both dataframes
         # (we want to keep samples with both metadata and taxonomic profiles)
         self.taxonomy_counts_df = taxonomy_counts_df
@@ -30,8 +30,8 @@ class Dataset:
         # For saving
         self.dataset_name = dataset_name
         self.data_path = data_path
+        self.study = study
         
-        self.is_filtered = is_filtered
         self.is_clr_transformed = False
         self.is_batch_corrected = False
 
@@ -56,9 +56,6 @@ class Dataset:
     def get_counts_features_columns(self):
         return self.taxonomy_counts_df.columns.tolist()
 
-    def get_counts_feature(self, feature):
-        return self.taxonomy_counts_df[feature]
-
     def apply_clr(self,
                   pseudocount=1e-6):
         self.taxonomy_counts_df = self.taxonomy_counts_df + pseudocount
@@ -78,8 +75,6 @@ class Dataset:
         counts_df = self.get_counts_features()
         metadata_df = self.get_metadata()
         assert not counts_df.isna().values.any(), "Count table includes NaNs"
-
-        assert "merged" in self.dataset_name, "Cannot run BE correction on single-study dataset"
         
         # Samples are columns
         counts_r = pandas2ri.py2rpy(counts_df.T)
@@ -116,22 +111,17 @@ class Dataset:
 
     
     # Default: appears in at least 5% of samples
+    # This function also removes uncultured taxa 
     def filter_features(self,
                         min_prevalence=0.05,
                         min_abundance=0,
-                        total_sum=100):        
-        # Normalize features
-        # Remove taxa not assigned at the deepest level
+                        total_sum=100):
         all_features = self.get_counts_features_columns()
-        print(f"[INFO] Initial #features: {len(all_features)}")
         
-        to_keep = [feature for feature in all_features
-                   if get_last_taxonomic_level(feature) is not None]
         # Remove uncultured taxa
-        to_keep = [feature for feature in to_keep
+        to_keep = [feature for feature in all_features
                    if "uncultured" not in feature
-                   and "Uncultured" not in feature
-                   and "Archaea" not in feature]
+                   and "Uncultured" not in feature]
         self.taxonomy_counts_df = self.taxonomy_counts_df[to_keep]
 
         # Normalize to enable abundance/prevalence filtering
@@ -144,36 +134,26 @@ class Dataset:
         to_keep = [col for col in to_keep
                    if (taxonomy_normalized_df[col] > min_abundance).sum() >= min_sample_count]
 
-        print(f"[INFO] #features after filtering: {len(to_keep)}")
-
         # Update taxonomy dataframe
         self.taxonomy_counts_df = self.taxonomy_counts_df[to_keep]
         
-        # Update filtering status
-        is_filtered = True
-        if "filtered" not in self.dataset_name:
-            self.dataset_name += "_filtered"
-            
 
-    def filter_samples(self,
-                       min_absolute_abundance=7.5 * 10**3):
-       self.taxonomy_counts_df = self.taxonomy_counts_df[self.taxonomy_counts_df.sum(axis=1) >= min_absolute_abundance]
+    # Filter rows of the metadata based on a condition
+    # Condition should specify which rows to keep
+    def filter_samples_based_on_condition(self, condition):        
+        self.metadata_df = self.metadata_df[condition(self.metadata_df)]
+        self.update_based_on_sample_intersection()
 
-       self.update_based_on_sample_intersection()
-        
-       # Update filtering status
-       is_filtered = True
-       if "filtered" not in self.dataset_name:
-           self.dataset_name += "_filtered"
-        
-    def save_dataset(self):
-        metadata_file = "metadata_" + self.dataset_name + ".tsv"
-        metadata_file = os.path.join(self.data_path, metadata_file)
-        self.metadata_df.fillna("Not applicable").to_csv(metadata_file,
-                                                         sep='\t',
-                                                         index=True,
-                                                         index_label="#SampleID")
-        print(f"[INFO] Saved: {metadata_file}")
+    def save_dataset(self,
+                     save_metadata=False,
+                     metadata_file="metadata.tsv"):
+        # Metadata doesn't have to be per taxonomic level, so don't add the dataset name
+        if save_metadata:
+            metadata_file = os.path.join(self.data_path, metadata_file)
+            self.metadata_df.fillna("").to_csv(metadata_file,
+                                               sep='\t',
+                                               index=True,
+                                               index_label="#SampleID")
 
         taxonomy_counts_file = "counts_" + self.dataset_name + ".tsv"
         taxonomy_counts_file = os.path.join(self.data_path, taxonomy_counts_file)
@@ -188,7 +168,6 @@ class Dataset:
                                          sep = '\t',
                                          index = True,
                                          index_label = "#SampleID")
-        print(f"[INFO] Saved: {taxonomy_counts_file}")
 
         with open(os.path.join(self.data_path, self.dataset_name + ".pkl"), 'wb') as handle:
             pkl.dump(self,
@@ -197,29 +176,13 @@ class Dataset:
 
         return metadata_file, taxonomy_counts_file
 
-    # Filter rows of the metadata based on a condition
-    # Condition should specify which rows to keep
-    def filter_rows(self, condition):
-        print(f"[INFO] Filtering samples for {self.dataset_name}")
-        print(f"[INFO] Initial #samples: {len(self.metadata_df)}")
-        
-        self.metadata_df = self.metadata_df[condition(self.metadata_df)]
-        self.update_based_on_sample_intersection()
-
-        print(f"[INFO] #samples after filtering: {len(self.metadata_df)}")
-
     @staticmethod
     # Return a dataset with the merged metadata and taxonomic features
     def merge_datasets(list_of_datasets,
                        data_path,
                        method="union",
                        merged_dataset_name="merged",
-                       intersection_threshold=0.5):
-        filtering_stats = {ds.is_filtered for ds in list_of_datasets}
-        assert len(filtering_stats) == 1, (f"Should not merge datasets with mixed filtering states")
-
-        is_filtered = filtering_stats.pop()
-
+                       intersection_threshold=0.3):
         merged_metadata = pd.concat([ds.get_metadata()
                                      for ds in list_of_datasets],
                                     axis=0,
@@ -233,7 +196,11 @@ class Dataset:
                                                sort=False).fillna(0)
         elif method == "intersection":
             n_datasets = len(list_of_datasets)
-            min_datasets = math.ceil(intersection_threshold * n_datasets)
+
+            if intersection_threshold < 1:
+                min_datasets = math.ceil(intersection_threshold * n_datasets)
+            else:
+                min_datasets = intersection_threshold
 
             counter = Counter()
             for ds in list_of_datasets:
@@ -249,19 +216,9 @@ class Dataset:
         merged = Dataset(taxonomy_counts_df=merged_taxonomy_counts,
                          metadata_df=merged_metadata,
                          dataset_name=merged_dataset_name,
-                         data_path=data_path,
-                         is_filtered=is_filtered)
+                         data_path=data_path)
 
         assert len(merged_metadata) == len(merged_taxonomy_counts)
-
-        print(f"[INFO] Merged dataset {merged_dataset_name}")
-        print(f"with {len(merged_taxonomy_counts.columns)} features")
-        print(f"and {len(merged_metadata)} samples")
-
-        log_statistics(merged.dataset_name,
-                       "Union of features",
-                       len(merged.taxonomy_counts_df.columns),
-                       "../data/features_log.pkl")
 
         return merged
 
@@ -279,12 +236,104 @@ class Dataset:
 
         return core_features, prevalence
 
+    
     def remove_zero_features(self):
         all_features = self.get_counts_features_columns()
-        print(f"[INFO] Initial #features: {len(all_features)}")
-
         nonzero_features = self.taxonomy_counts_df.columns[self.taxonomy_counts_df.sum(axis=0) > 0].tolist()
         self.taxonomy_counts_df = self.taxonomy_counts_df[nonzero_features]
 
-        print(f"[INFO] #features after removing all-zero features: {len(nonzero_features)}")
         
+    def remove_features_not_assigned_at_last_level(self):
+        all_features = self.get_counts_features_columns()
+        to_keep = [feature for feature in all_features
+                   if get_last_taxonomic_level(feature) is not None]
+        self.taxonomy_counts_df = self.taxonomy_counts_df[to_keep]
+        
+
+    def log_sparsity_and_feature_statistics(self):
+        df = self.taxonomy_counts_df
+        name = self.study
+
+        n_samples, n_features = df.shape
+        total_elements = n_samples * n_features if (n_samples > 0 and n_features > 0) else 0
+
+        zero_count = int((df == 0).sum().sum()) if total_elements > 0 else 0
+        sparsity = zero_count / total_elements * 100 if total_elements > 0 else float('nan')
+
+        # Min non-zero count
+        stacked_nonzero = df.stack()[df.stack() != 0] if total_elements > 0 else pd.Series(dtype=float)
+        min_nonzero = float(stacked_nonzero.min())
+
+        # Max count
+        max_value = float(df.max().max())
+
+        # Mean count per sample
+        mean_count_per_sample = float(df.sum(axis=1).mean()) if n_samples > 0 else float('nan')
+
+        # Mean count per feature
+        mean_count_per_feature = float(df.sum(axis=0).mean()) if n_features > 0 else float('nan')
+        
+        # Log metrics
+        logfile = "../features_log.pkl"
+        log_statistics(name, "sparsity", float(sparsity), logfile)
+        log_statistics(name, "min_nonzero_count", min_nonzero, logfile)
+        log_statistics(name, "max_count_value", max_value, logfile)
+        log_statistics(name, "mean_total_count_per_sample", mean_count_per_sample, logfile)
+        log_statistics(name, "mean_count_per_feature", mean_count_per_feature, logfile)
+        log_statistics(name, "# features", n_features, logfile)
+        log_statistics(name, "# samples", n_samples, logfile)
+
+        # Print summary
+        print(f"[INFO] {name}: samples={n_samples}, features={n_features}, sparsity={sparsity:.4f}, "
+              f"min_nonzero={min_nonzero}, max={max_value}, mean_per_sample={mean_count_per_sample:.3f}")
+
+    def log_sample_statistics(self):
+        metadata = self.get_metadata()
+        logfile = "../samples_log.pkl"
+        name = self.study
+
+        total_samples = len(metadata)
+
+        treatment_drought = treatment_control = None
+        inoc_drought = inoc_ref = inoc_sterile = None
+
+        if "Treatment" in metadata.columns:
+            treatment_counts = metadata["Treatment"].value_counts(dropna=False).to_dict()
+            treatment_drought = treatment_counts.get("Drought", 0)
+            treatment_control = treatment_counts.get("Control", 0)
+
+            treatment_sum = treatment_drought + treatment_control
+            if treatment_sum > 0:
+                assert treatment_sum == total_samples, (
+                    f"[ERROR] Treatment counts ({treatment_sum}) "
+                    f"do not match total samples ({total_samples}) for {name}")
+        else:
+            print(f"[WARN] 'Treatment' column not found in metadata for {name}")
+
+        if "Inoculum" in metadata.columns:
+            inoc_counts = metadata["Inoculum"].value_counts(dropna=False).to_dict()
+            inoc_drought = inoc_counts.get("Dry", 0)
+            inoc_ref = inoc_counts.get("Reference", 0)
+            inoc_sterile = inoc_counts.get("Sterile", 0)
+
+            inoc_sum = inoc_drought + inoc_ref + inoc_sterile
+            if inoc_sum > 0:
+                assert inoc_sum == total_samples, (
+                    f"[ERROR] Inoculum counts ({inoc_sum}) do not match total samples ({total_samples}) for {name}"
+                )
+        else:
+            print(f"[WARN] 'Inoculum' column not found in metadata for {name}")
+
+        log_statistics(name, "total_samples", total_samples, logfile)
+        if treatment_drought is not None:
+            log_statistics(name, "Treatment_Drought", treatment_drought, logfile)
+            log_statistics(name, "Treatment_Control", treatment_control, logfile)
+        if inoc_drought is not None:
+            log_statistics(name, "Inoculum_Dry", inoc_drought, logfile)
+            log_statistics(name, "Inoculum_Reference", inoc_ref, logfile)
+            log_statistics(name, "Inoculum_Sterile", inoc_sterile, logfile)
+
+        # Print summary 
+        print(f"[INFO] {name}: total_samples={total_samples}, "
+              f"Treatment(Drought={treatment_drought}, Control={treatment_control}), "
+              f"Inoculum(Dry={inoc_drought}, Reference={inoc_ref}, Sterile={inoc_sterile})")

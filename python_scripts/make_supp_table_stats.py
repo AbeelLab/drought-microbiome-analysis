@@ -6,7 +6,7 @@ import sys
 ordered_keys = [
     "xu2018drought",
     "simmons2020drought",
-    "fitspatrick2017assembly",
+    "fitzpatrick2018assembly",
     "azarbad2020four",
     "santos-medellin2021prolonged",
     "hoefle2024oak",
