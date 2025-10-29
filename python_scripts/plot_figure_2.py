@@ -117,15 +117,10 @@ def plot_core_thresholds(dataset,
     return taxa_above_90
 
 
-def plot_core_taxa(ds,
-                   core,
-                   save_as,
-                   level="p__"):
-
+def collect_core_data(ds, core, level="p__"):
     colors = config["colors"]["Phyla"]
     norm = ds.get_normalized_features()
 
-    print(core)
     records = []
     for taxon in core:
         abundances = norm[taxon]
@@ -133,48 +128,115 @@ def plot_core_taxa(ds,
         phylum = extract_level(taxon)
         color = colors.get(phylum, "#E8E9EB")
         for val in nonzero:
-            records.append({"Taxon": trim_taxonomy(taxon), "Abundance": val,
-                            "Phylum": phylum, "Color": color})
+            records.append({
+                "Taxon": trim_taxonomy(taxon),
+                "Abundance": val,
+                "Phylum": phylum,
+                "Color": color
+            })
+    return pd.DataFrame(records)
 
-    df = pd.DataFrame(records)
-    taxa_order = df.groupby("Taxon")["Abundance"].mean().sort_values(ascending=False).index
+def plot_core_taxa_combined(compartments, save_as="../plots/core_boxplot_combined.png"):
+    dfs = []
+    taxa_order = []
 
-    # Width proportional to number of core taxa
-    figsize = (len(core) * 0.8, 10)
+    for compartment in compartments:
+        with open(f"../datasets/{compartment.lower().replace(' ', '_')}/genus.pkl", "rb") as handle:
+            ds = pkl.load(handle)
 
-    plt.figure(figsize=figsize)
-    palette = {p: colors.get(p, "#E8E9EB") for p in df["Phylum"].unique()}
+        core = ds.get_core(0.9)[0]
+        df = collect_core_data(ds, core)
+        df["Compartment"] = compartment
+        dfs.append(df)
 
-    ax = sns.boxplot(
-        data=df,
-        x="Taxon",
-        y="Abundance",
-        order=taxa_order,
-        showcaps=True,
-        showbox=True,
-        showfliers=True,
-        hue="Phylum",
-        whiskerprops={'linewidth': 2},
-        medianprops={'linewidth': 2},
-        fill=False,
-        palette=palette
+        for taxon in df["Taxon"].unique():
+            if taxon not in taxa_order:
+                taxa_order.append(taxon)
+
+    # Combine all dataframes
+    full_df = pd.concat(dfs, ignore_index=True)
+
+    # Palette based on config colors
+    colors = config["colors"]["Phyla"]
+    palette = {p: colors.get(p, "#E8E9EB") for p in full_df["Phylum"].unique()}
+
+    # Consistent box width
+    box_width_inch = 0.5
+    base_padding_inch = 2
+    unique_taxa = len(taxa_order)
+    base_fig_width = unique_taxa * box_width_inch + base_padding_inch
+
+    # Define subplot heights based on expected y-limits
+    heights = []
+    for c in compartments:
+        if c.lower() == "endosphere":
+            heights.append(1.5)  # taller panel
+        else:
+            heights.append(1.0)
+
+    # Normalize heights
+    total_height = sum(heights)
+    fig_height = 3.5 * total_height
+
+    fig, axes = plt.subplots(
+        nrows=len(compartments),
+        ncols=1,
+        figsize=(base_fig_width, fig_height),
+        sharex=True,
+        sharey=False,
+        gridspec_kw={'height_ratios': heights}
     )
 
-    ax.set_ylim(-1, 38)
+    if len(compartments) == 1:
+        axes = [axes]
 
-    ax.set_xticklabels(ax.get_xticklabels(), rotation=90)
-    plt.title("Core taxa non-zero abundances")
-    plt.ylabel("Relative abundance (%)")
-    plt.xlabel("Taxon")
-    plt.tight_layout()
+    for ax, compartment in zip(axes, compartments):
+        df = full_df[full_df["Compartment"] == compartment]
+        sns.boxplot(
+            data=df,
+            x="Taxon",
+            y="Abundance",
+            order=taxa_order,
+            hue="Phylum",
+            showcaps=True,
+            showfliers=True,
+            whiskerprops={'linewidth': 2},
+            medianprops={'linewidth': 2},
+            fill=False,
+            palette=palette,
+            width=0.6,
+            ax=ax
+        )
 
-    plt.savefig(f"{save_as}.svg", format="svg")
-    plt.savefig(f"{save_as}.png", format="png", dpi=600)
-    plt.close()
+        ax.set_title(compartment)
 
+        # Conditional y-limits
+        if compartment.lower() == "endosphere":
+            ax.set_ylim(-1, 65)
+        else:
+            ax.set_ylim(-1, 30)
+
+        ax.set_ylabel("Relative abundance (%)")
+        ax.legend([], [], frameon=False)
+
+    axes[-1].set_xticklabels(axes[-1].get_xticklabels(), rotation=90)
+    axes[-1].set_xlabel("Taxon")
+
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper right", title="Phylum")
+
+    plt.tight_layout(rect=[0, 0, 0.98, 1])
+    fig.savefig(save_as, dpi=600, bbox_inches="tight")
+    fig.savefig(save_as.replace(".png", ".svg"), format="svg")
+    plt.close(fig)
+
+    
 
 def main():
-    for compartment in ["Rhizosphere", "Endosphere", "Bulk soil"]:
+    compartments = ["Endosphere", "Rhizosphere", "Bulk soil"]
+    plot_core_taxa_combined(compartments)
+    
+    for compartment in compartments:
         pkl_file = f"../datasets/{compartment.lower().replace(' ', '_')}/genus.pkl"
         with open(pkl_file, 'rb') as handle:
             ds = pkl.load(handle)
@@ -183,9 +245,6 @@ def main():
         core = plot_core_thresholds(ds,
                                     save_as=f"../plots/core_thresholds_{compartment}",
                                     color=config["colors"]["RootCompartment"][compartment])
-        plot_core_taxa(ds,
-                       core,
-                       save_as=f"../plots/core_box_plot_thresholds_{compartment}")
 
         # For taxonomic composition, use phylum-level
         pkl_file = f"../datasets/{compartment.lower().replace(' ', '_')}/phylum.pkl"

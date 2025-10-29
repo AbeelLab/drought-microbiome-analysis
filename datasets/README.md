@@ -1,6 +1,6 @@
 # Datasets
 
-This collection of drought datasets was compiled from 13 public datasets, as cited below.
+This collection of drought datasets was compiled from 13 public amplicon 16S datasets, as cited below.
 
 ## Studies included in the meta-analysis
 
@@ -18,17 +18,32 @@ This collection of drought datasets was compiled from 13 public datasets, as cit
 | Azarbad et al. (2022)         | azarbad2022response           | [10.1038/s43705-022-00151-2](https://www.nature.com/articles/s43705-022-00151-2)     | PRJNA736197              |
 | **Inoculation datasets**      |                               |                                                                                      |                          |
 | Moore et al. (2023)           | moore2023microbial            | [10.1128/spectrum.01476-22](https://journals.asm.org/doi/10.1128/spectrum.01476-22)  | PRJNA780613              |
-| Swift et al. (2024)           | swift2024drought              | [10.1007/s11104-024-06853-x](https://journals.asm.org/doi/10.1128/spectrum.01476-22) | PRJNA913622              |
+| Swift et al. (2025)           | swift2025drought              | [10.1007/s11104-024-06853-x](https://journals.asm.org/doi/10.1128/spectrum.01476-22) | PRJNA913622              |
 | Zhang et al. (2022)           | zhang2022cross                | [10.1111/tpj.15775](https://onlinelibrary.wiley.com/doi/abs/10.1111/tpj.15775)       | PRJNA839620              |
-| Munoz-Ucros et al. (2021)     | munoz-ucros2021drought        | [10.​1007/​s11104-​021-​05227-x](https://doi.org/10.1007/s11104-021-05227-x)             | PRJEB41348               |
+| Munoz-Ucros et al. (2022)     | munoz-ucros2022drought        | [10.​1007/​s11104-​021-​05227-x](https://doi.org/10.1007/s11104-021-05227-x)             | PRJEB41348               |
 
 
-## Sample filtering
+## File and folder documentation
+| File/folder                                                     | Description                                                                                                                                                                   |
+|-----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| counts_[taxonomic_resolution].tsv                               | Count table where the samples (NCBI accessions) are rows and the columns are features at a given taxonomic resolution, from phylum to genus. Obtained by merging all studies. |
+| counts_[taxonomic_resolution]_for_signature.tsv                 | Count table obtained by merging all drought studies, and retaining only features occuring in 30% of studies (rounded up).                                                     |
+| counts_[taxonomic_resolution]_for_signature_batch_corrected.tsv | Count table (as before) with batch correction for samples originating from different studies.                                                                                 |
+| metadata.tsv                                                    | Metadata for all samples (NCBI accessions). See below for a more detailed description.                                                                                        |
+| [study_id]/                                                     | Folder with all processed counts and metadata .tsv files for a given study.                                                                                                   |
+| [compartment_name]/                                             | Folder with all processed datasets for a given compartment (endosphere, rhizosphere, bulks soil), obtained by merging samples across studies.                                 |
 
-## Data processing
 
-## File and folder descriptions
-
-### Count data
-
-### Metadata
+### Metadata columns
+| Column          | Description                                                                                                                                          |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| #SampleID       | NCBI sample accession.                                                                                                                               |
+| StudyID         | Study ID as given above.                                                                                                                             |
+| StudyName       | Study name as given above.                                                                                                                           |
+| Treatment       | Drought or Control.                                                                                                                                  |
+| Host            | Plant host clade. Soil for bulk soil samples.                                                                                                        |
+| HostSpecific    | Plant host. Soil for bulk soil samples.                                                                                                              |
+| RootCompartment | Rhizosphere, Endosphere or Bulk soil.                                                                                                                |
+| Inoculum        | Dry, Reference or Sterile. Only for inoculation studies. Check Supplementary Table S1 in the publication for information on how these were selected. |
+| Primers         | Primers used for amplicon sequencing in the corresponding study, manually extracted from each study.                                                 |
+	

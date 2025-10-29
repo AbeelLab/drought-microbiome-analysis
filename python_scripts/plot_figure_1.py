@@ -66,7 +66,7 @@ def plot_jaccard_heatmap(ds, save_as, figsize=(8, 6), cmap="Greys"):
 
     return jaccard_df, union_features, intersection_features
 
-def plot_rarefaction_per_compartment(save_as, n_permutations=100, figsize=(8, 5)):
+def plot_rarefaction_per_compartment(save_as, n_permutations=100, figsize=(7, 8)):
     plt.figure(figsize=figsize)
 
     np.random.seed(42)
