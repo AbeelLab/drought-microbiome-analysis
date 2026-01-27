@@ -66,36 +66,43 @@ class Dataset:
         self.dataset_name += "_clr"
 
     # Based on the MMuPHin user tutorial: https://bioconductor.org/packages/release/bioc/vignettes/MMUPHin/inst/doc/MMUPHin.html
-    def apply_mmuphin_be_correction(self):
+    def apply_mmuphin_be_correction(self, covariates=["Treatment"]):
         pandas2ri.activate()
-        
         mmuphin = importr('MMUPHin')
-        
-        # According to documentation, MMUPHin can handle counts 
+
         counts_df = self.get_counts_features()
         metadata_df = self.get_metadata()
         assert not counts_df.isna().values.any(), "Count table includes NaNs"
-        
-        # Samples are columns
+
         counts_r = pandas2ri.py2rpy(counts_df.T)
-        # Samples are rows
         metadata_r = pandas2ri.py2rpy(metadata_df)
+
         robjects.globalenv['counts'] = counts_r
         robjects.globalenv['metadata'] = metadata_r
-        
+
+        if len(covariates) == 0:
+            covariate_arg = "NULL"
+        elif len(covariates) == 1:
+            covariate_arg = f'"{covariates[0]}"'
+        else:
+            covariate_arg = "c(" + ", ".join([f'"{c}"' for c in covariates]) + ")"
+
         robjects.r(f'''
         library(MMUPHin)
-        fit_adjust_batch <- adjust_batch(feature_abd = counts,
-                                         batch = "StudyID",
-                                         covariates = "Treatment",
-                                         data = metadata,
-                                         control = list(verbose = TRUE))
+        fit_adjust_batch <- adjust_batch(
+        feature_abd = counts,
+        batch = "StudyID",
+        covariates = {covariate_arg},
+        data = metadata,
+        control = list(verbose = TRUE)
+        )
 
         adj_data <- as.data.frame(fit_adjust_batch$feature_abd_adj)
         ''')
 
         counts_batch_corrected = robjects.globalenv['adj_data']
         counts_batch_corrected = pandas2ri.rpy2py(counts_batch_corrected).T
+        
         self.taxonomy_counts_df = counts_batch_corrected
         self.dataset_name += "_batch_corrected"
         self.is_batch_corrected = True
@@ -109,7 +116,14 @@ class Dataset:
         taxonomy_normalized_df = df.div(df.sum(axis=1), axis=0) * total_sum
         return taxonomy_normalized_df
 
+    def get_prevalence(self, feature):
+        df = self.taxonomy_counts_df
+        non_zero_count = (df[feature] > 0).sum()
+        total_samples = df.shape[0]
     
+        prevalence_percent = (non_zero_count / total_samples) * 100
+        return prevalence_percent
+         
     # Default: appears in at least 5% of samples
     # This function also removes uncultured taxa 
     def filter_features(self,

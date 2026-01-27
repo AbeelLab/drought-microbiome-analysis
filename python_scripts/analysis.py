@@ -3,7 +3,7 @@ from scipy.spatial.distance import pdist, squareform
 from skbio.stats.distance import DistanceMatrix, permanova
 import matplotlib.pyplot as plt
 import os
-# trim_taxonomy should probably be in utils rather than plotting
+
 from plotting import trim_taxonomy
 import numpy as np
 from rpy2 import robjects
@@ -43,13 +43,25 @@ def run_maaslin_diff_abundance(dataset,
     robjects.globalenv['v'] = counts_r
     robjects.globalenv['metadata'] = metadata_r
 
-    random_effects_str = f'c("{random_effects}")' if random_effects else 'NULL'
+    if random_effects is None:
+        random_effects_str = "NULL"
+    elif isinstance(random_effects, (list, tuple)):
+        random_effects_str = "c(" + ",".join(f'"{r}"' for r in random_effects) + ")"
+    else:
+        random_effects_str = f'c("{random_effects}")'
 
     robjects.r(f'''
     library(Maaslin2)
 
     metadata${fixed_effects} <- as.factor(metadata${fixed_effects})
     metadata${fixed_effects} <- relevel(metadata${fixed_effects}, ref="{base}")
+    metadata$StudyID <- as.factor(metadata$StudyID)
+
+    print("[DEBUG] R metadata columns:")
+    print(colnames(metadata))
+
+    print("[DEBUG] Metadata structure:")
+    str(metadata)
 
     fit_data <- Maaslin2(
         input_data = v,
@@ -91,16 +103,16 @@ def run_maaslin_diff_abundance(dataset,
 
 
 # Based on the MMuPHin user tutorial: https://bioconductor.org/packages/release/bioc/vignettes/MMUPHin/inst/doc/MMUPHin.html
-def run_mmuphin_diff_abundance(dataset):
+def run_mmuphin_diff_abundance(dataset, exposure="Treatment"):
     pandas2ri.activate()
         
     mmuphin = importr('MMUPHin')
 
     df = dataset.get_counts_features()
+    assert len(df) > 0 and len(df.columns) > 0, "Empty dataset"
+    
     metadata_df = dataset.get_metadata()
-    # Samples are columns
     df_r = pandas2ri.py2rpy(df.T)
-    # Samples are rows
     metadata_r = pandas2ri.py2rpy(metadata_df)
     robjects.globalenv['data'] = df_r
     robjects.globalenv['metadata'] = metadata_r
@@ -109,11 +121,20 @@ def run_mmuphin_diff_abundance(dataset):
     library(MMUPHin)
     library(magrittr)
     library(dplyr)
-    fit_lm_meta <- lm_meta(feature_abd = data,
-                           batch = "StudyID",
-                           exposure = "Treatment",
-                           data = metadata,
-                           control = list(verbose = TRUE, transform="LOG"))
+
+    metadata${exposure} <- as.factor(metadata${exposure})
+    metadata$StudyID <- as.factor(metadata$StudyID)
+
+    ref_level <- levels(metadata${exposure})[1]
+    message("[INFO] Reference level for {exposure}: ", ref_level)
+
+    fit_lm_meta <- lm_meta(
+        feature_abd = data,
+        batch = "StudyID",
+        exposure = "{exposure}",
+        data = metadata,
+        control = list(verbose = TRUE, transform = "LOG")
+    )
     
     meta_fits <- fit_lm_meta$meta_fits
     meta_fits_summary <- meta_fits %>% 
@@ -123,16 +144,21 @@ def run_mmuphin_diff_abundance(dataset):
     meta_fits_summary_r = robjects.r['meta_fits_summary']
     meta_fits_summary_py = pandas2ri.rpy2py(meta_fits_summary_r)
 
+    # Get the reference level back from R
+    ref_level = str(robjects.r('ref_level')[0])
+
     # Reformat
     results = {}
     for _, row in meta_fits_summary_py.iterrows():
         results[row['feature']] = {
-            'logFC': row['coef'],          
-            'adj.P.Val': row['qval.fdr']  
+            'logFC': row['coef'],
+            'adj.P.Val': row['qval.fdr']
         }
 
-    print(f"[INFO] Found {len(results)} DA features for {dataset.dataset_name} (MMUPHin)")
-    return results
+    print(f"[INFO] Found {len(results)} DA feature-contrast combinations for {dataset.dataset_name} (MMUPHin)")
+    print(f"[INFO] Reference level for '{exposure}': {ref_level}")
+
+    return results, ref_level
 
 def run_wilcoxon_diff_abundance(dataset,
                                 p_val=1,

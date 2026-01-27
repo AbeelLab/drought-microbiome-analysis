@@ -75,12 +75,12 @@ def run_preprocessing(studies, save_as):
                     protocol=pickle.HIGHEST_PROTOCOL)
 
 def main():
-    run_preprocessing(config["all_studies"], config["processed_datasets"])
+    #run_preprocessing(config["all_studies"], config["processed_datasets"])
 
     with open(config["processed_datasets"], 'rb') as handle:
         processed_datasets = pickle.load(handle)
 
-    for level in config["levels"]:
+    for level in [2]:#config["levels"]:
         for compartment in ["all", "Rhizosphere", "Endosphere", "Bulk soil"]:
             list_of_datasets = []
             drought_datasets = []
@@ -108,6 +108,13 @@ def main():
                 if level == 6:
                     #Save all metadata only once
                     merged_dataset.save_dataset(save_metadata=True)
+
+                if level == 2:
+                    # Batch-correct phylum level counts across all compartments
+                    merged_dataset_copy = deepcopy(merged_dataset)
+                    merged_dataset_copy.apply_mmuphin_be_correction(covariates=["Treatment", "RootCompartment"])
+                    merged_dataset_copy.remove_zero_features()
+                    merged_dataset_copy.save_dataset()
                 else:
                     merged_dataset.save_dataset()
             else:
@@ -121,7 +128,8 @@ def main():
 
             print("[INFO] Merged features: ",
                   len(merged_dataset.taxonomy_counts_df.columns))
-
+                
+                
             # For genus-level and drought studies,
             # additionally merge only features that appear in 30% of datasets
             if level == 6:

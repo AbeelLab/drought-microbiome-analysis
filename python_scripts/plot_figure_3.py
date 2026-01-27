@@ -14,12 +14,9 @@ from utils import trim_taxonomy
 with open('config.yml') as f:
     config = yaml.safe_load(f)
 
-# --- Utility functions ---
 def normalize_name(name):
     return re.sub(r'[^A-Za-z0-9]', '', name).lower()
 
-
-# --- Signature subplot function ---
 def plot_all_signatures(signatures_dict, save_as):
     compartments = list(signatures_dict.keys())
     n_compartments = len(compartments)
@@ -57,19 +54,34 @@ def plot_all_signatures(signatures_dict, save_as):
     plt.close()
 
 
-# --- Validation subplot function ---
-def plot_all_study_validations(all_study_signatures, main_signatures, save_as):
+def plot_all_study_validations(all_study_signatures, main_signatures, feature_orders, save_as):
     compartments = list(main_signatures.keys())
     all_studies = config["all_studies"]
 
-    fig, axes = plt.subplots(1, len(compartments), figsize=(8 * len(compartments), 0.6 * len(all_studies)))
+    fig, axes = plt.subplots(
+        1, len(compartments), figsize=(8 * len(compartments), 0.6 * len(all_studies) + 2)
+    )
 
     if len(compartments) == 1:
         axes = [axes]
 
+    summary_stats = {}
+
     for ax, compartment in zip(axes, compartments):
         study_signatures = all_study_signatures.get(compartment, {})
-        taxa = list(main_signatures[compartment].keys())
+        taxa = feature_orders[compartment]
+
+        # normalized main signature for this compartment (taxon -> entry)
+        main_sig = main_signatures.get(compartment, {})
+        normalized_main = {normalize_name(k): v for k, v in main_sig.items()}
+
+        stats = {
+            "colored": 0,
+            "confirmed_sig": 0,
+            "confirmed_nonsig": 0,
+            "refuted_sig": 0,
+            "refuted_nonsig": 0,
+        }
 
         for i, study in enumerate(all_studies):
             if study not in study_signatures:
@@ -90,6 +102,7 @@ def plot_all_study_validations(all_study_signatures, main_signatures, save_as):
                     logfc = entry["logFC"]
                     pval = entry["adj.P.Val"]
 
+                    # determine base color (based on validation logFC sign)
                     if logfc > 0:
                         base_color = config["colors"]["Treatment"]["Drought"]
                     elif logfc < 0:
@@ -97,6 +110,33 @@ def plot_all_study_validations(all_study_signatures, main_signatures, save_as):
                     else:
                         base_color = "white"
 
+                    # count colored squares (anything not white)
+                    if base_color != "white":
+                        stats["colored"] += 1
+
+                    # decide confirmed vs refuted by comparing sign to main signature
+                    # only if main signature has a non-zero logFC for this taxon
+                    main_entry = normalized_main.get(normalized_taxon)
+                    if main_entry is not None:
+                        main_logfc = main_entry.get("logFC", 0)
+                        # consider only when main has non-zero direction and validation has non-zero direction
+                        if main_logfc != 0 and logfc != 0:
+                            # confirmed: same sign
+                            if (main_logfc > 0 and logfc > 0) or (main_logfc < 0 and logfc < 0):
+                                if pval < 0.05:
+                                    stats["confirmed_sig"] += 1
+                                else:
+                                    stats["confirmed_nonsig"] += 1
+                            else:
+                                # refuted: opposite sign
+                                if pval < 0.05:
+                                    stats["refuted_sig"] += 1
+                                else:
+                                    stats["refuted_nonsig"] += 1
+                        # if either is zero, we don't count it as confirmed/refuted
+                    # if main_entry is None, we can't evaluate — skip
+
+                    # visual alpha by p-value
                     facecolor = base_color if pval < 0.05 else mcolors.to_rgba(base_color, alpha=0.5)
 
                 ax.add_patch(plt.Rectangle((j, i), 1, 1, facecolor=facecolor, edgecolor="none"))
@@ -111,16 +151,31 @@ def plot_all_study_validations(all_study_signatures, main_signatures, save_as):
         ax.set_aspect("equal")
         ax.set_title(compartment)
 
-    plt.tight_layout()
+        summary_stats[compartment] = stats
+
+    plt.tight_layout(rect=[0, 0.1, 1, 1])  # leave space for text at bottom
+
+    # Add summary text below the figure
+    summary_text = ""
+    for c, s in summary_stats.items():
+        summary_text += (
+            f"{c}:\n"
+            f"  Taxa identified (# colored squares): {s['colored']}\n"
+            f"  Confirmed (p < 0.05): {s['confirmed_sig']} | Confirmed (p >= 0.05): {s['confirmed_nonsig']}\n"
+            f"  Refuted (p < 0.05): {s['refuted_sig']} | Refuted (p >= 0.05): {s['refuted_nonsig']}\n\n"
+        )
+
+    fig.text(0.01, 0.02, summary_text, ha="left", va="bottom", fontsize=10, family="monospace")
+
     plt.savefig(f"{save_as}.svg", format="svg")
     plt.savefig(f"{save_as}.png", format="png", dpi=600)
     plt.close()
 
 
-# --- Main pipeline ---
 def main():
     all_signatures = {}
     all_study_signatures = {}
+    feature_orders = {}
 
     for compartment in ["Rhizosphere", "Endosphere", "Bulk soil"]:
         pkl_file = f"../datasets/{compartment.lower().replace(' ', '_')}/genus_for_signature_batch_corrected.pkl"
@@ -128,15 +183,12 @@ def main():
             ds = pkl.load(handle)
 
         maaslin_signature_file = f"../raw_data/maaslin_signature_{compartment.lower().replace(' ', '_')}.pkl"
-        maaslin_signature = run_mmuphin_diff_abundance(ds)
+        maaslin_signature, _ = run_mmuphin_diff_abundance(ds)
         with open(maaslin_signature_file, 'wb') as handle:
             pkl.dump(maaslin_signature, handle)
 
-        # Save signature as TSV
         df = pd.DataFrame.from_dict(maaslin_signature, orient='index')
         df.index.name = "Taxon"
-        tsv_file = f"../raw_data/signature_{compartment.lower().replace(' ', '_')}.tsv"
-        df.to_csv(tsv_file, sep='\t')
 
         filtered_maaslin_signature = {
             taxon: maaslin_signature[taxon]
@@ -144,11 +196,8 @@ def main():
             if maaslin_signature[taxon]["adj.P.Val"] <= 0.05
         }
 
-        print(f"{compartment} significant taxa: {len(filtered_maaslin_signature)}")
-
         all_signatures[compartment] = filtered_maaslin_signature
 
-        # Per-study validation
         study_signatures = {}
         for study in config["all_studies"]:
             pkl_file = f"../datasets/{study}/genus.pkl"
@@ -172,9 +221,29 @@ def main():
 
         all_study_signatures[compartment] = study_signatures
 
-    # --- Combined plots ---
+        all_features = sorted(filtered_maaslin_signature.keys(),
+                              key=lambda f: maaslin_signature[f]['logFC'], reverse=True)
+        feature_orders[compartment] = all_features
+
+        logfc_df = pd.DataFrame(index=config["all_studies"], columns=all_features, dtype=float)
+        pval_df = pd.DataFrame(index=config["all_studies"], columns=all_features, dtype=float)
+
+        for study in config["all_studies"]:
+            sig = study_signatures.get(study, {})
+            for feature in all_features:
+                if feature in sig:
+                    vals = sig[feature]
+                    logfc_df.loc[study, feature] = vals.get("logFC", np.nan)
+                    pval_df.loc[study, feature] = vals.get("adj.P.Val", np.nan)
+                else:
+                    logfc_df.loc[study, feature] = np.nan
+                    pval_df.loc[study, feature] = np.nan
+
+        logfc_df.to_csv(f"../raw_data/{compartment.lower().replace(' ', '_')}_logFC_table.csv")
+        pval_df.to_csv(f"../raw_data/{compartment.lower().replace(' ', '_')}_adjPval_table.csv")
+
     plot_all_signatures(all_signatures, save_as="../plots/maaslin_signatures_all")
-    plot_all_study_validations(all_study_signatures, all_signatures, save_as="../plots/signature_validation_all")
+    plot_all_study_validations(all_study_signatures, all_signatures, feature_orders, save_as="../plots/signature_validation_all")
 
 
 if __name__ == "__main__":

@@ -1,10 +1,14 @@
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.ticker as ticker
 import numpy as np
 import pandas as pd
 import pickle as pkl
 import seaborn as sns
+import os
 import yaml
 
+from analysis import run_mmuphin_diff_abundance
 from copy import deepcopy
 from matplotlib.patches import Patch
 from utils import trim_taxonomy
@@ -117,124 +121,142 @@ def plot_core_thresholds(dataset,
     return taxa_above_90
 
 
-def collect_core_data(ds, core, level="p__"):
-    colors = config["colors"]["Phyla"]
-    norm = ds.get_normalized_features()
-
-    records = []
-    for taxon in core:
-        abundances = norm[taxon]
-        nonzero = abundances[abundances > 0]
-        phylum = extract_level(taxon)
-        color = colors.get(phylum, "#E8E9EB")
-        for val in nonzero:
-            records.append({
-                "Taxon": trim_taxonomy(taxon),
-                "Abundance": val,
-                "Phylum": phylum,
-                "Color": color
-            })
-    return pd.DataFrame(records)
-
-def plot_core_taxa_combined(compartments, save_as="../plots/core_boxplot_combined.png"):
+def plot_core_taxa_combined(compartments, save_as="../plots/core_scatter_combined.png"):
     dfs = []
-    taxa_order = []
 
+    # Gather data for all compartments
     for compartment in compartments:
         with open(f"../datasets/{compartment.lower().replace(' ', '_')}/genus.pkl", "rb") as handle:
             ds = pkl.load(handle)
 
-        core = ds.get_core(0.9)[0]
-        df = collect_core_data(ds, core)
-        df["Compartment"] = compartment
-        dfs.append(df)
+        data = []
+        for taxon in ds.taxonomy_counts_df.columns:
+            if "uncultured" in taxon.lower():
+                continue
 
-        for taxon in df["Taxon"].unique():
-            if taxon not in taxa_order:
-                taxa_order.append(taxon)
+            prevalence = ds.get_prevalence(taxon)
+            if prevalence < 80:
+                continue
 
-    # Combine all dataframes
+            mean_abundance = ds.get_normalized_features()[taxon][ds.taxonomy_counts_df[taxon] > 0].mean()
+            phylum = extract_level(taxon)
+
+            data.append({
+                "Taxon": taxon,
+                "Prevalence": prevalence,
+                "MeanAbundance": mean_abundance,
+                "Phylum": phylum,
+                "Compartment": compartment
+            })
+
+        if data:
+            dfs.append(pd.DataFrame(data))
+
+    if not dfs:
+        print("[WARNING] No taxa passed the filtering criteria")
+        return
+
     full_df = pd.concat(dfs, ignore_index=True)
 
-    # Palette based on config colors
-    colors = config["colors"]["Phyla"]
-    palette = {p: colors.get(p, "#E8E9EB") for p in full_df["Phylum"].unique()}
+    # Count in how many compartments each taxon passes the 80% prevalence
+    taxon_compartment_counts = (
+        full_df.groupby("Taxon")["Compartment"]
+        .nunique()
+        .to_dict()
+    )
 
-    # Consistent box width
-    box_width_inch = 0.5
-    base_padding_inch = 2
-    unique_taxa = len(taxa_order)
-    base_fig_width = unique_taxa * box_width_inch + base_padding_inch
-
-    # Define subplot heights based on expected y-limits
-    heights = []
-    for c in compartments:
-        if c.lower() == "endosphere":
-            heights.append(1.5)  # taller panel
+    # Map number of compartments to point size
+    def map_size(n):
+        if n == 1:
+            return 60   # small
+        elif n == 2:
+            return 180  # medium
         else:
-            heights.append(1.0)
+            return 360  # big
 
-    # Normalize heights
-    total_height = sum(heights)
-    fig_height = 3.5 * total_height
+    full_df["Size"] = full_df["Taxon"].map(lambda t: map_size(taxon_compartment_counts.get(t, 1)))
 
+    # Map phyla to colors
+    colors = config["colors"]["Phyla"]
+    full_df["Color"] = full_df["Phylum"].map(lambda p: colors.get(p, "#E8E9EB"))
+
+    # Create figure
     fig, axes = plt.subplots(
         nrows=len(compartments),
         ncols=1,
-        figsize=(base_fig_width, fig_height),
-        sharex=True,
-        sharey=False,
-        gridspec_kw={'height_ratios': heights}
+        figsize=(7.5, 4*len(compartments)),
+        sharex=True
     )
-
     if len(compartments) == 1:
         axes = [axes]
 
+    # Scatter plot per compartment
     for ax, compartment in zip(axes, compartments):
-        df = full_df[full_df["Compartment"] == compartment]
-        sns.boxplot(
-            data=df,
-            x="Taxon",
-            y="Abundance",
-            order=taxa_order,
-            hue="Phylum",
-            showcaps=True,
-            showfliers=True,
-            whiskerprops={'linewidth': 2},
-            medianprops={'linewidth': 2},
-            fill=False,
-            palette=palette,
-            width=0.6,
-            ax=ax
+        df_c = full_df[full_df["Compartment"] == compartment]
+
+        ax.scatter(
+            df_c["MeanAbundance"],
+            df_c["Prevalence"],
+            c=df_c["Color"],
+            s=df_c["Size"],
+            edgecolor="k"
         )
 
-        ax.set_title(compartment)
+        # Label each point
+        for _, row in df_c.iterrows():
+            ax.text(
+                row["MeanAbundance"] + 0.05,
+                row["Prevalence"] + 0.05,
+                extract_level(row["Taxon"], "g__"),
+                fontsize=12
+            )
 
-        # Conditional y-limits
-        if compartment.lower() == "endosphere":
-            ax.set_ylim(-1, 65)
-        else:
-            ax.set_ylim(-1, 30)
+        ax.set_title(compartment, fontsize=16)
+        ax.set_ylabel("Prevalence (%)", fontsize=16)
+        ax.set_xlabel("Mean non-zero abundance (%)", fontsize=16)
+        ax.set_xlim(left=0)
+        ax.set_ylim(75, 100)
 
-        ax.set_ylabel("Relative abundance (%)")
-        ax.legend([], [], frameon=False)
+        # Increase tick label sizes
+        ax.tick_params(axis='both', which='major', labelsize=14)
 
-    axes[-1].set_xticklabels(axes[-1].get_xticklabels(), rotation=90)
-    axes[-1].set_xlabel("Taxon")
-
-    handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper right", title="Phylum")
-
-    plt.tight_layout(rect=[0, 0, 0.98, 1])
+    plt.tight_layout()
     fig.savefig(save_as, dpi=600, bbox_inches="tight")
     fig.savefig(save_as.replace(".png", ".svg"), format="svg")
     plt.close(fig)
 
-    
+
 
 def main():
     compartments = ["Endosphere", "Rhizosphere", "Bulk soil"]
     plot_core_taxa_combined(compartments)
+
+    # DA analysis between phyla in different compartments
+    pkl_file = f"../datasets/phylum_batch_corrected.pkl"
+    with open(pkl_file, 'rb') as handle:
+        batch_corrected_phyla = pkl.load(handle)
+
+    for compartment in compartments:
+        ds_copy = deepcopy(batch_corrected_phyla)
+        ds_copy.filter_samples_based_on_condition(lambda df: df["RootCompartment"] != compartment)
+        ds_copy.remove_zero_features()
+
+        results, ref = run_mmuphin_diff_abundance(ds_copy, exposure="RootCompartment")
+
+        df_results = pd.DataFrame.from_dict(results, orient="index")[["logFC", "adj.P.Val"]]
+        df_results = df_results.sort_values("adj.P.Val", ascending=True)
+
+        other_levels = [x for x in compartments if x != compartment]
+        comparison_label = f"{' vs '.join(other_levels)} (reference: {ref})"
+        filename = f"DA_{'_vs_'.join(other_levels).replace(' ', '_')}_ref_{ref.replace(' ', '_')}.csv"
+        filepath = os.path.join("../raw_data", filename)
+
+        with open(filepath, "w") as f:
+            with open(filepath, "w") as f:
+                f.write(f"# {comparison_label}\n")
+            df_results.to_csv(filepath, mode="a", header=True)
+
+        print(f"[INFO] Saved differential abundance results to {filepath}")
     
     for compartment in compartments:
         pkl_file = f"../datasets/{compartment.lower().replace(' ', '_')}/genus.pkl"
@@ -250,7 +272,8 @@ def main():
         pkl_file = f"../datasets/{compartment.lower().replace(' ', '_')}/phylum.pkl"
         with open(pkl_file, 'rb') as handle:
             ds = pkl.load(handle)
-        
+
+        # Visualize: no batch correction
         if compartment != "Bulk soil":
             plot_taxonomy(ds,
                           save_as=f"../plots/taxonomy_{compartment}")
