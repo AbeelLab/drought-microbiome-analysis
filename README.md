@@ -1,8 +1,6 @@
 # A pipeline to process amplicon data for the root and soil microbiome
 
-This repository is associated with the following manuscript:
-
-... (put citation here)
+This repository is associated with the following manuscript: [TO DO]
 
 A schematic of the pipeline is shown below. We used QIIME2 to download and process amplicon sequencing data up to taxonomic profiles at genus level, and performed downstream analysis in Python (and R). Processed datasets used in our analysis are available in the ```datasets/``` folder.
 
@@ -18,7 +16,7 @@ conda env create -f general.yml && conda env create -f qiime2-amplicon-2024.10.y
 
 ## QIIME2 pipeline example usage
 
-We use QIIME2 with the q2-fondue plugin to process amplicon datasets from NCBI. You can pass an accession or an existing study directory as input arguments.
+We use QIIME2 with the q2-fondue plugin to process amplicon datasets from NCBI on a Slurm cluster. Inputs can be an accession or an existing study directory.
 If a study directory with an existing `accession.tsv` file already exists:
 ```bash
 cd bash_scripts
