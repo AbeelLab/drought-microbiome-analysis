@@ -40,13 +40,6 @@ For the full list of pipeline steps, options and flags, run:
 
 ## Signature analysis and figure reproduction
 
-You can download processed DADA2 feature tables here: [to do]
-
-To process feature tables and obtain the merged dataset, you can run:
-```bash
-cd python_scripts && python3 process_datasets.py
-```
-
 To reproduce the analysis and associated figures in the paper, you can run:
 ```bash
 python3 plot_figure_[figure_number].py
