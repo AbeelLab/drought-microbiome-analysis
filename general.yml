@@ -1,0 +1,25 @@
+name: general
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - pandas
+  - matplotlib
+  - seaborn==0.13.2
+  - scikit-learn
+  - pyyaml
+  - python=3.9
+  - anaconda::scikit-bio
+  - conda-forge::plotly
+  - conda-forge::python-kaleido
+  - conda-forge::scanpy
+  - r::rpy2
+  - conda-forge::networkx
+  - r::r
+  - biopython
+  - bioconda::muscle
+  - bioconda::fasttree
+  - conda-forge::matplotlib-venn
+  - conda-forge::brokenaxes
+  - anaconda::statsmodels
+prefix: /tudelft.net/staff-umbrella/abeellab/bmcosma/miniconda3/envs/general

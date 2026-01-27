@@ -6,11 +6,15 @@ This repository is associated with the following manuscript:
 
 A schematic of the pipeline is shown below. We used QIIME2 to download and process amplicon sequencing data up to taxonomic profiles at genus level, and performed downstream analysis in Python (and R). Processed datasets used in our analysis are available in the ```datasets/``` folder.
 
-[to do: add overview figure]
+![Overview of the analysis pipeline](overview.png)
 
 ## Installation
 
-[to do: conda environment]
+To install the required environments and packages, you can run:
+
+```bash
+conda env create -f general.yml && conda env create -f qiime2-amplicon-2024.10.yml
+```
 
 ## QIIME2 pipeline example usage
 
