@@ -1,6 +1,8 @@
 # A pipeline to process amplicon data for the root and soil microbiome
 
-This repository is associated with the following manuscript: [TO DO]
+This repository is associated with the following manuscript:
+
+Cosma B-M and Abeel T (2026) **A conserved bacterial signature characterizes plant microbiome responses to drought**. _Front. Microbiol._ 17:1768028. doi: [10.3389/fmicb.2026.1768028](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2026.1768028/full)
 
 A schematic of the pipeline is shown below. We used QIIME2 to download and process amplicon sequencing data up to taxonomic profiles at genus level, and performed downstream analysis in Python (and R). Processed datasets used in our analysis are available in the ```datasets/``` folder.
 
